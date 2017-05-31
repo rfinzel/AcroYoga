@@ -73,7 +73,7 @@
 	<header>
 		<div class="header-content">
 			<div class="header-content-inner">				
-				<h1 id="homeHeading">${headerText}!</h1>
+				<h1 id="homeHeading">${headerText}</h1>
 				<hr>
 				<p>Noch mehr blablabla</p>
 				<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
@@ -114,10 +114,10 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="service-box">
 						<div class="thumbnail">
-							<a href="/AcroYoga/Veranstaltung?name=Veranstaltung 1"> <img src="../img/header.jpg"
+							<a href="/AcroYoga/Veranstaltung?name=Test>"> <img src="../img/header.jpg"
 								alt="Lights" style="width: 100%">
 								<div class="caption">
-									<h3>Veranstaltung 1</h3>
+									<h3>Veranstaltung D</h3>
 									<hr class="divider">
 									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
 										sed diam nonumy eirmod tempor invidunt ut labore et dolore

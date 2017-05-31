@@ -8,19 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Index
+ * Servlet implementation class Veranstaltung
  */
-@WebServlet("/Index")
-public class Index extends HttpServlet {
+@WebServlet("/Veranstaltung")
+public class Veranstaltung extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public Veranstaltung() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,29 +28,15 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user = null;
-		String headerText = null;
-		HttpSession session = request.getSession();
-		boolean angemeldet = false;
-		
-		if(angemeldet)
-		{
-			user = "Rene";		
-			headerText = "Hallo " + user;
-		}
-		else
-		{
-			user = "Anmelden";
-			headerText = "AcroYoga";
-		}
-			
-		request.setAttribute("user", user);
-		request.setAttribute("headerText", headerText);
+		String name = request.getParameter("name").toString();
+
+		//request.setAttribute("user", user);
+		request.setAttribute("headerText", name);
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Index.jsp");
+        = this.getServletContext().getRequestDispatcher("/views/Veranstaltung.jsp");
 
         dispatcher.forward(request, response);
 	}
