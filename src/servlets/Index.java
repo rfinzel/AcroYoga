@@ -1,4 +1,4 @@
-package acroyoga;
+package servlets;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import daos.VeranstaltungDAO;
 
 
 /**
@@ -39,74 +41,7 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		InitialContext cxt = null;
-		DataSource ds = null;
-		Connection conn = null;
-		Statement stmt = null;  // Or PreparedStatement if needed
-		ResultSet rs = null;
-		
-		try {
-			cxt = new InitialContext();
-		
-			ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/postgres");
-			
-			conn = ds.getConnection();
-			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from blablabla");
-			while (rs.next()) {
-	            String coffeeName = rs.getString("ID");
-	            System.out.println(coffeeName);
-	        }
-			conn.close();
-
-		}catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.toString());
-		}
-		/*Connection conn = null;
-		Statement stmt = null;  // Or PreparedStatement if needed
-		ResultSet rs = null;
-		
-		try {
-			Context ctx = new InitialContext();
-	
-			// /jdbc/postgres is the name of the resource above 
-			DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
-			//DriverManager.registerDriver(new org.postgresql.Driver());
-		    conn = ds.getConnection();
-		    System.out.println("conn success");
-		    stmt = conn.createStatement();
-		    System.out.println("stmt success");
-		    rs = stmt.executeQuery("select * from test");
-		    System.out.println("query success");
-		    
-		    rs.close();
-		    rs = null;
-		    stmt.close();
-		    stmt = null;
-		    conn.close(); // Return to connection pool
-		    conn = null;  // Make sure we don't close it twice
-		} catch (SQLException | NamingException e) {
-		    System.out.println(e.toString());
-		} finally {
-		    // Always make sure result sets and statements are closed,
-		    // and the connection is returned to the pool
-	    if (rs != null) {
-	      try { rs.close(); } catch (SQLException e) { ; }
-	      rs = null;
-	    }
-	    if (stmt != null) {
-	      try { stmt.close(); } catch (SQLException e) { ; }
-	      stmt = null;
-	    }
-	    if (conn != null) {
-	      try { conn.close(); } catch (SQLException e) { ; }
-	      conn = null;
-	    }
-	  }*/
-		
-		/*String user = null;
+		String user = null;
 		String headerText = null;
 		HttpSession session = request.getSession();
 		boolean angemeldet = true;
@@ -131,7 +66,7 @@ public class Index extends HttpServlet {
         RequestDispatcher dispatcher //
         = this.getServletContext().getRequestDispatcher("/views/Index.jsp");
 
-        dispatcher.forward(request, response);*/
+        dispatcher.forward(request, response);
 	}
 
 	/**

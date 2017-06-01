@@ -1,4 +1,4 @@
-package acroyoga;
+package servlets;
 
 import java.io.IOException;
 
@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import daos.VeranstaltungDAO;
+import objects.VeranstaltungObj;
 
 /**
  * Servlet implementation class Veranstaltung
@@ -28,10 +31,10 @@ public class Veranstaltung extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name").toString();
-
+		VeranstaltungDAO vDAO = new VeranstaltungDAO();
+		VeranstaltungObj v = vDAO.getVeranstaltungById(Integer.parseInt(request.getParameter("id")));
 		//request.setAttribute("user", user);
-		request.setAttribute("headerText", name);
+		request.setAttribute("headerText", v.getName());
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

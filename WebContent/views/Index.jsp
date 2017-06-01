@@ -57,13 +57,11 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="#about">Home</a></li>
-					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a>
-					</li>
+					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="#forum">Forum</a></li>
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
-					<li><a class="page-scroll" href="#">${user}</a></li>
-					${abc}
+					<li><a class="page-scroll" href="#">${user}</a></li>				
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -115,7 +113,7 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="service-box">
 						<div class="thumbnail">
-							<a href="/AcroYoga/Veranstaltung?name=Veranstaltung 1"> <img src="../img/header.jpg"
+							<a href="/AcroYoga/Veranstaltung?id=1"> <img src="../img/header.jpg"
 								alt="Lights" style="width: 100%">
 								<div class="caption">
 									<h3>Veranstaltung 1</h3>
