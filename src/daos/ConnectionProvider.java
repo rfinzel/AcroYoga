@@ -23,14 +23,6 @@ public class ConnectionProvider {
 			ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/postgres");
 			
 			conn = ds.getConnection();
-			
-			/*stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from blablabla");
-			while (rs.next()) {
-	            String coffeeName = rs.getString("ID");
-	            System.out.println(coffeeName);
-	        }
-			conn.close();*/
 
 		}catch (Exception e) {
 			// TODO: handle exception

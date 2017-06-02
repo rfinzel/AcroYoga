@@ -5,37 +5,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import objects.VeranstaltungObj;
+import objects.Event;
 
-public class VeranstaltungDAO {
+public class EventDAO {
 	private Connection conn;
 	private ConnectionProvider conProvider;
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public VeranstaltungDAO()
+	public EventDAO()
 	{
 		conProvider = new ConnectionProvider();
 	}
 	
-	public VeranstaltungObj getVeranstaltungById(int id)
+	public Event getEventById(int id)
 	{
-		VeranstaltungObj v = null;
+		Event e = null;
 		
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from veranstaltung where id = '" + id + "'");
+			rs = stmt.executeQuery("select * from event where id = '" + id + "'");
 			
 			while(rs.next())
 			{
-				v = new VeranstaltungObj(rs.getInt(1), rs.getString(2));
+				e = new Event(rs.getInt(1), rs.getString(2));
 			}
-		} catch(SQLException e) {
-			System.out.println(e.toString());
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
 		}
 		
-		return v;		
+		return e;		
 	}
 
 }

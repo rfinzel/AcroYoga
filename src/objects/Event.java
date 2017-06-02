@@ -1,15 +1,15 @@
 package objects;
 
-public class VeranstaltungObj {
+public class Event {
 	private int id;
 	private String name;
 	
-	public VeranstaltungObj()
+	public Event()
 	{
 		
 	}
 	
-	public VeranstaltungObj(int id, String name)
+	public Event(int id, String name)
 	{
 		this.id = id;
 		this.name = name;

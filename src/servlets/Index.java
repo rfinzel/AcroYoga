@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import daos.VeranstaltungDAO;
+import daos.EventDAO;
 
 
 /**
@@ -48,7 +48,7 @@ public class Index extends HttpServlet {
 		
 		if(angemeldet)
 		{
-			user = "Rene";		
+			user = "René";		
 			headerText = "Hallo " + user;
 		}
 		else
@@ -58,7 +58,7 @@ public class Index extends HttpServlet {
 		}
 			
 		request.setAttribute("user", user);
-		request.setAttribute("abc", "<li><a class=\"page-scroll\" href=\"#\">a</a></li><li><a class=\"page-scroll\" href=\"#\">a</a></li>");
+		
 		request.setAttribute("headerText", headerText);
 		
 		// TODO Auto-generated method stub

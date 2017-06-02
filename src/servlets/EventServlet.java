@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import daos.VeranstaltungDAO;
-import objects.VeranstaltungObj;
+import daos.EventDAO;
+import objects.Event;
 
 /**
- * Servlet implementation class Veranstaltung
+ * Servlet implementation class Event
  */
 @WebServlet("/Veranstaltung")
-public class Veranstaltung extends HttpServlet {
+public class EventServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Veranstaltung() {
+    public EventServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +31,15 @@ public class Veranstaltung extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		VeranstaltungDAO vDAO = new VeranstaltungDAO();
-		VeranstaltungObj v = vDAO.getVeranstaltungById(Integer.parseInt(request.getParameter("id")));
+		EventDAO eDAO = new EventDAO();
+		Event e = eDAO.getEventById(Integer.parseInt(request.getParameter("id")));
 		//request.setAttribute("user", user);
-		request.setAttribute("headerText", v.getName());
+		request.setAttribute("headerText", e.getName());
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Veranstaltung.jsp");
+        = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
 
         dispatcher.forward(request, response);
 	}
