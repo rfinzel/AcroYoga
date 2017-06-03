@@ -115,7 +115,7 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="service-box">
 						<div class="thumbnail">
-							<a href="/AcroYoga/Veranstaltung?id=1"> <img src="../img/header.jpg"
+							<a href="/AcroYoga/Veranstaltung?id=1"> <img src="img/header.jpg"
 								alt="Lights" style="width: 100%">
 								<div class="caption">
 									<h3>Veranstaltung 1</h3>
@@ -131,7 +131,7 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="service-box">
 						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="../img/header.jpg"
+							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
 								alt="Lights" style="width: 100%">
 								<div class="caption">
 									<h3>Veranstaltung D</h3>
@@ -147,7 +147,7 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="service-box">
 						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="../img/header.jpg"
+							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
 								alt="Lights" style="width: 100%">
 								<div class="caption">
 									<h3>Veranstaltung D</h3>
@@ -163,7 +163,7 @@
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="service-box">
 						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="../img/header.jpg"
+							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
 								alt="Lights" style="width: 100%">
 							</a>
 							<div class="caption">

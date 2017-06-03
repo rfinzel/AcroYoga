@@ -1,55 +1,52 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Vector;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 
 import daos.EventDAO;
+import objects.Event;
+import daos.MemberDAO;
+import objects.Member;
 
 /**
- * Servlet implementation class Index
+ * Servlet implementation class Event
  */
-@WebServlet("/Index")
-public class Index extends HttpServlet {
+@WebServlet("/Login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public Index() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MemberDAO mDAO = new MemberDAO();
+		Member m = mDAO.getMemberByMail(request.getParameter("username"));
+		
 		String user = null;
 		String headerText = null;
-		HttpSession session = request.getSession();
-		boolean angemeldet = false;
 		
-		if(angemeldet)
+		if((request.getParameter("password").equals(m.getPassword())))
 		{
-			user = "René";		
+			user = m.getName();		
+		
 			headerText = "Hallo " + user;
 		}
 		else
@@ -82,11 +79,9 @@ public class Index extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
