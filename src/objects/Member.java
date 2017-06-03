@@ -1,5 +1,7 @@
 package objects;
 
+import java.sql.Date;
+
 public class Member {
 	private int id;
 	private String admin;
@@ -7,9 +9,9 @@ public class Member {
 	private String password;
 	private String name;
 	private String lastname;
-	private String birthday;
+	private Date birthday;
 	
-	public Member(int id, String admin, String email, String password, String name, String lastname, String birthday) {
+	public Member(int id, String admin, String email, String password, String name, String lastname, Date birthday) {
 		this.id = id;
 		this.admin = admin;
 		this.email = email;
@@ -67,11 +69,11 @@ public class Member {
 		this.lastname = lastname;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 	

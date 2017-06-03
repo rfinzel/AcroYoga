@@ -20,14 +20,14 @@ public class ForumDAO {
 		conProvider = new ConnectionProvider();
 	}
 	
-	public Forum getMemberById(int id)
+	public Forum getForumById(int id)
 	{
 		Forum f = null;
 		
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from member where id = '" + id + "'");
+			rs = stmt.executeQuery("select * from forum where id = '" + id + "'");
 			
 			while(rs.next())
 			{

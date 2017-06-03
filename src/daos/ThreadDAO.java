@@ -5,38 +5,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import objects.Event;
-import objects.Member;
+import objects.Thread;
 
-public class MemberDAO {
+
+public class ThreadDAO {
 	private Connection conn;
 	private ConnectionProvider conProvider;
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public MemberDAO()
+	public ThreadDAO()
 	{
 		conProvider = new ConnectionProvider();
 	}
 	
-	public Member getMemberById(int id)
+	public Thread getThreadById(int id)
 	{
-		Member m = null;
+		Thread t = null;
 		
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from member where id = '" + id + "'");
+			rs = stmt.executeQuery("select * from thread where id = '" + id + "'");
 			
 			while(rs.next())
 			{
-				m = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
+				t = new Thread(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
 		}
 		
-		return m;		
+		return t;		
 	}
 
 }

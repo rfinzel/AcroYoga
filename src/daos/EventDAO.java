@@ -29,7 +29,7 @@ public class EventDAO {
 			
 			while(rs.next())
 			{
-				e = new Event(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
+				e = new Event(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());

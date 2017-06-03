@@ -1,16 +1,18 @@
 package objects;
 
+import java.sql.Date;
+
 public class Event {
 	private int id;
 	private String name;
-	private String timing;
+	private Date timing;
 	private int regularity;
 	private String place;
 	private String content;
 	private double fee;
 	private int instructor;
 	
-	public Event(int id, String name, String timing, int regularity, String place, String content, double fee,
+	public Event(int id, String name, Date timing, int regularity, String place, String content, double fee,
 			int instructor) {
 		this.id = id;
 		this.name = name;
@@ -23,12 +25,12 @@ public class Event {
 	}
 
 	
-	public String getTiming() {
+	public Date getTiming() {
 		return timing;
 	}
 
 
-	public void setTiming(String timing) {
+	public void setTiming(Date timing) {
 		this.timing = timing;
 	}
 
