@@ -86,47 +86,38 @@
 	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				<div class="col-xs-4 text-center">
 					<p>${timing}</p>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<p>${name}</p>	
+				<div class="col-xs-4 text-center">
+					<p>${name}</p>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					${loginbtn}
+				<div class="col-xs-4 text-center">${loginbtn}
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- About Infobar -->
-
+	<hr style="width:100%">
 
 	<!-- Details -->
 	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<p>${weekday} ${time} Uhr</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<p></p>	
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				<div class="col-xs-6">
+					<p>${weekday} ${time}Uhr</p>
+				
 					<p>${place}</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				
 					<p>Wer kommt noch:</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				
 					<p>${participants}</p>
 				</div>
+				<div class="col-xs-6">
+					<p>${content}</p>
+				</div>
 			</div>
+
 		</div>
 	</section>
 	<!-- About Details -->

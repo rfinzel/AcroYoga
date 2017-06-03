@@ -21,21 +21,20 @@ import javax.sql.DataSource;
 
 import daos.EventDAO;
 
-
 /**
  * Servlet implementation class Index
  */
 @WebServlet("/Index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Index() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Index() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +43,7 @@ public class Index extends HttpServlet {
 		String user = null;
 		String headerText = null;
 		HttpSession session = request.getSession();
-		boolean angemeldet = true;
+		boolean angemeldet = false;
 		
 		if(angemeldet)
 		{
@@ -53,7 +52,21 @@ public class Index extends HttpServlet {
 		}
 		else
 		{
-			user = "Anmelden";
+			user = "<li class=\"dropdown\">"
+				   + "<a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\">Sign In <strong class=\"caret\"></strong></a>"
+				   + "<div class=\"dropdown-menu\" style=\"padding: 15px; padding-bottom: 0px;\">"
+				   + "<form method=\"post\" action=\"login\" accept-charset=\"UTF-8\">" 
+				   +			"<input style=\"margin-bottom: 15px;\" type=\"text\" placeholder=\"Username\" id=\"username\" name=\"username\">"
+				+			"<input style=\"margin-bottom: 15px;\" type=\"password\" placeholder=\"Password\" id=\"password\" name=\"password\">"
+				+				"<input style=\"float: left; margin-right: 10px;\" type=\"checkbox\" name=\"remember-me\" id=\"remember-me\" value=\"1\">"
+				+				"<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"
+				+				"<input class=\"btn btn-primary btn-block\" type=\"submit\" id=\"sign-in\" value=\"Sign In\">"
+				+				"<label style=\"text-align:center;margin-top:5px\">or</label>"
+                 +               "<input class=\"btn btn-primary btn-block\" type=\"button\" id=\"sign-in-google\" value=\"Sign In with Google\">"
+					+			"<input class=\"btn btn-primary btn-block\" type=\"button\" id=\"sign-in-twitter\" value=\"Sign In with Twitter\">"
+					+		"</form>"
+					+	"</div>"
+					+"</li>";
 			headerText = "AcroYoga";
 		}
 			
@@ -70,9 +83,11 @@ public class Index extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

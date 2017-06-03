@@ -61,7 +61,9 @@
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="#forum">Forum</a></li>
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
-					<li><a class="page-scroll" href="#">${user}</a></li>				
+					<li><a class="page-scroll" href="#">${user}</a></li>	
+					
+					
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

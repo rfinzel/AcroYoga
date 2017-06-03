@@ -36,27 +36,31 @@ public class EventServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
 		EventDAO eDAO = new EventDAO();
 		Event e = eDAO.getEventById(Integer.parseInt(request.getParameter("id")));
-		MemberDAO mDAO = new MemberDAO();
-		Vector<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
-		String weekday = new SimpleDateFormat("EE").format(e.getTiming());
-		
-		
-		request.setAttribute("timing", formatter.format(e.getTiming()));
 		request.setAttribute("name", e.getName());
 		request.setAttribute("loginbtn", "<a href=\"#about\" class=\"btn btn-primary btn-xl page-scroll\">Anmelden</a>");
-		request.setAttribute("weekday", weekday);
-		request.setAttribute("time", new SimpleDateFormat("hh-mm").format(e.getTiming()));
 		request.setAttribute("place", e.getPlace());
+		request.setAttribute("content", e.getContent());
+
+		String weekday = new SimpleDateFormat("EE").format(e.getTiming());
+		request.setAttribute("weekday", weekday);
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
+		request.setAttribute("time", new SimpleDateFormat("hh-mm").format(e.getTiming()));
+		request.setAttribute("timing", formatter.format(e.getTiming()));
+
+		MemberDAO mDAO = new MemberDAO();
+		Vector<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 		String htmlMembers = "";
 		System.out.println(members.size());
 		for(int i = 0; i < members.size(); i++)
 			htmlMembers = htmlMembers + members.get(i).getName() + " ";
 		request.setAttribute("participants", htmlMembers);
+		
+		
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
