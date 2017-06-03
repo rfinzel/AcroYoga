@@ -40,14 +40,14 @@ public class PostDAO {
 		return p;		
 	}
 
-	public Vector<Post> getPostByThread(int id)
+	public Vector<Post> getPostsByThread(int id)
 	{
 		Vector<Post> p = new Vector<Post>();
 		
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from post where id = '" + id + "'");
+			rs = stmt.executeQuery("select * from post where thread_id = '" + id + "'");
 			
 			while(rs.next())
 			{

@@ -48,7 +48,7 @@ public class ThreadDAO {
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from post where id = '" + id + "'");
+			rs = stmt.executeQuery("select * from post where forum_id = '" + id + "'");
 			
 			while(rs.next())
 			{

@@ -72,8 +72,8 @@
 
 	<header>
 		<div class="header-content">
-			<div class="header-content-inner">				
-				<h1 id="homeHeading">${headerText}</h1>
+			<div class="header-content-inner">
+				<h1 id="homeHeading">${name}</h1>
 				<hr>
 				<p>Noch mehr blablabla</p>
 				<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
@@ -82,143 +82,55 @@
 		</div>
 	</header>
 
-	<!-- About -->
-	<section class="bg-primary" id="about">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<h2 class="section-heading">About</h2>
-					<hr class="light">
-					<p class="text-faded">blablabla</p>
-					<a href="#veranstaltungen"
-						class="page-scroll btn btn-default btn-xl sr-button">Get
-						Started!</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- About ende -->
-
-	<!-- Veranstaltungen -->
+	<!-- Infobar -->
 	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Veranstaltungen</h2>
-					<hr class="primary">
+				<div class="col-lg-3 col-md-6">
+					<p>${timing}</p>
 				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/AcroYoga/Veranstaltung?name=Test>"> <img src="../img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
+				<div class="col-lg-3 col-md-6">
+					<p>${name}</p>	
 				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="../img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="../img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="../img/header.jpg"
-								alt="Lights" style="width: 100%">
-							</a>
-							<div class="caption">
-								<h3>Veranstaltung D</h3>
-								<hr class="divider">
-								<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-									sed diam nonumy eirmod tempor invidunt ut labore et dolore
-									magna aliquyam erat, sed diam voluptua.</p>
-							</div>
-
-						</div>
-					</div>
+				<div class="col-lg-3 col-md-6">
+					${loginbtn}
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Veranstaltungen ende -->
+	<!-- About Infobar -->
 
-	<!-- Forum 
-    <section id="forum">
-        <section class="bg-primary" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading">Forum</h2>
-                        <hr class="light">
-                        <p class="text-faded">Forum blabla</p>
-                        <a href="#veranstaltungen" class="page-scroll btn btn-default btn-xl sr-button">Zum Forum!</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        ende -->
 
-	<!-- Kontakt -->
-	<section class="bg-primary" id="kontakt">
+	<!-- Details -->
+	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<h2 class="section-heading">Kontakt</h2>
-					<hr class="primary">
-					<p>Kontakt blabla</p>
+				<div class="col-lg-3 col-md-6">
+					<p>${weekday} ${time} Uhr</p>
 				</div>
-				<div class="col-lg-4 col-lg-offset-2 text-center">
-					<i class="fa fa-phone fa-3x sr-contact"></i>
-					<p>0421 123456789</p>
+				<div class="col-lg-3 col-md-6">
+					<p></p>	
 				</div>
-				<div class="col-lg-4 text-center">
-					<i class="fa fa-envelope-o fa-3x sr-contact"></i>
-					<!-- <p><a href="mailto:acroyoga@acroyoga.de">acroyoga@acroyoga.de</a></p> -->
-					<p>acroyoga@acroyoga.de</p>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<p>${place}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<p>Wer kommt noch:</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<p>${participants}</p>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Kontakt ende -->
+	<!-- About Details -->
+
 
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
