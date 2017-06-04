@@ -27,7 +27,7 @@ public class MemberDAO {
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from member where id = '" + id + "'");
+			rs = stmt.executeQuery("select * from members where id = '" + id + "'");
 			
 			while(rs.next())
 			{
