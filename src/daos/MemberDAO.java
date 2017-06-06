@@ -1,6 +1,7 @@
 package daos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,8 +13,6 @@ import objects.Member;
 public class MemberDAO {
 	private Connection conn;
 	private ConnectionProvider conProvider;
-	private Statement stmt;
-	private ResultSet rs;
 	
 	public MemberDAO()
 	{
@@ -26,8 +25,9 @@ public class MemberDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from members where id = '" + id + "'");
+			PreparedStatement pstmt = conn.prepareStatement("select * from members where id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
 			{
@@ -47,8 +47,9 @@ public class MemberDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from members where email = '" + mail + "'");
+			PreparedStatement pstmt = conn.prepareStatement("select * from members where email = ?");
+			pstmt.setString(1, mail);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
 			{
@@ -67,8 +68,9 @@ public class MemberDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select participants from participation where event = '" + event +  "'");
+			PreparedStatement pstmt = conn.prepareStatement("select participants from participation where event = ?");
+			pstmt.setInt(1, event);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
 			{

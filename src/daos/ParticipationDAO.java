@@ -1,6 +1,7 @@
 package daos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,8 +27,9 @@ public class ParticipationDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from participation where id = '" + id + "'");
+			PreparedStatement pstmt = conn.prepareStatement("select * from participation where id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
 			{
