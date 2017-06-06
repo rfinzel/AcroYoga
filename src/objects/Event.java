@@ -8,11 +8,21 @@ public class Event {
 	private Date timing;
 	private int regularity;
 	private String place;
+	private String shortContent;
+	public String getShortContent() {
+		return shortContent;
+	}
+
+
+	public void setShortContent(String shortContent) {
+		this.shortContent = shortContent;
+	}
+
 	private String content;
 	private double fee;
 	private int instructor;
 	
-	public Event(int id, String name, Date timing, int regularity, String place, String content, double fee,
+	public Event(int id, String name, Date timing, int regularity, String place, String shortContent, String content, double fee,
 			int instructor) {
 		this.id = id;
 		this.name = name;
@@ -20,6 +30,7 @@ public class Event {
 		this.regularity = regularity;
 		this.place = place;
 		this.content = content;
+		this.shortContent = shortContent;
 		this.fee = fee;
 		this.instructor = instructor;
 	}
