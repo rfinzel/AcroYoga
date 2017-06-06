@@ -56,7 +56,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll" href="#about">Home</a></li>
+					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
 					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
@@ -124,7 +124,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Foren</h2>
+					<h2 class="section-heading">neuste Threads</h2>
 					<hr class="primary">
 				</div>
 			</div>

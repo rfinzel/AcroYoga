@@ -56,11 +56,11 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll" href="#about">Home</a></li>
+					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
 					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a>
 					</li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
-					<li><a class="page-scroll" href="#forum">Forum</a></li>
+					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
 					<li><a class="page-scroll" href="#">${user}</a></li>
 				</ul>

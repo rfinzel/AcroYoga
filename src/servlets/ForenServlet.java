@@ -80,7 +80,7 @@ public class ForenServlet extends HttpServlet {
 
 		for (int i = 0; i < 4; i++) {
 			fBox = fBox + "<div class=\"col-lg-3 col-md-6 text-center\">" + "<div class=\"service-box\">"
-					+ "<div class=\"thumbnail\">" + "<a href=\"/AcroYoga/Veranstaltung?id=" + fV.get(i).getId()
+					+ "<div class=\"thumbnail\">" + "<a href=\"/AcroYoga/Forum?id=" + fV.get(i).getId()
 					+ "\"> <img src=\"img/header.jpg\"" + "alt=\"Lights\" style=\"width: 100%\"> "
 					+ "<div class=\"caption\">" + "<h3>" + fV.get(i).getName() + "</h3>" + "<hr class=\"divider\">"
 					+ "<p>" + fV.get(i).getName() + "</p>" + "</div>" + "</a>" + "</div>" + "</div>" + "</div>";
