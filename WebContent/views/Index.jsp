@@ -183,7 +183,7 @@
 	<!-- Veranstaltungen ende -->
 
         
-        <!-- Forum -->
+    <!-- Forum -->
 	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
@@ -263,7 +263,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Veranstaltungen ende -->
+	<!-- Forum ende -->
         
 
 	<!-- Kontakt -->
