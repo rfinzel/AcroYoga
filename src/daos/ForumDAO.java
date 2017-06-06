@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 
 import objects.Event;
 import objects.Forum;
@@ -40,6 +41,26 @@ public class ForumDAO {
 		}
 		
 		return f;		
+	}
+	
+	public Vector<Forum> getAllForen()
+	{
+		Vector<Forum> e = new Vector<Forum>();
+		
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select id from forum");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				e.add(getForumById(rs.getInt(1)));
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		return e;		
 	}
 
 }

@@ -81,9 +81,9 @@
 			</div>
 		</div>
 	</header>
-	
-	
- <!-- Threads -->
+
+
+	<!-- Threads -->
 	<section id="foren">
 		<div class="container">
 			<div class="row">
@@ -95,71 +95,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/AcroYoga/Thread?id=1"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Thread 1</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-							</a>
-							<div class="caption">
-								<h3>Veranstaltung D</h3>
-								<hr class="divider">
-								<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-									sed diam nonumy eirmod tempor invidunt ut labore et dolore
-									magna aliquyam erat, sed diam voluptua.</p>
-							</div>
-
-						</div>
-					</div>
-				</div>
+			${fBox}
 			</div>
 		</div>
 	</section>

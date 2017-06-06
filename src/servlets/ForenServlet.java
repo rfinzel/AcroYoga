@@ -23,19 +23,21 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import daos.EventDAO;
+import daos.ForumDAO;
 import objects.Event;
+import objects.Forum;
 
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/Index")
-public class Index extends HttpServlet {
+@WebServlet("/Foren")
+public class ForenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Index() {
+	public ForenServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -66,31 +68,30 @@ public class Index extends HttpServlet {
 					+ "<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"
 					+ "<input class=\"btn btn-primary btn-block\" type=\"submit\" id=\"sign-in\" value=\"Sign In\">"
 					+ "</form>" + "</div>" + "</li>";
-			headerText = "AcroYoga";
+			headerText = "Foren";
 		}
 
 		request.setAttribute("user", user);
 		request.setAttribute("headerText", headerText);
 
-		EventDAO eDAO = new EventDAO();
-		Vector<Event> eV = eDAO.getAllEventst();
-		String eBox = "";
+		ForumDAO fDAO = new ForumDAO();
+		Vector<Forum> fV = fDAO.getAllForen();
+		String fBox = "";
 
 		for (int i = 0; i < 4; i++) {
-			eBox = eBox + "<div class=\"col-lg-3 col-md-6 text-center\">" + "<div class=\"service-box\">"
-					+ "<div class=\"thumbnail\">" + "<a href=\"/AcroYoga/Veranstaltung?id=" + eV.get(i).getId()
+			fBox = fBox + "<div class=\"col-lg-3 col-md-6 text-center\">" + "<div class=\"service-box\">"
+					+ "<div class=\"thumbnail\">" + "<a href=\"/AcroYoga/Veranstaltung?id=" + fV.get(i).getId()
 					+ "\"> <img src=\"img/header.jpg\"" + "alt=\"Lights\" style=\"width: 100%\"> "
-					+ "<div class=\"caption\">" + "<h3>" + eV.get(i).getName() + "</h3>" + "<hr class=\"divider\">"
-					+ "<p>" + eV.get(i).getShortContent() + "</p>" + "</div>" + "</a>" + "</div>" + "</div>" + "</div>";
-
+					+ "<div class=\"caption\">" + "<h3>" + fV.get(i).getName() + "</h3>" + "<hr class=\"divider\">"
+					+ "<p>" + fV.get(i).getName() + "</p>" + "</div>" + "</a>" + "</div>" + "</div>" + "</div>";
 		}
 
-		request.setAttribute("eBox", eBox);
+		request.setAttribute("fBox", fBox);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/Index.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/Forum.jsp");
 
 		dispatcher.forward(request, response);
 	}
