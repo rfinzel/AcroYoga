@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Vector;
 
 import javax.naming.Context;
@@ -73,7 +74,7 @@ public class Index extends HttpServlet {
 		request.setAttribute("headerText", headerText);
 
 		EventDAO eDAO = new EventDAO();
-		Vector<Event> eV = eDAO.getAllEventst();
+		List<Event> eL = eDAO.getAllEvents();
 		String eBox = "";
 
 		for (int i = 0; i < 4; i++) {
@@ -82,11 +83,12 @@ public class Index extends HttpServlet {
 					+ "\"> <img src=\"img/header.jpg\"" + "alt=\"Lights\" style=\"width: 100%\"> "
 					+ "<div class=\"caption\">" + "<h3>" + eV.get(i).getName() + "</h3>" + "<hr class=\"divider\">"
 					+ "<p>" + eV.get(i).getShortContent() + "</p>" + "</div>" + "</a>" + "</div>" + "</div>" + "</div>";
-
 		}
 
+		request.setAttribute("eList", eList);
 		request.setAttribute("eBox", eBox);
 
+		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //

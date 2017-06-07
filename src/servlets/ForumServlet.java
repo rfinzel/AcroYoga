@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -23,8 +25,11 @@ import javax.sql.DataSource;
 
 import daos.EventDAO;
 import daos.ForumDAO;
+import daos.ThreadDAO;
 import objects.Event;
 import objects.Forum;
+import objects.Thread;
+
 
 /**
  * Servlet implementation class Forum
@@ -76,7 +81,16 @@ public class ForumServlet extends HttpServlet {
 
 		request.setAttribute("name", f.getName());
 		request.setAttribute("headerText", headerText);
+		
+		List<Thread> tV = fDAO.getThreadsByForum(f.getId());
+		String threadListe = "";
+		
+		for(int i=0; i< tV.size(); i++){
+			threadListe = threadListe + "<div class=\"panel-body\">" + tV.get(i).getName() + "</div>";
+		}
+		request.setAttribute("threadListe", threadListe);
 
+		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //

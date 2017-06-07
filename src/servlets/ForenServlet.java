@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Vector;
 
 import javax.naming.Context;
@@ -75,7 +76,7 @@ public class ForenServlet extends HttpServlet {
 		request.setAttribute("headerText", headerText);
 
 		ForumDAO fDAO = new ForumDAO();
-		Vector<Forum> fV = fDAO.getAllForen();
+		List<Forum> fV = fDAO.getAllForen();
 		String fBox = "";
 
 		for (int i = 0; i < 4; i++) {
@@ -91,7 +92,7 @@ public class ForenServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/Forum.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/Foren.jsp");
 
 		dispatcher.forward(request, response);
 	}

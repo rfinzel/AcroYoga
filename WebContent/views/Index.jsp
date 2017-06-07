@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="event" type="objects.Event" />
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,9 +66,9 @@
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
-					<li><a class="page-scroll" href="#">${user}</a></li>	
-					
-					
+					<li><a class="page-scroll" href="#">${user}</a></li>
+
+
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -73,7 +78,7 @@
 
 	<header>
 		<div class="header-content">
-			<div class="header-content-inner">				
+			<div class="header-content-inner">
 				<h1 id="homeHeading">${headerText}!</h1>
 				<hr>
 				<p>Noch mehr blablabla</p>
@@ -112,14 +117,29 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				${eBox}
+				<c:forEach items="${eList}" var="eventList">
+					<div class="col-lg-3 col-md-6 text-center">
+						<div class=\"service-box\">
+							<div class="thumbnail">
+								<a href="/AcroYoga/Veranstaltung?id="${eList.id}> <img
+									src="img/header.jpg" alt="Lights" style="width: 100%">
+									<div class="caption">
+										<h3>${eList.name}</h3>
+										<hr class="divider">
+										<p>${eList.shortContent}</p>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
 	<!-- Veranstaltungen ende -->
 
-        
-    <!-- Forum -->
+
+	<!-- Forum -->
 	<section class="bg-primary" id="veranstaltungen">
 		<div class="container">
 			<div class="row">
@@ -200,7 +220,7 @@
 		</div>
 	</section>
 	<!-- Forum ende -->
-        
+
 
 	<!-- Kontakt -->
 	<section class="bg-primary" id="kontakt">

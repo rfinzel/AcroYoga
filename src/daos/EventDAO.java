@@ -42,7 +42,7 @@ public class EventDAO {
 		return e;		
 	}
 
-	public Vector<Event> getAllEventst()
+	public Vector<Event> getAllEvents()
 	{
 		Vector<Event> e = new Vector<Event>();
 		

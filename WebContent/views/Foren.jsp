@@ -91,15 +91,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Threads</h2>
+					<h2 class="section-heading">Foren</h2>
 					<hr class="primary">
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			${threadListe}
+		<div class="container">
+			<div class="row">
+			${fBox}
+			</div>
 		</div>
-
 	</section>
 	<!-- Threads ende -->
 
