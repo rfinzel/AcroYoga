@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -98,7 +98,22 @@
 		</div>
 		<div class="container">
 			<div class="row">
-			${fBox}
+				<c:forEach items="${fList}" var="forenList">
+					<div class="col-lg-3 col-md-6text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a href="/AcroYoga/Forum?id=${forenList.id}" img
+									src="img/header.jpg"  alt="Lights" style="width: 100%">
+									<div class="caption">
+										<h3> ${forenList.name}</h3>
+										<hr class="divider">
+										<p>${forenList.name}</p>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>

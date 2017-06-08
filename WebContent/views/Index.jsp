@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="event" type="objects.Event" />
 
 
 
@@ -119,14 +118,14 @@
 			<div class="row">
 				<c:forEach items="${eList}" var="eventList">
 					<div class="col-lg-3 col-md-6 text-center">
-						<div class=\"service-box\">
+						<div class="service-box">
 							<div class="thumbnail">
-								<a href="/AcroYoga/Veranstaltung?id="${eList.id}> <img
+								<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
 									src="img/header.jpg" alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>${eList.name}</h3>
+									<div class="caption"> 
+										<h3>${eventList.name}</h3>
 										<hr class="divider">
-										<p>${eList.shortContent}</p>
+										<p>${eventList.shortContent}</p>
 									</div>
 								</a>
 							</div>

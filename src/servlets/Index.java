@@ -75,18 +75,8 @@ public class Index extends HttpServlet {
 
 		EventDAO eDAO = new EventDAO();
 		List<Event> eL = eDAO.getAllEvents();
-		String eBox = "";
-
-		for (int i = 0; i < 4; i++) {
-			eBox = eBox + "<div class=\"col-lg-3 col-md-6 text-center\">" + "<div class=\"service-box\">"
-					+ "<div class=\"thumbnail\">" + "<a href=\"/AcroYoga/Veranstaltung?id=" + eV.get(i).getId()
-					+ "\"> <img src=\"img/header.jpg\"" + "alt=\"Lights\" style=\"width: 100%\"> "
-					+ "<div class=\"caption\">" + "<h3>" + eV.get(i).getName() + "</h3>" + "<hr class=\"divider\">"
-					+ "<p>" + eV.get(i).getShortContent() + "</p>" + "</div>" + "</a>" + "</div>" + "</div>" + "</div>";
-		}
-
-		request.setAttribute("eList", eList);
-		request.setAttribute("eBox", eBox);
+		
+		request.setAttribute("eList", eL);
 
 		
 		// TODO Auto-generated method stub

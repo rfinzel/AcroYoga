@@ -1,31 +1,17 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.Vector;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 
-import daos.EventDAO;
 import daos.ForumDAO;
-import objects.Event;
 import objects.Forum;
 
 /**
@@ -77,17 +63,9 @@ public class ForenServlet extends HttpServlet {
 
 		ForumDAO fDAO = new ForumDAO();
 		List<Forum> fV = fDAO.getAllForen();
-		String fBox = "";
 
-		for (int i = 0; i < 4; i++) {
-			fBox = fBox + "<div class=\"col-lg-3 col-md-6 text-center\">" + "<div class=\"service-box\">"
-					+ "<div class=\"thumbnail\">" + "<a href=\"/AcroYoga/Forum?id=" + fV.get(i).getId()
-					+ "\"> <img src=\"img/header.jpg\"" + "alt=\"Lights\" style=\"width: 100%\"> "
-					+ "<div class=\"caption\">" + "<h3>" + fV.get(i).getName() + "</h3>" + "<hr class=\"divider\">"
-					+ "<p>" + fV.get(i).getName() + "</p>" + "</div>" + "</a>" + "</div>" + "</div>" + "</div>";
-		}
 
-		request.setAttribute("fBox", fBox);
+		request.setAttribute("fList", fV);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
