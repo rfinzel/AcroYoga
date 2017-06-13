@@ -24,7 +24,9 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import daos.EventDAO;
+import daos.MemberDAO;
 import objects.Event;
+import objects.Member;
 
 /**
  * Servlet implementation class Index
@@ -47,38 +49,36 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String user = null;
 		String headerText = null;
-		HttpSession session = request.getSession();
-		boolean angemeldet = false;
+		boolean loggedIn = false;
+		String username = "lolo";
+	
+		if(request.getCookies() != null)loggedIn = true;
 
-		if (angemeldet) {
-			user = "Ren�";
-			headerText = "Hallo " + user;
+		//logik noch in jsps tun
+		if (loggedIn) {
+			username = request.getCookies().toString();
+			headerText = "Hallo " + username;
+			request.setAttribute("user", username);
+
 		} else {
-			user = "<li class=\"dropdown\">"
-					+ "<a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\">Sign In <strong class=\"caret\"></strong></a>"
-					+ "<div class=\"dropdown-menu\" style=\"padding: 15px;\">"
-					+ "<form method=\"post\" action=\"Login\" accept-charset=\"UTF-8\">"
-					+ "<input style=\"margin-bottom: 15px;\" type=\"text\" placeholder=\"E-Mail\" id=\"username\" name=\"username\">"
-					+ "<input style=\"margin-bottom: 15px;\" type=\"password\" placeholder=\"Password\" id=\"password\" name=\"password\">"
-					+ "<p>E-Mail Adresse oder Passwort falsch</p>"
-					+ "<input style=\"float: left; margin-right: 10px;\" type=\"checkbox\" name=\"remember-me\" id=\"remember-me\" value=\"1\">"
-					+ "<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"
-					+ "<input class=\"btn btn-primary btn-block\" type=\"submit\" id=\"sign-in\" value=\"Sign In\">"
-					+ "</form>" + "</div>" + "</li>";
+			
 			headerText = "AcroYoga";
 		}
 
-		request.setAttribute("user", user);
+		request.setAttribute("loggedIn", loggedIn);
+		request.setAttribute("user", username);
+
 		request.setAttribute("headerText", headerText);
 
+		
+		
+		//Eventliste
 		EventDAO eDAO = new EventDAO();
 		List<Event> eL = eDAO.getAllEvents();
-		
+
 		request.setAttribute("eList", eL);
 
-		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //

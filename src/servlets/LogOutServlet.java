@@ -23,14 +23,14 @@ import objects.Member;
 /**
  * Servlet implementation class Event
  */
-@WebServlet("/Login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/Index")
+public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public LogOutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean loggedIn = false;
+		boolean loggedIn = true;
 		
 		MemberDAO mDAO = new MemberDAO();
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
@@ -52,20 +52,15 @@ public class LoginServlet extends HttpServlet {
 			user = m.getName();	
 			Cookie loginCookie = new Cookie("user",user);
 			//setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
 			response.addCookie(loginCookie);
-			
+			response.sendRedirect("Index.jsp");
 		
 			headerText = "Hallo " + user;
 			loggedIn = true;
 			
-			/*
 			request.setAttribute("user", user);
 			request.setAttribute("headerText", headerText);
-			request.setAttribute("loggedIn", true);*
-			*/
-
-			response.sendRedirect("Index.java");
+			request.setAttribute("loggedIn", true);
 		}
 		else
 		{
@@ -85,7 +80,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Index.java");
+        = this.getServletContext().getRequestDispatcher("/views/Index.jsp");
 
         dispatcher.forward(request, response);
 	}

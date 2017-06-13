@@ -70,8 +70,9 @@ public class ForumDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from post where forum_id = '" + id + "'");
+			PreparedStatement pstmt = conn.prepareStatement("select * from thread where forum_id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
 			{

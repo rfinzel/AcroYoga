@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 
@@ -43,7 +43,6 @@
 </head>
 
 <body id="page-top">
-
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -65,7 +64,44 @@
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
-					<li><a class="page-scroll" href="#">${user}</a></li>
+					<li><a class="page-scroll" href="#"> <c:choose>
+								<c:when test="${loggedIn}">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
+										<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+										<li class="divider"></li>
+										<li><form action="LogoutServlet" method="post">
+												<input type="submit" value="Logout">
+											</form></li>
+									</ul>
+								</c:when>
+								<c:otherwise>
+									<li class="dropdown"><a class="dropdown-toggle" href="#"
+										data-toggle="dropdown"> Log In <strong class="caret"></strong>
+									</a>
+										<div class="dropdown-menu" style="padding: 15px;">
+											<form method="post" action="Login" accept-charset="UTF-8">
+												<input style="margin-bottom: 15px;" type="text"
+													placeholder="E-Mail" id="username" name="username">
+												<input style="margin-bottom: 15px;" type="password"
+													placeholder="Password" id="password" name="password">
+												<p>E-Mail Adresse oder Passwort falsch</p>
+												<input style="float: left; margin-right: 10px;"
+													checkbox" name="remember-me" id="remember-me" value="1">
+												<label class="string optional" for="user_remember_me">
+													Remember me</label> <input class="btn btn-primary btn-block"
+													type="submit" id="sign-in" value="Sign In">
+											</form>
+										</div></li>
+								</c:otherwise>
+							</c:choose>
+					</a></li>
 
 
 				</ul>
@@ -122,7 +158,7 @@
 							<div class="thumbnail">
 								<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
 									src="img/header.jpg" alt="Lights" style="width: 100%">
-									<div class="caption"> 
+									<div class="caption">
 										<h3>${eventList.name}</h3>
 										<hr class="divider">
 										<p>${eventList.shortContent}</p>

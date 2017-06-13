@@ -62,6 +62,7 @@ public class MemberDAO {
 		return m;		
 	}
 	
+	
 	public Vector<Member> getMembersByEvent(int event)
 	{
 		Vector<Member> m = new Vector<Member>();
