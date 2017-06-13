@@ -23,7 +23,7 @@ import objects.Member;
 /**
  * Servlet implementation class Event
  */
-@WebServlet("/Index")
+@WebServlet("/Logout")
 public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,50 +39,16 @@ public class LogOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean loggedIn = true;
-		
-		MemberDAO mDAO = new MemberDAO();
-		Member m = mDAO.getMemberByMail(request.getParameter("username"));
-		
-		String user = null;
-		String headerText = null;
-		
-		if((request.getParameter("password").equals(m.getPassword())))
+		for(Cookie c : request.getCookies())
 		{
-			user = m.getName();	
-			Cookie loginCookie = new Cookie("user",user);
-			//setting cookie to expiry in 30 mins
-			response.addCookie(loginCookie);
-			response.sendRedirect("Index.jsp");
-		
-			headerText = "Hallo " + user;
-			loggedIn = true;
-			
-			request.setAttribute("user", user);
-			request.setAttribute("headerText", headerText);
-			request.setAttribute("loggedIn", true);
-		}
-		else
-		{
-			headerText = "AcroYoga";
-			request.setAttribute("user", "Du");
-			request.setAttribute("headerText", headerText);
+			if(c.getName().equals("user"))
+			{		
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}		
 		}
 		
-		
-		
-		//Eventliste
-				EventDAO eDAO = new EventDAO();
-				List<Event> eL = eDAO.getAllEvents();
-
-				request.setAttribute("eList", eL);
-		
-		// TODO Auto-generated method stub
-		// Forward to /WEB-INF/views/login.jsp
-        RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Index.jsp");
-
-        dispatcher.forward(request, response);
+		response.sendRedirect("/AcroYoga/Index");
 	}
 
 	/**

@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
@@ -39,55 +38,28 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean loggedIn = false;
-		
 		MemberDAO mDAO = new MemberDAO();
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
 		
-		String user = null;
-		String headerText = null;
-		
 		if((request.getParameter("password").equals(m.getPassword())))
 		{
-			user = m.getName();	
-			Cookie loginCookie = new Cookie("user",user);
+			Cookie loginCookie = new Cookie("user",m.getName());
+		
 			//setting cookie to expiry in 30 mins
 			loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
-			response.addCookie(loginCookie);
-			
-		
-			headerText = "Hallo " + user;
-			loggedIn = true;
-			
-			/*
-			request.setAttribute("user", user);
-			request.setAttribute("headerText", headerText);
-			request.setAttribute("loggedIn", true);*
-			*/
+			response.addCookie(loginCookie);					
+		}				
 
-			response.sendRedirect("Index.java");
-		}
-		else
-		{
-			headerText = "AcroYoga";
-			request.setAttribute("user", "Du");
-			request.setAttribute("headerText", headerText);
-		}
-		
-		
-		
-		//Eventliste
-				EventDAO eDAO = new EventDAO();
-				List<Event> eL = eDAO.getAllEvents();
-
-				request.setAttribute("eList", eL);
+		String path = request.getHeader("referer");
+		System.out.println(path.substring(21));
+		//response.sendRedirect(path.substring(21));
 		
 		// TODO Auto-generated method stub
-		// Forward to /WEB-INF/views/login.jsp
-        RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Index.java");
+				// Forward to /WEB-INF/views/login.jsp
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher(path.substring(30));
 
-        dispatcher.forward(request, response);
+		dispatcher.forward(request, response);
 	}
 
 	/**

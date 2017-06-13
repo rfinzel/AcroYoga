@@ -47,19 +47,28 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String headerText = null;
 		boolean loggedIn = false;
-		String username = "lolo";
-	
-		if(request.getCookies() != null)loggedIn = true;
+			
+		Cookie user = null;
+		
+		for(Cookie c : request.getCookies())
+		{
+			if(c.getName().equals("user"))
+			{
+				user = c;
+			}
+		}
+		
+		if(user != null)
+			loggedIn = true;
 
 		//logik noch in jsps tun
 		if (loggedIn) {
-			username = request.getCookies().toString();
-			headerText = "Hallo " + username;
-			request.setAttribute("user", username);
+			
+			headerText = "Hallo " + user.getValue();
+			request.setAttribute("user", user.getValue());
 
 		} else {
 			
@@ -67,7 +76,6 @@ public class Index extends HttpServlet {
 		}
 
 		request.setAttribute("loggedIn", loggedIn);
-		request.setAttribute("user", username);
 
 		request.setAttribute("headerText", headerText);
 
