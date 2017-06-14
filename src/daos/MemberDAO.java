@@ -62,6 +62,27 @@ public class MemberDAO {
 		return m;		
 	}
 	
+	public Member getMemberByName(String name)
+	{
+		Member m = null;
+		
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select * from members where name = ?");
+			pstmt.setString(1, name);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				m = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		return m;		
+	}
+	
 	
 	public Vector<Member> getMembersByEvent(int event)
 	{

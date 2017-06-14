@@ -1,18 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.Vector;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,13 +10,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 
 import daos.EventDAO;
-import daos.MemberDAO;
 import objects.Event;
-import objects.Member;
 
 /**
  * Servlet implementation class Index
@@ -47,31 +33,32 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String headerText = null;
 		boolean loggedIn = false;
-			
+
 		Cookie user = null;
-		
-		for(Cookie c : request.getCookies())
-		{
-			if(c.getName().equals("user"))
-			{
-				user = c;
+
+		if (request.getCookies() != null) {
+			for (Cookie c : request.getCookies()) {
+				if (c.getName().equals("user")) {
+					user = c;
+				}
 			}
 		}
-		
-		if(user != null)
+
+		if (user != null)
 			loggedIn = true;
 
-		//logik noch in jsps tun
+		// logik noch in jsps tun
 		if (loggedIn) {
-			
+
 			headerText = "Hallo " + user.getValue();
 			request.setAttribute("user", user.getValue());
 
 		} else {
-			
+
 			headerText = "AcroYoga";
 		}
 
@@ -79,9 +66,7 @@ public class Index extends HttpServlet {
 
 		request.setAttribute("headerText", headerText);
 
-		
-		
-		//Eventliste
+		// Eventliste
 		EventDAO eDAO = new EventDAO();
 		List<Event> eL = eDAO.getAllEvents();
 

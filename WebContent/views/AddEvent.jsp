@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -15,10 +15,10 @@
 <title>AcroYoga</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="vendor/font-awesome/css/font-awesome.min.css"
+<link href="../vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -28,10 +28,10 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- Plugin CSS -->
-<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="css/creative.css" rel="stylesheet">
+<link href="../css/creative.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,17 +66,15 @@
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
-									<li class="dropdown">
-										<a class="dropdown-toggle" href="#"
-											data-toggle="dropdown"> ${user} <strong class="caret"></strong>
-										</a>
+									<li class="dropdown"><a class="dropdown-toggle" href="#"
+										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
+									</a>
 										<div class="dropdown-menu" style="padding: 15px;">
 											<form method="post" action="Logout" accept-charset="UTF-8">
-												 <input class="btn btn-primary btn-block"
-													type="submit" id="sign-in" value="Logout">
+												<input class="btn btn-primary btn-block" type="submit"
+													id="sign-in" value="Logout">
 											</form>
-										</div>
-									</li>
+										</div></li>
 									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
 										<b class="caret"></b>
 									</a></li>
@@ -134,21 +132,73 @@
 		</div>
 	</header>
 
+	<!-- Infobar -->
+		<section id="veranstaltungen">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4 text-center">
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Datum" id="date" name="date">
+					</div>
+					<div class="col-xs-4 text-center">
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Veranstaltungsname" id="eventname" name="eventname">
+					</div>
+					<div class="col-xs-4 text-center">${loginbtn}</div>
+				</div>
+			</div>
+		</section>
+	<!-- About Infobar -->
+	<hr style="width: 100%">
+
+	<!-- Details -->
+	<section id="veranstaltungen">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6">
+					<input style="margin-bottom: 15px;" type="text"
+						placeholder="Uhrzeit" id="timing" name="timing">
+					<p>Uhr</p>
+
+					<input style="margin-bottom: 15px;" type="text" placeholder="Ort"
+						id="place" name="place">
+						
+						<input style="margin-bottom: 15px;" type="text"
+						placeholder="Regelmäßigkeit" id="regularity" name="regularity">
+					
+<input style="margin-bottom: 15px;" type="text"
+						placeholder="Eintritt" id="fee" name="fee">
+
+					<p>Wer kommt noch:</p>
+
+					<p style="color: gray">Hier werden Bilder der Mitglieder
+						angezeigt, die teilnehmen werden</p>
+				</div>
+				<div class="col-xs-6">
+					<input style="margin-bottom: 15px;" type="text" placeholder="Beschreibung"
+						id="content" name="content">
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- About Details -->
+
 
 	<!-- jQuery -->
-	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/jquery/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Plugin JavaScript -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="js/creative.min.js"></script>
+	<script src="../js/creative.min.js"></script>
 
 </body>
 

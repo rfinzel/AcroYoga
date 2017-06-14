@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -60,12 +60,59 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
-					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a>
-					</li>
+					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
-					<li><a class="page-scroll" href="#">${user}</a></li>
+					<li><a class="page-scroll" href="#"> <c:choose>
+								<c:when test="${loggedIn}">
+									<li class="dropdown"><a class="dropdown-toggle" href="#"
+										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
+									</a>
+										<div class="dropdown-menu" style="padding: 15px;">
+											<form method="post" action="Logout" accept-charset="UTF-8">
+												<input class="btn btn-primary btn-block" type="submit"
+													id="sign-in" value="Logout">
+											</form>
+										</div></li>
+									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
+										<b class="caret"></b>
+									</a></li>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+										<li class="divider"></li>
+										<li><form action="Logout" method="post">
+												<input type="submit" value="Logout">
+											</form></li>
+									</ul> -->
+								</c:when>
+								<c:otherwise>
+									<li class="dropdown"><a class="dropdown-toggle" href="#"
+										data-toggle="dropdown"> Log In <strong class="caret"></strong>
+									</a>
+										<div class="dropdown-menu" style="padding: 15px;">
+											<form method="post" action="Login" accept-charset="UTF-8">
+												<input style="margin-bottom: 15px;" type="text"
+													placeholder="E-Mail" id="username" name="username">
+												<input style="margin-bottom: 15px;" type="password"
+													placeholder="Password" id="password" name="password">
+												<p>E-Mail Adresse oder Passwort falsch</p>
+												<input style="float: left; margin-right: 10px;"
+													checkbox" name="remember-me" id="remember-me" value="">
+												<label class="string optional" for="user_remember_me">
+													Remember me</label> <input class="btn btn-primary btn-block"
+													type="submit" id="sign-in" value="Sign In">
+											</form>
+										</div></li>
+								</c:otherwise>
+							</c:choose>
+					</a></li>
+
+
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -95,25 +142,28 @@
 				<div class="col-xs-4 text-center">
 					<p>${name}</p>
 				</div>
-				<div class="col-xs-4 text-center">${loginbtn}
-				</div>
+				<div class="col-xs-4 text-center">${loginbtn}</div>
 			</div>
 		</div>
 	</section>
 	<!-- About Infobar -->
-	<hr style="width:100%">
+	<hr style="width: 100%">
 
 	<!-- Details -->
 	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-6">
-					<p>${weekday} ${time}Uhr</p>
-				
+					<p>${weekday}${time}Uhr</p>
+					
+					<p>Jeden ${regularity}</p>
+					
 					<p>${place}</p>
-				
+
+					<p> ${fee}Euro</p>
+
 					<p>Wer kommt noch:</p>
-				
+
 					<p>${participants}</p>
 				</div>
 				<div class="col-xs-6">
