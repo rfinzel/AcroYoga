@@ -28,7 +28,8 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- Plugin CSS -->
-<link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<link href="../vendor/magnific-popup/magnific-popup.css"
+	rel="stylesheet">
 
 <!-- Theme CSS -->
 <link href="../css/creative.css" rel="stylesheet">
@@ -128,26 +129,46 @@
 				<p>Noch mehr blablabla</p>
 				<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
 					Out More</a>
+
 			</div>
 		</div>
 	</header>
 
 	<!-- Infobar -->
-		<section id="veranstaltungen">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-4 text-center">
-						<input style="margin-bottom: 15px;" type="text"
-							placeholder="Datum" id="date" name="date">
+	<section id="veranstaltungen">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 text-center">
+					<div class="container">
+						<div class="row">
+							<div class='col-sm-6'>
+								<div class="form-group">
+									<div class='input-group date' id='datetimepicker1'>
+										<input type='text' class="form-control" id="date" name="date" />
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<script type="text/javascript">
+								$(function() {
+									$('#datetimepicker1').datetimepicker();
+								});
+							</script>
+							<div class="col-xs-4 text-center">${loginbtn}</div>
+
+						</div>
 					</div>
-					<div class="col-xs-4 text-center">
-						<input style="margin-bottom: 15px;" type="text"
-							placeholder="Veranstaltungsname" id="eventname" name="eventname">
-					</div>
-					<div class="col-xs-4 text-center">${loginbtn}</div>
 				</div>
+				<div class="col-xs-4 text-center">
+					<input style="margin-bottom: 15px;" type="text"
+						placeholder="Veranstaltungsname" id="eventname" name="eventname">
+				</div>
+				<div class="col-xs-4 text-center">${loginbtn}</div>
 			</div>
-		</section>
+		</div>
+	</section>
 	<!-- About Infobar -->
 	<hr style="width: 100%">
 
@@ -161,12 +182,11 @@
 					<p>Uhr</p>
 
 					<input style="margin-bottom: 15px;" type="text" placeholder="Ort"
-						id="place" name="place">
-						
-						<input style="margin-bottom: 15px;" type="text"
+						id="place" name="place"> <input
+						style="margin-bottom: 15px;" type="text"
 						placeholder="Regelmäßigkeit" id="regularity" name="regularity">
-					
-<input style="margin-bottom: 15px;" type="text"
+
+					<input style="margin-bottom: 15px;" type="text"
 						placeholder="Eintritt" id="fee" name="fee">
 
 					<p>Wer kommt noch:</p>
@@ -175,11 +195,13 @@
 						angezeigt, die teilnehmen werden</p>
 				</div>
 				<div class="col-xs-6">
-					<input style="margin-bottom: 15px;" type="text" placeholder="Beschreibung"
-						id="content" name="content">
+					<input style="margin-bottom: 15px;" type="text"
+						placeholder="Beschreibung" id="content" name="content">
 				</div>
 			</div>
-
+			<div>
+				<a href="AcroYoga/PlusVeranstaltung" class="btn btn-success" role="button">Submit</a>
+			</div>
 		</div>
 	</section>
 	<!-- About Details -->
