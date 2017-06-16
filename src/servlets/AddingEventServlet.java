@@ -69,8 +69,16 @@ public class AddingEventServlet extends HttpServlet {
 		regularity = request.getParameter("regularity");
 		fee = request.getParameter("fee");
 		
-		
-		//System.out.println(sqlDate); // Sat Jan 02 00:00:00 GMT 2010
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        java.util.Date parsed = null;
+		try {
+			parsed = format.parse("2017.12.30 18:30:00");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        java.sql.Timestamp sql = new java.sql.Timestamp(parsed.getTime());
+		System.out.println(sql); // Sat Jan 02 00:00:00 GMT 2010
 		
 		//eDAO.addEvent(new Event(0,name, timing, regularity, place, content, content, fee, mDAO.getMemberByName(user)));
 		

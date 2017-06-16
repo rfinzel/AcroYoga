@@ -30,7 +30,7 @@ public class EventDAO {
 			
 			while(rs.next())
 			{
-				e = new Event(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4),rs. getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9));
+				e = new Event(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4),rs. getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
@@ -66,7 +66,7 @@ public class EventDAO {
 			PreparedStatement pstmt = conn.prepareStatement("insert into event values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setInt(1, getNextId());
 			pstmt.setString(2, e.getName());
-			pstmt.setDate(3, e.getTiming());
+			pstmt.setTimestamp(3, e.getTiming());			
 			pstmt.setInt(4, e.getRegularity());
 			pstmt.setString(5, e.getPlace());
 			pstmt.setString(6, e.getShortContent());

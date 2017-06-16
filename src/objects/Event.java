@@ -1,11 +1,12 @@
 package objects;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Event {
 	private int id;
 	private String name;
-	private Date timing;
+	private Timestamp timing;
 	private int regularity;
 	private String place;
 	private String shortContent;
@@ -22,7 +23,7 @@ public class Event {
 	private double fee;
 	private int instructor;
 	
-	public Event(int id, String name, Date timing, int regularity, String place, String shortContent, String content, double fee,
+	public Event(int id, String name, Timestamp timing, int regularity, String place, String shortContent, String content, double fee,
 			int instructor) {
 		this.id = id;
 		this.name = name;
@@ -36,12 +37,12 @@ public class Event {
 	}
 
 	
-	public Date getTiming() {
+	public Timestamp getTiming() {
 		return timing;
 	}
 
 
-	public void setTiming(Date timing) {
+	public void setTiming(Timestamp timing) {
 		this.timing = timing;
 	}
 
