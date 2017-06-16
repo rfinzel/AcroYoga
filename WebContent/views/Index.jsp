@@ -18,6 +18,9 @@
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<link
+	href='css/style.css'
+	rel='stylesheet' type='text/css'>
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -27,6 +30,7 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
 	rel='stylesheet' type='text/css'>
+	
 
 <!-- Plugin CSS -->
 <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -63,7 +67,28 @@
 					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
-					<li><a class="page-scroll" href="#suche">Suche</a></li>
+					<li>
+					<form id="login-form" action="Search" method="post" accept-charset="UTF-8">
+						<div class="input-group">
+							<div class="input-group-btn search-panel">
+								<!-- FILTER <button type="button" class="btn btn-default dropdown-toggle"
+									data-toggle="dropdown">
+									<span id="search_concept">Filter</span> <span class="caret"></span>
+								</button>
+								 <ul class="dropdown-menu" role="menu">
+									<li><a href="#contains">Personen</a></li>
+									<li><a href="#greather_than">Veranstaltungen</a></li>
+								</ul> FILTER -->
+							</div>
+							<input type="hidden" name="search_param" value="all"
+								id="search_param"> <input type="text"
+								class="form-control" name="x" placeholder="Search term...">
+							<span class="input-group-btn">
+									<input class="btn btn-primary btn-block" type="submit"
+													id="sign-in" value="search"></span>
+						</div>
+					</form>
+					</li>
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
@@ -135,7 +160,8 @@
 																					<div class="col-sm-6 col-sm-offset-3">
 																						<input type="submit" name="login-submit"
 																							id="sign-in" tabindex="4"
-																							class="form-control btn btn-login" value="Sign In">
+																							class="form-control btn btn-login"
+																							value="Sign In">
 																					</div>
 																				</div>
 																			</div>
@@ -155,8 +181,10 @@
 																			<div class="form-group">
 																				<input type="text" name="name" id="name"
 																					tabindex="1" class="form-control"
-																					placeholder="Vorname" value=""> <input
-																					type="text" name="lastname" id="lastname"
+																					placeholder="Vorname" value="">
+																			</div>
+																			<div class="form-group">
+																				<input type="text" name="lastname" id="lastname"
 																					tabindex="1" class="form-control"
 																					placeholder="Nachname" value="">
 																			</div>

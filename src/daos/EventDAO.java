@@ -60,6 +60,31 @@ public class EventDAO {
 		return e;		
 	}
 	
+	public Vector<Event> searchEvents(String search_param)
+	{
+		Vector<Event> e = new Vector<Event>();
+		String search = "%" + search_param + "%";
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select id from event where name like ? or shortcontent like ? or place like ? or content like ?");
+			pstmt.setString(1, search);
+			pstmt.setString(2, search);
+			pstmt.setString(3, search);
+			pstmt.setString(4, search);
+
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				e.add(getEventById(rs.getInt(1)));
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		return e;		
+	}
+	
 	public int addEvent(Event e)
 	{
 		conn = conProvider.getConnection();
