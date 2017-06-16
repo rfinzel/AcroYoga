@@ -1,5 +1,6 @@
 package daos;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,12 +60,13 @@ public class EventDAO {
 		return e;		
 	}
 	
-	public void addEvent(Event e)
+	public int addEvent(Event e)
 	{
 		conn = conProvider.getConnection();
+		int id = getNextId();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("insert into event values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			pstmt.setInt(1, getNextId());
+			pstmt.setInt(1, id);
 			pstmt.setString(2, e.getName());
 			pstmt.setTimestamp(3, e.getTiming());			
 			pstmt.setInt(4, e.getRegularity());
@@ -73,10 +75,13 @@ public class EventDAO {
 			pstmt.setString(7, e.getContent());
 			pstmt.setDouble(8, e.getFee());
 			pstmt.setInt(9, e.getInstructor());
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 		} catch(SQLException e1) {
+			id = -1;
 			System.out.println(e1.toString());
 		}
+		
+		return id;
 	}
 	
 	private int getNextId()
