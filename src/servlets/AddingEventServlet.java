@@ -2,20 +2,26 @@ package servlets;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import daos.EventDAO;
 import objects.Event;
@@ -26,6 +32,7 @@ import objects.Member;
  * Servlet implementation class Event
  */
 @WebServlet("/PlusVeranstaltung")
+@MultipartConfig
 public class AddingEventServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -99,6 +106,18 @@ public class AddingEventServlet extends HttpServlet {
 	
 	        dispatcher.forward(request, response);			
 		}
+		
+		String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+	    Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+	  	    
+	    File file = new File(request.getSession().getServletContext().getRealPath("img") + "/" + id, "image.jpg");
+
+	    try (InputStream fileContent = filePart.getInputStream()) {
+	        Files.copy(fileContent, file.toPath());
+	    }
+	    //System.out.println(fileName);
+	   	   
 	}
 
 	/**

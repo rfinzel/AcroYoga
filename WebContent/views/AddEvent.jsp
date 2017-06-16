@@ -75,7 +75,7 @@
 												<input class="btn btn-primary btn-block" type="submit"
 													id="sign-in" value="Logout">
 											</form>
-										</div></li>									
+										</div></li>
 								</c:when>
 								<c:otherwise>
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
@@ -120,77 +120,87 @@
 		</div>
 	</header>
 
-	<form method="post" action="../PlusVeranstaltung" accept-charset="UTF-8">
-	<!-- Infobar -->
-	<section id="veranstaltungen">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-6">
-					<div class="container">
-						<div class="row">
-							<div class='col-sm-6'>
-								<div class="form-group">
-									<div class='input-group date' id='datetimepicker1'>
-										<input type='text' class="form-control" id="date" name="date" />
-										<span class="input-group-addon"> <span
-											class="glyphicon glyphicon-calendar"></span>
-										</span>
+	<form method="post" action="../PlusVeranstaltung"
+		accept-charset="UTF-8" enctype="multipart/form-data">
+		<!-- Infobar -->
+		<section id="veranstaltungen">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+
+						<!-- DATEPICKER -->
+						<div class="container">
+							<div class="row">
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker1'>
+											<input type='text' class="form-control" id="date" name="date" />
+											<span class="input-group-addon"> <span
+												class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
 									</div>
 								</div>
+								<script type="text/javascript">
+									$(function() {
+										$('#datetimepicker1').datetimepicker();
+									});
+								</script>
 							</div>
-							<script type="text/javascript">
-								$(function() {
-									$('#datetimepicker1').datetimepicker();
-								});
-							</script>
-							
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-6">
-					<input style="margin-bottom: 15px;" type="text"
-						placeholder="Veranstaltungsname" id="eventname" name="eventname">
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- About Infobar -->
-	<hr style="width: 100%">
-
-	<!-- Details -->
-	<section id="veranstaltungen">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-6">
-					<input style="margin-bottom: 15px;" type="text"
-						placeholder="Uhrzeit" id="timing" name="timing">
-					<p>Uhr</p>
-
-					<input style="margin-bottom: 15px;" type="text" placeholder="Ort"
-						id="place" name="place"> <input
-						style="margin-bottom: 15px;" type="text"
-						placeholder="Regelmäßigkeit" id="regularity" name="regularity">
-
-					<input style="margin-bottom: 15px;" type="text"
-						placeholder="Eintritt" id="fee" name="fee">
-
-					<p>Wer kommt noch:</p>
-
-					<p style="color: gray">Hier werden Bilder der Mitglieder
-						angezeigt, die teilnehmen werden</p>
-				</div>
-				<div class="col-xs-6">
-					<input style="margin-bottom: 15px;" type="text"
-						placeholder="Beschreibung" id="content" name="content">
+					<div class="col-xs-6">
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Veranstaltungsname" id="eventname" name="eventname">
+					</div>
 				</div>
 			</div>
-			<div>
-				 <input class="btn btn-primary btn-block"
-													type="submit" id="sign-in" value="Submit">
+		</section>
+		<!-- About Infobar -->
+		<hr style="width: 100%">
+
+		<!-- Details -->
+		<section id="veranstaltungen">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Uhrzeit" id="timing" name="timing">
+						<p>Uhr</p>
+
+						<input style="margin-bottom: 15px;" type="text" placeholder="Ort"
+							id="place" name="place"> <input
+							style="margin-bottom: 15px;" type="text"
+							placeholder="Regelmäßigkeit" id="regularity" name="regularity">
+
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Eintritt" id="fee" name="fee">
+
+						<p>Wer kommt noch:</p>
+
+						<p style="color: gray">Hier werden Bilder der Mitglieder
+							angezeigt, die teilnehmen werden</p>
+					</div>
+					<div class="col-xs-6">
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Beschreibung" id="content" name="content">
+					</div>
+				</div>
+
+				<!-- FILE UPLOAD -->
+				<input type="text" name="description" />
+				<input type="file" name="file" />
+	
+				<div>
+					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
+						value="Submit">
+				</div>				
 			</div>
-		</div>
-	</section>
+		</section>
 	</form>
+
+	
+	</div>
 	<!-- About Details -->
 
 
@@ -207,7 +217,8 @@
 	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="../js/creative.min.js"></script>
+	<script src="../js/creative.js"></script>
+	<script src="../js/upload.js"></script>
 
 </body>
 

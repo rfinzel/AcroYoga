@@ -77,7 +77,7 @@ public class SearchServlet extends HttpServlet {
 		
 		//Memberliste Results
 		MemberDAO mDAO = new MemberDAO();
-		List<Member> mL = mDAO.searchMembers(request.getParameter(search));
+		List<Member> mL = mDAO.searchMembers(search);
 		request.setAttribute("mList", mL);
 
 		// TODO Auto-generated method stub
