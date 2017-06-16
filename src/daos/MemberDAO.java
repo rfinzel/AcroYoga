@@ -1,6 +1,7 @@
 package daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,41 @@ public class MemberDAO {
 		conProvider = new ConnectionProvider();
 	}
 	
+	public void addMember(Member m)
+	{
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("insert into members values(?, ?, ?, ?, ?, ?, ?)");
+			pstmt.setInt(1, getNextId());
+			pstmt.setBoolean(2, false);
+			pstmt.setString(3, m.getEmail());			
+			pstmt.setString(4, m.getPassword());
+			pstmt.setString(5, m.getName());
+			pstmt.setString(6, m.getLastname());
+			pstmt.setDate(7, m.getBirthday());
+			pstmt.executeUpdate();
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+	}
+	
+	private int getNextId()
+	{
+		int id = 0;
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select * from members order by id desc");		
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			id = rs.getInt(1);
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		return id+1;	
+	}
+	
 	public Member getMemberById(int id)
 	{
 		Member m = null;
@@ -32,7 +68,7 @@ public class MemberDAO {
 			while(rs.next())
 			{
 				System.out.println("getmember");
-				m = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
+				m = new Member(rs.getInt(1), rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
@@ -53,7 +89,7 @@ public class MemberDAO {
 			
 			while(rs.next())
 			{
-				m = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
+				m = new Member(rs.getInt(1), rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
@@ -74,7 +110,7 @@ public class MemberDAO {
 			
 			while(rs.next())
 			{
-				m = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
+				m = new Member(rs.getInt(1), rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
