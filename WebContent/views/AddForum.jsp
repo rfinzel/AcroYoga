@@ -158,7 +158,7 @@
 						placeholder="Forenname" id="forumname" name="forumname">
 										<hr class="divider">
 										<input style="margin-bottom: 15px;" type="text"
-						placeholder="Forumkurzinhalt" id="foreninhalt" name="foreninhalt">
+						placeholder="Forumkurzinhalt" id="forumscontent" name="forumscontent">
 									</div>
 									<div>
 				 <input class="btn btn-primary btn-block"

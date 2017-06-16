@@ -1,16 +1,17 @@
 package objects;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Thread {
 	
 	private int id;
 	private String name;
-	private Date timing;
+	private Timestamp timing;
 	private int author;
 	private int forum_id;
 	
-	public Thread(int id, String name, Date timing, int author, int forum_id) {
+	public Thread(int id, String name, Timestamp timing, int author, int forum_id) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,11 +36,11 @@ public class Thread {
 		this.name = name;
 	}
 
-	public Date getTiming() {
+	public Timestamp getTiming() {
 		return timing;
 	}
 
-	public void setTiming(Date timing) {
+	public void setTiming(Timestamp timing) {
 		this.timing = timing;
 	}
 
