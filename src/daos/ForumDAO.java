@@ -84,5 +84,33 @@ public class ForumDAO {
 		
 		return t;		
 	}
+	public void addForum(Forum f)
+	{
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("insert into forum values(?, ?)");
+			pstmt.setInt(1, getNextId());
+			pstmt.setString(2, f.getName());
+			pstmt.executeUpdate();
+		} catch(SQLException f1) {
+			System.out.println(f1.toString());
+		}
+	}
+	private int getNextId()
+	{
+		int id = 0;
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select * from forum order by id desc");		
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			id = rs.getInt(1);
+		} catch(SQLException f1) {
+			System.out.println(f1.toString());
+		}
+		
+		return id+1;	
+	}
 
 }
