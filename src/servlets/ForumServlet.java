@@ -54,41 +54,10 @@ public class ForumServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ForumDAO fDAO = new ForumDAO();
 		Forum f = fDAO.getForumById(Integer.parseInt(request.getParameter("id")));
-
 		
-		String user = null;
-		String headerText = null;
-		HttpSession session = request.getSession();
-		boolean angemeldet = false;
-
-		if (angemeldet) {
-			user = "Ren�";
-			headerText = "Hallo " + user;
-		} else {
-			user = "<li class=\"dropdown\">"
-					+ "<a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\">Sign In <strong class=\"caret\"></strong></a>"
-					+ "<div class=\"dropdown-menu\" style=\"padding: 15px;\">"
-					+ "<form method=\"post\" action=\"Login\" accept-charset=\"UTF-8\">"
-					+ "<input style=\"margin-bottom: 15px;\" type=\"text\" placeholder=\"E-Mail\" id=\"username\" name=\"username\">"
-					+ "<input style=\"margin-bottom: 15px;\" type=\"password\" placeholder=\"Password\" id=\"password\" name=\"password\">"
-					+ "<p>E-Mail Adresse oder Passwort falsch</p>"
-					+ "<input style=\"float: left; margin-right: 10px;\" type=\"checkbox\" name=\"remember-me\" id=\"remember-me\" value=\"1\">"
-					+ "<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"
-					+ "<input class=\"btn btn-primary btn-block\" type=\"submit\" id=\"sign-in\" value=\"Sign In\">"
-					+ "</form>" + "</div>" + "</li>";
-			headerText = "AcroYoga";
-		}
-
-		request.setAttribute("name", f.getName());
-		request.setAttribute("headerText", headerText);
+		List<Thread> tList = fDAO.getThreadsByForum(f.getId());
 		
-		List<Thread> tV = fDAO.getThreadsByForum(f.getId());
-		String threadListe = "";
-		
-		for(int i=0; i< tV.size(); i++){
-			threadListe = threadListe + "<div class=\"panel-body\">" + tV.get(i).getName() + "</div>";
-		}
-		request.setAttribute("threadListe", threadListe);
+		request.setAttribute("tList", tList);
 
 		
 		// TODO Auto-generated method stub

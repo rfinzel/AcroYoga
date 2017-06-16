@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Vector;
 
 import objects.Event;
@@ -76,7 +77,7 @@ public class ForumDAO {
 			
 			while(rs.next())
 			{
-				t.add(new Thread(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5)));
+				t.add(new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());

@@ -146,7 +146,27 @@
 			</div>
 		</div>
 		<div class="row">
-			${threadListe}
+			<div class="container">
+			<div class="row">
+				<c:forEach items="${tList}" var="threadList">
+					<div class="col-lg-3 col-md-6text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a href="/AcroYoga/Forum?id=${threadList.id}" img
+									src="img/header.jpg"  alt="Lights" style="width: 100%">
+									<div class="caption">
+										<h3> ${threadList.name}</h3>
+										<hr class="divider">
+										<p>${threadList.name}</p>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+			
 		</div>
 		
 		
