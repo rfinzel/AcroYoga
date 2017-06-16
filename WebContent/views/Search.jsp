@@ -28,8 +28,7 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- Plugin CSS -->
-<link href="vendor/magnific-popup/magnific-popup.css"
-	rel="stylesheet">
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
 <!-- Theme CSS -->
 <link href="css/creative.css" rel="stylesheet">
@@ -181,6 +180,24 @@
 						</div>
 					</div>
 				</c:forEach>
+
+				<div>
+					<c:forEach items="${mList}" var="memberList">
+						<div class="col-lg-1 col-md-3 text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+
+									<div class="caption">
+										<h3>${memberList.name}</h3>
+										<hr class="divider">
+										<p>${memberList.lastname}</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 

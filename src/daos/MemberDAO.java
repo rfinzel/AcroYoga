@@ -38,6 +38,30 @@ public class MemberDAO {
 		}
 	}
 	
+	public Vector<Member> searchMembers(String search_param)
+	{
+		Vector<Member> m = new Vector<Member>();
+		String search = "%" + search_param + "%";
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select id from members where email = ? or name = ? or lastname = ?");
+			pstmt.setString(1, search);
+			pstmt.setString(2, search);
+			pstmt.setString(3, search);
+
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				m.add(getMemberById(rs.getInt(1)));
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		return m;		
+	}
+	
 	private int getNextId()
 	{
 		int id = 0;

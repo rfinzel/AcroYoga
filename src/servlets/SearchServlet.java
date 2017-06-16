@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.EventDAO;
+import daos.MemberDAO;
 import objects.Event;
+import objects.Member;
 
 /**
  * Servlet implementation class Index
@@ -67,9 +69,16 @@ public class SearchServlet extends HttpServlet {
 		request.setAttribute("headerText", headerText);*/
 
 		// Eventliste Results
+		
+		String search = request.getParameter("x");
 		EventDAO eDAO = new EventDAO();
-		List<Event> eL = eDAO.searchEvents(request.getParameter("x"));
+		List<Event> eL = eDAO.searchEvents(search);
 		request.setAttribute("eList", eL);
+		
+		//Memberliste Results
+		MemberDAO mDAO = new MemberDAO();
+		List<Member> mL = mDAO.searchMembers(request.getParameter(search));
+		request.setAttribute("mList", mL);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
