@@ -53,21 +53,21 @@ public class AddingEventServlet extends HttpServlet {
 				}
 			}
 		}
-
 		
 		String name = "";
 		String content = "";
 		String place = "";
 		String timing = "";
-		String regularity = "";
-		String fee = "";
+		int regularity = 0;
+		double fee = 0;
 		
-		name = request.getParameter("name");
+		name = request.getParameter("eventname");
 		content = request.getParameter("content");
 		place = request.getParameter("place");
 		timing = request.getParameter("date");
-		regularity = request.getParameter("regularity");
-		fee = request.getParameter("fee");
+		regularity = Integer.parseInt(request.getParameter("regularity"));
+		fee = Double.parseDouble(request.getParameter("fee"));
+
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         java.util.Date parsed = null;
@@ -80,7 +80,7 @@ public class AddingEventServlet extends HttpServlet {
         java.sql.Timestamp sql = new java.sql.Timestamp(parsed.getTime());
 		System.out.println(sql); // Sat Jan 02 00:00:00 GMT 2010
 		
-		//eDAO.addEvent(new Event(0,name, timing, regularity, place, content, content, fee, mDAO.getMemberByName(user)));
+		eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0));
 		
 		request.setAttribute("loginbtn", "<a href=\"#about\" class=\"btn btn-primary btn-xl page-scroll\">Anmelden</a>");
 		

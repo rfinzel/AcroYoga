@@ -75,21 +75,7 @@
 												<input class="btn btn-primary btn-block" type="submit"
 													id="sign-in" value="Logout">
 											</form>
-										</div></li>
-									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
-										<b class="caret"></b>
-									</a></li>
-									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-										<li class="divider"></li>
-										<li><form action="Logout" method="post">
-												<input type="submit" value="Logout">
-											</form></li>
-									</ul> -->
+										</div></li>									
 								</c:when>
 								<c:otherwise>
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
@@ -134,11 +120,12 @@
 		</div>
 	</header>
 
+	<form method="post" action="../PlusVeranstaltung" accept-charset="UTF-8">
 	<!-- Infobar -->
 	<section id="veranstaltungen">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-4 text-center">
+				<div class="col-xs-6">
 					<div class="container">
 						<div class="row">
 							<div class='col-sm-6'>
@@ -156,16 +143,14 @@
 									$('#datetimepicker1').datetimepicker();
 								});
 							</script>
-							<div class="col-xs-4 text-center">${loginbtn}</div>
-
+							
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-4 text-center">
+				<div class="col-xs-6">
 					<input style="margin-bottom: 15px;" type="text"
 						placeholder="Veranstaltungsname" id="eventname" name="eventname">
 				</div>
-				<div class="col-xs-4 text-center">${loginbtn}</div>
 			</div>
 		</div>
 	</section>
@@ -200,10 +185,12 @@
 				</div>
 			</div>
 			<div>
-				<a href="AcroYoga/PlusVeranstaltung" class="btn btn-success" role="button">Submit</a>
+				 <input class="btn btn-primary btn-block"
+													type="submit" id="sign-in" value="Submit">
 			</div>
 		</div>
 	</section>
+	</form>
 	<!-- About Details -->
 
 
