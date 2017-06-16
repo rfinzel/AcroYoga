@@ -69,7 +69,7 @@
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
 										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
 									</a>
-										<div class="dropdown-menu" style="padding: 15px;">
+										<div class="dropdown-menu" style="padding: 0x;">
 											<form method="post" action="Logout" accept-charset="UTF-8">
 												<input class="btn btn-primary btn-block" type="submit"
 													id="sign-in" value="Logout">
@@ -95,18 +95,104 @@
 										data-toggle="dropdown"> Log In <strong class="caret"></strong>
 									</a>
 										<div class="dropdown-menu" style="padding: 15px;">
-											<form method="post" action="Login" accept-charset="UTF-8">
-												<input style="margin-bottom: 15px;" type="text"
-													placeholder="E-Mail" id="username" name="username">
-												<input style="margin-bottom: 15px;" type="password"
-													placeholder="Password" id="password" name="password">
-												<p>E-Mail Adresse oder Passwort falsch</p>
-												<input style="float: left; margin-right: 10px;"
-													checkbox" name="remember-me" id="remember-me" value="">
-												<label class="string optional" for="user_remember_me">
-													Remember me</label> <input class="btn btn-primary btn-block"
-													type="submit" id="sign-in" value="Sign In">
-											</form>
+											<div class="container">
+												<div class="row">
+													<div class="col-md-6 col-md-offset-3">
+														<div class="panel panel-login">
+															<div class="panel-heading">
+																<div class="row">
+																	<div class="col-xs-6">
+																		<a href="#" class="active" id="login-form-link">Login</a>
+																	</div>
+																	<div class="col-xs-6">
+																		<a href="#" id="register-form-link">Register</a>
+																	</div>
+																</div>
+																<hr>
+															</div>
+															<div class="panel-body">
+																<div class="row">
+																	<div class="col-lg-12">
+																		<form id="login-form" action="Login" method="post"
+																			role="form" style="display: block;">
+																			<div class="form-group">
+																				<input type="text" name="username" id="username"
+																					tabindex="1" class="form-control"
+																					placeholder="E-Mail" value="">
+																			</div>
+																			<div class="form-group">
+																				<input type="password" name="password" id="password"
+																					tabindex="2" class="form-control"
+																					placeholder="Passwort">
+																			</div>
+																			<div class="form-group text-center">
+																				<input type="checkbox" tabindex="3" class=""
+																					name="remember" id="remember"> <label
+																					for="remember"> Remember Me</label>
+																			</div>
+																			<div class="form-group">
+																				<div class="row">
+																					<div class="col-sm-6 col-sm-offset-3">
+																						<input type="submit" name="login-submit"
+																							id="sign-in" tabindex="4"
+																							class="form-control btn btn-login" value="Sign In">
+																					</div>
+																				</div>
+																			</div>
+																			<div class="form-group">
+																				<div class="row">
+																					<div class="col-lg-12">
+																						<div class="text-center">
+																							<a href="https://phpoll.com/recover" tabindex="5"
+																								class="forgot-password">Forgot Password?</a>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</form>
+																		<form id="register-form" action="Register"
+																			method="post" role="form" style="display: none;">
+																			<div class="form-group">
+																				<input type="text" name="name" id="name"
+																					tabindex="1" class="form-control"
+																					placeholder="Vorname" value=""> <input
+																					type="text" name="lastname" id="lastname"
+																					tabindex="1" class="form-control"
+																					placeholder="Nachname" value="">
+																			</div>
+																			<div class="form-group">
+																				<input type="email" name="email" id="email"
+																					tabindex="1" class="form-control"
+																					placeholder="Email Address" value="">
+																			</div>
+																			<div class="form-group">
+																				<input type="password" name="password" id="password"
+																					tabindex="2" class="form-control"
+																					placeholder="Passwort">
+																			</div>
+																			<div class="form-group">
+																				<input type="password" name="confirm-password"
+																					id="confirm-password" tabindex="2"
+																					class="form-control" placeholder="Confirm Password">
+																			</div>
+																			<div class="form-group">
+																				<div class="row">
+																					<div class="col-sm-6 col-sm-offset-3">
+																						<input type="submit" name="register-submit"
+																							id="register-submit" tabindex="4"
+																							class="form-control btn btn-register"
+																							value="Register Now">
+																					</div>
+																				</div>
+																			</div>
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div></li>
 								</c:otherwise>
 							</c:choose>
@@ -160,9 +246,10 @@
 			</div>
 		</div>
 		<div class="container">
-			<a href="/AcroYoga/views/AddEvent.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-			</button></a>
+			<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
+					class="btn btn-default" aria-label="Left Align">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				</button></a>
 		</div>
 		<div class="container">
 			<div class="row">
@@ -308,7 +395,7 @@
 	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="js/creative.min.js"></script>
+	<script src="js/creative.js"></script>
 
 </body>
 

@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class Member {
 	private int id;
-	private String admin;
+	private Boolean admin;
 	private String email;
 	private String password;
 	private String name;
 	private String lastname;
 	private Date birthday;
 	
-	public Member(int id, String admin, String email, String password, String name, String lastname, Date birthday) {
+	public Member(int id, Boolean admin, String email, String password, String name, String lastname, Date birthday) {
 		this.id = id;
 		this.admin = admin;
 		this.email = email;
@@ -21,6 +21,7 @@ public class Member {
 		this.birthday = birthday;
 	}
 
+
 	public int getId() {
 		return id;
 	}
@@ -29,11 +30,11 @@ public class Member {
 		this.id = id;
 	}
 
-	public String getAdmin() {
+	public Boolean getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(String admin) {
+	public void setAdmin(Boolean admin) {
 		this.admin = admin;
 	}
 

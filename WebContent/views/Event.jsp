@@ -104,7 +104,8 @@
 												<input style="float: left; margin-right: 10px;"
 													checkbox" name="remember-me" id="remember-me" value="">
 												<label class="string optional" for="user_remember_me">
-													Remember me</label> <input class="btn btn-primary btn-block"
+													Remember me</label> 
+													<input class="btn btn-primary btn-block"
 													type="submit" id="sign-in" value="Sign In">
 											</form>
 										</div></li>
