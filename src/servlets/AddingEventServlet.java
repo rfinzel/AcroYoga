@@ -1,5 +1,6 @@
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -80,17 +81,24 @@ public class AddingEventServlet extends HttpServlet {
         java.sql.Timestamp sql = new java.sql.Timestamp(parsed.getTime());
 		System.out.println(sql); // Sat Jan 02 00:00:00 GMT 2010
 		
-		eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0));
+		int id = eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0));
 		
-		request.setAttribute("loginbtn", "<a href=\"#about\" class=\"btn btn-primary btn-xl page-scroll\">Anmelden</a>");
-		
-		
-		// TODO Auto-generated method stub
-		// Forward to /WEB-INF/views/login.jsp
-        RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+		if(id >= 0)
+		{
+			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id).mkdir();
 
-        dispatcher.forward(request, response);
+	        RequestDispatcher dispatcher //
+	        = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+	
+	        dispatcher.forward(request, response);
+		}
+		else
+		{
+	        RequestDispatcher dispatcher //
+	        = this.getServletContext().getRequestDispatcher("/views/AddEvent.jsp");
+	
+	        dispatcher.forward(request, response);			
+		}
 	}
 
 	/**
