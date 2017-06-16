@@ -37,10 +37,10 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String headerText = null;
+		/*String headerText = null;
 		boolean loggedIn = false;
 
-		/*Cookie user = null;
+		Cookie user = null;
 
 		if (request.getCookies() != null) {
 			for (Cookie c : request.getCookies()) {
