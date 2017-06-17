@@ -137,7 +137,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -227,13 +227,9 @@
 			</div>
 		</div>
 	</header>
-
-
-
-
 	<c:choose>
 		<c:when test="${loggedIn}">
-			<section class="bg-primary" id="about">
+			<section id="about">
 				<div class="col-md-12">
 					<div class="panel with-nav-tabs panel-default">
 						<div class="panel-heading">
@@ -268,6 +264,7 @@
 													</div>
 												</div>
 											</c:forEach>
+
 										</div>
 									</div>
 								</div>
@@ -310,9 +307,8 @@
 											</div>
 											<div class="col-xs-3"></div>
 											<div class="col-xs-3">
-												<a href="#" id="updateAccount-link">Ändern</a> <br>
-												<a href="#"
-													id="deleteAccount-link">Account löschen</a>
+												<a href="#" id="updateAccount-link">Ändern</a> <br> <a
+													href="#" id="deleteAccount-link">Account löschen</a>
 
 											</div>
 										</div>
@@ -399,7 +395,7 @@
 		</c:when>
 		<c:otherwise>
 			<!-- About -->
-			<section class="bg-primary" id="about">
+			<section id="about">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2 text-center">

@@ -265,6 +265,28 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	</section>
 	<!-- Threads ende -->
 
+	<!-- Kontakt -->
+	<section class="bg-primary" id="kontakt">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 text-center">
+					<h2 class="section-heading">Kontakt</h2>
+					<hr class="primary">
+					<p>Kontakt blabla</p>
+				</div>
+				<div class="col-lg-4 col-lg-offset-2 text-center">
+					<i class="fa fa-phone fa-3x sr-contact"></i>
+					<p>0421 123456789</p>
+				</div>
+				<div class="col-lg-4 text-center">
+					<i class="fa fa-envelope-o fa-3x sr-contact"></i>
+					<!-- <p><a href="mailto:acroyoga@acroyoga.de">acroyoga@acroyoga.de</a></p> -->
+					<p>acroyoga@acroyoga.de</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Kontakt ende -->
 
 	<!-- jQuery -->
 	<script src="../vendor/jquery/jquery.min.js"></script>
