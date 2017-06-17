@@ -291,7 +291,7 @@
 										<div class="col-lg-3 col-md-6 text-center">
 											<div class="service-box">
 												<div class="thumbnail">
-													<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+													<a href="/AcroYoga/Event?id=${eventList.id}" img
 														src="img/event/${id}/titel.jpg" alt="Lights"
 														style="width: 100%">
 														<div class="caption">
@@ -309,11 +309,11 @@
 						</div>
 						<div class="tab-pane fade" id="tab2default"><div class="container">
 								<div class="row">
-									<c:forEach items="${eLin}" var="eventList">
+									<c:forEach items="${pLin}" var="eventList">
 										<div class="col-lg-3 col-md-6 text-center">
 											<div class="service-box">
 												<div class="thumbnail">
-													<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+													<a href="/AcroYoga/Thread?id=${p.thread_id}" img
 														src="img/event/${id}/titel.jpg" alt="Lights"
 														style="width: 100%">
 														<div class="caption">
