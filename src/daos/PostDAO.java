@@ -15,57 +15,77 @@ public class PostDAO {
 	private ConnectionProvider conProvider;
 	private Statement stmt;
 	private ResultSet rs;
-	
-	public PostDAO()
-	{
+
+	public PostDAO() {
 		conProvider = new ConnectionProvider();
 	}
-	
-	public Post getPostById(int id)
-	{
+
+	public Post getPostById(int id) {
 		Post p = null;
-		
+
 		conn = conProvider.getConnection();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("select * from post where id = ?");
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next())
-			{
+
+			while (rs.next()) {
 				p = new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5));
 			}
-		} catch(SQLException e1) {
+		} catch (SQLException e1) {
 			System.out.println(e1.toString());
 		}
-		
+
 		try {
 			conn.close();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		return p;		
+
+		return p;
 	}
 
-	public Vector<Post> getPostsByThread(int id)
-	{
+	public Vector<Post> getPostsByThread(int id) {
 		Vector<Post> p = new Vector<Post>();
-		
+
 		conn = conProvider.getConnection();
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("select * from post where thread_id = '" + id + "'");
-			
-			while(rs.next())
-			{
+
+			while (rs.next()) {
 				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5)));
 			}
-		} catch(SQLException e1) {
+		} catch (SQLException e1) {
 			System.out.println(e1.toString());
 		}
-		
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return p;
+	}
+
+	public Vector<Post> getPostsByMember(int member) {
+		Vector<Post> p = new Vector<Post>();
+
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select event from post where author = ?");
+			pstmt.setInt(1, member);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				p.add(getPostById(rs.getInt(1)));
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
 		try {
 			conn.close();
 		} catch (SQLException e1) {
@@ -73,6 +93,6 @@ public class PostDAO {
 			e1.printStackTrace();
 		}
 		
-		return p;		
+		return p;
 	}
 }

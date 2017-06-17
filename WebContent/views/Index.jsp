@@ -91,7 +91,7 @@
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
-										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
+										data-toggle="dropdown"> ${user.name} <strong class="caret"></strong>
 									</a>
 										<div class="dropdown-menu" style="padding: 0x;">
 											<form method="post" action="Logout" accept-charset="UTF-8">
@@ -236,7 +236,14 @@
 	<header>
 		<div class="header-content">
 			<div class="header-content-inner">
-				<h1 id="homeHeading">${headerText}!</h1>
+				<c:choose>
+					<c:when test="${loggedIn}">
+						<h1 id="homeHeading">Hallo ${user.name}!</h1>
+					</c:when>
+					<c:otherwise>
+						<h1 id="homeHeading">Hallo, hier bei AcroYoga Bremen!</h1>
+					</c:otherwise>
+				</c:choose>
 				<hr>
 				<p>Noch mehr blablabla</p>
 				<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
@@ -267,36 +274,60 @@
 			<div class="panel with-nav-tabs panel-default">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1default" data-toggle="tab">Deine Veranstaltungen
-						</a></li>
-						<li><a href="#tab2default" data-toggle="tab">Deine Forenbeiträge</a></li>
-						<li><a href="#tab3default" data-toggle="tab">Deine Einstellungen</a></li>
+						<li class="active"><a href="#tab1default" data-toggle="tab">Deine
+								Veranstaltungen </a></li>
+						<li><a href="#tab2default" data-toggle="tab">Deine
+								Forenbeiträge</a></li>
+						<li><a href="#tab3default" data-toggle="tab">Deine
+								Einstellungen</a></li>
 					</ul>
 				</div>
 				<div class="panel-body">
 					<div class="tab-content">
-						<div class="tab-pane fade in active" id="tab1default"><div class="container">
-				<div class="row">
-					<c:forEach items="${eListLoggedIn}" var="eventList">
-						<div class="col-lg-3 col-md-6 text-center">
-							<div class="service-box">
-								<div class="thumbnail">
-									<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
-										src="img/event/${id}/titel.jpg" alt="Lights"
-										style="width: 100%">
-										<div class="caption">
-											<h3>${eventList.name}</h3>
-											<hr class="divider">
-											<p>${eventList.shortContent}</p>
+						<div class="tab-pane fade in active" id="tab1default">
+							<div class="container">
+								<div class="row">
+									<c:forEach items="${eLin}" var="eventList">
+										<div class="col-lg-3 col-md-6 text-center">
+											<div class="service-box">
+												<div class="thumbnail">
+													<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+														src="img/event/${id}/titel.jpg" alt="Lights"
+														style="width: 100%">
+														<div class="caption">
+															<h3>${eventList.name}</h3>
+															<hr class="divider">
+															<p>${eventList.shortContent}</p>
+														</div>
+													</a>
+												</div>
+											</div>
 										</div>
-									</a>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
-					</c:forEach>
-				</div>
-			</div></div>
-						<div class="tab-pane fade" id="tab2default">Default 2</div>
+						<div class="tab-pane fade" id="tab2default"><div class="container">
+								<div class="row">
+									<c:forEach items="${eLin}" var="eventList">
+										<div class="col-lg-3 col-md-6 text-center">
+											<div class="service-box">
+												<div class="thumbnail">
+													<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+														src="img/event/${id}/titel.jpg" alt="Lights"
+														style="width: 100%">
+														<div class="caption">
+															<h3>${eventList.name}</h3>
+															<hr class="divider">
+															<p>${eventList.shortContent}</p>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							</div></div>
 						<div class="tab-pane fade" id="tab3default">Default 3</div>
 					</div>
 				</div>
@@ -305,12 +336,12 @@
 	</section>
 
 	<c:choose>
-	<c:when test="${loggedIn}">
-	
-	</c:when>
-	<c:otherwise>
-	<!-- Veranstaltungen -->
-	<!--	<section id="veranstaltungen">
+		<c:when test="${loggedIn}">
+
+		</c:when>
+		<c:otherwise>
+			<!-- Veranstaltungen -->
+			<!--	<section id="veranstaltungen">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
@@ -347,11 +378,11 @@
 				</div>
 			</div>
 		</section>-->
-	<!-- Veranstaltungen ende -->
+			<!-- Veranstaltungen ende -->
 
 
-	<!-- Forum -->
-	<!--  <section class="bg-primary" id="veranstaltungen">
+			<!-- Forum -->
+			<!--  <section class="bg-primary" id="veranstaltungen">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
@@ -430,8 +461,8 @@
 				</div>
 			</div>
 		</section>-->
-	<!-- Forum ende -->
-	</c:otherwise>
+			<!-- Forum ende -->
+		</c:otherwise>
 	</c:choose>
 
 
@@ -472,8 +503,8 @@
 
 	<!-- Theme JavaScript -->
 	<script src="js/creative.js"></script>
-		<script src="js/gallery.js"></script>
-	
+	<script src="js/gallery.js"></script>
+
 
 </body>
 

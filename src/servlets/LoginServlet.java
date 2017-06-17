@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if((request.getParameter("password").equals(m.getPassword())))
 		{
-			Cookie loginCookie = new Cookie("user",m.getName());
+			Cookie loginCookie = new Cookie("user",Integer.toString(m.getId()));
 		
 			//setting cookie to expiry in 30 mins
 			loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre

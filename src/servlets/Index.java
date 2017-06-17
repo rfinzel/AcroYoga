@@ -12,7 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.EventDAO;
+import daos.ForumDAO;
+import daos.MemberDAO;
+import daos.PostDAO;
 import objects.Event;
+import objects.Member;
+import objects.Post;
 
 /**
  * Servlet implementation class Index
@@ -39,43 +44,37 @@ public class Index extends HttpServlet {
 		boolean loggedIn = false;
 
 		Cookie user = null;
+		Member m = null;
+		MemberDAO mDAO = new MemberDAO();
 
 		if (request.getCookies() != null) {
 			for (Cookie c : request.getCookies()) {
 				if (c.getName().equals("user")) {
 					user = c;
+					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
 				}
 			}
 		}
 
+		request.setAttribute("user", m);
+
 		if (user != null)
 			loggedIn = true;
 
-		// logik noch in jsps tun
-		if (loggedIn) {
-			headerText = "Hallo " + user.getValue();
-			request.setAttribute("user", user.getValue());
-
-		} else {
-
-			headerText = "AcroYoga";
-		}
-
 		request.setAttribute("loggedIn", loggedIn);
 
-		request.setAttribute("headerText", headerText);
-
-		// Eventliste not loggedIn
 		EventDAO eDAO = new EventDAO();
-		List<Event> eL = eDAO.getAllEvents();
+		PostDAO pDAO = new PostDAO();
 
-		request.setAttribute("eList", eL);
-
-		// Eventliste loggedIn mit Member 0
-		EventDAO eDAOin = new EventDAO();
-		List<Event> eLin = eDAOin.getEventsByMember(0);
-
-		request.setAttribute("eList", eLin);
+		if (loggedIn) { // Eventlist loggedIn
+			List<Event> eLin = eDAO.getEventsByMember(m.getId());
+			request.setAttribute("eLin", eLin);
+			
+			List<Post> pL = 
+		} else { // Eventlist not loggedIn
+			List<Event> eLout = eDAO.getAllEvents();
+			request.setAttribute("eList", eLout);
+		}
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
