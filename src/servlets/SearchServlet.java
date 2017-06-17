@@ -37,47 +37,37 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*String headerText = null;
 		boolean loggedIn = false;
 
 		Cookie user = null;
+		MemberDAO mDAO = new MemberDAO();
+		EventDAO eDAO = new EventDAO();
+
+		Member m = null;
 
 		if (request.getCookies() != null) {
 			for (Cookie c : request.getCookies()) {
 				if (c.getName().equals("user")) {
 					user = c;
+					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
 				}
 			}
 		}
 
+		request.setAttribute("user", m);
+
 		if (user != null)
 			loggedIn = true;
 
-		// logik noch in jsps tun
-		if (loggedIn) {
-
-			headerText = "Hallo " + user.getValue();
-			request.setAttribute("user", user.getValue());
-
-		} else {
-
-			headerText = "AcroYoga";
-		}
-
 		request.setAttribute("loggedIn", loggedIn);
 
-		request.setAttribute("headerText", headerText);*/
-
-		// Eventliste Results
 		
 		String search = request.getParameter("x");
 		
-		EventDAO eDAO = new EventDAO();
 		List<Event> eL = eDAO.searchEvents(search);
 		request.setAttribute("eList", eL);
 		
 		//Memberliste Results
-		MemberDAO mDAO = new MemberDAO();
 		List<Member> mL = mDAO.searchMembers(search);
 		request.setAttribute("mList", mL);
 

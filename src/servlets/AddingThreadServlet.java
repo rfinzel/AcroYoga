@@ -47,7 +47,29 @@ public class AddingThreadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
+		boolean loggedIn = false;
+
+		Cookie user = null;
+		Member m = null;
+		MemberDAO mDAO = new MemberDAO();
 		ThreadDAO tDAO = new ThreadDAO();
+
+		if (request.getCookies() != null) {
+			for (Cookie c : request.getCookies()) {
+				if (c.getName().equals("user")) {
+					user = c;
+					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
+				}
+			}
+		}
+
+		request.setAttribute("user", m);
+
+		if (user != null)
+			loggedIn = true;
+
+		request.setAttribute("loggedIn", loggedIn);
+
 		
 		tDAO.addThread(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 12345, 12345));
 		

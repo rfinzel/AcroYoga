@@ -55,19 +55,29 @@ public class AddingEventServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		boolean loggedIn = false;
 
-		EventDAO eDAO = new EventDAO();
+		Cookie user = null;
+		Member m = null;
 		MemberDAO mDAO = new MemberDAO();
-		String user = "Celina";
+		EventDAO eDAO = new EventDAO();
 
 		if (request.getCookies() != null) {
 			for (Cookie c : request.getCookies()) {
 				if (c.getName().equals("user")) {
-					user = c.getValue();
-					request.setAttribute("user", user);
+					user = c;
+					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
 				}
 			}
 		}
+
+		request.setAttribute("user", m);
+
+		if (user != null)
+			loggedIn = true;
+
+		request.setAttribute("loggedIn", loggedIn);
+
 
 		String name = "";
 		String content = "";

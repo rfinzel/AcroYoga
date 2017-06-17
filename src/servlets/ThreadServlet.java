@@ -24,10 +24,12 @@ import javax.sql.DataSource;
 
 import daos.EventDAO;
 import daos.ForumDAO;
+import daos.MemberDAO;
 import daos.PostDAO;
 import daos.ThreadDAO;
 import objects.Event;
 import objects.Forum;
+import objects.Member;
 import objects.Post;
 import objects.Thread;
 
@@ -52,7 +54,30 @@ public class ThreadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		boolean loggedIn = false;
+
+		Cookie user = null;
+		MemberDAO mDAO = new MemberDAO();
 		ThreadDAO tDAO = new ThreadDAO();
+
+		Member m = null;
+
+		if (request.getCookies() != null) {
+			for (Cookie c : request.getCookies()) {
+				if (c.getName().equals("user")) {
+					user = c;
+					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
+				}
+			}
+		}
+
+		request.setAttribute("user", m);
+
+		if (user != null)
+			loggedIn = true;
+
+		request.setAttribute("loggedIn", loggedIn);
+
 		Thread t = tDAO.getThreadById(Integer.parseInt(request.getParameter("id")));
 		List<Post> pList = tDAO.getPostsByThread(t.getId());
 
