@@ -71,6 +71,7 @@ public class SearchServlet extends HttpServlet {
 		// Eventliste Results
 		
 		String search = request.getParameter("x");
+		
 		EventDAO eDAO = new EventDAO();
 		List<Event> eL = eDAO.searchEvents(search);
 		request.setAttribute("eList", eL);
