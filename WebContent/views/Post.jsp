@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -66,17 +66,15 @@
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
-									<li class="dropdown">
-										<a class="dropdown-toggle" href="#"
-											data-toggle="dropdown"> ${user} <strong class="caret"></strong>
-										</a>
+									<li class="dropdown"><a class="dropdown-toggle" href="#"
+										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
+									</a>
 										<div class="dropdown-menu" style="padding: 15px;">
 											<form method="post" action="Logout" accept-charset="UTF-8">
-												 <input class="btn btn-primary btn-block"
-													type="submit" id="sign-in" value="Logout">
+												<input class="btn btn-primary btn-block" type="submit"
+													id="sign-in" value="Logout">
 											</form>
-										</div>
-									</li>
+										</div></li>
 									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
 										<b class="caret"></b>
 									</a></li>
@@ -134,25 +132,29 @@
 		</div>
 	</header>
 	<div class="container">
-			<div class="row">
-				<c:forEach items="${pList}" var="postList">
-					<div class="col-lg-3 col-md-6text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a img
-									src="img/header.jpg"  alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3> ${postList.name}</h3>
-										<hr class="divider">
-										<p>${postList.name}</p>
-									</div>
-								</a>
-							</div>
+	<div class="container">
+			<a href="/AcroYoga/views/AddPost.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
+				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
+			</button></a>
+		</div>
+		<div class="row">
+			<c:forEach items="${pList}" var="postList">
+				<div class="col-lg-3 col-md-6text-center">
+					<div class="service-box">
+						<div class="thumbnail">
+							<a img src="img/header.jpg" alt="Lights" style="width: 100%">
+								<div class="caption">
+
+									<hr class="divider">
+									<p>${postList.content}</p>
+								</div>
+							</a>
 						</div>
 					</div>
-				</c:forEach>
-			</div>
+				</div>
+			</c:forEach>
 		</div>
+	</div>
 
 
 	<!-- jQuery -->

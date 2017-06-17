@@ -1,16 +1,17 @@
 package objects;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Post {
 
 	private int id;
 	private String content;
-	private Date timing;
+	private Timestamp timing;
 	private int author;
 	private int thread_id;
 
-	public Post(int id, String content, Date timing, int author, int thread_) {
+	public Post(int id, String content, Timestamp timing, int author, int thread_) {
 		super();
 		this.id = id;
 		this.content = content;
@@ -35,11 +36,11 @@ public class Post {
 		this.content = content;
 	}
 
-	public Date getTiming() {
+	public Timestamp getTiming() {
 		return timing;
 	}
 
-	public void setTiming(Date timing) {
+	public void setTiming(Timestamp timing) {
 		this.timing = timing;
 	}
 

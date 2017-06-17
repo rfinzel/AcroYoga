@@ -52,16 +52,17 @@ public class ThreadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PostDAO pDAO = new PostDAO();
-		Post p = pDAO.getPostById(Integer.parseInt(request.getParameter("id")));
-		List<Post> pList = pDAO.getPostsByThread(p.getId());
-		
+		ThreadDAO tDAO = new ThreadDAO();
+		Thread t = tDAO.getThreadById(Integer.parseInt(request.getParameter("id")));
+		System.out.println(Integer.parseInt(request.getParameter("id")));
+		List<Post> pList = tDAO.getPostsByThread(t.getId());
+
 		request.setAttribute("pList", pList);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/Thread.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/Post.jsp");
 
 		dispatcher.forward(request, response);
 	}

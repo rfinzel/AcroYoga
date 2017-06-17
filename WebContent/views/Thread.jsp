@@ -135,11 +135,6 @@
 	</header>
 	<div class="container">
 			<div class="row">
-			<div class="container">
-			<a href="/AcroYoga/views/AddThread.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-			</button></a>
-		</div>
 				<c:forEach items="${tList}" var="threadList">
 					<div class="col-lg-3 col-md-6text-center">
 						<div class="service-box">

@@ -145,6 +145,11 @@
 				</div>
 			</div>
 		</div>
+		<div class="container">
+			<a href="/AcroYoga/views/AddThread.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
+				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
+			</button></a>
+		</div>
 		<div class="row">
 			<div class="container">
 			<div class="row">
