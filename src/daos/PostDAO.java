@@ -39,6 +39,13 @@ public class PostDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return p;		
 	}
 
@@ -57,6 +64,13 @@ public class PostDAO {
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return p;		

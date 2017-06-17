@@ -42,6 +42,13 @@ public class ForumDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return f;		
 	}
 	
@@ -60,6 +67,13 @@ public class ForumDAO {
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return e;		
@@ -83,6 +97,13 @@ public class ForumDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return t;		
 	}
 	public void addForum(Forum f)
@@ -96,7 +117,15 @@ public class ForumDAO {
 		} catch(SQLException f1) {
 			System.out.println(f1.toString());
 		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
+	
 	private int getNextId()
 	{
 		int id = 0;
@@ -109,6 +138,13 @@ public class ForumDAO {
 			id = rs.getInt(1);
 		} catch(SQLException f1) {
 			System.out.println(f1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return id+1;	

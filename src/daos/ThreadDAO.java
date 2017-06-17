@@ -41,6 +41,13 @@ public class ThreadDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return t;		
 	}
 	public void addThread(Thread t)
@@ -57,6 +64,13 @@ public class ThreadDAO {
 		} catch(SQLException f1) {
 			System.out.println(f1.toString());
 		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	private int getNextId()
 	{
@@ -70,6 +84,13 @@ public class ThreadDAO {
 			id = rs.getInt(1);
 		} catch(SQLException f1) {
 			System.out.println(f1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return id+1;	
@@ -91,6 +112,13 @@ public class ThreadDAO {
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return t;		

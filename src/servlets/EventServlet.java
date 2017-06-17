@@ -57,7 +57,7 @@ public class EventServlet extends HttpServlet {
 		MemberDAO mDAO = new MemberDAO();
 		Vector<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 		String htmlMembers = "";
-		System.out.println(members.size());
+
 		for(int i = 0; i < members.size(); i++)
 			htmlMembers = htmlMembers + members.get(i).getName() + " ";
 		request.setAttribute("participants", htmlMembers);

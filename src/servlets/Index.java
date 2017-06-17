@@ -53,7 +53,6 @@ public class Index extends HttpServlet {
 
 		// logik noch in jsps tun
 		if (loggedIn) {
-
 			headerText = "Hallo " + user.getValue();
 			request.setAttribute("user", user.getValue());
 
