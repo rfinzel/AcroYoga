@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -16,7 +16,6 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
@@ -67,15 +66,17 @@
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
-									<li class="dropdown"><a class="dropdown-toggle" href="#"
-										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
-									</a>
+									<li class="dropdown">
+										<a class="dropdown-toggle" href="#"
+											data-toggle="dropdown"> ${user} <strong class="caret"></strong>
+										</a>
 										<div class="dropdown-menu" style="padding: 15px;">
 											<form method="post" action="Logout" accept-charset="UTF-8">
-												<input class="btn btn-primary btn-block" type="submit"
-													id="sign-in" value="Logout">
+												 <input class="btn btn-primary btn-block"
+													type="submit" id="sign-in" value="Logout">
 											</form>
-										</div></li>
+										</div>
+									</li>
 									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
 										<b class="caret"></b>
 									</a></li>
@@ -132,95 +133,28 @@
 			</div>
 		</div>
 	</header>
-
-	<!-- Infobar -->
-	<section id="veranstaltungen">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-4 text-center">
-					<p>${timing}</p>
-				</div>
-				<div class="col-xs-4 text-center">
-					<p>${name}</p>
-				</div>
-				<div class="col-xs-4 text-center">${loginbtn}</div>
-			</div>
-		</div>
-	</section>
-	<!-- About Infobar -->
-	<hr style="width: 100%">
-
-	<!-- Details -->
-	<section id="veranstaltungen">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-6">
-					<p>${weekday}${time}Uhr</p>
-
-					<p>Jeden ${regularity}</p>
-
-					<p>${place}</p>
-
-					<p>${fee}Euro</p>
-
-					<p>Wer kommt noch:</p>
-
-					<p>${participants}</p>
-				</div>
-				<div class="col-xs-6">
-					<p>${content}</p>
-				</div>
-			</div>
-
-		</div>
-	</section>
-	<!-- About Details -->
-
 	<div class="container">
-		<a id="addImage"><button type="button"
-				class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-			</button> </a>
-
-		<div class="row">
-			
-			<form method="post" action="UploadImages" enctype="multipart/form-data">
-			<div id="images">
-			<input type="hidden" id="id" name="id" value="${id}" /> <input type="hidden" id="amount" name="amount" value="1"/> <input type="file"
-				name="file1" />
-			</div>
-			<div>
-				<input class="btn btn-primary btn-block" type="submit" id="sign-in"
-					value="Bilder hochladen">
-			</div>
-			</form>
-		</div>
-		<h2>Bilder</h2>
-		<div class="panel-group">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" href="#collapse1">27.03.2017</a>
-					</h4>
-				</div>
-				<div id="collapse1" class="panel-collapse collapse"
-					style="height: 100%">
-					<div class='list-group gallery'>
-					<c:forEach items="${fileList}" var="fileList">
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="img/${id}/images/${fileList}"> <img
-								class="img-responsive" alt="" src="img/${id}/images/thumbnails/${fileList}" />
-							</a>
+			<div class="row">
+				<c:forEach items="${pList}" var="postList">
+					<div class="col-lg-3 col-md-6text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a img
+									src="img/header.jpg"  alt="Lights" style="width: 100%">
+									<div class="caption">
+										<h3> ${postList.name}</h3>
+										<hr class="divider">
+										<p>${postList.name}</p>
+									</div>
+								</a>
+							</div>
 						</div>
-					</c:forEach>					
 					</div>
-					<!-- list-group / end -->
-					<div class="panel-footer"></div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
-	</div>
+
+
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 
@@ -234,7 +168,7 @@
 	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="js/creative.js"></script>
+	<script src="js/creative.min.js"></script>
 
 </body>
 

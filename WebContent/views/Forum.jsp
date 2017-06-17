@@ -152,7 +152,7 @@
 					<div class="col-lg-3 col-md-6text-center">
 						<div class="service-box">
 							<div class="thumbnail">
-								<a href="/AcroYoga/Forum?id=${threadList.id}" img
+								<a href="/AcroYoga/Thread?id=${threadList.id}" img
 									src="img/header.jpg"  alt="Lights" style="width: 100%">
 									<div class="caption">
 										<h3> ${threadList.name}</h3>

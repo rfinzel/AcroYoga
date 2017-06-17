@@ -96,19 +96,7 @@ public class AddingEventServlet extends HttpServlet {
 
 		int id = eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0));
 
-		if (id >= 0) {
-			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id).mkdir();
-
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/Event.jsp");
-
-			dispatcher.forward(request, response);
-		} else {
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/AddEvent.jsp");
-
-			dispatcher.forward(request, response);
-		}
+		
 
 		String description = request.getParameter("description"); // Retrieves
 																	// <input
@@ -129,6 +117,21 @@ public class AddingEventServlet extends HttpServlet {
 
 		// Thumbnail vom Bild erstellen
 		createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/" + id);
+		
+		if (id >= 0) {
+			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id).mkdir();
+			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id + "/images").mkdir();
+
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+
+			dispatcher.forward(request, response);
+		} else {
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/views/AddEvent.jsp");
+
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
