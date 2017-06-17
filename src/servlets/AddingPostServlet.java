@@ -51,7 +51,7 @@ public class AddingPostServlet extends HttpServlet {
 				
 		PostDAO pDAO = new PostDAO();
 		
-		pDAO.addPost(new Post(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 12345, 12345));
+		pDAO.addPost(new Post(0, request.getParameter("postname"), new Timestamp(System.currentTimeMillis()), 15, 12));
 		
 		
 		

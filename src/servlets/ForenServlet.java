@@ -19,7 +19,7 @@ import objects.Forum;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/Foren")
+@WebServlet("/Forums")
 public class ForenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,15 +38,15 @@ public class ForenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		EventDAO eDAO = new EventDAO();
-		List<Event> eV = eDAO.getAllEvents();
+		ForumDAO fDAO = new ForumDAO();
+		List<Forum> fV = fDAO.getAllForen();
 		
-		request.setAttribute("eList", eV);
+		request.setAttribute("fList", fV);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/Events.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/Foren.jsp");
 
 		dispatcher.forward(request, response);
 	}

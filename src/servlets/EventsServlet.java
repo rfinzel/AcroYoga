@@ -41,12 +41,12 @@ public class EventsServlet extends HttpServlet {
 		EventDAO eDAO = new EventDAO();
 		List<Event> eV = eDAO.getAllEvents();
 		
-		request.setAttribute("fList", eV);
+		request.setAttribute("eList", eV);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/Foren.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/Events.jsp");
 
 		dispatcher.forward(request, response);
 	}
