@@ -47,14 +47,42 @@ public class PostDAO {
 		return p;
 	}
 
+<<<<<<< HEAD
 	
-
-	public Vector<Post> getPostsByMember(int member) {
+=======
+	public Vector<Post> getPostsByThread(int id) {
 		Vector<Post> p = new Vector<Post>();
 
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select event from post where author = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5)));
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return p;
+	}
+>>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
+
+	public Vector<Post> getPostsByAuthor(int member) {
+		Vector<Post> p = new Vector<Post>();
+
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select id from post where author = ?");
 			pstmt.setInt(1, member);
 			ResultSet rs = pstmt.executeQuery();
 

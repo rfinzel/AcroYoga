@@ -62,7 +62,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
-					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
+					<li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
 					<li>
@@ -99,20 +99,6 @@
 													id="sign-in" value="Logout">
 											</form>
 										</div></li>
-									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
-										<b class="caret"></b>
-									</a></li>
-									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-										<li class="divider"></li>
-										<li><form action="Logout" method="post">
-												<input type="submit" value="Logout">
-											</form></li>
-									</ul> -->
 								</c:when>
 								<c:otherwise>
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
@@ -252,215 +238,240 @@
 		</div>
 	</header>
 
-	<!-- About -->
-	<section class="bg-primary" id="about">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<h2 class="section-heading">About</h2>
-					<hr class="light">
-					<p class="text-faded">blablabla</p>
-					<a href="#veranstaltungen"
-						class="page-scroll btn btn-default btn-xl sr-button">Get
-						Started!</a>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<!-- About -->
-	<section class="bg-primary" id="about">
-		<div class="col-md-6">
-			<div class="panel with-nav-tabs panel-default">
-				<div class="panel-heading">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1default" data-toggle="tab">Deine
-								Veranstaltungen </a></li>
-						<li><a href="#tab2default" data-toggle="tab">Deine
-								Forenbeiträge</a></li>
-						<li><a href="#tab3default" data-toggle="tab">Deine
-								Einstellungen</a></li>
-					</ul>
-				</div>
-				<div class="panel-body">
-					<div class="tab-content">
-						<div class="tab-pane fade in active" id="tab1default">
-							<div class="container">
-								<div class="row">
-									<c:forEach items="${eLin}" var="eventList">
-										<div class="col-lg-3 col-md-6 text-center">
-											<div class="service-box">
-												<div class="thumbnail">
-													<a href="/AcroYoga/Event?id=${eventList.id}" img
-														src="img/event/${id}/titel.jpg" alt="Lights"
-														style="width: 100%">
-														<div class="caption">
-															<h3>${eventList.name}</h3>
-															<hr class="divider">
-															<p>${eventList.shortContent}</p>
-														</div>
-													</a>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="tab2default"><div class="container">
-								<div class="row">
-									<c:forEach items="${pLin}" var="eventList">
-										<div class="col-lg-3 col-md-6 text-center">
-											<div class="service-box">
-												<div class="thumbnail">
-													<a href="/AcroYoga/Thread?id=${p.thread_id}" img
-														src="img/event/${id}/titel.jpg" alt="Lights"
-														style="width: 100%">
-														<div class="caption">
-															<h3>${eventList.name}</h3>
-															<hr class="divider">
-															<p>${eventList.shortContent}</p>
-														</div>
-													</a>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-								</div>
-							</div></div>
-						<div class="tab-pane fade" id="tab3default">Default 3</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+
 
 	<c:choose>
 		<c:when test="${loggedIn}">
-
-		</c:when>
-		<c:otherwise>
-			<!-- Veranstaltungen -->
-			<!--	<section id="veranstaltungen">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center">
-						<h2 class="section-heading">Veranstaltungen</h2>
-						<hr class="primary">
+			<section class="bg-primary" id="about">
+				<div class="col-md-6">
+					<div class="panel with-nav-tabs panel-default">
+						<div class="panel-heading">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tab1default" data-toggle="tab">Deine
+										Veranstaltungen </a></li>
+								<li><a href="#tab2default" data-toggle="tab">Deine
+										Forenbeiträge</a></li>
+								<li><a href="#tab3default" data-toggle="tab">Deine
+										Einstellungen</a></li>
+							</ul>
+						</div>
+						<div class="panel-body">
+							<div class="tab-content">
+								<div class="tab-pane fade in active" id="tab1default">
+									<div class="container">
+										<div class="row">
+											<c:forEach items="${eLin}" var="eventList">
+												<div class="col-lg-3 col-md-6 text-center">
+													<div class="service-box">
+														<div class="thumbnail">
+															<a href="/AcroYoga/Event?id=${eventList.id}" img
+																src="img/event/${id}/titel.jpg" alt="Lights"
+																style="width: 100%">
+																<div class="caption">
+																	<h3>${eventList.name}</h3>
+																	<hr class="divider">
+																	<p>${eventList.shortContent}</p>
+																</div>
+															</a>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tab2default">
+									<div class="container">
+										<div class="row">
+											<c:forEach items="${pLin}" var="postList">
+												<div class="col-lg-3 col-md-6 text-center">
+													<div class="service-box">
+														<div class="thumbnail">
+															<a href="/AcroYoga/Thread?id=${p.thread_id}" alt="Lights"
+																style="width: 100%">
+																<div class="caption">
+																	<h3>${postList.content}</h3>
+																	<hr class="divider">
+																	<p>${postList.content}</p>
+																</div>
+															</a>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tab3default">
+									<div class="container">
+									<div class="row">
+										<div class="col-xs-2">
+										<p>Name</p>
+										<p>Email</p>
+										<p>Password</p>
+										<p>Geburtstag</p>
+										</div>
+										<div class="col-xs-4">
+										<p id="acName">${user.name} ${user.lastname}</p>
+										<p id="acEmail">${user.email}</p>
+										<p id ="acPassword">${user.password}</p>
+										<p id="acBirthday">${user.birthday}</p>
+										</div>
+										<div class="col-xs-3"></div>
+										<div class="col-xs-3">
+										<p id="updateAccount">ändern</p>
+										<p id="deleteAccount">account löschen</p>
+										
+										</div>
+									</div>
+									</div>
+									<div></div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="container">
-				<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
-						class="btn btn-default" aria-label="Left Align">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button></a>
-			</div>
-			<div class="container">
-				<div class="row">
-					<c:forEach items="${eList}" var="eventList">
+			</section>
+		</c:when>
+		<c:otherwise>
+			<!-- About -->
+			<section class="bg-primary" id="about">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+							<h2 class="section-heading">About</h2>
+							<hr class="light">
+							<p class="text-faded">blablabla</p>
+							<a href="#veranstaltungen"
+								class="page-scroll btn btn-default btn-xl sr-button">Get
+								Started!</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- About ende -->
+			<!-- Veranstaltungen -->
+			<section id="veranstaltungen">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<h2 class="section-heading">Veranstaltungen</h2>
+							<hr class="primary">
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
+							class="btn btn-default" aria-label="Left Align">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button></a>
+				</div>
+				<div class="container">
+					<div class="row">
+						<c:forEach items="${eList}" var="eventList">
+							<div class="col-lg-3 col-md-6 text-center">
+								<div class="service-box">
+									<div class="thumbnail">
+										<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+											src="img/event/${id}/titel.jpg" alt="Lights"
+											style="width: 100%">
+											<div class="caption">
+												<h3>${eventList.name}</h3>
+												<hr class="divider">
+												<p>${eventList.shortContent}</p>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</section>
+			<!-- Veranstaltungen ende -->
+
+
+			<!-- Forum -->
+			<section class="bg-primary" id="veranstaltungen">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<h2 class="section-heading">neueste Threads</h2>
+							<hr class="primary">
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
 						<div class="col-lg-3 col-md-6 text-center">
 							<div class="service-box">
 								<div class="thumbnail">
-									<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
-										src="img/event/${id}/titel.jpg" alt="Lights"
-										style="width: 100%">
+									<a href="/AcroYoga/Forum?id=1"> <img src="img/header.jpg"
+										alt="Lights" style="width: 100%">
 										<div class="caption">
-											<h3>${eventList.name}</h3>
+											<h3>Forum 1</h3>
 											<hr class="divider">
-											<p>${eventList.shortContent}</p>
+											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua.</p>
 										</div>
 									</a>
 								</div>
 							</div>
 						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</section>-->
-			<!-- Veranstaltungen ende -->
-
-
-			<!-- Forum -->
-			<!--  <section class="bg-primary" id="veranstaltungen">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center">
-						<h2 class="section-heading">neueste Threads</h2>
-						<hr class="primary">
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6 text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/AcroYoga/Forum?id=1"> <img src="img/header.jpg"
-									alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>Forum 1</h3>
-										<hr class="divider">
-										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-											dolore magna aliquyam erat, sed diam voluptua.</p>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-									alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>Veranstaltung D</h3>
-										<hr class="divider">
-										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-											dolore magna aliquyam erat, sed diam voluptua.</p>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-									alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>Veranstaltung D</h3>
-										<hr class="divider">
-										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-											dolore magna aliquyam erat, sed diam voluptua.</p>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-									alt="Lights" style="width: 100%">
-								</a>
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
+						<div class="col-lg-3 col-md-6 text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
+										alt="Lights" style="width: 100%">
+										<div class="caption">
+											<h3>Veranstaltung D</h3>
+											<hr class="divider">
+											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua.</p>
+										</div>
+									</a>
 								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
+										alt="Lights" style="width: 100%">
+										<div class="caption">
+											<h3>Veranstaltung D</h3>
+											<hr class="divider">
+											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+												dolore magna aliquyam erat, sed diam voluptua.</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
+										alt="Lights" style="width: 100%">
+									</a>
+									<div class="caption">
+										<h3>Veranstaltung D</h3>
+										<hr class="divider">
+										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+											dolore magna aliquyam erat, sed diam voluptua.</p>
+									</div>
 
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>-->
+			</section>
 			<!-- Forum ende -->
 		</c:otherwise>
 	</c:choose>

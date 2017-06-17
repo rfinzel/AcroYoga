@@ -40,7 +40,6 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String headerText = null;
 		boolean loggedIn = false;
 
 		Cookie user = null;
@@ -66,11 +65,11 @@ public class Index extends HttpServlet {
 		EventDAO eDAO = new EventDAO();
 		PostDAO pDAO = new PostDAO();
 
-		if (loggedIn) { // Eventlist loggedIn
+		if (loggedIn) { // Eventlist und Postlist loggedIn
 			List<Event> eLin = eDAO.getEventsByMember(m.getId());
 			request.setAttribute("eLin", eLin);
 			
-			List<Post> pLin = pDAO.getPostsByMember(m.getId());
+			List<Post> pLin = pDAO.getPostsByAuthor(m.getId());
 			request.setAttribute("pLin", pLin);
 		} else { // Eventlist not loggedIn
 			List<Event> eLout = eDAO.getAllEvents();

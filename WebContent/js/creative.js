@@ -1,6 +1,6 @@
 (function($) {
     "use strict"; // Start of use strict
-
+    var images = 1;
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $(document).on('click', 'a.page-scroll', function(event) {
         var $anchor = $(this);
@@ -76,6 +76,12 @@
 		e.preventDefault();
 	});
 	
+	$('#addImage').click(function(e) {
+		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
+		
+		$("#amount").val(images);
+	});
+	
 	$(document).ready(function(e){
 	    $('.search-panel .dropdown-menu').find('a').click(function(e) {
 			e.preventDefault();
@@ -84,6 +90,12 @@
 			$('.search-panel span#search_concept').text(concept);
 			$('.input-group #search_param').val(param);
 		});
+	});
+	
+	$('#updateAccount').click(function(e) {
+		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
+		
+		$("#amount").val(images);
 	});
 	
 })(jQuery); // End of use strict
