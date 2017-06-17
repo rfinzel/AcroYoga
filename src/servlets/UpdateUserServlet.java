@@ -22,14 +22,14 @@ import objects.Member;
 /**
  * Servlet implementation class Event
  */
-@WebServlet("/Login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/UpdateUser")
+public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public UpdateUserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,14 +41,7 @@ public class LoginServlet extends HttpServlet {
 		MemberDAO mDAO = new MemberDAO();
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
 		
-		if((request.getParameter("password").equals(m.getPassword())))
-		{
-			Cookie loginCookie = new Cookie("user",Integer.toString(m.getId()));
-		
-			//setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
-			response.addCookie(loginCookie);					
-		}				
+				
 
 		String path = request.getHeader("referer");
 		//response.sendRedirect(path.substring(21));

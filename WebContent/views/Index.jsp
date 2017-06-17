@@ -62,7 +62,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
-					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
+					<li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
 					<li>
@@ -99,20 +99,6 @@
 													id="sign-in" value="Logout">
 											</form>
 										</div></li>
-									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
-										<b class="caret"></b>
-									</a></li>
-									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-										<li class="divider"></li>
-										<li><form action="Logout" method="post">
-												<input type="submit" value="Logout">
-											</form></li>
-									</ul> -->
 								</c:when>
 								<c:otherwise>
 									<li class="dropdown"><a class="dropdown-toggle" href="#"
@@ -252,21 +238,6 @@
 		</div>
 	</header>
 
-	<!-- About -->
-	<section class="bg-primary" id="about">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<h2 class="section-heading">About</h2>
-					<hr class="light">
-					<p class="text-faded">blablabla</p>
-					<a href="#veranstaltungen"
-						class="page-scroll btn btn-default btn-xl sr-button">Get
-						Started!</a>
-				</div>
-			</div>
-		</div>
-	</section>
 
 
 
@@ -332,7 +303,31 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="tab3default">Default 3</div>
+								<div class="tab-pane fade" id="tab3default">
+									<div class="container">
+									<div class="row">
+										<div class="col-xs-2">
+										<p>Name</p>
+										<p>Email</p>
+										<p>Password</p>
+										<p>Geburtstag</p>
+										</div>
+										<div class="col-xs-4">
+										<p>${user.name}${m.lastname}</p>
+										<p>${user.email}</p>
+										<p>${user.password}</p>
+										<p>${user.birthday}</p>
+										</div>
+										<div class="col-xs-3"></div>
+										<div class="col-xs-3">
+										<p>ändern</p>
+										<p>account löschen</p>
+										
+										</div>
+									</div>
+									</div>
+									<div></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -340,6 +335,22 @@
 			</section>
 		</c:when>
 		<c:otherwise>
+			<!-- About -->
+			<section class="bg-primary" id="about">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+							<h2 class="section-heading">About</h2>
+							<hr class="light">
+							<p class="text-faded">blablabla</p>
+							<a href="#veranstaltungen"
+								class="page-scroll btn btn-default btn-xl sr-button">Get
+								Started!</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- About ende -->
 			<!-- Veranstaltungen -->
 			<section id="veranstaltungen">
 				<div class="container">

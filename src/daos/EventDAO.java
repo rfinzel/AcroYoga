@@ -170,7 +170,6 @@ public class EventDAO {
 			
 			while(rs.next())
 			{
-				System.out.println("addmember");
 				e.add(getEventById(rs.getInt(1)));
 			}
 		} catch(SQLException e1) {
