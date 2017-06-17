@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -67,8 +68,23 @@ public class EventServlet extends HttpServlet {
 		request.setAttribute("participants", htmlMembers);
 		
 		File f = new File(request.getSession().getServletContext().getRealPath("img") + "/" + e.getId() + "/images");
-		List<String> fileList = new Vector<String>(Arrays.asList(f.list()));
+		
+		FilenameFilter textFilter = new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				String lowercaseName = name.toLowerCase();
+				if (lowercaseName.endsWith(".jpg") || lowercaseName.endsWith(".png")) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		};
+		
+		List<String> fileList = new Vector<String>();
+		if(f.list(textFilter) != null)
+			fileList = Arrays.asList(f.list());
 
+		
 		request.setAttribute("fileList", fileList);
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
