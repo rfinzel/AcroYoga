@@ -54,10 +54,10 @@ public class ThreadServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ThreadDAO tDAO = new ThreadDAO();
 		Thread t = tDAO.getThreadById(Integer.parseInt(request.getParameter("id")));
-		System.out.println(Integer.parseInt(request.getParameter("id")));
 		List<Post> pList = tDAO.getPostsByThread(t.getId());
 
 		request.setAttribute("pList", pList);
+		request.setAttribute("threadID", t.getId());
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

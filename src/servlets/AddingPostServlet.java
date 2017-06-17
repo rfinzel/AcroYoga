@@ -51,14 +51,14 @@ public class AddingPostServlet extends HttpServlet {
 				
 		PostDAO pDAO = new PostDAO();
 		
-		pDAO.addPost(new Post(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 12345, 12345));
+		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), 1, Integer.parseInt(request.getParameter("threadID"))));
 		
 		
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+        = this.getServletContext().getRequestDispatcher("/Thread?id="+request.getParameter("threadID"));
 
         dispatcher.forward(request, response);
 	}

@@ -131,31 +131,48 @@
 			</div>
 		</div>
 	</header>
-	<div class="container">
-	<div class="container">
-			<a href="/AcroYoga/views/AddPost.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
+	<!--<div class="container">
+		<a href="/AcroYoga/views/AddPost.jsp"><button type="button"
+				class="btn btn-default" aria-label="Left Align">
 				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
 			</button></a>
-		</div>
-		<div class="row">
-			<c:forEach items="${pList}" var="postList">
-				<div class="col-lg-3 col-md-6text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a img src="img/header.jpg" alt="Lights" style="width: 100%">
-								<div class="caption">
+	</div>
+	-->
+	<div class="row">
+		<c:forEach items="${pList}" var="postList">
+			<div class="col-lg-3 col-md-6text-center">
+				<div class="service-box">
+					<div class="thumbnail">
+						<a img src="img/header.jpg" alt="Lights" style="width: 100%">
+							<div class="caption">
 
-									<hr class="divider">
-									<p>${postList.content}</p>
-								</div>
-							</a>
-						</div>
+								<hr class="divider">
+								<p>${postList.content}</p>
+							</div>
+						</a>
 					</div>
 				</div>
-			</c:forEach>
-		</div>
+			</div>
+		</c:forEach>
 	</div>
 
+	<div class="container">
+		<div class="row">
+
+			<form id="comment-form" action="AddPost" method="post"
+				accept-charset="UTF-8">
+					<input type="hidden" value="${threadID}" name="threadID">
+				<div>
+					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
+						value="Submit">
+				</div>
+			</form>
+			<div class="col-lg-3 col-md-6text-center">
+				<textarea placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
+			</div>
+
+		</div>
+	</div>
 
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
