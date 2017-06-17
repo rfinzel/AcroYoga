@@ -4,20 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
 import java.util.Vector;
 
-import objects.Event;
 import objects.Forum;
-import objects.Member;
 import objects.Thread;
 
 public class ForumDAO {
 	private Connection conn;
 	private ConnectionProvider conProvider;
-	private Statement stmt;
-	private ResultSet rs;
+
 	
 	public ForumDAO()
 	{

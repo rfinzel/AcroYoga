@@ -51,8 +51,9 @@ public class PostDAO {
 
 		conn = conProvider.getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from post where thread_id = '" + id + "'");
+			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5)));
@@ -71,12 +72,12 @@ public class PostDAO {
 		return p;
 	}
 
-	public Vector<Post> getPostsByMember(int member) {
+	public Vector<Post> getPostsByAuthor(int member) {
 		Vector<Post> p = new Vector<Post>();
 
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select event from post where author = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select id from post where author = ?");
 			pstmt.setInt(1, member);
 			ResultSet rs = pstmt.executeQuery();
 
