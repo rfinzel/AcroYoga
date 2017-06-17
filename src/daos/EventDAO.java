@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 import objects.Event;
+import objects.Member;
 
 public class EventDAO {
 	private Connection conn;
@@ -124,5 +125,27 @@ public class EventDAO {
 		}
 		
 		return id+1;	
+	}
+	
+	public Vector<Event> getEventsByMember(int member)
+	{
+		Vector<Event> e = new Vector<Event>();
+		
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select evnt from participation where participants = ?");
+			pstmt.setInt(1, member);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				System.out.println("addmember");
+				e.add(getEventById(rs.getInt(1)));
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		return e;		
 	}
 }

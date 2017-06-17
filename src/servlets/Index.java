@@ -66,11 +66,17 @@ public class Index extends HttpServlet {
 
 		request.setAttribute("headerText", headerText);
 
-		// Eventliste
+		// Eventliste not loggedIn
 		EventDAO eDAO = new EventDAO();
 		List<Event> eL = eDAO.getAllEvents();
 
 		request.setAttribute("eList", eL);
+
+		// Eventliste loggedIn mit Member 0
+		EventDAO eDAOin = new EventDAO();
+		List<Event> eLin = eDAOin.getEventsByMember(0);
+
+		request.setAttribute("eList", eLin);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

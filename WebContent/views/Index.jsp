@@ -18,9 +18,7 @@
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<link
-	href='css/style.css'
-	rel='stylesheet' type='text/css'>
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -30,7 +28,7 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
 	rel='stylesheet' type='text/css'>
-	
+
 
 <!-- Plugin CSS -->
 <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -68,10 +66,11 @@
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
 					<li>
-					<form id="login-form" action="Search" method="post" accept-charset="UTF-8">
-						<div class="input-group">
-							<div class="input-group-btn search-panel">
-								<!-- FILTER <button type="button" class="btn btn-default dropdown-toggle"
+						<form id="login-form" action="Search" method="post"
+							accept-charset="UTF-8">
+							<div class="input-group">
+								<div class="input-group-btn search-panel">
+									<!-- FILTER <button type="button" class="btn btn-default dropdown-toggle"
 									data-toggle="dropdown">
 									<span id="search_concept">Filter</span> <span class="caret"></span>
 								</button>
@@ -79,15 +78,15 @@
 									<li><a href="#contains">Personen</a></li>
 									<li><a href="#greather_than">Veranstaltungen</a></li>
 								</ul> FILTER -->
+								</div>
+								<input type="hidden" name="search_param" value="all"
+									id="search_param"> <input type="text"
+									class="form-control" name="x" placeholder="Search term...">
+								<span class="input-group-btn"> <input
+									class="btn btn-primary btn-block" type="submit" id="sign-in"
+									value="search"></span>
 							</div>
-							<input type="hidden" name="search_param" value="all"
-								id="search_param"> <input type="text"
-								class="form-control" name="x" placeholder="Search term...">
-							<span class="input-group-btn">
-									<input class="btn btn-primary btn-block" type="submit"
-													id="sign-in" value="search"></span>
-						</div>
-					</form>
+						</form>
 					</li>
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
@@ -261,130 +260,179 @@
 			</div>
 		</div>
 	</section>
-	<!-- About ende -->
 
-	<!-- Veranstaltungen -->
-	<section id="veranstaltungen">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Veranstaltungen</h2>
-					<hr class="primary">
+	<!-- About -->
+	<section class="bg-primary" id="about">
+		<div class="col-md-6">
+			<div class="panel with-nav-tabs panel-default">
+				<div class="panel-heading">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1default" data-toggle="tab">Deine Veranstaltungen
+						</a></li>
+						<li><a href="#tab2default" data-toggle="tab">Deine Forenbeiträge</a></li>
+						<li><a href="#tab3default" data-toggle="tab">Deine Einstellungen</a></li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="tab1default"><div class="container">
+				<div class="row">
+					<c:forEach items="${eListLoggedIn}" var="eventList">
+						<div class="col-lg-3 col-md-6 text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+									<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+										src="img/event/${id}/titel.jpg" alt="Lights"
+										style="width: 100%">
+										<div class="caption">
+											<h3>${eventList.name}</h3>
+											<hr class="divider">
+											<p>${eventList.shortContent}</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div></div>
+						<div class="tab-pane fade" id="tab2default">Default 2</div>
+						<div class="tab-pane fade" id="tab3default">Default 3</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
-					class="btn btn-default" aria-label="Left Align">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button></a>
-		</div>
-		<div class="container">
-			<div class="row">
-				<c:forEach items="${eList}" var="eventList">
+	</section>
+
+	<c:choose>
+	<c:when test="${loggedIn}">
+	
+	</c:when>
+	<c:otherwise>
+	<!-- Veranstaltungen -->
+	<!--	<section id="veranstaltungen">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">Veranstaltungen</h2>
+						<hr class="primary">
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
+						class="btn btn-default" aria-label="Left Align">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button></a>
+			</div>
+			<div class="container">
+				<div class="row">
+					<c:forEach items="${eList}" var="eventList">
+						<div class="col-lg-3 col-md-6 text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+									<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+										src="img/event/${id}/titel.jpg" alt="Lights"
+										style="width: 100%">
+										<div class="caption">
+											<h3>${eventList.name}</h3>
+											<hr class="divider">
+											<p>${eventList.shortContent}</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</section>-->
+	<!-- Veranstaltungen ende -->
+
+
+	<!-- Forum -->
+	<!--  <section class="bg-primary" id="veranstaltungen">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">neueste Threads</h2>
+						<hr class="primary">
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
 					<div class="col-lg-3 col-md-6 text-center">
 						<div class="service-box">
 							<div class="thumbnail">
-								<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
-									src="img/event/${id}/titel.jpg" alt="Lights"
-									style="width: 100%">
+								<a href="/AcroYoga/Forum?id=1"> <img src="img/header.jpg"
+									alt="Lights" style="width: 100%">
 									<div class="caption">
-										<h3>${eventList.name}</h3>
+										<h3>Forum 1</h3>
 										<hr class="divider">
-										<p>${eventList.shortContent}</p>
+										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+											dolore magna aliquyam erat, sed diam voluptua.</p>
 									</div>
 								</a>
 							</div>
 						</div>
 					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</section>
-	<!-- Veranstaltungen ende -->
-
-
-	<!-- Forum -->
-	<section class="bg-primary" id="veranstaltungen">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">neueste Threads</h2>
-					<hr class="primary">
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/AcroYoga/Forum?id=1"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Forum 1</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-								<div class="caption">
-									<h3>Veranstaltung D</h3>
-									<hr class="divider">
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua.</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<div class="thumbnail">
-							<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-								alt="Lights" style="width: 100%">
-							</a>
-							<div class="caption">
-								<h3>Veranstaltung D</h3>
-								<hr class="divider">
-								<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-									sed diam nonumy eirmod tempor invidunt ut labore et dolore
-									magna aliquyam erat, sed diam voluptua.</p>
+					<div class="col-lg-3 col-md-6 text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
+									alt="Lights" style="width: 100%">
+									<div class="caption">
+										<h3>Veranstaltung D</h3>
+										<hr class="divider">
+										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+											dolore magna aliquyam erat, sed diam voluptua.</p>
+									</div>
+								</a>
 							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
+									alt="Lights" style="width: 100%">
+									<div class="caption">
+										<h3>Veranstaltung D</h3>
+										<hr class="divider">
+										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
+											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+											dolore magna aliquyam erat, sed diam voluptua.</p>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
+									alt="Lights" style="width: 100%">
+								</a>
+								<div class="caption">
+									<h3>Veranstaltung D</h3>
+									<hr class="divider">
+									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+										sed diam nonumy eirmod tempor invidunt ut labore et dolore
+										magna aliquyam erat, sed diam voluptua.</p>
+								</div>
 
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>-->
 	<!-- Forum ende -->
+	</c:otherwise>
+	</c:choose>
 
 
 	<!-- Kontakt -->
