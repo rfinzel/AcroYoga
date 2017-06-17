@@ -212,12 +212,7 @@
 	<header>
 		<div class="header-content">
 			<div class="header-content-inner">
-				<h1 id="homeHeading">${name}</h1>
-				<hr>
-				<p>Noch mehr blablabla</p>
-				<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
-					Out More</a>
-
+				<h1 id="homeHeading">${name}</h1>				
 			</div>
 		</div>
 	</header>

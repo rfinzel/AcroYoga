@@ -66,22 +66,22 @@
 					<li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
 					<li>
-						<form id="login-form" action="Search" method="post"
+						<form id="search-box" action="Search" method="post"
 							accept-charset="UTF-8">
 							<div class="input-group">
 								<div class="input-group-btn search-panel">
-									<!-- FILTER <button type="button" class="btn btn-default dropdown-toggle"
+									FILTER <button type="button" class="btn btn-default dropdown-toggle"
 									data-toggle="dropdown">
 									<span id="search_concept">Filter</span> <span class="caret"></span>
 								</button>
 								 <ul class="dropdown-menu" role="menu">
 									<li><a href="#contains">Personen</a></li>
 									<li><a href="#greather_than">Veranstaltungen</a></li>
-								</ul> FILTER -->
+								</ul>
 								</div>
 								<input type="hidden" name="search_param" value="all"
 									id="search_param"> <input type="text"
-									class="form-control" name="x" placeholder="Search term...">
+									class="form-control" name="x" placeholder="Suchbegriff..">
 								<span class="input-group-btn"> <input
 									class="btn btn-primary btn-block" type="submit" id="sign-in"
 									value="search"></span>
@@ -220,10 +220,6 @@
 						<h1 id="homeHeading">Hallo, hier bei AcroYoga Bremen!</h1>
 					</c:otherwise>
 				</c:choose>
-				<hr>
-				<p>Noch mehr blablabla</p>
-				<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
-					Out More</a>
 			</div>
 		</div>
 	</header>
@@ -264,7 +260,7 @@
 													</div>
 												</div>
 											</c:forEach>
-
+											
 										</div>
 									</div>
 								</div>
@@ -395,7 +391,7 @@
 		</c:when>
 		<c:otherwise>
 			<!-- About -->
-			<section id="about">
+			<section  id="about">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2 text-center">
