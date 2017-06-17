@@ -313,15 +313,15 @@
 										<p>Geburtstag</p>
 										</div>
 										<div class="col-xs-4">
-										<p>${user.name}${m.lastname}</p>
-										<p>${user.email}</p>
-										<p>${user.password}</p>
-										<p>${user.birthday}</p>
+										<p id="acName">${user.name} ${user.lastname}</p>
+										<p id="acEmail">${user.email}</p>
+										<p id ="acPassword">${user.password}</p>
+										<p id="acBirthday">${user.birthday}</p>
 										</div>
 										<div class="col-xs-3"></div>
 										<div class="col-xs-3">
-										<p>ändern</p>
-										<p>account löschen</p>
+										<p id="updateAccount">ändern</p>
+										<p id="deleteAccount">account löschen</p>
 										
 										</div>
 									</div>

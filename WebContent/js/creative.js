@@ -92,4 +92,10 @@
 		});
 	});
 	
+	$('#updateAccount').click(function(e) {
+		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
+		
+		$("#amount").val(images);
+	});
+	
 })(jQuery); // End of use strict
