@@ -120,7 +120,7 @@
 		</div>
 	</header>
 
-	<form method="post" action="../PlusVeranstaltung"
+	<form method="post" action="../AddingEvent"
 		accept-charset="UTF-8" enctype="multipart/form-data">
 		<!-- Infobar -->
 		<section id="veranstaltungen">

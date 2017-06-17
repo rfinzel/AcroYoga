@@ -1,6 +1,6 @@
 (function($) {
     "use strict"; // Start of use strict
-
+    var images = 1;
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $(document).on('click', 'a.page-scroll', function(event) {
         var $anchor = $(this);
@@ -74,6 +74,12 @@
 		$('#login-form-link').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
+	});
+	
+	$('#addImage').click(function(e) {
+		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
+		
+		$("#amount").val(images);
 	});
 	
 	$(document).ready(function(e){

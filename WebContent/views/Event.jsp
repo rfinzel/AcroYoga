@@ -177,10 +177,24 @@
 	<!-- About Details -->
 
 	<div class="container">
-		<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
+		<a id="addImage"><button type="button"
 				class="btn btn-default" aria-label="Left Align">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-			</button></a>
+			</button> </a>
+
+		<div class="row">
+			
+			<form method="post" action="UploadImages" enctype="multipart/form-data">
+			<div id="images">
+			<input type="hidden" id="id" name="id" value="${id}" /> <input type="hidden" id="amount" name="amount" value="1"/> <input type="file"
+				name="file1" />
+			</div>
+			<div>
+				<input class="btn btn-primary btn-block" type="submit" id="sign-in"
+					value="Bilder hochladen">
+			</div>
+			</form>
+		</div>
 		<h2>Bilder</h2>
 		<div class="panel-group">
 			<div class="panel panel-default">
@@ -192,56 +206,14 @@
 				<div id="collapse1" class="panel-collapse collapse"
 					style="height: 100%">
 					<div class='list-group gallery'>
+					<c:forEach items="${fileList}" var="fileList">
 						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
 							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+								href="img/${id}/images/${fileList}"> <img
+								class="img-responsive" alt="" src="img/${id}/images/thumbnails/${fileList}" />
 							</a>
 						</div>
-						<!-- col-6 / end -->
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
-							</a>
-						</div>
-						<!-- col-6 / end -->
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
-							</a>
-						</div>
-						<!-- col-6 / end -->
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
-							</a>
-						</div>
-						<!-- col-6 / end -->
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
-							</a>
-						</div>
-						<!-- col-6 / end -->
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
-							</a>
-						</div>
-						<!-- col-6 / end -->
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="http://placehold.it/800x600.png"> <img
-								class="img-responsive" alt="" src="http://placehold.it/150x150" />
-							</a>
-						</div>
-						<!-- col-6 / end -->
-
+					</c:forEach>					
 					</div>
 					<!-- list-group / end -->
 					<div class="panel-footer"></div>
@@ -262,8 +234,7 @@
 	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="js/creative.min.js"></script>
-	<script src="js/gallery.js"></script>
+	<script src="js/creative.js"></script>
 
 </body>
 

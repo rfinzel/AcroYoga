@@ -1,12 +1,16 @@
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +50,7 @@ public class EventServlet extends HttpServlet {
 		request.setAttribute("content", e.getContent());
 		request.setAttribute("regularity", e.getRegularity());
 		request.setAttribute("fee", e.getFee());
-
+		request.setAttribute("id", e.getId());
 		String weekday = new SimpleDateFormat("EE").format(e.getTiming());
 		request.setAttribute("weekday", weekday);
 		
@@ -62,8 +66,10 @@ public class EventServlet extends HttpServlet {
 			htmlMembers = htmlMembers + members.get(i).getName() + " ";
 		request.setAttribute("participants", htmlMembers);
 		
-		
-		
+		File f = new File(request.getSession().getServletContext().getRealPath("img") + "/" + e.getId() + "/images");
+		List<String> fileList = new Vector<String>(Arrays.asList(f.list()));
+
+		request.setAttribute("fileList", fileList);
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
