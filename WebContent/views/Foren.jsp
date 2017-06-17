@@ -135,7 +135,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -222,7 +222,7 @@
 
 	<!-- Threads -->
 	<section id="foren">
-	
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -231,11 +231,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<a href="/AcroYoga/views/AddForum.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-			</button></a>
-		</div>
+		<c:choose>
+			<c:when test="${user.admin}}">
+				<div class="container">
+					<a href="/AcroYoga/views/AddForum.jsp"><button type="button"
+							class="btn btn-default" aria-label="Left Align">
+							<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
+						</button></a>
+				</div>
+			</c:when>
+		</c:choose>
 		<div class="container">
 			<div class="row">
 				<c:forEach items="${fList}" var="forenList">
@@ -243,9 +248,9 @@
 						<div class="service-box">
 							<div class="thumbnail">
 								<a href="/AcroYoga/Forum?id=${forenList.id}" img
-									src="img/header.jpg"  alt="Lights" style="width: 100%">
+									src="img/header.jpg" alt="Lights" style="width: 100%">
 									<div class="caption">
-										<h3> ${forenList.name}</h3>
+										<h3>${forenList.name}</h3>
 										<hr class="divider">
 										<p>${forenList.name}</p>
 									</div>
@@ -256,7 +261,7 @@
 				</c:forEach>
 			</div>
 		</div>
-		
+
 	</section>
 	<!-- Threads ende -->
 

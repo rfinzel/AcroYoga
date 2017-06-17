@@ -231,14 +231,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="container">
-					<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
-							class="btn btn-default" aria-label="Left Align">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						</button></a>
+		<c:choose>
+			<c:when test="${user.admin}}">
+				<div class="container">
+					<div class="container">
+						<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
+								class="btn btn-default" aria-label="Left Align">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</button></a>
+					</div>
 				</div>
-		</div>
+			</c:when>
+		</c:choose>
 		<div class="container">
 			<div class="row">
 				<c:forEach items="${eList}" var="eventList">

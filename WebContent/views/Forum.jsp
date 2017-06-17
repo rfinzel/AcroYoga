@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -135,7 +135,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -230,36 +230,41 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<a href="/AcroYoga/views/AddThread.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-			</button></a>
-		</div>
+		<c:choose>
+			<c:when test="${loggedIn}}">
+				<div class="container">
+					<a href="/AcroYoga/views/AddThread.jsp"><button type="button"
+							class="btn btn-default" aria-label="Left Align">
+							<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
+						</button></a>
+				</div>
+			</c:when>
+		</c:choose>
 		<div class="row">
 			<div class="container">
-			<div class="row">
-				<c:forEach items="${tList}" var="threadList">
-					<div class="col-lg-3 col-md-6text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/AcroYoga/Thread?id=${threadList.id}" img
-									src="img/header.jpg"  alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3> ${threadList.name}</h3>
-										<hr class="divider">
-										<p>${threadList.name}</p>
-									</div>
-								</a>
+				<div class="row">
+					<c:forEach items="${tList}" var="threadList">
+						<div class="col-lg-3 col-md-6text-center">
+							<div class="service-box">
+								<div class="thumbnail">
+									<a href="/AcroYoga/Thread?id=${threadList.id}" img
+										src="img/header.jpg" alt="Lights" style="width: 100%">
+										<div class="caption">
+											<h3>${threadList.name}</h3>
+											<hr class="divider">
+											<p>${threadList.name}</p>
+										</div>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
 			</div>
+
 		</div>
-			
-		</div>
-		
-		
+
+
 
 	</section>
 	<!-- Threads ende -->
