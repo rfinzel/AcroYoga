@@ -44,7 +44,7 @@ public class MemberDAO {
 		String search = "%" + search_param + "%";
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select id from members where email = ? or name = ? or lastname = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select id from members where email like ? or name like ? or lastname like ?");
 			pstmt.setString(1, search);
 			pstmt.setString(2, search);
 			pstmt.setString(3, search);
@@ -91,7 +91,6 @@ public class MemberDAO {
 			
 			while(rs.next())
 			{
-				System.out.println("getmember");
 				m = new Member(rs.getInt(1), rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDate(7));
 			}
 		} catch(SQLException e1) {
