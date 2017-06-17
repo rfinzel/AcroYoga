@@ -87,7 +87,7 @@ public class ThreadServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/Post.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/Thread.jsp");
 
 		dispatcher.forward(request, response);
 	}

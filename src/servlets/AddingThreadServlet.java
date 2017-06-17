@@ -24,8 +24,10 @@ import objects.Forum;
 
 import objects.Thread;
 import daos.MemberDAO;
+import daos.PostDAO;
 import daos.ThreadDAO;
 import objects.Member;
+import objects.Post;
 
 /**
  * Servlet implementation class Event
@@ -53,6 +55,7 @@ public class AddingThreadServlet extends HttpServlet {
 		Member m = null;
 		MemberDAO mDAO = new MemberDAO();
 		ThreadDAO tDAO = new ThreadDAO();
+		PostDAO pDAO = new PostDAO();
 
 		if (request.getCookies() != null) {
 			for (Cookie c : request.getCookies()) {
@@ -70,15 +73,15 @@ public class AddingThreadServlet extends HttpServlet {
 
 		request.setAttribute("loggedIn", loggedIn);
 
-		
-		tDAO.addThread(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 12345, 12345));
-		
+		String id = request.getParameter("id");
+		int threadID = tDAO.addThread(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 0, Integer.parseInt(id)));
+		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), m.getId(), threadID));
 		
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/Forum?id="+request.getParameter(arg0));
+        = this.getServletContext().getRequestDispatcher("/Forum?id="+id);
 
         dispatcher.forward(request, response);
 	}
