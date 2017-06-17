@@ -95,7 +95,10 @@
 	$('#updateAccount').click(function(e) {
 		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
 		
-		$("#amount").val(images);
+		$("#acName").val(name);
+		$("#acEmail").val(email);
+		$("#acPassword").val(Password);
+		$("#acBirthday").val(Birthday);
 	});
 	
 })(jQuery); // End of use strict

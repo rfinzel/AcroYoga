@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import daos.EventDAO;
 import daos.ForumDAO;
+import objects.Event;
 import objects.Forum;
 
 /**
@@ -36,10 +38,10 @@ public class EventsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ForumDAO fDAO = new ForumDAO();
-		List<Forum> fV = fDAO.getAllForen();
+		EventDAO eDAO = new EventDAO();
+		List<Event> eV = eDAO.getAllEvents();
 		
-		request.setAttribute("fList", fV);
+		request.setAttribute("fList", eV);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
