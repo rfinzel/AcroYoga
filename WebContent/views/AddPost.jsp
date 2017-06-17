@@ -15,10 +15,10 @@
 <title>AcroYoga</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="vendor/font-awesome/css/font-awesome.min.css"
+<link href="../vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -28,10 +28,10 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- Plugin CSS -->
-<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="css/creative.css" rel="stylesheet">
+<link href="../css/creative.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,15 +66,17 @@
 					<li><a class="page-scroll" href="#suche">Suche</a></li>
 					<li><a class="page-scroll" href="#"> <c:choose>
 								<c:when test="${loggedIn}">
-									<li class="dropdown"><a class="dropdown-toggle" href="#"
-										data-toggle="dropdown"> ${user} <strong class="caret"></strong>
-									</a>
+									<li class="dropdown">
+										<a class="dropdown-toggle" href="#"
+											data-toggle="dropdown"> ${user} <strong class="caret"></strong>
+										</a>
 										<div class="dropdown-menu" style="padding: 15px;">
 											<form method="post" action="Logout" accept-charset="UTF-8">
-												<input class="btn btn-primary btn-block" type="submit"
-													id="sign-in" value="Logout">
+												 <input class="btn btn-primary btn-block"
+													type="submit" id="sign-in" value="Logout">
 											</form>
-										</div></li>
+										</div>
+									</li>
 									<!-- <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">${user}
 										<b class="caret"></b>
 									</a></li>
@@ -131,63 +133,63 @@
 			</div>
 		</div>
 	</header>
-	<!--<div class="container">
-		<a href="/AcroYoga/views/AddPost.jsp"><button type="button"
-				class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-			</button></a>
-	</div>
-	-->
-	<div class="row">
-		<c:forEach items="${pList}" var="postList">
-			<div class="col-lg-3 col-md-6text-center">
-				<div class="service-box">
-					<div class="thumbnail">
-						<a img src="img/header.jpg" alt="Lights" style="width: 100%">
-							<div class="caption">
 
-								<hr class="divider">
-								<p>${postList.content}</p>
-							</div>
-						</a>
-					</div>
+
+	<!-- Threads -->
+	<section id="foren">
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">Post hinzufügen</h2>
+					<hr class="primary">
 				</div>
 			</div>
-		</c:forEach>
-	</div>
-
-	<div class="container">
-		<div class="row">
-
-			<form id="comment-form" action="AddPost" method="post"
-				accept-charset="UTF-8">
-					<input type="hidden" value="${threadID}" name="threadID">
-				<div>
-					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
-						value="Submit">
-				</div>
-			</form>
-			<div class="col-lg-3 col-md-6text-center">
-				<textarea placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
-			</div>
-
 		</div>
-	</div>
+		<div class="container">
+			<div class="row">
+				
+					<div class="col-lg-3 col-md-6text-center">
+						<div class="service-box">
+							<div class="thumbnail">
+								<a  img src="img/header.jpg"  alt="Lights" style="width: 100%">
+									<div class="caption">
+									<form method="post" action="../AddPost" accept-charset="UTF-8">
+										<input style="margin-bottom: 15px;" type="text"
+						placeholder="Postname" id="postname" name="postname">
+										<hr class="divider">
+										<input style="margin-bottom: 15px;" type="text"
+						placeholder="Postinhalt" id="postcontent" name="postcontent">
+									</div>
+									<div>
+				 <input class="btn btn-primary btn-block"
+													type="submit" id="sign-in" value="Submit">
+			</div>
+			</form>
+								</a>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</section>
+	<!-- Threads ende -->
+
 
 	<!-- jQuery -->
-	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/jquery/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Plugin JavaScript -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="../vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="js/creative.min.js"></script>
+	<script src="../js/creative.min.js"></script>
 
 </body>
 
