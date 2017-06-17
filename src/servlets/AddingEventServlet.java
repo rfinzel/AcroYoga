@@ -36,7 +36,7 @@ import objects.Member;
 /**
  * Servlet implementation class Event
  */
-@WebServlet("/PlusVeranstaltung")
+@WebServlet("/AddingEvent")
 @MultipartConfig
 public class AddingEventServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -120,6 +120,7 @@ public class AddingEventServlet extends HttpServlet {
 																								// fix.
 
 		File file = new File(request.getSession().getServletContext().getRealPath("img") + "/" + id, "image.jpg");
+		System.out.println(request.getSession().getServletContext().getRealPath("img"));
 
 		try (InputStream fileContent = filePart.getInputStream()) {
 			Files.copy(fileContent, file.toPath());

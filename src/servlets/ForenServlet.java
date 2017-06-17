@@ -17,7 +17,7 @@ import objects.Forum;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/Foren")
+@WebServlet("/Forums")
 public class ForenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

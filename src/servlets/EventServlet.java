@@ -20,7 +20,7 @@ import objects.Member;
 /**
  * Servlet implementation class Event
  */
-@WebServlet("/Veranstaltung")
+@WebServlet("/Event")
 public class EventServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
