@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 import objects.Forum;
@@ -12,18 +13,11 @@ import objects.Thread;
 public class ForumDAO {
 	private Connection conn;
 	private ConnectionProvider conProvider;
-<<<<<<< HEAD
 	private Statement stmt;
 	private ResultSet rs;
 
 	public ForumDAO() {
-=======
 
-	
-	public ForumDAO()
-	{
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
-		conProvider = new ConnectionProvider();
 	}
 
 	public Forum getForumById(int id) {
@@ -133,13 +127,6 @@ public class ForumDAO {
 			id = rs.getInt(1);
 		} catch (SQLException f1) {
 			System.out.println(f1.toString());
-		}
-
-		try {
-			conn.close();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 
 		return id + 1;

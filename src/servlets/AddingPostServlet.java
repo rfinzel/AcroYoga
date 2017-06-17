@@ -27,6 +27,7 @@ import daos.MemberDAO;
 import daos.PostDAO;
 import daos.ThreadDAO;
 import objects.Member;
+import objects.Post;
 
 /**
  * Servlet implementation class Event
@@ -50,7 +51,7 @@ public class AddingPostServlet extends HttpServlet {
 				
 		PostDAO pDAO = new PostDAO();
 		
-		pDAO.addPost(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 12345, 12345));
+		pDAO.addPost(new Post(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 12345, 12345));
 		
 		
 		

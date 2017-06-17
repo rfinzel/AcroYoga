@@ -82,13 +82,6 @@ public class ThreadDAO {
 			System.out.println(f1.toString());
 		}
 
-		try {
-			conn.close();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
 		return id + 1;
 	}
 
@@ -129,7 +122,7 @@ public class ThreadDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5)));
+				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());

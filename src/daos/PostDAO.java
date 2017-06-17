@@ -31,7 +31,7 @@ public class PostDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				p = new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5));
+				p = new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());
@@ -47,9 +47,6 @@ public class PostDAO {
 		return p;
 	}
 
-<<<<<<< HEAD
-	
-=======
 	public Vector<Post> getPostsByThread(int id) {
 		Vector<Post> p = new Vector<Post>();
 
@@ -60,7 +57,7 @@ public class PostDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5)));
+				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());
@@ -75,7 +72,6 @@ public class PostDAO {
 
 		return p;
 	}
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
 
 	public Vector<Post> getPostsByAuthor(int member) {
 		Vector<Post> p = new Vector<Post>();
