@@ -142,7 +142,7 @@
 								<a href="/AcroYoga/Forum?id=${threadList.id}" img
 									src="img/header.jpg"  alt="Lights" style="width: 100%">
 									<div class="caption">
-										<h3> ${threadList.name}</h3>
+										<h3>${threadList.name}</h3>
 										<hr class="divider">
 										<p>${threadList.name}</p>
 									</div>

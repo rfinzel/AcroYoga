@@ -52,7 +52,7 @@ public class AddingForumServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+        = this.getServletContext().getRequestDispatcher("/Forums");
 
         dispatcher.forward(request, response);
 	}

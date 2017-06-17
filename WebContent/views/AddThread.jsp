@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -154,7 +154,8 @@
 							<div class="thumbnail">
 								<a  img src="img/header.jpg"  alt="Lights" style="width: 100%">
 									<div class="caption">
-									<form method="post" action="../AddForum" accept-charset="UTF-8">
+									<form method="post" action="../AddThread" accept-charset="UTF-8">
+										<input type="hidden" value="${forumID}" name="threadID">
 										<input style="margin-bottom: 15px;" type="text"
 						placeholder="Threadname" id="threadname" name="threadname">
 										<hr class="divider">

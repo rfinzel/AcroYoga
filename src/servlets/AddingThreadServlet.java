@@ -56,7 +56,7 @@ public class AddingThreadServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+        = this.getServletContext().getRequestDispatcher("/Forum?id="+request.getParameter(arg0));
 
         dispatcher.forward(request, response);
 	}
