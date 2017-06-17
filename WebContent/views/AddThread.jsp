@@ -137,11 +137,7 @@
 
 	<!-- Threads -->
 	<section id="foren">
-	<div class="container">
-			<a href="/AcroYoga/views/AddForum.jsp"><button type="button" class="btn btn-default" aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-			</button></a>
-		</div>
+	
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">

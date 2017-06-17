@@ -133,31 +133,18 @@
 			</div>
 		</div>
 	</header>
-
-
-	<!-- Threads -->
-	<section id="foren">
-		<div class="container">
+	<div class="container">
 			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Threads</h2>
-					<hr class="primary">
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="container">
-			<div class="row">
-				<c:forEach items="${tList}" var="threadList">
+				<c:forEach items="${pList}" var="postList">
 					<div class="col-lg-3 col-md-6text-center">
 						<div class="service-box">
 							<div class="thumbnail">
-								<a href="/AcroYoga/Thread?id=${threadList.id}" img
+								<a img
 									src="img/header.jpg"  alt="Lights" style="width: 100%">
 									<div class="caption">
-										<h3> ${threadList.name}</h3>
+										<h3> ${postList.name}</h3>
 										<hr class="divider">
-										<p>${threadList.name}</p>
+										<p>${postList.name}</p>
 									</div>
 								</a>
 							</div>
@@ -166,13 +153,6 @@
 				</c:forEach>
 			</div>
 		</div>
-			
-		</div>
-		
-		
-
-	</section>
-	<!-- Threads ende -->
 
 
 	<!-- jQuery -->

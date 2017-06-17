@@ -166,7 +166,7 @@ public class EventDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select evnt from participation where participants = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select event from participation where participants = ?");
 			pstmt.setInt(1, member);
 			ResultSet rs = pstmt.executeQuery();
 			
