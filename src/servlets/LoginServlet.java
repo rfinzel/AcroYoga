@@ -17,7 +17,9 @@ import javax.servlet.http.HttpSession;
 import daos.EventDAO;
 import objects.Event;
 import daos.MemberDAO;
+import daos.PostDAO;
 import objects.Member;
+import objects.Post;
 
 /**
  * Servlet implementation class Event
@@ -40,15 +42,39 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberDAO mDAO = new MemberDAO();
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
+		if (m != null) {
+			if((request.getParameter("password").equals(m.getPassword())))
+			{
+				Cookie loginCookie = new Cookie("user",Integer.toString(m.getId()));
+				
+				//setting cookie to expiry in 30 mins
+				loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
+				response.addCookie(loginCookie);					
+			}				
+			
+		}else{
+			boolean loggedIn = false;
+
+			request.setAttribute("loggedIn", loggedIn);
+
+			EventDAO eDAO = new EventDAO();
+			PostDAO pDAO = new PostDAO();
+
+			if (loggedIn) { // Eventlist und Postlist loggedIn
+				List<Event> eLin = eDAO.getEventsByMember(m.getId());
+				request.setAttribute("eLin", eLin);
+				
+				List<Post> pLin = pDAO.getPostsByAuthor(m.getId());
+				request.setAttribute("pLin", pLin);
+			} else { // Eventlist not loggedIn
+				List<Event> eLout = eDAO.getAllEvents();
+				request.setAttribute("eList", eLout);
+			}
+			
+			request.setAttribute("loginError", "Das Passwort oder die Email-Addresse ist inkorrekt.");
+			
+		}
 		
-		if((request.getParameter("password").equals(m.getPassword())))
-		{
-			Cookie loginCookie = new Cookie("user",Integer.toString(m.getId()));
-		
-			//setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
-			response.addCookie(loginCookie);					
-		}				
 
 		String path = request.getHeader("referer");
 		//response.sendRedirect(path.substring(21));

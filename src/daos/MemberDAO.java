@@ -219,4 +219,25 @@ public class MemberDAO {
 		}
 	}
 
+	public void deleteMember(Member m) {
+		conn = conProvider.getConnection();
+		System.out.println("miau");
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(
+					"DELETE FROM members WHERE id = ?");
+			pstmt.setInt(1, m.getId());
+
+			pstmt.executeUpdate();
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+
 }

@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,14 +16,14 @@ import objects.Member;
 /**
  * Servlet implementation class Event
  */
-@WebServlet("/UpdateAccount")
-public class UpdateAccountServlet extends HttpServlet {
+@WebServlet("/DeleteAccount")
+public class DeleteAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateAccountServlet() {
+    public DeleteAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,34 +44,7 @@ public class UpdateAccountServlet extends HttpServlet {
 			}
 		}
 				
-		
-		String name;
-		String lastname;
-		String email;
-		String password;
-		String birthday;
-		
-		name = request.getParameter("name");
-		lastname = request.getParameter("lastname");
-		email = request.getParameter("email");
-		password = request.getParameter("password");
-		birthday = request.getParameter("birthday");
-		
-		//String into sql.Date casten
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		java.util.Date parsed = null;
-		try {
-			parsed = format.parse(birthday);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		java.sql.Date sqlBirthday = new java.sql.Date(parsed.getTime());
-		
-		
-		Member tempM = new Member(m.getId(), m.getAdmin(), email, password, name, lastname, sqlBirthday);
-		mDAO.updateMember(tempM);
-		
+		mDAO.deleteMember(m);
 						
 		// TODO Auto-generated method stub
 				// Forward to /WEB-INF/views/login.jsp

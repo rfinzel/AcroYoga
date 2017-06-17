@@ -95,8 +95,11 @@
 	 $('#updateAccount-link').click(function(e) {
 			$("#updateForm").delay(100).fadeIn(100);
 	 		$("#showAccount").fadeOut(100);
+	 		$("#deleteForm").fadeOut(100);
 			$('#showAccount').removeClass('form-active');		
 			$('#showAccount').addClass('form-notactive');
+			$('#deleteAccount').removeClass('form-active');		
+			$('#deleteAccount').addClass('form-notactive');
 			$('#updateForm').removeClass('form-notactive');		
 			$('#updateForm').addClass('form-active');
 			e.preventDefault();
@@ -105,10 +108,26 @@
 		$('#changeAccount-link').click(function(e) {
 			$("#showAccount").delay(100).fadeIn(100);
 	 		$("#updateForm").fadeOut(100);
+	 		$("#deleteForm").fadeOut(100);
 			$('#updateForm').removeClass('form-active');		
 			$('#updateForm').addClass('form-notactive');
+			$('#deleteAccount').removeClass('form-active');		
+			$('#deleteAccount').addClass('form-notactive');
 			$('#showAccount').removeClass('form-notactive');		
 			$('#showAccount').addClass('form-active');
+			//e.preventDefault();
+		});
+		
+		$('#deleteAccount-link').click(function(e) {
+			$("#deleteAccount").delay(100).fadeIn(100);
+	 		$("#updateForm").fadeOut(100);
+	 		$("#showAccount").fadeOut(100);
+			$('#updateForm').removeClass('form-active');		
+			$('#updateForm').addClass('form-notactive');
+			$('#showAccount').removeClass('form-active');		
+			$('#showAccount').addClass('form-notactive');
+			$('#deleteAccount').removeClass('form-notactive');		
+			$('#deleteAccount').addClass('form-active');
 			//e.preventDefault();
 		});
 	
