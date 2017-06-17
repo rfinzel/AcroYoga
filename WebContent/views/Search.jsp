@@ -111,8 +111,6 @@
 								</c:otherwise>
 							</c:choose>
 					</a></li>
-
-
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -151,8 +149,6 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</header>
@@ -167,7 +163,7 @@
 					<div class="col-lg-3 col-md-6 text-center">
 						<div class="service-box">
 							<div class="thumbnail">
-								<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
+								<a href="/AcroYoga/Event?id=${eventList.id}" img
 									src="img/event/${id}/titel.jpg" alt="Lights"
 									style="width: 100%">
 									<div class="caption">

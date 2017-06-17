@@ -36,6 +36,13 @@ public class MemberDAO {
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
 		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	public Vector<Member> searchMembers(String search_param)
@@ -59,6 +66,13 @@ public class MemberDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return m;		
 	}
 	
@@ -74,6 +88,13 @@ public class MemberDAO {
 			id = rs.getInt(1);
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return id+1;	
@@ -97,6 +118,13 @@ public class MemberDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return m;		
 	}
 	
@@ -118,6 +146,13 @@ public class MemberDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return m;		
 	}
 	
@@ -137,6 +172,13 @@ public class MemberDAO {
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return m;		
@@ -162,6 +204,12 @@ public class MemberDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		return m;		
 	}
 

@@ -38,6 +38,13 @@ public class EventDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return e;		
 	}
 
@@ -56,6 +63,13 @@ public class EventDAO {
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return e;		
@@ -83,6 +97,13 @@ public class EventDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		return e;		
 	}
 	
@@ -106,7 +127,13 @@ public class EventDAO {
 			id = -1;
 			System.out.println(e1.toString());
 		}
-		
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		return id;
 	}
 	
@@ -124,6 +151,12 @@ public class EventDAO {
 			System.out.println(e1.toString());
 		}
 		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		return id+1;	
 	}
 	

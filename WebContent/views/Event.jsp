@@ -16,6 +16,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
@@ -104,8 +105,7 @@
 												<input style="float: left; margin-right: 10px;"
 													checkbox" name="remember-me" id="remember-me" value="">
 												<label class="string optional" for="user_remember_me">
-													Remember me</label> 
-													<input class="btn btn-primary btn-block"
+													Remember me</label> <input class="btn btn-primary btn-block"
 													type="submit" id="sign-in" value="Sign In">
 											</form>
 										</div></li>
@@ -156,12 +156,12 @@
 			<div class="row">
 				<div class="col-xs-6">
 					<p>${weekday}${time}Uhr</p>
-					
+
 					<p>Jeden ${regularity}</p>
-					
+
 					<p>${place}</p>
 
-					<p> ${fee}Euro</p>
+					<p>${fee}Euro</p>
 
 					<p>Wer kommt noch:</p>
 
@@ -176,7 +176,79 @@
 	</section>
 	<!-- About Details -->
 
+	<div class="container">
+		<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
+				class="btn btn-default" aria-label="Left Align">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			</button></a>
+		<h2>Bilder</h2>
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" href="#collapse1">27.03.2017</a>
+					</h4>
+				</div>
+				<div id="collapse1" class="panel-collapse collapse"
+					style="height: 100%">
+					<div class='list-group gallery'>
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<a class="fancybox thumbnail" rel="ligthbox"
+								href="http://placehold.it/800x600.png"> <img
+								class="img-responsive" alt="" src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<!-- col-6 / end -->
 
+					</div>
+					<!-- list-group / end -->
+					<div class="panel-footer"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 
@@ -191,6 +263,7 @@
 
 	<!-- Theme JavaScript -->
 	<script src="js/creative.min.js"></script>
+	<script src="js/gallery.js"></script>
 
 </body>
 
