@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -23,9 +24,11 @@ import javax.sql.DataSource;
 
 import daos.EventDAO;
 import daos.ForumDAO;
+import daos.PostDAO;
 import daos.ThreadDAO;
 import objects.Event;
 import objects.Forum;
+import objects.Post;
 import objects.Thread;
 
 /**
@@ -49,9 +52,11 @@ public class ThreadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ThreadDAO tDAO = new ThreadDAO();
-		Thread t = tDAO.getThreadById(Integer.parseInt(request.getParameter("id")));
-
+		PostDAO pDAO = new PostDAO();
+		Post p = pDAO.getPostById(Integer.parseInt(request.getParameter("id")));
+		List<Post> pList = pDAO.getPostsByThread(p.getId());
+		
+		request.setAttribute("pList", pList);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

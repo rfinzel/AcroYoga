@@ -64,7 +64,7 @@
 					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
 					<li><a class="page-scroll" href="#veranstaltungen">Veranstaltungen</a></li>
 					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
-					<li><a class="page-scroll" href="/AcroYoga/Foren">Forum</a></li>
+					<li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
 					<li>
 						<form id="login-form" action="Search" method="post"
 							accept-charset="UTF-8">
