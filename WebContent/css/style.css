@@ -4,7 +4,6 @@
 	
 }
 
-<<<<<<< HEAD
 .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
 }
@@ -59,7 +58,6 @@
 .tab-content {
 	color:black;
 }
-=======
 .gallery
 {
     display: inline-block;
@@ -68,5 +66,12 @@
 .blur {
     -webkit-filter: blur(4px)   
 }
-
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
+.form-active{
+	display: block;
+}
+.form-notactive{
+	display: none;
+}
+.form-group {
+  margin-bottom: 15px;
+}

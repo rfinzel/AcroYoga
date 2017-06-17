@@ -244,7 +244,7 @@
 	<c:choose>
 		<c:when test="${loggedIn}">
 			<section class="bg-primary" id="about">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<div class="panel with-nav-tabs panel-default">
 						<div class="panel-heading">
 							<ul class="nav nav-tabs">
@@ -304,79 +304,7 @@
 									</div>
 								</div>
 								<div class="tab-pane fade" id="tab3default">
-									<div class="container">
-										<form id="login-form" action="Login" method="post" role="form"
-											style="display: block;">
-											<div class="form-group">
-												<input type="text" name="username" id="username"
-													tabindex="1" class="form-control" placeholder="E-Mail"
-													value="">
-											</div>
-											<div class="form-group">
-												<input type="password" name="password" id="password"
-													tabindex="2" class="form-control" placeholder="Passwort">
-											</div>
-											<div class="form-group text-center">
-												<input type="checkbox" tabindex="3" class="" name="remember"
-													id="remember"> <label for="remember">
-													Remember Me</label>
-											</div>
-											<div class="form-group">
-												<div class="row">
-													<div class="col-sm-6 col-sm-offset-3">
-														<input type="submit" name="login-submit" id="sign-in"
-															tabindex="4" class="form-control btn btn-login"
-															value="Sign In">
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="text-center">
-															<a href="https://phpoll.com/recover" tabindex="5"
-																class="forgot-password">Forgot Password?</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</form>
-										<form id="register-form" action="Register" method="post"
-											role="form" style="display: none;">
-											<div class="form-group">
-												<input type="text" name="name" id="name" tabindex="1"
-													class="form-control" placeholder="Vorname" value="">
-											</div>
-											<div class="form-group">
-												<input type="text" name="lastname" id="lastname"
-													tabindex="1" class="form-control" placeholder="Nachname"
-													value="">
-											</div>
-											<div class="form-group">
-												<input type="email" name="email" id="email" tabindex="1"
-													class="form-control" placeholder="Email Address" value="">
-											</div>
-											<div class="form-group">
-												<input type="password" name="password" id="password"
-													tabindex="2" class="form-control" placeholder="Passwort">
-											</div>
-											<div class="form-group">
-												<input type="password" name="confirm-password"
-													id="confirm-password" tabindex="2" class="form-control"
-													placeholder="Confirm Password">
-											</div>
-											<div class="form-group">
-												<div class="row">
-													<div class="col-sm-6 col-sm-offset-3">
-														<input type="submit" name="register-submit"
-															id="register-submit" tabindex="4"
-															class="form-control btn btn-register"
-															value="Register Now">
-													</div>
-												</div>
-											</div>
-										</form>
-
+									<div id="showAccount" class="form-active" >
 										<div class="row">
 											<div class="col-xs-2">
 												<p>Name</p>
@@ -385,19 +313,71 @@
 												<p>Geburtstag</p>
 											</div>
 											<div class="col-xs-4">
-												<p id="acName">${user.name}${user.lastname}</p>
+												<p id="acName">${user.name} ${user.lastname}</p>
 												<p id="acEmail">${user.email}</p>
 												<p id="acPassword">${user.password}</p>
 												<p id="acBirthday">${user.birthday}</p>
 											</div>
 											<div class="col-xs-3"></div>
 											<div class="col-xs-3">
-												<p id="updateAccount">ändern</p>
+												<a href="#" id="updateAccount-link">ändern</a>
 												<p id="deleteAccount">account löschen</p>
 
 											</div>
 										</div>
+										
 									</div>
+									<div id="updateForm"  class = "form-notactive">
+										<div class="row">
+										<div class="col-xs-2">
+												<p>Vorname</p>
+												<p>Nachname</p>
+												<p>Email</p>
+												<p>Passwort</p>
+												<p>Geburtstag</p>
+											</div>
+											
+										<form action="UpdateAccount" method="post"
+											role="form">
+											<div class="col-xs-4">
+											
+											<div class="form-group">
+												<input type="text" name="name" id="name" tabindex="1"
+													class="form-control" placeholder="Vorname" value="${user.name}">
+											</div>
+											<div class="form-group">
+												<input type="text" name="lastname" id="lastname"
+													tabindex="1" class="form-control" placeholder="Nachname"
+													value="${user.lastname}">
+											</div>
+											<div class="form-group">
+												<input type="email" name="email" id="email" tabindex="1"
+													class="form-control" placeholder="Email Addresse" value="${user.email}">
+											</div>
+											<div class="form-group">
+												<input type="password" name="password" id="password"
+													tabindex="2" class="form-control" placeholder="Passwort" value="${user.password}">
+											</div>
+											<div class="form-group">
+												<input type="date" name="birthday" id="birthday"
+													tabindex="2" class="form-control" placeholder="Geburtstag " value="${user.birthday}">
+											</div>
+											</div> <div class="col-xs-2"></div>
+										<div class="col-xs-3">
+										
+											<div class="form-group">
+												<div class="row">
+													<div class="col-sm-6 col-sm-offset-3">
+														<input type="submit" name="register-submit"
+															id="changeAccount-link" tabindex="4"
+															
+															value="Änderungen übernehmen">
+													</div>
+												</div>
+											</div></div>
+										</form>
+										
+										</div></div></div>
 									<div></div>
 								</div>
 							</div>
@@ -498,7 +478,7 @@
 									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
 										alt="Lights" style="width: 100%">
 										<div class="caption">
-											<h3>Veranstaltung D</h3>
+											<h3>Veranstaltung </h3>
 											<hr class="divider">
 											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
 												elitr, sed diam nonumy eirmod tempor invidunt ut labore et

@@ -1,6 +1,7 @@
 package objects;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Member {
 	private int id;

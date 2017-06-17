@@ -92,13 +92,24 @@
 		});
 	});
 	
-	$('#updateAccount').click(function(e) {
-		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
-		
-		$("#acName").val(name);
-		$("#acEmail").val(email);
-		$("#acPassword").val(Password);
-		$("#acBirthday").val(Birthday);
-	});
+	 $('#updateAccount-link').click(function(e) {
+			$("#updateForm").delay(100).fadeIn(100);
+	 		$("#showAccount").fadeOut(100);
+			$('#showAccount').removeClass('form-active');		
+			$('#showAccount').addClass('form-notactive');
+			$('#updateForm').removeClass('form-notactive');		
+			$('#updateForm').addClass('form-active');
+			e.preventDefault();
+		});
+	 
+		$('#changeAccount-link').click(function(e) {
+			$("#showAccount").delay(100).fadeIn(100);
+	 		$("#updateForm").fadeOut(100);
+			$('#updateForm').removeClass('form-active');		
+			$('#updateForm').addClass('form-notactive');
+			$('#showAccount').removeClass('form-notactive');		
+			$('#showAccount').addClass('form-active');
+			//e.preventDefault();
+		});
 	
 })(jQuery); // End of use strict
