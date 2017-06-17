@@ -17,7 +17,7 @@ public class ForumDAO {
 	private ResultSet rs;
 
 	public ForumDAO() {
-
+		conProvider = new ConnectionProvider();
 	}
 
 	public Forum getForumById(int id) {
@@ -44,11 +44,11 @@ public class ForumDAO {
 		}
 
 		return f;
-	}
+	} 
 
 	public Vector<Forum> getAllForen() {
 		Vector<Forum> e = new Vector<Forum>();
-
+		
 		conn = conProvider.getConnection();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("select id from forum");
