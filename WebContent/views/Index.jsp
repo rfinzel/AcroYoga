@@ -472,6 +472,8 @@
 
 	<!-- Theme JavaScript -->
 	<script src="js/creative.js"></script>
+		<script src="js/gallery.js"></script>
+	
 
 </body>
 
