@@ -20,6 +20,7 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Custom Fonts -->
 <link href="../vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -28,7 +29,8 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	rel='stylesheet' type='text/css'>
 
 <!-- Plugin CSS -->
-<link href="../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<link href="../vendor/magnific-popup/magnific-popup.css"
+	rel="stylesheet">
 
 <!-- Theme CSS -->
 <link href="../css/creative.css" rel="stylesheet">
@@ -135,7 +137,7 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -222,7 +224,7 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 	<!-- Threads -->
 	<section id="foren">
-	
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -233,29 +235,31 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		</div>
 		<div class="container">
 			<div class="row">
-				
-					<div class="col-lg-3 col-md-6text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a  img src="img/header.jpg"  alt="Lights" style="width: 100%">
-									<div class="caption">
-									<form method="post" action="../AddThread" accept-charset="UTF-8">
+
+				<div class="col-lg-3 col-md-6text-center">
+					<div class="service-box">
+						<div class="thumbnail">
+							<a img src="img/header.jpg" alt="Lights" style="width: 100%">
+								<div class="caption">
+									<form method="post" action="../AddThread"
+										accept-charset="UTF-8">
 										<input type="hidden" value="${forumID}" name="threadID">
 										<input style="margin-bottom: 15px;" type="text"
-						placeholder="Threadname" id="threadname" name="threadname">
+											placeholder="Threadname" id="threadname" name="threadname">
 										<hr class="divider">
 										<input style="margin-bottom: 15px;" type="text"
-						placeholder="Threadinhalt" id="threadcontent" name="threadcontent">
-									</div>
-									<div>
-				 <input class="btn btn-primary btn-block"
-													type="submit" id="sign-in" value="Submit">
-			</div>
-			</form>
-								</a>
-							</div>
+											placeholder="Threadinhalt" id="threadcontent"
+											name="threadcontent">
+								</div>
+								<div>
+									<input class="btn btn-primary btn-block" type="submit"
+										id="sign-in" value="Submit">
+								</div>
+								</form>
+							</a>
 						</div>
 					</div>
+				</div>
 			</div>
 		</div>
 	</section>

@@ -21,6 +21,7 @@
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -136,7 +137,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -264,24 +265,30 @@
 	<!-- About Details -->
 
 	<div class="container">
-		<a id="addImage"><button type="button"
-				class="btn btn-default" aria-label="Left Align">
+		<a id="addImage"><button type="button" class="btn btn-default"
+				aria-label="Left Align">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			</button> </a>
 
-		<div class="row">
-			
-			<form method="post" action="UploadImages" enctype="multipart/form-data">
-			<div id="images">
-			<input type="hidden" id="id" name="id" value="${id}" /> <input type="hidden" id="amount" name="amount" value="1"/> <input type="file"
-				name="file1" />
-			</div>
-			<div>
-				<input class="btn btn-primary btn-block" type="submit" id="sign-in"
-					value="Bilder hochladen">
-			</div>
-			</form>
-		</div>
+		<c:choose>
+			<c:when test="${loggedIn}}">
+				<div class="row">
+
+					<form method="post" action="UploadImages"
+						enctype="multipart/form-data">
+						<div id="images">
+							<input type="hidden" id="id" name="id" value="${id}" /> <input
+								type="hidden" id="amount" name="amount" value="1" /> <input
+								type="file" name="file1" />
+						</div>
+						<div>
+							<input class="btn btn-primary btn-block" type="submit"
+								id="sign-in" value="Bilder hochladen">
+						</div>
+					</form>
+				</div>
+			</c:when>
+		</c:choose>
 		<h2>Bilder</h2>
 		<div class="panel-group">
 			<div class="panel panel-default">
@@ -293,14 +300,15 @@
 				<div id="collapse1" class="panel-collapse collapse"
 					style="height: 100%">
 					<div class='list-group gallery'>
-					<c:forEach items="${fileList}" var="fileList">
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<a class="fancybox thumbnail" rel="ligthbox"
-								href="img/${id}/images/${fileList}"> <img
-								class="img-responsive" alt="" src="img/${id}/images/thumbnails/${fileList}" />
-							</a>
-						</div>
-					</c:forEach>					
+						<c:forEach items="${fileList}" var="fileList">
+							<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+								<a class="fancybox thumbnail" rel="ligthbox"
+									href="img/${id}/images/${fileList}"> <img
+									class="img-responsive" alt=""
+									src="img/${id}/images/thumbnails/${fileList}" />
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 					<!-- list-group / end -->
 					<div class="panel-footer"></div>

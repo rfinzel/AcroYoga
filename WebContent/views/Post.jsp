@@ -20,6 +20,7 @@
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -135,7 +136,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -248,14 +249,15 @@
 
 			<form id="comment-form" action="AddPost" method="post"
 				accept-charset="UTF-8">
-					<input type="hidden" value="${threadID}" name="threadID">
+				<input type="hidden" value="${threadID}" name="threadID">
 				<div>
 					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
 						value="Submit">
 				</div>
 			</form>
 			<div class="col-lg-3 col-md-6text-center">
-				<textarea placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
+				<textarea placeholder="Hier Kommentar schreiben" name="comment"
+					form="comment-form"></textarea>
 			</div>
 
 		</div>

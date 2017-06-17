@@ -20,6 +20,7 @@
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -135,7 +136,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -222,7 +223,7 @@
 
 	<!-- Events -->
 	<section id="events">
-	
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -250,9 +251,9 @@
 						<div class="service-box">
 							<div class="thumbnail">
 								<a href="/AcroYoga/Event?id=${eventList.id}" img
-									src="img/header.jpg"  alt="Lights" style="width: 100%">
+									src="img/header.jpg" alt="Lights" style="width: 100%">
 									<div class="caption">
-										<h3> ${eventList.name}</h3>
+										<h3>${eventList.name}</h3>
 										<hr class="divider">
 										<p>${eventList.name}</p>
 									</div>
@@ -263,7 +264,7 @@
 				</c:forEach>
 			</div>
 		</div>
-		
+
 	</section>
 	<!-- Threads ende -->
 

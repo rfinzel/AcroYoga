@@ -20,6 +20,7 @@
 <!-- Custom Fonts -->
 <link href="../vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -136,7 +137,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -221,8 +222,8 @@
 		</div>
 	</header>
 
-	<form method="post" action="../AddingEvent"
-		accept-charset="UTF-8" enctype="multipart/form-data">
+	<form method="post" action="../AddingEvent" accept-charset="UTF-8"
+		enctype="multipart/form-data">
 		<!-- Infobar -->
 		<section id="veranstaltungen">
 			<div class="container">
@@ -289,18 +290,18 @@
 				</div>
 
 				<!-- FILE UPLOAD -->
-				<input type="text" name="description" />
-				<input type="file" name="file" />
-	
+				<input type="text" name="description" /> <input type="file"
+					name="file" />
+
 				<div>
 					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
 						value="Submit">
-				</div>				
+				</div>
 			</div>
 		</section>
 	</form>
 
-	
+
 	</div>
 	<!-- About Details -->
 

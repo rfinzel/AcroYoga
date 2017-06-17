@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -20,6 +20,7 @@
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -135,7 +136,7 @@
 																			</div>
 																			<c:choose>
 																				<c:when test="${loginError != null}">
-																					<p style = "color: red">${loginError}</p>
+																					<p style="color: red">${loginError}</p>
 																				</c:when>
 																			</c:choose>
 																			<div class="form-group">
@@ -219,25 +220,25 @@
 		</div>
 	</header>
 	<div class="container">
-			<div class="row">
-				<c:forEach items="${tList}" var="threadList">
-					<div class="col-lg-3 col-md-6text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/AcroYoga/Forum?id=${threadList.id}" img
-									src="img/header.jpg"  alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>${threadList.name}</h3>
-										<hr class="divider">
-										<p>${threadList.name}</p>
-									</div>
-								</a>
-							</div>
+		<div class="row">
+			<c:forEach items="${tList}" var="threadList">
+				<div class="col-lg-3 col-md-6text-center">
+					<div class="service-box">
+						<div class="thumbnail">
+							<a href="/AcroYoga/Forum?id=${threadList.id}" img
+								src="img/header.jpg" alt="Lights" style="width: 100%">
+								<div class="caption">
+									<h3>${threadList.name}</h3>
+									<hr class="divider">
+									<p>${threadList.name}</p>
+								</div>
+							</a>
 						</div>
 					</div>
-				</c:forEach>
-			</div>
+				</div>
+			</c:forEach>
 		</div>
+	</div>
 
 
 	<!-- jQuery -->

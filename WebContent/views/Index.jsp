@@ -19,6 +19,7 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <link href='css/style.css' rel='stylesheet' type='text/css'>
+
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -63,7 +64,6 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
-					<li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
 					<li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
 					<li>
 						<form id="login-form" action="Search" method="post"
@@ -310,8 +310,9 @@
 											</div>
 											<div class="col-xs-3"></div>
 											<div class="col-xs-3">
-												<a href="#" id="updateAccount-link">ändern</a> <a href="#"
-													id="deleteAccount-link">account löschen</a>
+												<a href="#" id="updateAccount-link">Ändern</a> <br>
+												<a href="#"
+													id="deleteAccount-link">Account löschen</a>
 
 											</div>
 										</div>
