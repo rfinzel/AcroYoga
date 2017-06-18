@@ -240,8 +240,28 @@
 		</c:forEach>
 	</div>
 
-<<<<<<< HEAD
-	<!-- Kontakt -->
+	
+	
+	<div class="container">
+		<div class="row">
+
+			<form id="comment-form" action="AddPost" method="post"
+				accept-charset="UTF-8">
+				<input type="hidden" value="${threadID}" name="threadID">
+				<div>
+					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
+						value="Submit">
+				</div>
+			</form>
+			<div class="col-lg-3 col-md-6text-center">
+				<textarea placeholder="Hier Kommentar schreiben" name="comment"
+					form="comment-form"></textarea>
+			</div>
+
+		</div>
+	</div>
+
+<!-- Kontakt -->
 	<section class="bg-primary" id="kontakt">
 		<div class="container">
 			<div class="row">
@@ -263,27 +283,7 @@
 		</div>
 	</section>
 	<!-- Kontakt ende -->
-=======
-	<div class="container">
-		<div class="row">
-
-			<form id="comment-form" action="AddPost" method="post"
-				accept-charset="UTF-8">
-				<input type="hidden" value="${threadID}" name="threadID">
-				<div>
-					<input class="btn btn-primary btn-block" type="submit" id="sign-in"
-						value="Submit">
-				</div>
-			</form>
-			<div class="col-lg-3 col-md-6text-center">
-				<textarea placeholder="Hier Kommentar schreiben" name="comment"
-					form="comment-form"></textarea>
-			</div>
-
-		</div>
-	</div>
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
-
+	
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 

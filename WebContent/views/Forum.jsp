@@ -227,21 +227,6 @@
 				</div>
 			</div>
 		</div>
-		<c:choose>
-			<c:when test="${loggedIn}">
-				<div class="container">
-					<form method="post" action="views/AddThread.jsp"
-						accept-charset="UTF-8">
-						<input type="hidden" id="id" name="id" value="<%= request.getParameter("id")%>">
-						
-						<div>
-							<input class="btn btn-primary btn-block" type="submit"
-								id="sign-in" value="Thread erstellen">
-						</div>
-					</form>
-				</div>
-			</c:when>
-		</c:choose>
 		<div class="row">
 			<div class="container">
 				<div class="row">
@@ -264,6 +249,21 @@
 				</div>
 			</div>
 		</div>
+		<c:choose>
+			<c:when test="${loggedIn}">
+				<div class="container">
+					<form method="post" action="views/AddThread.jsp"
+						accept-charset="UTF-8">
+						<input type="hidden" id="id" name="id" value="<%= request.getParameter("id")%>">
+						
+						<div>
+							<input class="btn btn-primary btn-block" type="submit"
+								id="sign-in" value="Thread erstellen">
+						</div>
+					</form>
+				</div>
+			</c:when>
+		</c:choose>
 	</section>
 	<!-- Threads ende -->
 

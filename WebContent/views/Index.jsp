@@ -244,17 +244,43 @@
 								<div class="tab-pane fade in active" id="tab1default">
 									<div class="container">
 										<div class="row">
-											<!--<c:choose>
-												<c:when test="loggedIn">-->
+											<div class="col-xs-10"></div>
+											<c:choose>
+												<c:when test="${user.admin}">
+													<div class="col-xs-2">
 														<a href="/AcroYoga/views/AddEvent.jsp"><button
-																type="button" class="btn btn-default  btn-lg"
+																type="button" class="btn btn-default"
 																aria-label="Left Align">
 																<span class="glyphicon glyphicon-plus"
-																	aria-hidden="true"></span>
+																	aria-hidden="false"></span> Veranstaltung
 															</button></a>
-												<!--</c:when>
-											</c:choose>-->
-											<c:forEach items="${eLin}" var="eventList">
+													</div>
+												</c:when>
+											</c:choose>
+											
+											<div class="col-xs-5 col-md-offset-1">
+												<div class="card">
+													<div class="card-image">
+														<img class="img-responsive"
+															src="img/header.jpg">
+														<span class="card-title">AcroYogaJam</span>
+													</div>
+
+													<div class="card-content">
+														<p>Cards for display in portfolio style material
+															design by Google.</p>
+													</div>
+
+													<div class="card-action">
+														<a href="#" target="new_blank">Link</a> <a href="#"
+															target="new_blank">Link</a> <a href="#"
+															target="new_blank">Link</a> <a href="#"
+															target="new_blank">Link</a> <a href="#"
+															target="new_blank">Link</a>
+													</div>
+												</div>
+											</div>
+											<!--<c:forEach items="${eLin}" var="eventList">
 												<div class="col-lg-3 col-md-6 text-center">
 													<div class="service-box">
 														<div class="thumbnail">
@@ -270,14 +296,40 @@
 														</div>
 													</div>
 												</div>
-											</c:forEach>
-											
+											</c:forEach>-->
+
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="tab2default">
 									<div class="container">
 										<div class="row">
+											<div class="col-xs-10"></div>
+											<c:choose>
+												<c:when test="${user.admin}">
+													<div class="col-xs-2">
+														<a href="/AcroYoga/views/AddForum.jsp"><button
+																type="button" class="btn btn-default"
+																aria-label="Left Align">
+																<span class="glyphicon glyphicon-plus"
+																	aria-hidden="false"></span> Forum
+															</button></a>
+													</div>
+												</c:when>
+											</c:choose>
+											<div class="col-xs-10"></div>
+											<c:choose>
+												<c:when test="${user.admin}">
+													<div class="col-xs-2">
+														<a href="/AcroYoga/views/AddThread.jsp"><button
+																type="button" class="btn btn-default"
+																aria-label="Left Align">
+																<span class="glyphicon glyphicon-plus"
+																	aria-hidden="false"></span> Thread
+															</button></a>
+													</div>
+												</c:when>
+											</c:choose>
 											<c:forEach items="${pLin}" var="postList">
 												<div class="col-lg-3 col-md-6 text-center">
 													<div class="service-box">

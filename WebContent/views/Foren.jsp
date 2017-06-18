@@ -228,16 +228,6 @@
 				</div>
 			</div>
 		</div>
-		<c:choose>
-			<c:when test="${user.admin}">
-				<div class="container">
-					<a href="/AcroYoga/views/AddForum.jsp"><button type="button"
-							class="btn btn-default" aria-label="Left Align">
-							<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-						</button></a>
-				</div>
-			</c:when>
-		</c:choose>
 		<div class="container">
 			<div class="row">
 				<c:forEach items="${fList}" var="forenList">
@@ -258,6 +248,21 @@
 				</c:forEach>
 			</div>
 		</div>
+		<c:choose>
+			<c:when test="${loggedIn}">
+				<div class="container">
+					<form method="post" action="views/AddForum.jsp"
+						accept-charset="UTF-8">
+						<input type="hidden" id="id" name="id" value="<%= request.getParameter("id")%>">
+						
+						<div>
+							<input class="btn btn-primary btn-block" type="submit"
+								id="sign-in" value="Forum erstellen">
+						</div>
+					</form>
+				</div>
+			</c:when>
+		</c:choose>
 	</section>
 	<!-- Threads ende -->
 
