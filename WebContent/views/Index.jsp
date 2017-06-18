@@ -70,14 +70,15 @@
 							accept-charset="UTF-8">
 							<div class="input-group">
 								<div class="input-group-btn search-panel">
-									FILTER <button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown">
-									<span id="search_concept">Filter</span> <span class="caret"></span>
-								</button>
-								 <ul class="dropdown-menu" role="menu">
-									<li><a href="#contains">Personen</a></li>
-									<li><a href="#greather_than">Veranstaltungen</a></li>
-								</ul>
+									FILTER
+									<button type="button" class="btn btn-default dropdown-toggle"
+										data-toggle="dropdown">
+										<span id="search_concept">Filter</span> <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#contains">Personen</a></li>
+										<li><a href="#greather_than">Veranstaltungen</a></li>
+									</ul>
 								</div>
 								<input type="hidden" name="search_param" value="all"
 									id="search_param"> <input type="text"
@@ -243,6 +244,16 @@
 								<div class="tab-pane fade in active" id="tab1default">
 									<div class="container">
 										<div class="row">
+											<!--<c:choose>
+												<c:when test="loggedIn">-->
+														<a href="/AcroYoga/views/AddEvent.jsp"><button
+																type="button" class="btn btn-default  btn-lg"
+																aria-label="Left Align">
+																<span class="glyphicon glyphicon-plus"
+																	aria-hidden="true"></span>
+															</button></a>
+												<!--</c:when>
+											</c:choose>-->
 											<c:forEach items="${eLin}" var="eventList">
 												<div class="col-lg-3 col-md-6 text-center">
 													<div class="service-box">
@@ -303,8 +314,8 @@
 											</div>
 											<div class="col-xs-3"></div>
 											<div class="col-xs-3">
-												<a href="#" id="updateAccount-link">Ändern</a> <br> <a
-													href="#" id="deleteAccount-link">Account löschen</a>
+												<a href="" id="updateAccount-link">Ändern</a> <br> <a
+													href="" id="deleteAccount-link">Account löschen</a>
 
 											</div>
 										</div>
@@ -349,7 +360,7 @@
 															placeholder="Geburtstag " value="${user.birthday}">
 													</div>
 												</div>
-												<div class="col-xs-2"></div>
+												<div class="col-xs-1"></div>
 												<div class="col-xs-3">
 
 													<div class="form-group">
@@ -357,8 +368,13 @@
 															<div class="col-sm-6 col-sm-offset-3">
 																<input type="submit" name="register-submit"
 																	id="changeAccount-link" tabindex="4"
-																	value="Änderungen übernehmen">
+																	value="Änderungen übernehmen"
+																	class="btn btn-primary btn-xl page-scroll">
 															</div>
+														</div>
+														<div class="row">
+															<div class="col-xs-3"></div>
+															<a href="" id="backToShowAccount-link">zurück</a>
 														</div>
 													</div>
 												</div>
@@ -371,10 +387,17 @@
 											<div class="col-xs-12">
 												<div class="form-group">
 													<div class="row">
-														<div class="col-sm-6 col-sm-offset-3">
+														<div class="col-sm-6 col-sm-offset-4">
 															<input type="submit" name="register-submit" tabindex="1"
-																value="Account wirklich löschen?">
+																value="Account wirklich löschen?"
+																class="btn btn-primary btn-xl page-scroll">
 														</div>
+													</div>
+													<div class="row"></div>
+													<div class="row"></div>
+													<div class="row">
+
+														<a href="" id="backToShowAccount-link2">zurück</a>
 													</div>
 												</div>
 											</div>
@@ -391,7 +414,7 @@
 		</c:when>
 		<c:otherwise>
 			<!-- About -->
-			<section  id="about">
+			<section id="about">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2 text-center">
@@ -415,12 +438,6 @@
 							<hr class="primary">
 						</div>
 					</div>
-				</div>
-				<div class="container">
-					<a href="/AcroYoga/views/AddEvent.jsp"><button type="button"
-							class="btn btn-default" aria-label="Left Align">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						</button></a>
 				</div>
 				<div class="container">
 					<div class="row">

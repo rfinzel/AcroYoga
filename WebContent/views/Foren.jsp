@@ -229,7 +229,7 @@
 			</div>
 		</div>
 		<c:choose>
-			<c:when test="${user.admin}}">
+			<c:when test="${user.admin}">
 				<div class="container">
 					<a href="/AcroYoga/views/AddForum.jsp"><button type="button"
 							class="btn btn-default" aria-label="Left Align">

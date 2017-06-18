@@ -228,12 +228,17 @@
 			</div>
 		</div>
 		<c:choose>
-			<c:when test="${loggedIn}}">
+			<c:when test="${loggedIn}">
 				<div class="container">
-					<a href="/AcroYoga/views/AddThread.jsp"><button type="button"
-							class="btn btn-default" aria-label="Left Align">
-							<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
-						</button></a>
+					<form method="post" action="views/AddThread.jsp"
+						accept-charset="UTF-8">
+						<input type="hidden" id="id" name="id" value="<%= request.getParameter("id")%>">
+						
+						<div>
+							<input class="btn btn-primary btn-block" type="submit"
+								id="sign-in" value="Thread erstellen">
+						</div>
+					</form>
 				</div>
 			</c:when>
 		</c:choose>

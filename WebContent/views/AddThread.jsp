@@ -237,11 +237,13 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 						<div class="thumbnail">
 							<a img src="img/header.jpg" alt="Lights" style="width: 100%">
 								<div class="caption">
+
 									<form method="post" action="../AddThread"
-										accept-charset="UTF-8">
-										<input type="hidden" value="${forumID}" name="threadID">
-										<input style="margin-bottom: 15px;" type="text"
-											placeholder="Threadname" id="threadname" name="threadname">
+										accept-charset="UTF-8" id="thread-form">
+										<input type="hidden" value="<%=request.getParameter("id")%>"
+											name="id"> <input style="margin-bottom: 15px;"
+											type="text" placeholder="Threadname" id="threadname"
+											name="threadname">
 										<hr class="divider">
 										<input style="margin-bottom: 15px;" type="text"
 											placeholder="Threadinhalt" id="threadcontent"
@@ -252,6 +254,10 @@ F<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 										id="sign-in" value="Submit">
 								</div>
 								</form>
+								<div class="col-lg-3 col-md-6text-center">
+									<textarea placeholder="Hier Kommentar schreiben" name="comment"
+										form="thread-form"></textarea>
+								</div>
 							</a>
 						</div>
 					</div>

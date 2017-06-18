@@ -128,7 +128,33 @@
 			$('#showAccount').addClass('form-notactive');
 			$('#deleteAccount').removeClass('form-notactive');		
 			$('#deleteAccount').addClass('form-active');
-			//e.preventDefault();
+			e.preventDefault();
+		});
+		
+		$('#backToShowAccount-link').click(function(e) {
+			$("#showAccount").delay(100).fadeIn(100);
+	 		$("#updateForm").fadeOut(100);
+	 		$("#deleteAccount").fadeOut(100);
+			$('#updateForm').removeClass('form-active');		
+			$('#updateForm').addClass('form-notactive');
+			$('#deleteAccount').removeClass('form-active');		
+			$('#deleteAccount').addClass('form-notactive');
+			$('#showAccount').removeClass('form-notactive');		
+			$('#showAccount').addClass('form-active');
+			e.preventDefault();
+		});
+		
+		$('#backToShowAccount-link2').click(function(e) {
+			$("#showAccount").delay(100).fadeIn(100);
+	 		$("#updateForm").fadeOut(100);
+	 		$("#deleteAccount").fadeOut(100);
+			$('#updateForm').removeClass('form-active');		
+			$('#updateForm').addClass('form-notactive');
+			$('#deleteAccount').removeClass('form-active');		
+			$('#deleteAccount').addClass('form-notactive');
+			$('#showAccount').removeClass('form-notactive');		
+			$('#showAccount').addClass('form-active');
+			e.preventDefault();
 		});
 	
 	$(document).ready(function(){

@@ -46,15 +46,17 @@ public class ThreadDAO {
 
 		return t;
 	}
-
-	public void addThread(Thread t) {
+	
+	public int addThread(Thread t) {
 		conn = conProvider.getConnection();
+		
+		int id = getNextId();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("insert into forum values(?, ?, ?, ?, ?)");
-			pstmt.setInt(1, getNextId());
+			PreparedStatement pstmt = conn.prepareStatement("insert into thread values(?, ?, ?, ?, ?)");
+			pstmt.setInt(1, id);
 			pstmt.setString(2, t.getName());
 			pstmt.setTimestamp(3, t.getTiming());
-			pstmt.setString(4, t.getName());
+			pstmt.setInt(4, t.getAuthor());
 			pstmt.setInt(5, t.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException f1) {
@@ -67,13 +69,16 @@ public class ThreadDAO {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		return id;
 	}
+
 
 	private int getNextId() {
 		int id = 0;
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select * from forum order by id desc");
+			PreparedStatement pstmt = conn.prepareStatement("select * from thread order by id desc");
 			ResultSet rs = pstmt.executeQuery();
 
 			rs.next();
