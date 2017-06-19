@@ -257,46 +257,23 @@
 													</div>
 												</c:when>
 											</c:choose>
-											
-											<div class="col-xs-5 col-md-offset-1">
-												<div class="card">
-													<div class="card-image">
-														<img class="img-responsive"
-															src="img/header.jpg">
-														<span class="card-title">AcroYogaJam</span>
-													</div>
+											<c:forEach items="${eLin}" var="eventList">
+												<div class="col-xs-5 col-md-offset-1">
 
-													<div class="card-content">
-														<p>Cards for display in portfolio style material
-															design by Google.</p>
-													</div>
-
-													<div class="card-action">
-														<a href="#" target="new_blank">Link</a> <a href="#"
-															target="new_blank">Link</a> <a href="#"
-															target="new_blank">Link</a> <a href="#"
-															target="new_blank">Link</a> <a href="#"
-															target="new_blank">Link</a>
-													</div>
-												</div>
-											</div>
-											<!--<c:forEach items="${eLin}" var="eventList">
-												<div class="col-lg-3 col-md-6 text-center">
-													<div class="service-box">
-														<div class="thumbnail">
-															<a href="/AcroYoga/Event?id=${eventList.id}" img
-																src="img/event/${id}/titel.jpg" alt="Lights"
-																style="width: 100%">
-																<div class="caption">
-																	<h3>${eventList.name}</h3>
-																	<hr class="divider">
-																	<p>${eventList.shortContent}</p>
-																</div>
-															</a>
+													<div class="card">
+														<a href="/AcroYoga/views/Event?id=${eventList.id}"
+															alt="Lights" style="width: 100%">
+															<div class="card-image">
+																<img class="img-responsive" src="img/header.jpg">
+															</div>
+															<div class="card-title" style="text-align: center">${eventList.name}</div>
+														</a>
+														<div class="card-content">
+															<p>${eventList.shortContent}</p>
 														</div>
 													</div>
 												</div>
-											</c:forEach>-->
+											</c:forEach>
 
 										</div>
 									</div>
@@ -331,17 +308,17 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${pLin}" var="postList">
-												<div class="col-lg-3 col-md-6 text-center">
-													<div class="service-box">
-														<div class="thumbnail">
-															<a href="/AcroYoga/Thread?id=${p.thread_id}" alt="Lights"
-																style="width: 100%">
-																<div class="caption">
-																	<h3>${postList.content}</h3>
-																	<hr class="divider">
-																	<p>${postList.content}</p>
-																</div>
-															</a>
+												<div class="col-xs-5 col-md-offset-1">
+													<div class="card">
+														<a href="/AcroYoga/views/Forum?id=${postList.id}"
+															alt="Lights" style="width: 100%">
+															<div class="card-image">
+																<img class="img-responsive" src="img/header.jpg">
+															</div>
+															<div class="card-title" style="text-align: center">${postList.content}</div>
+														</a>
+														<div class="card-content">
+															<p>${postList.content}</p>
 														</div>
 													</div>
 												</div>
