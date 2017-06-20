@@ -160,4 +160,21 @@ public class PostDAO {
 		}
 		return id + 1;
 	}
+	
+	public int countPosts(int threadId) {
+		int counter = 0;
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select count(*) from post where thread_id =?");
+			pstmt.setInt(1, threadId);
+			ResultSet rs = pstmt.executeQuery();
+			
+
+			rs.next();
+			counter = rs.getInt(1);
+		} catch (SQLException f1) {
+			System.out.println(f1.toString());
+		}
+		return counter;
+	}
 }
