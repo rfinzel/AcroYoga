@@ -243,6 +243,22 @@
 										$('#datetimepicker1').datetimepicker();
 									});
 								</script>
+								
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker2'>
+											<input type='text' class="form-control" id="endDate" name="endDate" />
+											<span class="input-group-addon"> <span
+												class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									$(function() {
+										$('#datetimepicker2').datetimepicker();
+									});
+								</script>
 							</div>
 						</div>
 					</div>

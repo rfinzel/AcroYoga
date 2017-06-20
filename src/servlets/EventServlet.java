@@ -80,6 +80,7 @@ public class EventServlet extends HttpServlet {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
 		request.setAttribute("time", new SimpleDateFormat("hh-mm").format(e.getTiming()));
 		request.setAttribute("timing", formatter.format(e.getTiming()));
+		request.setAttribute("endDate", formatter.format(e.getEndDate()));
 
 		Vector<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 		String htmlMembers = "";

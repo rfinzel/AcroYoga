@@ -200,8 +200,6 @@
 								</c:otherwise>
 							</c:choose>
 					</a></li>
-
-
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -222,7 +220,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-4 text-center">
-					<p>${timing}</p>
+					<p>${timing} bis ${endDate}</p>
 				</div>
 				<div class="col-xs-4 text-center">
 					<p>${name}</p>
@@ -241,7 +239,7 @@
 				<div class="col-xs-6">
 					<p>${weekday}${time}Uhr</p>
 
-					<p>Jeden ${regularity}</p>
+					<p>Jeden ${regularity}s</p>
 
 					<p>${place}</p>
 

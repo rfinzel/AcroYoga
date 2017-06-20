@@ -13,9 +13,10 @@ public class Event {
 	private String shortContent;
 	private double fee;
 	private int instructor;
+	private Date endDate;
 	
 	public Event(int id, String name, Timestamp timing, int regularity, String place, String shortContent, String content, double fee,
-			int instructor) {
+			int instructor, Date endDate) {
 		this.id = id;
 		this.name = name;
 		this.timing = timing;
@@ -26,6 +27,7 @@ public class Event {
 		this.fee = fee;
 		this.instructor = instructor;
 		this.readable_timing = timing.toString().substring(0, 16);
+		this.endDate = endDate;
 
 	}
 
@@ -125,6 +127,16 @@ public class Event {
 	public String getName()
 	{
 		return name;
+	}
+	
+	public Date getEndDate()
+	{
+		return endDate;
+	}
+	
+	public void setEndDate(Date endDate)
+	{
+		this.endDate = endDate;
 	}
 
 }

@@ -85,33 +85,38 @@ public class AddingEventServlet extends HttpServlet {
 		String timing = "";
 		int regularity = 0;
 		double fee = 0;
+		String endDate = "";
 
 		name = request.getParameter("eventname");
 		content = request.getParameter("content");
 		place = request.getParameter("place");
-		timing = request.getParameter("date");
+		timing = request.getParameter("date") + " " + request.getParameter("timing") + ":00";
 		regularity = Integer.parseInt(request.getParameter("regularity"));
 		fee = Double.parseDouble(request.getParameter("fee"));
-
+		endDate = request.getParameter("endDate");
+		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		java.util.Date parsed = null;
 		try {
-			parsed = format.parse("2017.12.30 18:30:00");
+			parsed = format.parse(timing);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		java.sql.Timestamp sql = new java.sql.Timestamp(parsed.getTime());
-		System.out.println(sql); // Sat Jan 02 00:00:00 GMT 2010
 
-		int id = eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0));
-
+		format = new SimpleDateFormat("yyyy.MM.dd");
+		parsed = null;
+		try {
+			parsed = format.parse(endDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		java.sql.Date date = new java.sql.Date(parsed.getTime());
 		
+		int id = eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0, date));
 
-		String description = request.getParameter("description"); // Retrieves
-																	// <input
-																	// type="text"
-																	// name="description">
 		Part filePart = request.getPart("file"); // Retrieves <input type="file"
 													// name="file">
 		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE
@@ -126,7 +131,7 @@ public class AddingEventServlet extends HttpServlet {
 		// System.out.println(fileName);
 
 		// Thumbnail vom Bild erstellen
-		createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/" + id);
+		//createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/" + id);
 		
 		if (id >= 0) {
 			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id).mkdir();
