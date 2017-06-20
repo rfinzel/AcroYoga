@@ -42,15 +42,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberDAO mDAO = new MemberDAO();
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
+		
 		if (m != null) {
 			if((request.getParameter("password").equals(m.getPassword())))
 			{
-				Cookie loginCookie = new Cookie("user",Integer.toString(m.getId()));
-				
-				//setting cookie to expiry in 30 mins
-				loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
-				response.addCookie(loginCookie);					
-			}				
+				request.getSession().setAttribute("id", m.getId());
+			}
 			
 		}else{
 			boolean loggedIn = false;

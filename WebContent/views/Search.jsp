@@ -215,27 +215,39 @@
 				<hr>
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-8 col-xs-offset-2">
-							<div class="input-group">
-								<div class="input-group-btn search-panel">
-									<button type="button" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown">
-										<span id="search_concept">Filter</span> <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#contains">Personen</a></li>
-										<li><a href="#greather_than">Veranstaltungen</a></li>
-									</ul>
+						<div class="col-xs-10 col-xs-offset-1">
+							<form id="login-form" action="Search" method="post"
+								accept-charset="UTF-8">
+								<div class="row">
+									<div>
+										<div class="col-xs-3">
+											<div class="input-group-btn search-panel" >
+												FILTER
+												<button type="button"
+													class="btn btn-default dropdown-toggle btn-block"
+													data-toggle="dropdown">
+													<span id="search_concept">Filter</span> <span class="caret"></span>
+												</button>
+
+												<ul class="dropdown-menu" role="menu">
+													<li><a href="#contains">Personen</a></li>
+													<li><a href="#greather_than">Veranstaltungen</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-xs-6 ">
+											<input type="hidden" name="search_param" value="all"
+												id="search_param"> <input type="text"
+												class="form-control" name="x" placeholder="Search term...">
+										</div>
+										<div class="col-xs-3">
+											<span class="input-group-btn"> <input
+												class="btn btn-primary btn-block" type="submit" id="sign-in"
+												value="search"></span>
+										</div>
+									</div>
 								</div>
-								<input type="hidden" name="search_param" value="all"
-									id="search_param"> <input type="text"
-									class="form-control" name="x" placeholder="Search term...">
-								<span class="input-group-btn"><a href="/AcroYoga/Search">
-										<button class="btn btn-default" type="button">
-											<span class="glyphicon glyphicon-search"></span>
-										</button>
-								</a> </span>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -288,7 +300,7 @@
 		</div>
 	</section>
 	<!-- Results ende -->
-	
+
 	<!-- Kontakt -->
 	<section class="bg-primary" id="kontakt">
 		<div class="container">

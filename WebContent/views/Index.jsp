@@ -260,7 +260,7 @@
 											<c:forEach items="${eLin}" var="eventList">
 												<div class="col-xs-5 col-md-offset-1">
 													<div class="card">
-														<a href="/AcroYoga/views/Event?id=${eventList.id}"
+														<a href="/AcroYoga/Event?id=${eventList.id}"
 															alt="Lights" style="width: 100%">
 															<div class="card-image">
 																<img class="img-responsive" src="img/header.jpg">

@@ -39,14 +39,9 @@ public class LogOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		for(Cookie c : request.getCookies())
-		{
-			if(c.getName().equals("user"))
-			{		
-				c.setMaxAge(0);
-				response.addCookie(c);
-			}		
-		}
+		Member m = null;
+		
+		request.getSession().removeAttribute("id");
 		
 		response.sendRedirect("/AcroYoga/Index");
 	}

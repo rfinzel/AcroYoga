@@ -26,50 +26,44 @@ import objects.Member;
 @WebServlet("/Register")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegisterServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RegisterServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		MemberDAO mDAO = new MemberDAO();
 		Member m = mDAO.getMemberByMail(request.getParameter("email"));
-		
-		
+
 		String name = "";
 		String lastname = "";
 		String email = "";
 		String password = "";
-		
+
 		name = request.getParameter("name");
 		lastname = request.getParameter("lastname");
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 
 		mDAO.addMember(new Member(0, false, email, password, name, lastname, null));
-		
-		if((request.getParameter("password").equals(m.getPassword())))
-		{
-			Cookie loginCookie = new Cookie("user",m.getName());
-		
-			//setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(50*365*24*60*60); //50 Jahre
-			response.addCookie(loginCookie);					
-		}
-		
+
+		request.getSession().setAttribute("id", m.getId());
+
 		String path = request.getHeader("referer");
 		System.out.println(path.substring(21));
-		//response.sendRedirect(path.substring(21));
-		
+		// response.sendRedirect(path.substring(21));
+
 		// TODO Auto-generated method stub
-				// Forward to /WEB-INF/views/login.jsp
+		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher(path.substring(30));
 
@@ -77,9 +71,11 @@ public class RegisterServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
