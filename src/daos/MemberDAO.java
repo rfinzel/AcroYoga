@@ -195,7 +195,6 @@ public class MemberDAO {
 
 	public void updateMember(Member m) {
 		conn = conProvider.getConnection();
-		System.out.println("miau");
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(
 					"update members set admin = ?, email= ?, password = ?, name = ?, lastname = ?, birthday = ? where id = ?");

@@ -317,7 +317,7 @@
 														<a href="/AcroYoga/views/Forum?id=${postList.id}"
 															alt="Lights" style="width: 100%"> </a>
 														<div class="card-small-title">
-															<p>${postList.readable_timing}</p>
+															<p>${postList.readable_time}</p>
 														</div>
 														<div class="card-content">
 															<p>${postList.content}...</p>
@@ -345,9 +345,16 @@
 											</div>
 											<div class="col-xs-3"></div>
 											<div class="col-xs-3">
-												<a href="" id="updateAccount-link">Ändern</a> <br> <a
-													href="" id="deleteAccount-link">Account löschen</a>
-
+												<a href="" id="updateAccount-link"><button type="button"
+														class="btn btn-default" aria-label="Left Align">
+														<span class="glyphicon glyphicon-edit" aria-hidden="false"></span>
+														ändern
+													</button></a> <a href="" id="deleteAccount-link"><button
+														type="button" class="btn btn-default"
+														aria-label="Left Align">
+														<span class="glyphicon glyphicon-trash"
+															aria-hidden="false"></span> Account löschen
+													</button></a>
 											</div>
 										</div>
 
@@ -362,7 +369,8 @@
 												<p>Geburtstag</p>
 											</div>
 
-											<form action="UpdateAccount" method="post" role="form">
+											<form name="formUpdate" action="UpdateAccount" method="post"
+												role="form">
 												<div class="col-xs-4">
 
 													<div class="form-group">
@@ -397,15 +405,29 @@
 													<div class="form-group">
 														<div class="row">
 															<div class="col-sm-6 col-sm-offset-3">
-																<input type="submit" name="register-submit"
-																	id="changeAccount-link" tabindex="4"
-																	value="Änderungen übernehmen"
-																	class="btn btn-primary btn-xl page-scroll">
+																<a href="" id="backToShowAccount-link"><button
+																		type="button" class="btn btn-default"
+																		aria-label="Left Align">
+																		<span class="glyphicon glyphicon-triangle-left"
+																			aria-hidden="false"></span> zurück
+																	</button></a>
 															</div>
 														</div>
 														<div class="row">
-															<div class="col-xs-3"></div>
-															<a href="" id="backToShowAccount-link">zurück</a>
+															<div class="col-sm-6 col-sm-offset-3">
+																<a href="javascript: submitform()"
+																	id="changeAccount-link"><button type="button"
+																		class="btn btn-default" aria-label="Left Align">
+																		<span class="glyphicon glyphicon-ok"
+																			aria-hidden="false"></span> Änderungen übernehmen
+																	</button></a>
+																<script type="text/javascript">
+																	function submitform() {
+																		document.formUpdate
+																				.submit();
+																	}
+																</script>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -414,31 +436,48 @@
 										</div>
 									</div>
 									<div id="deleteAccount" class="form-notactive">
-										<form action="DeleteAccount" method="post" role="form">
+										<form name="formDelete" action="DeleteAccount" method="post"
+											role="form">
 											<div class="col-xs-12">
 												<div class="form-group">
 													<div class="row">
-														<div class="col-sm-6 col-sm-offset-4">
-															<input type="submit" name="register-submit" tabindex="1"
-																value="Account wirklich löschen?"
-																class="btn btn-primary btn-xl page-scroll">
+														<div class="col-sm-6 col-sm-offset-3">
+															<a href="javascript: submitform()"
+																id="changeAccount-link"><button type="button"
+																	class="btn btn-default" aria-label="Left Align">
+																	<span class="glyphicon glyphicon-trash"
+																		aria-hidden="false"></span> endgültig löschen
+																</button></a>
+															<script type="text/javascript">
+																function submitform() {
+																	document.formDelete
+																			.submit();
+																}
+															</script>
 														</div>
 													</div>
-													<div class="row"></div>
-													<div class="row"></div>
-													<div class="row">
 
-														<a href="" id="backToShowAccount-link2">zurück</a>
+												</div>
+												<div class="row">
+													<div class="col-sm-6 col-sm-offset-3">
+														<a href="" id="backToShowAccount-link2"><button
+																type="button" class="btn btn-default"
+																aria-label="Left Align">
+																<span class="glyphicon glyphicon-triangle-left"
+																	aria-hidden="false"></span> zurück
+															</button></a>
 													</div>
 												</div>
 											</div>
-										</form>
 									</div>
 								</div>
-								<div></div>
+								</form>
 							</div>
 						</div>
+						<div></div>
 					</div>
+				</div>
+				</div>
 				</div>
 				</div>
 			</section>
@@ -517,7 +556,7 @@
 									<a href="/AcroYoga/views/Thread?id=${postList.thread_id}"
 										alt="Lights" style="width: 100%"> </a>
 									<div class="card-small-title">
-										<p>${postList.readable_timing}</p>
+										<p>${postList.readable_time}</p>
 									</div>
 									<div class="card-content">
 										<p>${postList.content}...</p>
