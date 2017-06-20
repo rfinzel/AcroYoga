@@ -1,6 +1,5 @@
 package objects;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Post {
@@ -10,6 +9,7 @@ public class Post {
 	private Timestamp timing;
 	private int author;
 	private int thread_id;
+	private String readable_timing;
 
 	public Post(int id, String content, Timestamp timing, int author, int thread_) {
 		super();
@@ -18,6 +18,15 @@ public class Post {
 		this.timing = timing;
 		this.author = author;
 		this.thread_id = thread_;
+		this.readable_timing = timing.toString().substring(0, 16);
+	}
+
+	public String getReadable_timing() {
+		return readable_timing;
+	}
+
+	public void setReadable_timing(String readable_timing) {
+		this.readable_timing = readable_timing;
 	}
 
 	public int getId() {
@@ -42,6 +51,8 @@ public class Post {
 
 	public void setTiming(Timestamp timing) {
 		this.timing = timing;
+		this.readable_timing = timing.toString().substring(16);
+
 	}
 
 	public int getAuthor() {

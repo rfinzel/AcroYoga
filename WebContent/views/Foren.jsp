@@ -230,18 +230,12 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<c:forEach items="${fList}" var="forenList">
-					<div class="col-lg-3 col-md-6text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/AcroYoga/Forum?id=${forenList.id}" img
-									src="img/header.jpg" alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>${forenList.name}</h3>
-										<hr class="divider">
-										<p>${forenList.name}</p>
-									</div>
-								</a>
+				<c:forEach items="${fList}" var="forumList">
+					<div class="col-xs-5 col-md-offset-1">
+						<div class="card">
+							<div class="card-content">
+								<a href="/AcroYoga/Forum?id=${forumList.id}" alt="Lights"
+								style="width: 100%">${forumList.name}...</a>
 							</div>
 						</div>
 					</div>
@@ -249,12 +243,13 @@
 			</div>
 		</div>
 		<c:choose>
-			<c:when test="${loggedIn}">
+			<c:when test="${user.admin}">
 				<div class="container">
 					<form method="post" action="views/AddForum.jsp"
 						accept-charset="UTF-8">
-						<input type="hidden" id="id" name="id" value="<%= request.getParameter("id")%>">
-						
+						<input type="hidden" id="id" name="id"
+							value="<%=request.getParameter("id")%>">
+
 						<div>
 							<input class="btn btn-primary btn-block" type="submit"
 								id="sign-in" value="Forum erstellen">

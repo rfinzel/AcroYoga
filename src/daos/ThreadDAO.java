@@ -122,7 +122,34 @@ public class ThreadDAO {
 		conn = conProvider.getConnection();
 		try {
 
-			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ? order by timing desc");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return p;
+	}
+	
+	public Vector<Post> getPostsByThreadAsc(int id) {
+		Vector<Post> p = new Vector<Post>();
+
+		conn = conProvider.getConnection();
+		try {
+
+			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ? order by timing asc");
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 

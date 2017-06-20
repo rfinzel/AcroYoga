@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.EventDAO;
-import daos.ForumDAO;
 import daos.MemberDAO;
 import daos.PostDAO;
 import objects.Event;
@@ -68,12 +67,19 @@ public class Index extends HttpServlet {
 		if (loggedIn) { // Eventlist und Postlist loggedIn
 			List<Event> eLin = eDAO.getEventsByMember(m.getId());
 			request.setAttribute("eLin", eLin);
-			
+
 			List<Post> pLin = pDAO.getPostsByAuthor(m.getId());
+			for (Post p : pLin) {
+				p.setContent(p.getContent().substring(0, Math.min(p.getContent().length(), 25)));
+			}
 			request.setAttribute("pLin", pLin);
+
 		} else { // Eventlist not loggedIn
 			List<Event> eLout = eDAO.getAllEvents();
 			request.setAttribute("eList", eLout);
+			
+			List<Post> pLout = pDAO.getAllPosts();
+			request.setAttribute("pLout", pLout);
 		}
 
 		// TODO Auto-generated method stub

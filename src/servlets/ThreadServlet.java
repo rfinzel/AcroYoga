@@ -79,7 +79,7 @@ public class ThreadServlet extends HttpServlet {
 		request.setAttribute("loggedIn", loggedIn);
 
 		Thread t = tDAO.getThreadById(Integer.parseInt(request.getParameter("id")));
-		List<Post> pList = tDAO.getPostsByThread(t.getId());
+		List<Post> pList = tDAO.getPostsByThreadAsc(t.getId());
 
 		request.setAttribute("pList", pList);
 		request.setAttribute("threadID", t.getId());

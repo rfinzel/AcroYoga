@@ -259,7 +259,6 @@
 											</c:choose>
 											<c:forEach items="${eLin}" var="eventList">
 												<div class="col-xs-5 col-md-offset-1">
-
 													<div class="card">
 														<a href="/AcroYoga/views/Event?id=${eventList.id}"
 															alt="Lights" style="width: 100%">
@@ -274,7 +273,6 @@
 													</div>
 												</div>
 											</c:forEach>
-
 										</div>
 									</div>
 								</div>
@@ -308,17 +306,15 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${pLin}" var="postList">
-												<div class="col-xs-5 col-md-offset-1">
+												<div class="col-xs-5 col-md-offset-1" style="margin-bottom:16px">
 													<div class="card">
 														<a href="/AcroYoga/views/Forum?id=${postList.id}"
-															alt="Lights" style="width: 100%">
-															<div class="card-image">
-																<img class="img-responsive" src="img/header.jpg">
-															</div>
-															<div class="card-title" style="text-align: center">${postList.content}</div>
-														</a>
+															alt="Lights" style="width: 100%"> </a>
+														<div class="card-small-title">
+															<p>${postList.readable_timing}</p>
+														</div>
 														<div class="card-content">
-															<p>${postList.content}</p>
+															<p>${postList.content}...</p>
 														</div>
 													</div>
 												</div>
@@ -470,19 +466,18 @@
 				</div>
 				<div class="container">
 					<div class="row">
-						<c:forEach items="${eList}" var="eventList">
-							<div class="col-lg-3 col-md-6 text-center">
-								<div class="service-box">
-									<div class="thumbnail">
-										<a href="/AcroYoga/Veranstaltung?id=${eventList.id}" img
-											src="img/event/${id}/titel.jpg" alt="Lights"
-											style="width: 100%">
-											<div class="caption">
-												<h3>${eventList.name}</h3>
-												<hr class="divider">
-												<p>${eventList.shortContent}</p>
-											</div>
-										</a>
+						<c:forEach items="${eLout}" var="eventList">
+							<div class="col-xs-5 col-md-offset-1">
+								<div class="card">
+									<a href="/AcroYoga/views/Event?id=${eventList.id}" alt="Lights"
+										style="width: 100%">
+										<div class="card-image">
+											<img class="img-responsive" src="img/header.jpg">
+										</div>
+										<div class="card-title" style="text-align: center">${eventList.name}</div>
+									</a>
+									<div class="card-content">
+										<p>${eventList.shortContent}</p>
 									</div>
 								</div>
 							</div>
@@ -505,71 +500,20 @@
 				</div>
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-3 col-md-6 text-center">
-							<div class="service-box">
-								<div class="thumbnail">
-									<a href="/AcroYoga/Forum?id=1"> <img src="img/header.jpg"
-										alt="Lights" style="width: 100%">
-										<div class="caption">
-											<h3>Forum 1</h3>
-											<hr class="divider">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua.</p>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 text-center">
-							<div class="service-box">
-								<div class="thumbnail">
-									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-										alt="Lights" style="width: 100%">
-										<div class="caption">
-											<h3>Veranstaltung</h3>
-											<hr class="divider">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua.</p>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 text-center">
-							<div class="service-box">
-								<div class="thumbnail">
-									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-										alt="Lights" style="width: 100%">
-										<div class="caption">
-											<h3>Veranstaltung D</h3>
-											<hr class="divider">
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-												elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore magna aliquyam erat, sed diam voluptua.</p>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 text-center">
-							<div class="service-box">
-								<div class="thumbnail">
-									<a href="/w3images/lights.jpg"> <img src="img/header.jpg"
-										alt="Lights" style="width: 100%">
-									</a>
-									<div class="caption">
-										<h3>Veranstaltung D</h3>
-										<hr class="divider">
-										<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-											elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-											dolore magna aliquyam erat, sed diam voluptua.</p>
+						<c:forEach items="${pLout}" var="postList">
+							<div class="col-xs-5 col-md-offset-1">
+								<div class="card">
+									<a href="/AcroYoga/views/Thread?id=${postList.thread_id}"
+										alt="Lights" style="width: 100%"> </a>
+									<div class="card-small-title">
+										<p>${postList.readable_timing}</p>
 									</div>
-
+									<div class="card-content">
+										<p>${postList.content}...</p>
+									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</section>

@@ -76,7 +76,7 @@ public class ForumDAO {
 
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select * from thread where forum_id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select * from thread where forum_id = ? order by timing desc");
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 

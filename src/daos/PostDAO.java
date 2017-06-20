@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.Vector;
 
 import objects.Event;
+import objects.Forum;
 import objects.Post;
 import objects.Thread;
 
@@ -118,6 +119,31 @@ public class PostDAO {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	public Vector<Post> getAllPosts() {
+		Vector<Post> p = new Vector<Post>();
+		
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select id from post");
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				p.add(getPostById(rs.getInt(1)));
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return p;
 	}
 	
 	private int getNextId() {

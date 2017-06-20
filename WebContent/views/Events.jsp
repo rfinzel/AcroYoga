@@ -243,17 +243,17 @@
 		<div class="container">
 			<div class="row">
 				<c:forEach items="${eList}" var="eventList">
-					<div class="col-lg-3 col-md-6text-center">
-						<div class="service-box">
-							<div class="thumbnail">
-								<a href="/AcroYoga/Event?id=${eventList.id}" img
-									src="img/header.jpg" alt="Lights" style="width: 100%">
-									<div class="caption">
-										<h3>${eventList.name}</h3>
-										<hr class="divider">
-										<p>${eventList.name}</p>
-									</div>
-								</a>
+					<div class="col-xs-5 col-md-offset-1">
+						<div class="card">
+							<a href="/AcroYoga/Event?id=${eventList.id}" alt="Lights"
+								style="width: 100%">
+								<div class="card-image">
+									<img class="img-responsive" src="img/header.jpg">
+								</div>
+								<div class="card-title" style="text-align: center">${eventList.name}</div>
+							</a>
+							<div class="card-content">
+								<p>${eventList.shortContent}</p>
 							</div>
 						</div>
 					</div>

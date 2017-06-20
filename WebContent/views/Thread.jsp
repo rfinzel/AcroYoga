@@ -215,6 +215,8 @@
 			</div>
 		</div>
 	</header>
+	
+	
 	<!--<div class="container">
 		<a href="/AcroYoga/views/AddPost.jsp"><button type="button"
 				class="btn btn-default" aria-label="Left Align">

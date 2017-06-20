@@ -10,6 +10,7 @@ public class Thread {
 	private Timestamp timing;
 	private int author;
 	private int forum_id;
+	private String readable_timing;
 	
 	public Thread(int id, String name, Timestamp timing, int author, int forum_id) {
 		super();
@@ -18,6 +19,7 @@ public class Thread {
 		this.timing = timing;
 		this.author = author;
 		this.forum_id = forum_id;
+		this.readable_timing = timing.toString().substring(0, 16);
 	}
 
 	public int getId() {
@@ -41,7 +43,16 @@ public class Thread {
 	}
 
 	public void setTiming(Timestamp timing) {
+		this.readable_timing = timing.toString().substring(0, 16);
 		this.timing = timing;
+	}
+
+	public String getReadable_timing() {
+		return readable_timing;
+	}
+
+	public void setReadable_timing(String readable_timing) {
+		this.readable_timing = readable_timing;
 	}
 
 	public int getAuthor() {

@@ -7,19 +7,10 @@ public class Event {
 	private int id;
 	private String name;
 	private Timestamp timing;
+	private String readable_timing;
 	private int regularity;
 	private String place;
 	private String shortContent;
-	public String getShortContent() {
-		return shortContent;
-	}
-
-
-	public void setShortContent(String shortContent) {
-		this.shortContent = shortContent;
-	}
-
-	private String content;
 	private double fee;
 	private int instructor;
 	
@@ -34,8 +25,20 @@ public class Event {
 		this.shortContent = shortContent;
 		this.fee = fee;
 		this.instructor = instructor;
+		this.readable_timing = timing.toString().substring(0, 16);
+
 	}
 
+	public String getShortContent() {
+		return shortContent;
+	}
+	
+	
+	public void setShortContent(String shortContent) {
+		this.shortContent = shortContent;
+	}
+	
+	private String content;
 	
 	public Timestamp getTiming() {
 		return timing;
@@ -43,9 +46,26 @@ public class Event {
 
 
 	public void setTiming(Timestamp timing) {
+		this.readable_timing = timing.toString().substring(0, 16);
 		this.timing = timing;
 	}
 
+
+	public String getReadable_timing() {
+		return readable_timing;
+	}
+
+	public void setReadable_timing(String readable_timing) {
+		this.readable_timing = readable_timing;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getRegularity() {
 		return regularity;

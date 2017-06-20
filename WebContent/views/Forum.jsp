@@ -231,17 +231,24 @@
 			<div class="container">
 				<div class="row">
 					<c:forEach items="${tList}" var="threadList">
-						<div class="col-lg-3 col-md-6text-center">
-							<div class="service-box">
-								<div class="thumbnail">
-									<a href="/AcroYoga/Thread?id=${threadList.id}" img
-										src="img/header.jpg" alt="Lights" style="width: 100%">
-										<div class="caption">
-											<h3>${threadList.name}</h3>
-											<hr class="divider">
-											<p>${threadList.name}</p>
+						<div class="col-xs-10 col-xs-offset-2">
+							<div class="card">
+								<a href="/AcroYoga/Thread?id=${threadList.forum_id}"
+									alt="Lights" style="width: 100%">
+									<div class="card-content">
+										<div class="card-image">
+											<img class="img-responsive" src="img/header.jpg">
 										</div>
-									</a>
+										<p>${threadList.author}</p>
+									</div>
+								</a>
+								<div>
+									<div class="card-content">
+										<p>${threadList.name}...</p>
+									</div>
+									<div class="card-small-title">
+										<p>${threadList.readable_timing}</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -254,8 +261,9 @@
 				<div class="container">
 					<form method="post" action="views/AddThread.jsp"
 						accept-charset="UTF-8">
-						<input type="hidden" id="id" name="id" value="<%= request.getParameter("id")%>">
-						
+						<input type="hidden" id="id" name="id"
+							value="<%=request.getParameter("id")%>">
+
 						<div>
 							<input class="btn btn-primary btn-block" type="submit"
 								id="sign-in" value="Thread erstellen">
@@ -267,7 +275,7 @@
 	</section>
 	<!-- Threads ende -->
 
-<!-- Kontakt -->
+	<!-- Kontakt -->
 	<section class="bg-primary" id="kontakt">
 		<div class="container">
 			<div class="row">
