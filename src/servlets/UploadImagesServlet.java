@@ -46,35 +46,29 @@ public class UploadImagesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		boolean loggedIn = false;
-
-		Member m = null;
-		MemberDAO mDAO = new MemberDAO();
-		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
-
-		if (m != null)
-			loggedIn = true;
-		request.setAttribute("loggedIn", loggedIn);
-
+		// Event ID
 		String id = request.getParameter("id");
+		/**
+		 * Hier muss der Ordner noch nach dem Datum von dne Bildern benannt werden
+		 */
+		// Alle Bilder hochladen
 		for (int i = 0; i < Integer.parseInt(request.getParameter("amount")); i++) {
-			Part filePart = request.getPart("file"+ (i+1)); 
-			System.out.println("file"+(i+1));
-			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/" + id + "/images/", (i+1)+".jpg");			
+			Part filePart = request.getPart("file" + (i + 1));
+			
+			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images/",
+					(i + 1) + ".jpg");
 
 			try (InputStream fileContent = filePart.getInputStream()) {
 				Files.copy(fileContent, file.toPath());
 			}
-			
-			createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/" + id + "/images/thumbnails", Integer.toString(i+1));
+
+			// Thumbnail erstellen
+			createThumbnail(file,
+					request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images/thumbnails",
+					Integer.toString(i + 1));
 		}
-		
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/Event?id=" + id);
+
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Event?id=" + id);
 
 		dispatcher.forward(request, response);
 	}
@@ -88,7 +82,7 @@ public class UploadImagesServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
+
 	private void createThumbnail(File file, String path, String name) throws IOException {
 		BufferedImage originalBufferedImage = null;
 		try {
@@ -132,13 +126,12 @@ public class UploadImagesServlet extends HttpServlet {
 		}
 
 		BufferedImage thumbnailBufferedImage = resizedImage.getSubimage(x, y, thumbnailWidth, thumbnailWidth);
-		
+
 		try {
-		    ImageIO.write(thumbnailBufferedImage, "JPG", new File(path + "/" + name + ".jpg"));
-		}
-		catch (IOException ioe) {
-		    System.out.println("Error writing image to file");
-		    throw ioe;
+			ImageIO.write(thumbnailBufferedImage, "JPG", new File(path + "/" + name + ".jpg"));
+		} catch (IOException ioe) {
+			System.out.println("Error writing image to file");
+			throw ioe;
 		}
 	}
 

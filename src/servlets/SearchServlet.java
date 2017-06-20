@@ -37,25 +37,33 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Variablen
 		boolean loggedIn = false;
-
+		
+		// DAOs
 		EventDAO eDAO = new EventDAO();
-		Member m = null;
 		MemberDAO mDAO = new MemberDAO();
 		
+		// Objects
+		Member m = null;
+		
+		// Session auslesen, ob ein User angemeldet ist
 		if(request.getSession().getAttribute("id") != null){
 			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-		request.setAttribute("user", m);
 
+		// Wenn Member != null, ist der User angemeldet
 		if (m != null)
 			loggedIn = true;
 
+		// Login Information an JSP weiterleiten um bestimmte Elemente einzublenden
+		request.setAttribute("user", m);
 		request.setAttribute("loggedIn", loggedIn);
 
-		
+		// Suchbegriff
 		String search = request.getParameter("x");
 		
+		// Liste aller gefundenen Events
 		List<Event> eL = eDAO.searchEvents(search);
 		request.setAttribute("eList", eL);
 		

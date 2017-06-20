@@ -40,23 +40,33 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
+		EventDAO eDAO = new EventDAO();
+		PostDAO pDAO = new PostDAO();
+		
+		// Objects
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
 		
-		if (m != null) {
+		// Wenn der Benutzername existiert
+		if (m != null) 
+		{
+			// Passwort überprüfen
 			if((request.getParameter("password").equals(m.getPassword())))
 			{
-				request.getSession().setAttribute("id", m.getId());
+				request.getSession().setAttribute("id", m.getId()); // Session Attribut setzen
 			}
 			
-		}else{
+		}
+		else
+		{
 			boolean loggedIn = false;
 
 			request.setAttribute("loggedIn", loggedIn);
 
-			EventDAO eDAO = new EventDAO();
-			PostDAO pDAO = new PostDAO();
-
+			/*
+			 * Nötig?? loggedIn ist immer false und es wird evtl gar nicht auf die Index Seite verwiesen
+			 */
 			if (loggedIn) { // Eventlist und Postlist loggedIn
 				List<Event> eLin = eDAO.getEventsByMember(m.getId());
 				request.setAttribute("eLin", eLin);
@@ -69,7 +79,6 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("loginError", "Das Passwort oder die Email-Addresse ist inkorrekt.");
-			
 		}
 		
 

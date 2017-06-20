@@ -24,7 +24,7 @@ public class ParticipationDAO {
 	public Participation getParticipationById(int id)
 	{
 		Participation p = null;
-		
+		MemberDAO mDAO = new MemberDAO();
 		conn = conProvider.getConnection();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("select * from participation where id = ?");
@@ -33,7 +33,7 @@ public class ParticipationDAO {
 			
 			while(rs.next())
 			{
-				p = new Participation(rs.getInt(1), rs.getDate(3), rs.getInt(4), rs.getInt(5));
+				p = new Participation(rs.getInt(1), rs.getDate(3), rs.getInt(4), mDAO.getMemberById(rs.getInt(5)));
 			}
 		} catch(SQLException e1) {
 			System.out.println(e1.toString());

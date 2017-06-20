@@ -42,22 +42,30 @@ public class ForenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		boolean loggedIn = false;
 
-		Member m = null;
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
 		ForumDAO fDAO = new ForumDAO();
-		
+
+		// Objects
+		Member m = null;
+
+		// Session auslesen, ob ein User angemeldet ist
 		if(request.getSession().getAttribute("id") != null){
 			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-		request.setAttribute("user", m);
 
+		// Wenn Member != null, ist der User angemeldet
 		if (m != null)
 			loggedIn = true;
 
+		// Login Information an JSP weiterleiten um bestimmte Elemente einzublenden
 		request.setAttribute("loggedIn", loggedIn);
+		request.setAttribute("user", m);
 
+		// Liste aller Foren
 		List<Forum> fV = fDAO.getAllForen();
 		
+		// Foreliste an JSP weiterleiten
 		request.setAttribute("fList", fV);
 
 		// TODO Auto-generated method stub

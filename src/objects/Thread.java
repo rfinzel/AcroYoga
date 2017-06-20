@@ -69,8 +69,5 @@ public class Thread {
 
 	public void setForum_id(int forum_id) {
 		this.forum_id = forum_id;
-	}
-	
-	
-	
+	}	
 }

@@ -55,62 +55,22 @@ public class AddingEventServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		boolean loggedIn = false;
-
-		Member m = null;
-		MemberDAO mDAO = new MemberDAO();
+		// DAOs
 		EventDAO eDAO = new EventDAO();
+
+		// Attribute aus der JSP
+		String name = request.getParameter("eventname");
+		String content = request.getParameter("content");
+		String place = request.getParameter("place");
+		String timing = request.getParameter("date") + " " + request.getParameter("timing") + ":00";
+		int regularity = Integer.parseInt(request.getParameter("regularity"));
+		double fee = Double.parseDouble(request.getParameter("fee"));
+		String endDate = request.getParameter("endDate");
 		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
+		// Event erstellen und ID für die Ordner zwischenspeichern
+		int id = eDAO.addEvent(new Event(0, name, formatTimestamp(timing), regularity, place, content, content, fee, 0, formatDate(endDate)));
 
-		if (m != null)
-			loggedIn = true;
-
-		request.setAttribute("loggedIn", loggedIn);
-
-
-		String name = "";
-		String content = "";
-		String place = "";
-		String timing = "";
-		int regularity = 0;
-		double fee = 0;
-		String endDate = "";
-
-		name = request.getParameter("eventname");
-		content = request.getParameter("content");
-		place = request.getParameter("place");
-		timing = request.getParameter("date") + " " + request.getParameter("timing") + ":00";
-		regularity = Integer.parseInt(request.getParameter("regularity"));
-		fee = Double.parseDouble(request.getParameter("fee"));
-		endDate = request.getParameter("endDate");
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-		java.util.Date parsed = null;
-		try {
-			parsed = format.parse(timing);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		java.sql.Timestamp sql = new java.sql.Timestamp(parsed.getTime());
-
-		format = new SimpleDateFormat("yyyy.MM.dd");
-		parsed = null;
-		try {
-			parsed = format.parse(endDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		java.sql.Date date = new java.sql.Date(parsed.getTime());
-		
-		int id = eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0, date));
-
-		
+		// Wenn das Anlegen geklappt hat, Orderstruktur erstellen
 		if (id >= 0) {
 			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id).mkdir();
 			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images").mkdir();
@@ -126,11 +86,13 @@ public class AddingEventServlet extends HttpServlet {
 			// Thumbnail vom Bild erstellen
 			createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/events/" + id);
 			
+			// Auf die Seite des erstellen Events weiterleiten
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/Event?id=" + id);
 
 			dispatcher.forward(request, response);
 		} else {
+			// Auf Event-erstellen weiterleiten
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/views/AddEvent.jsp");
 
@@ -199,6 +161,34 @@ public class AddingEventServlet extends HttpServlet {
 		    System.out.println("Error writing image to file");
 		    throw ioe;
 		}
+	}
+	
+	private java.sql.Date formatDate(String date)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+		java.util.Date parsed = null;
+		try {
+			parsed = format.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new java.sql.Date(parsed.getTime());
+	}
+	
+	private java.sql.Timestamp formatTimestamp(String timestamp)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		java.util.Date parsed = null;
+		
+		try {
+			parsed = format.parse(timestamp);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new java.sql.Timestamp(parsed.getTime());
 	}
 
 }

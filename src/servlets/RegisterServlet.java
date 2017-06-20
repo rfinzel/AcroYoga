@@ -41,27 +41,32 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
+		
+		// Objects
 		Member m = mDAO.getMemberByMail(request.getParameter("email"));
+		
+		/*
+		 * Abfrage ob mail schon vergeben ist
+		 */
 
-		String name = "";
-		String lastname = "";
-		String email = "";
-		String password = "";
-
-		name = request.getParameter("name");
-		lastname = request.getParameter("lastname");
-		email = request.getParameter("email");
-		password = request.getParameter("password");
+		// Variablen mit Parametern füllen
+		String name = request.getParameter("name");
+		String lastname = request.getParameter("lastname");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 
 		mDAO.addMember(new Member(0, false, email, password, name, lastname, null));
 
+		
+		/*
+		 * Fehler. ID muss vom neu erstellten Member gesetzt werden
+		 */
 		request.getSession().setAttribute("id", m.getId());
 
 		String path = request.getHeader("referer");
-		System.out.println(path.substring(21));
-		// response.sendRedirect(path.substring(21));
-
+		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //

@@ -39,8 +39,8 @@ public class LogOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member m = null;
-		
+
+		// Session Attribut entfernen
 		request.getSession().removeAttribute("id");
 		
 		response.sendRedirect("/AcroYoga/Index");

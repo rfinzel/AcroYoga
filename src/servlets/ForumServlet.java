@@ -55,33 +55,41 @@ public class ForumServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Variablen
 		boolean loggedIn = false;
-
-		ForumDAO fDAO = new ForumDAO();
-		Member m = null;
-		MemberDAO mDAO = new MemberDAO();
-		
-		PostDAO pDAO = new PostDAO();
 		int postCounter;
 
+		// DAOs
+		ForumDAO fDAO = new ForumDAO();
+		MemberDAO mDAO = new MemberDAO();
+		PostDAO pDAO = new PostDAO();
+		
+		// Objects
+		Member m = null;
+		Forum f = null;
+		
+		// Session auslesen, ob ein User angemeldet ist
 		if(request.getSession().getAttribute("id") != null){
 			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-		request.setAttribute("user", m);
 
+		// Wenn Member != null, ist der User angemeldet
 		if (m != null)
 			loggedIn = true;
 
+		// Login Information an JSP weiterleiten um bestimmte Elemente einzublenden
 		request.setAttribute("loggedIn", loggedIn);
+		request.setAttribute("user", m);
 
-		Forum f = fDAO.getForumById(Integer.parseInt(request.getParameter("id")));
+		// Forum auslesen
+		f = fDAO.getForumById(Integer.parseInt(request.getParameter("id")));
 		
+		// Alle Threads im Forum
 		List<Thread> tList = fDAO.getThreadsByForum(f.getId());
-		
 		request.setAttribute("tList", tList);
 
+		// Postcounter der einzelnen Threads ermitteln
 		postCounter = pDAO.countPosts(Integer.parseInt(request.getParameter("id")));
-		
 		request.setAttribute("postCounter", postCounter);
 		
 		// TODO Auto-generated method stub

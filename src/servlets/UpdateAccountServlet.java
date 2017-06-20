@@ -34,41 +34,24 @@ public class UpdateAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Member m = null;
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
 		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
+		// Objects
+		Member m = null;
 		
-		String name;
-		String lastname;
-		String email;
-		String password;
-		String birthday;
+		// Variablen mit Parameter füllen
+		String name = request.getParameter("name");
+		String lastname = request.getParameter("lastname");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String birthday = request.getParameter("birthday");
 		
-		name = request.getParameter("name");
-		lastname = request.getParameter("lastname");
-		email = request.getParameter("email");
-		password = request.getParameter("password");
-		birthday = request.getParameter("birthday");
+		// Member updaten
+		m = mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString()));
 		
-		//String into sql.Date casten
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		java.util.Date parsed = null;
-		try {
-			parsed = format.parse(birthday);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		java.sql.Date sqlBirthday = new java.sql.Date(parsed.getTime());
-		
-		
-		Member tempM = new Member(m.getId(), m.getAdmin(), email, password, name, lastname, sqlBirthday);
-		mDAO.updateMember(tempM);
-		
+		Member tempM = new Member(m.getId(), m.getAdmin(), email, password, name, lastname, formatDate(birthday));
+		mDAO.updateMember(tempM);		
 						
 		// TODO Auto-generated method stub
 				// Forward to /WEB-INF/views/login.jsp
@@ -85,5 +68,34 @@ public class UpdateAccountServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	private java.sql.Date formatDate(String date)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+		java.util.Date parsed = null;
+		try {
+			parsed = format.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new java.sql.Date(parsed.getTime());
+	}
+	
+	private java.sql.Timestamp formatTimestamp(String timestamp)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		java.util.Date parsed = null;
+		
+		try {
+			parsed = format.parse(timestamp);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new java.sql.Timestamp(parsed.getTime());
+	}
+
 
 }

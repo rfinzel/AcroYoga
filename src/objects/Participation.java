@@ -7,17 +7,16 @@ public class Participation {
 	private int id;
 	private Date timing;
 	private int event;
-	private int participants;
+	private Member participant;
 	private String readable_timing;
 
-	public Participation(int id, Date timing, int event, int participants) {
+	public Participation(int id, Date timing, int event, Member participant) {
 		super();
 		this.id = id;
 		this.timing = timing;
 		this.event = event;
-		this.participants = participants;
+		this.participant = participant;
 		this.readable_timing = timing.toString().substring(0, 16);
-
 	}
 
 	public String getReadable_timing() {
@@ -53,12 +52,12 @@ public class Participation {
 		this.event = event;
 	}
 
-	public int getParticipants() {
-		return participants;
+	public Member getParticipant() {
+		return participant;
 	}
 
-	public void setParticipants(int participants) {
-		this.participants = participants;
+	public void setParticipant(Member participant) {
+		this.participant = participant;
 	}
 
 }

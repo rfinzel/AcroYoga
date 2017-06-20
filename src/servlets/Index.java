@@ -39,24 +39,31 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Variablen
 		boolean loggedIn = false;
 
-		Member m = null;
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
+		EventDAO eDAO = new EventDAO();
+		PostDAO pDAO = new PostDAO();
 		
+		// Objects
+		Member m = null;
+		
+		// Session auslesen, ob ein User angemeldet ist
 		if(request.getSession().getAttribute("id") != null){
 			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-		request.setAttribute("user", m);
-
+		
+		// Wenn Member != null, ist der User angemeldet
 		if (m != null)
 			loggedIn = true;
 
+		// Login Information an JSP weiterleiten um bestimmte Elemente einzublenden
 		request.setAttribute("loggedIn", loggedIn);
+		request.setAttribute("user", m);
 
-		EventDAO eDAO = new EventDAO();
-		PostDAO pDAO = new PostDAO();
-
+		// Eventlist und Postlist je nachdem ob der Benutzer eingeloggt ist, oder nicht
 		if (loggedIn) { // Eventlist und Postlist loggedIn
 			List<Event> eLin = eDAO.getEventsByMember(m.getId());
 			request.setAttribute("eLin", eLin);

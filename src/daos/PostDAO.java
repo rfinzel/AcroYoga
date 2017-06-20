@@ -24,7 +24,8 @@ public class PostDAO {
 
 	public Post getPostById(int id) {
 		Post p = null;
-
+		MemberDAO mDAO = new MemberDAO();
+		
 		conn = conProvider.getConnection();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("select * from post where id = ?");
@@ -32,7 +33,7 @@ public class PostDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				p = new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5));
+				p = new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), mDAO.getMemberById(rs.getInt(4)), rs.getInt(5));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());
@@ -47,33 +48,7 @@ public class PostDAO {
 
 		return p;
 	}
-
-	public Vector<Post> getPostsByThread(int id) {
-		Vector<Post> p = new Vector<Post>();
-
-		conn = conProvider.getConnection();
-		try {
-			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ?");
-			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
-			}
-		} catch (SQLException e1) {
-			System.out.println(e1.toString());
-		}
-
-		try {
-			conn.close();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		return p;
-	}
-
+	
 	public Vector<Post> getPostsByAuthor(int member) {
 		Vector<Post> p = new Vector<Post>();
 
@@ -99,6 +74,61 @@ public class PostDAO {
 		return p;
 	}
 	
+	public Vector<Post> getPostsByThread(int id) {
+		Vector<Post> p = new Vector<Post>();
+		MemberDAO mDAO = new MemberDAO();
+		
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ?");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), mDAO.getMemberById(rs.getInt(4)), rs.getInt(5)));
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return p;
+	}
+
+	public Vector<Post> getPostsByThreadAsc(int id) {
+		Vector<Post> p = new Vector<Post>();
+		MemberDAO mDAO = new MemberDAO();
+		
+		conn = conProvider.getConnection();
+		try {
+
+			PreparedStatement pstmt = conn.prepareStatement("select * from post where thread_id = ? order by timing asc");
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				p.add(new Post(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), mDAO.getMemberById(rs.getInt(4)), rs.getInt(5)));
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		return p;
+	}
+	
 	public void addPost(Post p) {
 		conn = conProvider.getConnection();
 		try {
@@ -106,7 +136,7 @@ public class PostDAO {
 			pstmt.setInt(1, getNextId());
 			pstmt.setString(2, p.getContent());
 			pstmt.setTimestamp(3, p.getTiming());
-			pstmt.setInt(4, p.getAuthor());
+			pstmt.setInt(4, p.getAuthor().getId());
 			pstmt.setInt(5, p.getThread_id());
 			pstmt.executeUpdate();
 		} catch (SQLException p1) {
@@ -146,21 +176,6 @@ public class PostDAO {
 		return p;
 	}
 	
-	private int getNextId() {
-		int id = 0;
-		conn = conProvider.getConnection();
-		try {
-			PreparedStatement pstmt = conn.prepareStatement("select * from post order by id desc");
-			ResultSet rs = pstmt.executeQuery();
-
-			rs.next();
-			id = rs.getInt(1);
-		} catch (SQLException f1) {
-			System.out.println(f1.toString());
-		}
-		return id + 1;
-	}
-	
 	public int countPosts(int threadId) {
 		int counter = 0;
 		conn = conProvider.getConnection();
@@ -177,4 +192,21 @@ public class PostDAO {
 		}
 		return counter;
 	}
+	
+	private int getNextId() {
+		int id = 0;
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select * from post order by id desc");
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next();
+			id = rs.getInt(1);
+		} catch (SQLException f1) {
+			System.out.println(f1.toString());
+		}
+		return id + 1;
+	}
+	
+	
 }

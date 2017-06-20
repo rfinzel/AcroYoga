@@ -48,33 +48,25 @@ public class AddingThreadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
-		boolean loggedIn = false;
-
-		Member m = null;
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
 		ThreadDAO tDAO = new ThreadDAO();
 		PostDAO pDAO = new PostDAO();
 		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
-
-		if (m != null)
-			loggedIn = true;
-
-		request.setAttribute("loggedIn", loggedIn);
-
+		// Forum ID
 		String id = request.getParameter("id");
+
+		// Thread anlegen und ID zwischenspeichern
 		int threadID = tDAO.addThread(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 0, Integer.parseInt(id)));
-		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), m.getId(), threadID));
+		
+		// Post hinzufügen
+		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), threadID));
 		
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
-        = this.getServletContext().getRequestDispatcher("/Forum?id="+id);
+        = this.getServletContext().getRequestDispatcher("/Forum?id="+request.getParameter("id"));
 
         dispatcher.forward(request, response);
 	}

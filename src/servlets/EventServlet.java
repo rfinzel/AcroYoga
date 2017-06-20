@@ -43,23 +43,31 @@ public class EventServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean loggedIn = false;
-
-		Member m = null;
-		MemberDAO mDAO = new MemberDAO();
 		
+		// DAOs
+		MemberDAO mDAO = new MemberDAO();
+		EventDAO eDAO = new EventDAO();
+		
+		// Objects
+		Member m = null;
+		Event e = null;
+		
+		// Session auslesen, ob ein User angemeldet ist
 		if(request.getSession().getAttribute("id") != null){
 			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-		request.setAttribute("user", m);
 
+		// Wenn Member != null, ist der User angemeldet
 		if (m != null)
 			loggedIn = true;
 
+		// Login Information an JSP weiterleiten um bestimmte Elemente einzublenden
+		request.setAttribute("user", m);
 		request.setAttribute("loggedIn", loggedIn);
 		
-		EventDAO eDAO = new EventDAO();
-		Event e = eDAO.getEventById(Integer.parseInt(request.getParameter("id")));
+		e = eDAO.getEventById(Integer.parseInt(request.getParameter("id")));
 		
+		// Variablen an JSP weiterleiten
 		request.setAttribute("name", e.getName());
 		request.setAttribute("loginbtn", "<a href=\"#about\" class=\"btn btn-primary btn-xl page-scroll\">Anmelden</a>");
 		request.setAttribute("place", e.getPlace());
@@ -67,23 +75,31 @@ public class EventServlet extends HttpServlet {
 		request.setAttribute("regularity", e.getRegularity());
 		request.setAttribute("fee", e.getFee());
 		request.setAttribute("id", e.getId());
+		
+		// Wochentag ermitteln
 		String weekday = new SimpleDateFormat("EE").format(e.getTiming());
 		request.setAttribute("weekday", weekday);
 		
+		// Datum und Uhrzeit formatieren
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
 		request.setAttribute("time", new SimpleDateFormat("hh-mm").format(e.getTiming()));
 		request.setAttribute("timing", formatter.format(e.getTiming()));
 		request.setAttribute("endDate", formatter.format(e.getEndDate()));
 
+		// Teilnehmer (überarbeiten)
 		Vector<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 		String htmlMembers = "";
 
 		for(int i = 0; i < members.size(); i++)
 			htmlMembers = htmlMembers + members.get(i).getName() + " ";
 		request.setAttribute("participants", htmlMembers);
+		// Überarbeiten
 		
+		
+		// Bilder upload zu den Events
 		File f = new File(request.getSession().getServletContext().getRealPath("img") + "/" + e.getId() + "/images");
 		
+		// Filtern nach .jpg und .png
 		FilenameFilter textFilter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				String lowercaseName = name.toLowerCase();
@@ -95,12 +111,13 @@ public class EventServlet extends HttpServlet {
 			}
 		};
 		
+		// Filelist zur Anzeige in der Gallery
 		List<String> fileList = new Vector<String>();
 		if(f.list(textFilter) != null)
 			fileList = Arrays.asList(f.list());
 
-		
 		request.setAttribute("fileList", fileList);
+		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //

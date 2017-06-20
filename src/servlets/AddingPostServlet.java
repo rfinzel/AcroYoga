@@ -48,23 +48,13 @@ public class AddingPostServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean loggedIn = false;
-
-		Member m = null;
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
 		PostDAO pDAO = new PostDAO();
-		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
 
-		if (m != null)
-			loggedIn = true;
 
-		request.setAttribute("loggedIn", loggedIn);
-
-		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), 1, Integer.parseInt(request.getParameter("threadID"))));
+		// Post hinzufügen
+		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), Integer.parseInt(request.getParameter("threadID"))));
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

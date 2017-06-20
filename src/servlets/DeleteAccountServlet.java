@@ -32,19 +32,11 @@ public class DeleteAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean loggedIn = false;
-		
-		Member m = null;
+		// DAOs
 		MemberDAO mDAO = new MemberDAO();
 		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
-
-		request.setAttribute("loggedIn", loggedIn);
-			
-		mDAO.deleteMember(m);
+		// Angemeldeten User löschen
+		mDAO.deleteMember(mDAO.getMemberById((Integer)request.getSession().getAttribute("id")));
 						
 		// TODO Auto-generated method stub
 				// Forward to /WEB-INF/views/login.jsp

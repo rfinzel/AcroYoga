@@ -42,26 +42,11 @@ public class AddingForumServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean loggedIn = false;
-
-		Member m = null;
-		MemberDAO mDAO = new MemberDAO();
+		// DAOs
 		ForumDAO fDAO = new ForumDAO();
-		
-		if(request.getSession().getAttribute("id") != null){
-			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		}
-		request.setAttribute("user", m);
-
-		if (m != null)
-			loggedIn = true;
-
-		request.setAttribute("loggedIn", loggedIn);
-		
-		
+					
+		// Forum hinzufügen
 		fDAO.addForum(new Forum(0, request.getParameter("forumname")));
-		
-		
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

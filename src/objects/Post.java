@@ -7,12 +7,12 @@ public class Post {
 	private int id;
 	private String content;
 	private Timestamp timing;
-	private int author;
+	private Member author;
 	private int thread_id;
 	private String readable_time;
 	private String readable_date;
 
-	public Post(int id, String content, Timestamp timing, int author, int thread_) {
+	public Post(int id, String content, Timestamp timing, Member author, int thread_) {
 		super();
 		this.id = id;
 		this.content = content;
@@ -65,11 +65,11 @@ public class Post {
 		this.readable_date = timing.toString().substring(0, 10);
 	}
 
-	public int getAuthor() {
+	public Member getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(int author) {
+	public void setAuthor(Member author) {
 		this.author = author;
 	}
 
