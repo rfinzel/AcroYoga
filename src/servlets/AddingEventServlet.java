@@ -110,28 +110,24 @@ public class AddingEventServlet extends HttpServlet {
 		
 		int id = eDAO.addEvent(new Event(0, name, sql, regularity, place, content, content, fee, 0, date));
 
-		Part filePart = request.getPart("file"); // Retrieves <input type="file"
-													// name="file">
-		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE
-																								// fix.
-
-		File file = new File(request.getSession().getServletContext().getRealPath("img") + "/" + id, "image.jpg");
-		System.out.println(request.getSession().getServletContext().getRealPath("img"));
-
-		try (InputStream fileContent = filePart.getInputStream()) {
-			Files.copy(fileContent, file.toPath());
-		}
-		// System.out.println(fileName);
-
-		// Thumbnail vom Bild erstellen
-		//createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/" + id);
 		
 		if (id >= 0) {
-			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id).mkdir();
-			new File(request.getSession().getServletContext().getRealPath("img") + "/" + id + "/images").mkdir();
+			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id).mkdir();
+			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images").mkdir();
 
+			Part filePart = request.getPart("file");
+			
+			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id, "image.jpg");
+			
+			try (InputStream fileContent = filePart.getInputStream()) {
+				Files.copy(fileContent, file.toPath());
+			}
+			
+			// Thumbnail vom Bild erstellen
+			createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/events/" + id);
+			
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/Event.jsp");
+					= this.getServletContext().getRequestDispatcher("/Event?id=" + id);
 
 			dispatcher.forward(request, response);
 		} else {
@@ -154,7 +150,7 @@ public class AddingEventServlet extends HttpServlet {
 
 	private void createThumbnail(File file, String path) throws IOException {
 		BufferedImage originalBufferedImage = null;
-		try {
+		try {			
 			originalBufferedImage = ImageIO.read(file);
 		} catch (IOException ioe) {
 			System.out.println("IO exception occurred while trying to read image.");

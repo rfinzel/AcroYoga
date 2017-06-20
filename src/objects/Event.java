@@ -18,6 +18,7 @@ public class Event {
 	private int instructor;
 	private Date endDate;
 	private String weekday;
+	private String content;
 	
 	public Event(int id, String name, Timestamp timing, int regularity, String place, String shortContent, String content, double fee,
 			int instructor, Date endDate) {
@@ -40,12 +41,12 @@ public class Event {
 		return shortContent;
 	}
 	
-	
 	public void setShortContent(String shortContent) {
 		this.shortContent = shortContent;
 	}
 	
 	
+
 	public Timestamp getTiming() {
 		return timing;
 	}

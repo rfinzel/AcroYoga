@@ -231,7 +231,7 @@
 								<div class='col-sm-6'>
 									<div class="form-group">
 										<div class='input-group date' id='datetimepicker1'>
-											<input type='text' class="form-control" id="date" name="date" />
+											<input type='text' class="form-control" id="date" name="date" placeholder="Startdatum"/>
 											<span class="input-group-addon"> <span
 												class="glyphicon glyphicon-calendar"></span>
 											</span>
@@ -247,7 +247,7 @@
 								<div class='col-sm-6'>
 									<div class="form-group">
 										<div class='input-group date' id='datetimepicker2'>
-											<input type='text' class="form-control" id="endDate" name="endDate" />
+											<input type='text' class="form-control" id="endDate" name="endDate" placeholder="Enddatum"/>
 											<span class="input-group-addon"> <span
 												class="glyphicon glyphicon-calendar"></span>
 											</span>
@@ -262,10 +262,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-6">
-						<input style="margin-bottom: 15px;" type="text"
-							placeholder="Veranstaltungsname" id="eventname" name="eventname">
-					</div>
+					
 				</div>
 			</div>
 		</section>
@@ -276,7 +273,7 @@
 		<section id="veranstaltungen">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-4">
 						<input style="margin-bottom: 15px;" type="text"
 							placeholder="Uhrzeit" id="timing" name="timing">
 						<p>Uhr</p>
@@ -294,10 +291,15 @@
 						<p style="color: gray">Hier werden Bilder der Mitglieder
 							angezeigt, die teilnehmen werden</p>
 					</div>
-					<div class="col-xs-6">
+					<div class="col-xs-4">
+						<input style="margin-bottom: 15px;" type="text"
+							placeholder="Veranstaltungsname" id="eventname" name="eventname">
+					</div>
+					<div class="col-xs-4">
 						<input style="margin-bottom: 15px;" type="text"
 							placeholder="Beschreibung" id="content" name="content">
 					</div>
+					
 				</div>
 
 				<!-- FILE UPLOAD -->
