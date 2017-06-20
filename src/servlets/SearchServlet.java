@@ -39,24 +39,16 @@ public class SearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 		boolean loggedIn = false;
 
-		Cookie user = null;
-		MemberDAO mDAO = new MemberDAO();
 		EventDAO eDAO = new EventDAO();
-
 		Member m = null;
-
-		if (request.getCookies() != null) {
-			for (Cookie c : request.getCookies()) {
-				if (c.getName().equals("user")) {
-					user = c;
-					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
-				}
-			}
+		MemberDAO mDAO = new MemberDAO();
+		
+		if(request.getSession().getAttribute("id") != null){
+			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-
 		request.setAttribute("user", m);
 
-		if (user != null)
+		if (m != null)
 			loggedIn = true;
 
 		request.setAttribute("loggedIn", loggedIn);

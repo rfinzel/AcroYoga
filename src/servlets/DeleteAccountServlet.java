@@ -32,18 +32,18 @@ public class DeleteAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie user = null;
+		boolean loggedIn = false;
+		
 		Member m = null;
 		MemberDAO mDAO = new MemberDAO();
-		if (request.getCookies() != null) {
-			for (Cookie c : request.getCookies()) {
-				if (c.getName().equals("user")) {
-					user = c;
-					m = mDAO.getMemberById(Integer.parseInt(c.getValue()));
-				}
-			}
+		
+		if(request.getSession().getAttribute("id") != null){
+			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
-				
+		request.setAttribute("user", m);
+
+		request.setAttribute("loggedIn", loggedIn);
+			
 		mDAO.deleteMember(m);
 						
 		// TODO Auto-generated method stub
