@@ -2,18 +2,22 @@ package objects;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Event {
 	private int id;
 	private String name;
 	private Timestamp timing;
-	private String readable_timing;
+	private String readable_time;
+	private String readable_date;
 	private int regularity;
 	private String place;
+	private String content;
 	private String shortContent;
 	private double fee;
 	private int instructor;
 	private Date endDate;
+	private String weekday;
 	
 	public Event(int id, String name, Timestamp timing, int regularity, String place, String shortContent, String content, double fee,
 			int instructor, Date endDate) {
@@ -26,9 +30,10 @@ public class Event {
 		this.shortContent = shortContent;
 		this.fee = fee;
 		this.instructor = instructor;
-		this.readable_timing = timing.toString().substring(0, 16);
+		this.readable_time = timing.toString().substring(11, 16);
+		this.readable_date = timing.toString().substring(0, 10);
 		this.endDate = endDate;
-
+		this.weekday = new SimpleDateFormat("EE").format(timing);
 	}
 
 	public String getShortContent() {
@@ -40,25 +45,40 @@ public class Event {
 		this.shortContent = shortContent;
 	}
 	
-	private String content;
 	
 	public Timestamp getTiming() {
 		return timing;
 	}
 
-
 	public void setTiming(Timestamp timing) {
-		this.readable_timing = timing.toString().substring(0, 16);
 		this.timing = timing;
+		this.weekday = new SimpleDateFormat("EE").format(timing);
+		this.readable_time = timing.toString().substring(12, 16);
+		this.readable_date = timing.toString().substring(0, 10);
 	}
 
-
-	public String getReadable_timing() {
-		return readable_timing;
+	public String getWeekday() {
+		return weekday;
 	}
 
-	public void setReadable_timing(String readable_timing) {
-		this.readable_timing = readable_timing;
+	public void setWeekday(String weekdate) {
+		this.weekday = weekdate;
+	}
+
+	public String getReadable_time() {
+		return readable_time;
+	}
+
+	public void setReadable_time(String readable_time) {
+		this.readable_time = readable_time;
+	}
+
+	public String getReadable_date() {
+		return readable_date;
+	}
+
+	public void setReadable_date(String readable_date) {
+		this.readable_date = readable_date;
 	}
 
 	public void setId(int id) {

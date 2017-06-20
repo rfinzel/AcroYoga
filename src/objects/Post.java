@@ -9,7 +9,8 @@ public class Post {
 	private Timestamp timing;
 	private int author;
 	private int thread_id;
-	private String readable_timing;
+	private String readable_time;
+	private String readable_date;
 
 	public Post(int id, String content, Timestamp timing, int author, int thread_) {
 		super();
@@ -18,15 +19,24 @@ public class Post {
 		this.timing = timing;
 		this.author = author;
 		this.thread_id = thread_;
-		this.readable_timing = timing.toString().substring(0, 16);
+		this.readable_time = timing.toString().substring(11, 16);
+		this.readable_date = timing.toString().substring(0, 10);
 	}
 
-	public String getReadable_timing() {
-		return readable_timing;
+	public String getReadable_time() {
+		return readable_time;
 	}
 
-	public void setReadable_timing(String readable_timing) {
-		this.readable_timing = readable_timing;
+	public void setReadable_time(String readable_time) {
+		this.readable_time = readable_time;
+	}
+
+	public String getReadable_date() {
+		return readable_date;
+	}
+
+	public void setReadable_date(String readable_date) {
+		this.readable_date = readable_date;
 	}
 
 	public int getId() {
@@ -51,8 +61,8 @@ public class Post {
 
 	public void setTiming(Timestamp timing) {
 		this.timing = timing;
-		this.readable_timing = timing.toString().substring(16);
-
+		this.readable_time = timing.toString().substring(12, 16);
+		this.readable_date = timing.toString().substring(0, 10);
 	}
 
 	public int getAuthor() {

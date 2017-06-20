@@ -69,7 +69,7 @@ public class Index extends HttpServlet {
 
 		} else { // Eventlist not loggedIn
 			List<Event> eLout = eDAO.getAllEvents();
-			request.setAttribute("eList", eLout);
+			request.setAttribute("eLout", eLout);
 			
 			List<Post> pLout = pDAO.getAllPosts();
 			request.setAttribute("pLout", pLout);

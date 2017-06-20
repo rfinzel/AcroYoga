@@ -18,11 +18,11 @@
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<link href='css/style.css' rel='stylesheet' type='text/css'>
 
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link href='css/style.css' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -260,8 +260,13 @@
 											<c:forEach items="${eLin}" var="eventList">
 												<div class="col-xs-5 col-md-offset-1">
 													<div class="card">
-														<a href="/AcroYoga/Event?id=${eventList.id}"
-															alt="Lights" style="width: 100%">
+														<a href="/AcroYoga/Event?id=${eventList.id}" alt="Lights"
+															style="width: 100%">
+															<div class="card-date">
+																<p>${eventList.weekday}</p>
+																${eventList.readable_time} Uhr<br>
+																${eventList.readable_date}
+															</div>
 															<div class="card-image">
 																<img class="img-responsive" src="img/header.jpg">
 															</div>
@@ -306,7 +311,8 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${pLin}" var="postList">
-												<div class="col-xs-5 col-md-offset-1" style="margin-bottom:16px">
+												<div class="col-xs-5 col-md-offset-1"
+													style="margin-bottom: 16px">
 													<div class="card">
 														<a href="/AcroYoga/views/Forum?id=${postList.id}"
 															alt="Lights" style="width: 100%"> </a>
@@ -469,8 +475,13 @@
 						<c:forEach items="${eLout}" var="eventList">
 							<div class="col-xs-5 col-md-offset-1">
 								<div class="card">
-									<a href="/AcroYoga/views/Event?id=${eventList.id}" alt="Lights"
+									<a href="/AcroYoga/Event?id=${eventList.id}" alt="Lights"
 										style="width: 100%">
+										<div class="card-date">
+											<p>${eventList.weekday}</p>
+											${eventList.readable_time} Uhr<br>
+											${eventList.readable_date}
+										</div>
 										<div class="card-image">
 											<img class="img-responsive" src="img/header.jpg">
 										</div>

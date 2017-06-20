@@ -42,7 +42,7 @@
     <![endif]-->
 </head>
 
-<body id="page-top">
+<body id="page-top forum-page" >
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">

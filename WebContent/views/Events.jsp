@@ -247,6 +247,11 @@
 						<div class="card">
 							<a href="/AcroYoga/Event?id=${eventList.id}" alt="Lights"
 								style="width: 100%">
+								<div class="card-date">
+								<p>${eventList.weekday}</p>
+								${eventList.readable_time} Uhr<br>
+								${eventList.readable_date} 
+								</div>
 								<div class="card-image">
 									<img class="img-responsive" src="img/header.jpg">
 								</div>
