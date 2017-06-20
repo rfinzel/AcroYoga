@@ -51,6 +51,15 @@
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16)
 }
 
+.card .card-delete {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 10px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+	background: transparent;
+}
+
 .card .card-date p {
 	text-transform: uppercase;
 	color: black;

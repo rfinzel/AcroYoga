@@ -244,10 +244,10 @@
 								<div class="tab-pane fade in active" id="tab1default">
 									<div class="container">
 										<div class="row">
-											<div class="col-xs-10"></div>
+											<div class="col-xs-9"></div>
 											<c:choose>
 												<c:when test="${user.admin}">
-													<div class="col-xs-2">
+													<div class="col-xs-3">
 														<a href="/AcroYoga/views/AddEvent.jsp"><button
 																type="button" class="btn btn-default"
 																aria-label="Left Align">
@@ -258,7 +258,7 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${eLin}" var="eventList">
-												<div class="col-xs-5 col-md-offset-1">
+												<div class="col-xs-4 col-md-offset-1">
 													<div class="card">
 														<a href="/AcroYoga/Event?id=${eventList.id}" alt="Lights"
 															style="width: 100%">
@@ -266,6 +266,15 @@
 																<p>${eventList.weekday}</p>
 																${eventList.readable_time} Uhr<br>
 																${eventList.readable_date}
+															</div>
+															<div class="card-delete">
+																<a href="" alt="Lights" style="width: 100%">
+																	<button type="button" class="btn btn-default btn-lg"
+																		style="background: transparent">
+																		<span class="glyphicon glyphicon-trash"
+																			aria-hidden="true" style="color: white"></span>
+																	</button>
+																</a>
 															</div>
 															<div class="card-image">
 																<img class="img-responsive" src="img/header.jpg">
@@ -284,10 +293,10 @@
 								<div class="tab-pane fade" id="tab2default">
 									<div class="container">
 										<div class="row">
-											<div class="col-xs-10"></div>
+											<div class="col-xs-9"></div>
 											<c:choose>
 												<c:when test="${user.admin}">
-													<div class="col-xs-2">
+													<div class="col-xs-3">
 														<a href="/AcroYoga/views/AddForum.jsp"><button
 																type="button" class="btn btn-default"
 																aria-label="Left Align">
@@ -297,10 +306,10 @@
 													</div>
 												</c:when>
 											</c:choose>
-											<div class="col-xs-10"></div>
+											<div class="col-xs-9"></div>
 											<c:choose>
 												<c:when test="${user.admin}">
-													<div class="col-xs-2">
+													<div class="col-xs-3">
 														<a href="/AcroYoga/views/AddThread.jsp"><button
 																type="button" class="btn btn-default"
 																aria-label="Left Align">
@@ -311,7 +320,7 @@
 												</c:when>
 											</c:choose>
 											<c:forEach items="${pLin}" var="postList">
-												<div class="col-xs-5 col-md-offset-1"
+												<div class="col-xs-4 col-md-offset-1"
 													style="margin-bottom: 16px">
 													<div class="card">
 														<a href="/AcroYoga/views/Forum?id=${postList.id}"
@@ -441,12 +450,12 @@
 											<div class="col-xs-12">
 												<div class="form-group">
 													<div class="row">
-														<div class="col-sm-6 col-sm-offset-3">
+														<div class="col-xs-6 col-xs-offset-3">
 															<a href="javascript: submitform()"
 																id="changeAccount-link"><button type="button"
 																	class="btn btn-default" aria-label="Left Align">
 																	<span class="glyphicon glyphicon-trash"
-																		aria-hidden="false"></span> endgültig löschen
+																		aria-hidden="false"></span> Account endgültig löschen
 																</button></a>
 															<script type="text/javascript">
 																function submitform() {
@@ -459,7 +468,7 @@
 
 												</div>
 												<div class="row">
-													<div class="col-sm-6 col-sm-offset-3">
+													<div class="col-xs-6 col-xs-offset-3">
 														<a href="" id="backToShowAccount-link2"><button
 																type="button" class="btn btn-default"
 																aria-label="Left Align">
@@ -469,16 +478,14 @@
 													</div>
 												</div>
 											</div>
+										</form>
 									</div>
 								</div>
-								</form>
+
 							</div>
 						</div>
 						<div></div>
 					</div>
-				</div>
-				</div>
-				</div>
 				</div>
 			</section>
 		</c:when>
