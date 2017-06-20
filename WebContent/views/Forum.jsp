@@ -248,7 +248,11 @@
 									</div>
 									<div class="card-small-title">
 										<p>${threadList.readable_timing}</p>
+										<div class="glyphicon glyphicon-comment">
+										${postCounter}
 									</div>
+									</div>
+									
 								</div>
 							</div>
 						</div>

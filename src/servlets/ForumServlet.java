@@ -26,6 +26,7 @@ import javax.sql.DataSource;
 import daos.EventDAO;
 import daos.ForumDAO;
 import daos.MemberDAO;
+import daos.PostDAO;
 import daos.ThreadDAO;
 import objects.Event;
 import objects.Forum;
@@ -60,6 +61,9 @@ public class ForumServlet extends HttpServlet {
 		Member m = null;
 		MemberDAO mDAO = new MemberDAO();
 		
+		PostDAO pDAO = new PostDAO();
+		int postCounter;
+
 		if(request.getSession().getAttribute("id") != null){
 			m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
 		}
@@ -76,6 +80,9 @@ public class ForumServlet extends HttpServlet {
 		
 		request.setAttribute("tList", tList);
 
+		postCounter = pDAO.countPosts(Integer.parseInt(request.getParameter("id")));
+		
+		request.setAttribute("postCounter", postCounter);
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
