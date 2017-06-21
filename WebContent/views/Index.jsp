@@ -245,8 +245,8 @@
                                                                     <p>${eventList.weekday}</p>
                                                                     ${eventList.readable_time} Uhr<br> ${eventList.readable_date}
                                                                 </div>
-                                                                <div class="card-delete">
-                                                                    <a href="/AcroYoga/DeleteEvent?id=${eventList.id}" alt="Lights" style="width: 100%">
+                                                                <div class="card-delete-event">
+                                                                    <a href="/AcroYoga/Delete?id=${eventList.id}" alt="Lights" style="width: 100%">
                                                                         <button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
 																		<span class="glyphicon glyphicon-trash"
 																			aria-hidden="true" style="color: white"></span>
@@ -270,9 +270,20 @@
                                     <div class="tab-pane fade" id="tab2default">
                                         <div class="container">
                                             <div class="row">
-                                                <div class="col-xs-9"></div>
+                                                <c:choose>
+                                                	<c:when test="${deletedPost}">
+		                                              		<div class="alert alert-success alert-dismissible" role="alert">
+																<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+																	<span aria-hidden="true">&times;
+																	</span>
+																</button>
+																<strong>Gelöscht!</strong> Der Post wurde erfolgreich gelöscht.
+															</div>
+													</c:when>
+												</c:choose>
                                                 <c:choose>
                                                     <c:when test="${user.admin}">
+                                                		<div class="col-xs-9"></div>
                                                         <div class="col-xs-3">
                                                             <a href="/AcroYoga/views/AddForum.jsp"><button
 																type="button" class="btn btn-default"
@@ -300,8 +311,16 @@
                                                     <div class="col-xs-4 col-md-offset-1" style="margin-bottom: 16px">
                                                         <div class="card">
                                                             <a href="/AcroYoga/views/Forum?id=${postList.id}" alt="Lights" style="width: 100%"> </a>
+                                                            <div class="card-delete-post">
+                                                                    <a href="/AcroYoga/DeletePost?id=${postList.id}" alt="Lights" style="width: 100%">
+                                                                        <button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
+																		<span class="glyphicon glyphicon-trash"
+																			aria-hidden="true" style="color: black"></span>
+																	</button>
+                                                                    </a>
+                                                                </div>
                                                             <div class="card-small-title">
-                                                                <p>${postList.readable_time}</p>
+                                                                <p>${postList.readable_time} ${postList.readable_date}</p>
                                                             </div>
                                                             <div class="card-content">
                                                                 <p>${postList.content}...</p>

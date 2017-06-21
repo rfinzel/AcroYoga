@@ -42,7 +42,6 @@ public class PostDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -67,7 +66,6 @@ public class PostDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -94,7 +92,6 @@ public class PostDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -122,7 +119,6 @@ public class PostDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -146,9 +142,29 @@ public class PostDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	public boolean deletePost(Post p)
+	{ 
+		conn = conProvider.getConnection();
+		boolean deleted = false;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("delete from post where id = ?");
+			pstmt.setInt(1, p.getId());
+			pstmt.executeUpdate();
+			deleted = true;
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return deleted;
 	}
 	
 	public Vector<Post> getAllPosts() {
@@ -169,7 +185,6 @@ public class PostDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 

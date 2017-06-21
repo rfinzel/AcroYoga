@@ -231,7 +231,7 @@
                                         <p>${eventList.weekday}</p>
                                         ${eventList.readable_time} Uhr<br> ${eventList.readable_date}
                                     </div>
-                                    <div class="card-delete">
+                                    <div class="card-delete-event">
                                 		<a href="/AcroYoga/DeleteEvent?id=${eventList.id}" alt="Lights" style="width: 100%">
                                     		<button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
 												<span class="glyphicon glyphicon-trash"

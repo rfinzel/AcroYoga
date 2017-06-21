@@ -72,7 +72,7 @@ public class DeleteEventServlet extends HttpServlet {
 		request.setAttribute("pLin", pLin);
 
 		
-		// Event erstellen und ID f�r die Ordner zwischenspeichern
+		// Event läschen und ID f�r die Ordner zwischenspeichern
 		boolean deleted = eDAO.deleteEvent(e);
 		request.setAttribute("deleted", deleted);
 
@@ -111,10 +111,21 @@ public class DeleteEventServlet extends HttpServlet {
 		
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher(path.substring(30));
+		= this.getServletContext().getRequestDispatcher(path.substring(30));
+		
+		//Versuch es woanders hinzuleiten wenn die Seite auch schon eine Delete Seite ist um mehrfach löschen zu können hintereinander
+		/*if(path.substring(30, 34) == "Dele"){
+			if(request.getParameter("id").substring(1) =="e"){
+				dispatcher //
+				= this.getServletContext().getRequestDispatcher("/views/Events.jsp");
+			}else{
+				dispatcher //
+				= this.getServletContext().getRequestDispatcher("/views/Index.jsp");
+			}
 
+		}*/
 		dispatcher.forward(request, response);
-	}
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

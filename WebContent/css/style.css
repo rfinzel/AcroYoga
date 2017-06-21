@@ -53,13 +53,22 @@
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16)
 }
 
-.card .card-delete {
+.card .card-delete-event {
 	position: absolute;
 	left: 0;
 	top: 0;
 	padding: 10px;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
 	background: rgba(0, 0, 0, 0.3);
+}
+
+.card .card-delete-post {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+	background: rgba(0, 0, 0, 0.1);
 }
 
 //TODO funktioniert nicht
