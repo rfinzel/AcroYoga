@@ -21,16 +21,16 @@
 
         <!-- Custom Fonts -->
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href='css/style.css' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
+        <!-- Theme CSS -->
+        <link href="css/creative.css" rel="stylesheet">
+        <link href='css/style.css' rel='stylesheet' type='text/css'>
 
         <!-- Plugin CSS -->
         <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-        <!-- Theme CSS -->
-        <link href="css/creative.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,7 +57,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
-                        <li><a class="page-scroll" href="/AcroYoga/Members">Teilnehmer</a></li>
+                        <c:choose>
+                        	<c:when test="${user.admin}">
+                        		<li><a class="page-scroll" href="/AcroYoga/Members">Teilnehmer</a></li>                        	
+                        	</c:when>
+                        </c:choose>     
                         <li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
                         <li>
                             <form id="search-box" action="Search" method="post" accept-charset="UTF-8">
@@ -80,12 +84,12 @@
                             </form>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#">
                                 <c:choose>
                                     <c:when test="${loggedIn}">
                                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> ${user.name} <strong class="caret"></strong>
-									</a>
-                                            <div class="dropdown-menu" style="padding: 0x;">
+											</a>
+                                            <div class="dropdown-menu" style="padding: 10px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+          											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <form method="post" action="Logout" accept-charset="UTF-8">
                                                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Logout">
                                                 </form>
@@ -93,13 +97,14 @@
                                         </li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong>
-									</a>
-                                            <div class="dropdown-menu" style="padding: 15px;">
+                                        <li class="dropdown">
+                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong></a>
+                                            <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+          											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-md-offset-3">
-                                                            <div class="panel panel-login">
+                                                    <div class="row" style="padding:0px; background:transparent">
+                                                        <div class="col-xs-6 col-xs-offset-6" style="padding:0px; background:transparent">
+                                                            <div class="panel panel-login" style="margin:0px">
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
@@ -169,7 +174,6 @@
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
-                            </a>
                         </li>
 
 
@@ -180,8 +184,8 @@
             <!-- /.container-fluid -->
         </nav>
 
-        <header>
-            <div class="header-content">
+        <header style="min-height:100% !important">
+            <div class="header-content" >
                 <div class="header-content-inner">
                     <c:choose>
                         <c:when test="${loggedIn}">
@@ -196,7 +200,7 @@
         </header>
         <c:choose>
             <c:when test="${loggedIn}">
-                <section id="about">
+                <section>
                     <div class="col-md-12">
                         <div class="panel with-nav-tabs panel-default">
                             <div class="panel-heading">
@@ -474,7 +478,7 @@
             </c:when>
             <c:otherwise>
                 <!-- About -->
-                <section id="about">
+                <section id="about" >
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2 text-center">

@@ -200,10 +200,11 @@
 			            <table class="table table-striped table-condensed">
 			                  <thead>
 			                  <tr class="member-table">
-			                      <th style="padding-left:15px">Username</th>
-			                      <th>Email-Addresse</th>                                          
-			                      <th>Birthday</th>
-			                      <th>Role</th>
+			                      <th style="padding-left:15px; padding-top:10px">Username</th>
+			                      <th style="padding-top:10px">Email-Addresse</th>                                          
+			                      <th style="padding-top:10px">Birthday</th>
+			                      <th style="padding-top:10px">Role</th>
+			                      <th></th>			                      
 			                  </tr>
 			              </thead>   
 			              <tbody>
@@ -218,7 +219,7 @@
                                                  <form name="updateAdmin" action="UpdateAdmin" method="post" role="form">
                                                  	<div class="dropdown">
 				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
-				                    						<span class="label label-warning">Admin</span> <span class="glyphicon glyphicon-edit"
+				                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
 																			aria-hidden="false">
 															</span>
 														</button>
@@ -242,10 +243,35 @@
 				                    	</c:when>	
 				                    	<c:otherwise>
 				                    		<td>
-				                    			<span class="label label-success">Nutzer</span>
+				                    			<span class="label label-warning">Nutzer</span>
 				                    		</td>
 				                    	</c:otherwise>
-				                    </c:choose>                       
+				                    </c:choose>  
+				                    <td>
+				                    <form name="deleteAccount" action="DeleteAccount" method="post" role="form">
+                                                        <div class="form-group">
+                                                        	<input type="hidden" name="changingUser" id="changingUser" value=" ${member.id}" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                    <a href="javascript: submitform()">
+                                                                    <button type="button"
+																		class="btn btn-default" aria-label="Left Align" style="background:transparent">
+																		<span class="glyphicon glyphicon-remove"
+																			aria-hidden="false" style="color:red"></span>
+																	</button>
+																	</a>
+                                                                    <script type="text/javascript">
+                                                                        function submitform() {
+                                                                            document.formUpdate
+                                                                                .submit();
+                                                                        }
+
+                                                                    </script>
+                                                            </div>
+                                                        </div>
+                                                </form>	
+				                    </td>                     
 				                </tr>
 			                </c:forEach>
 			              </tbody>
