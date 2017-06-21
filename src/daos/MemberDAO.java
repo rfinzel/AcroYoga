@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
+import objects.Event;
 import objects.Member;
 
 public class MemberDAO {
@@ -35,7 +36,6 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
@@ -63,7 +63,6 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -106,7 +105,6 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -133,7 +131,6 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -160,7 +157,6 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -187,7 +183,6 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		return m;
@@ -213,14 +208,12 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
 
 	public void deleteMember(Member m) {
 		conn = conProvider.getConnection();
-		System.out.println("miau");
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(
 					"DELETE FROM members WHERE id = ?");
@@ -234,9 +227,35 @@ public class MemberDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	public Vector<Member> getAllMembers()
+	{
+		Vector<Member> m = new Vector<Member>();
+		
+		conn = conProvider.getConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("select id from members");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next())
+				
+			{
+				m.add(getMemberById(rs.getInt(1)));
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		return m;		
 	}
 
 }

@@ -57,6 +57,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
+                        <li><a class="page-scroll" href="/AcroYoga/Members">Teilnehmer</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
                         <li>
                             <form id="search-box" action="Search" method="post" accept-charset="UTF-8">
@@ -352,7 +353,8 @@
 														class="btn btn-default" aria-label="Left Align">
 														<span class="glyphicon glyphicon-edit" aria-hidden="false"></span>
 														ändern
-													</button></a> <a href="" id="deleteAccount-link"><button
+													</button></a> 
+													<a href="" id="deleteAccount-link"><button
 														type="button" class="btn btn-default"
 														aria-label="Left Align">
 														<span class="glyphicon glyphicon-trash"
@@ -393,7 +395,6 @@
                                                     </div>
                                                     <div class="col-xs-1"></div>
                                                     <div class="col-xs-3">
-
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-sm-offset-3">

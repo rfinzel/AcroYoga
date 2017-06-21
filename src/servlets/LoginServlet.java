@@ -47,6 +47,8 @@ public class LoginServlet extends HttpServlet {
 		// Objects
 		Member m = mDAO.getMemberByMail(request.getParameter("username"));
 		
+		//TODO Stürzt noch ab, wenn man sich falsch einlogt
+		
 		// Wenn der Benutzername existiert
 		if (m != null) 
 		{

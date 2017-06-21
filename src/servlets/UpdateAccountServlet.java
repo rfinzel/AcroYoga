@@ -27,7 +27,6 @@ public class UpdateAccountServlet extends HttpServlet {
      */
     public UpdateAccountServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -40,7 +39,7 @@ public class UpdateAccountServlet extends HttpServlet {
 		// Objects
 		Member m = null;
 		
-		// Variablen mit Parameter füllen
+		// Variablen mit Parameter fï¿½llen
 		String name = request.getParameter("name");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
@@ -53,10 +52,13 @@ public class UpdateAccountServlet extends HttpServlet {
 		Member tempM = new Member(m.getId(), m.getAdmin(), email, password, name, lastname, formatDate(birthday));
 		mDAO.updateMember(tempM);		
 						
-		// TODO Auto-generated method stub
-				// Forward to /WEB-INF/views/login.jsp
+		String path = request.getHeader("referer");
+		//response.sendRedirect(path.substring(21));
+		
+		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/Index");
+				= this.getServletContext().getRequestDispatcher(path.substring(30));
+
 
 		dispatcher.forward(request, response);
 	}
@@ -65,7 +67,6 @@ public class UpdateAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	
@@ -76,7 +77,6 @@ public class UpdateAccountServlet extends HttpServlet {
 		try {
 			parsed = format.parse(date);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return new java.sql.Date(parsed.getTime());
@@ -90,7 +90,6 @@ public class UpdateAccountServlet extends HttpServlet {
 		try {
 			parsed = format.parse(timestamp);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
