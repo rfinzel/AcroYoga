@@ -33,7 +33,6 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -51,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 		// Wenn der Benutzername existiert
 		if (m != null) 
 		{
-			// Passwort überprüfen
+			// Passwort ï¿½berprï¿½fen
 			if((request.getParameter("password").equals(m.getPassword())))
 			{
 				request.getSession().setAttribute("id", m.getId()); // Session Attribut setzen
@@ -63,21 +62,12 @@ public class LoginServlet extends HttpServlet {
 			boolean loggedIn = false;
 
 			request.setAttribute("loggedIn", loggedIn);
-
-			/*
-			 * Nötig?? loggedIn ist immer false und es wird evtl gar nicht auf die Index Seite verwiesen
-			 */
-			if (loggedIn) { // Eventlist und Postlist loggedIn
-				List<Event> eLin = eDAO.getEventsByMember(m.getId());
-				request.setAttribute("eLin", eLin);
-				
-				List<Post> pLin = pDAO.getPostsByAuthor(m.getId());
-				request.setAttribute("pLin", pLin);
-			} else { // Eventlist not loggedIn
-				List<Event> eLout = eDAO.getAllEvents();
-				request.setAttribute("eList", eLout);
-			}
 			
+			List<Event> eLout = eDAO.getAllEvents();
+			request.setAttribute("eList", eLout);
+			List<Post> pLout = pDAO.getAllPosts();
+			request.setAttribute("pLin", pLout);
+				
 			request.setAttribute("loginError", "Das Passwort oder die Email-Addresse ist inkorrekt.");
 		}
 		
@@ -85,8 +75,7 @@ public class LoginServlet extends HttpServlet {
 		String path = request.getHeader("referer");
 		//response.sendRedirect(path.substring(21));
 		
-		// TODO Auto-generated method stub
-				// Forward to /WEB-INF/views/login.jsp
+		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher(path.substring(30));
 
@@ -97,7 +86,6 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

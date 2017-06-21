@@ -39,7 +39,6 @@ public class EventDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -67,7 +66,6 @@ public class EventDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -99,7 +97,6 @@ public class EventDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -131,10 +128,30 @@ public class EventDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		return id;
+	}
+	
+	public boolean deleteEvent(Event e)
+	{ 
+		conn = conProvider.getConnection();
+		boolean deleted = false;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("delete from event where id = ?");
+			pstmt.setInt(1, e.getId());
+			pstmt.executeUpdate();
+			deleted = true;
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
+
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return deleted;
 	}
 	
 	private int getNextId()
@@ -174,7 +191,6 @@ public class EventDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

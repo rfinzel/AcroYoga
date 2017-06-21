@@ -189,7 +189,7 @@
 
         <!-- Events -->
         <section id="events">
-
+			
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -198,6 +198,17 @@
                     </div>
                 </div>
             </div>
+            <c:choose>
+            	<c:when test="${deleted}">
+            		<div class="alert alert-success alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;
+							</span>
+						</button>
+						<strong>Gelöscht!</strong> Die Veranstaltung wurde erfolgreich gelöscht.
+					</div>
+				</c:when>
+			</c:choose>
             <c:choose>
                 <c:when test="${user.admin}}">
                     <div class="container">
@@ -219,6 +230,14 @@
                                     <div class="card-date">
                                         <p>${eventList.weekday}</p>
                                         ${eventList.readable_time} Uhr<br> ${eventList.readable_date}
+                                    </div>
+                                    <div class="card-delete">
+                                		<a href="/AcroYoga/DeleteEvent?id=${eventList.id}" alt="Lights" style="width: 100%">
+                                    		<button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
+												<span class="glyphicon glyphicon-trash"
+													aria-hidden="true" style="color: white"></span>
+											</button>
+                                    	</a>
                                     </div>
                                     <div class="card-image">
                                         <img class="img-responsive" src="img/header.jpg">
