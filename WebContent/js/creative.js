@@ -78,7 +78,6 @@
 	
 	$('#addImage').click(function(e) {
 		$("#images").append("<input type=\"file\" name=\"file" + ++images + "\"/>");
-		
 		$("#amount").val(images);
 	});
 	

@@ -199,13 +199,12 @@
                 <div class="col-lg-3 col-md-6text-center">
                     <div class="service-box">
                         <div class="thumbnail">
-                            <a img src="img/header.jpg" alt="Lights" style="width: 100%">
+                            <img src="img/members/${postList.author.id }/picture.png" />
                                 <div class="caption">
-
+									<p>${postList.author.name }</p>
                                     <hr class="divider">
                                     <p>${postList.content}</p>
-                                </div>
-                            </a>
+                                </div>                        
                         </div>
                     </div>
                 </div>
@@ -216,16 +215,16 @@
 
         <div class="container">
             <div class="row">
-
+				
+                <div class="col-lg-3 col-md-6text-center">
+                    <textarea placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
+                </div>
                 <form id="comment-form" action="AddPost" method="post" accept-charset="UTF-8">
                     <input type="hidden" value="${threadID}" name="threadID">
                     <div>
                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
                     </div>
                 </form>
-                <div class="col-lg-3 col-md-6text-center">
-                    <textarea placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
-                </div>
 
             </div>
         </div>

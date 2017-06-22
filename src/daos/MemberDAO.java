@@ -17,11 +17,12 @@ public class MemberDAO {
 		conProvider = new ConnectionProvider();
 	}
 
-	public void addMember(Member m) {
+	public int addMember(Member m) {
 		conn = conProvider.getConnection();
+		int id = getNextId();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("insert into members values(?, ?, ?, ?, ?, ?, ?)");
-			pstmt.setInt(1, getNextId());
+			pstmt.setInt(1, id);
 			pstmt.setBoolean(2, false);
 			pstmt.setString(3, m.getEmail());
 			pstmt.setString(4, m.getPassword());
@@ -38,6 +39,8 @@ public class MemberDAO {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		
+		return id;
 	}
 
 	public Vector<Member> searchMembers(String search_param) {
@@ -87,7 +90,6 @@ public class MemberDAO {
 
 	public Member getMemberById(int id) {
 		Member m = null;
-
 		conn = conProvider.getConnection();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("select * from members where id = ?");

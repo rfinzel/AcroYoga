@@ -97,10 +97,28 @@ public class EventServlet extends HttpServlet {
 		
 		
 		// Bilder upload zu den Events
-		File f = new File(request.getSession().getServletContext().getRealPath("img") + "/" + e.getId() + "/images");
+		File f = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + e.getId());
+		//f.mkdir();
 		
 		// Filtern nach .jpg und .png
 		FilenameFilter textFilter = new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				String lowercaseName = name.toLowerCase();
+				if (!lowercaseName.endsWith(".jpg") && !lowercaseName.endsWith(".png")) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		};
+		
+		List<String> dateList = new Vector<String>();
+		if(f.list(textFilter) != null)
+			dateList = Arrays.asList(f.list(textFilter));
+
+		
+		// Filtern nach .jpg und .png
+		/*textFilter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				String lowercaseName = name.toLowerCase();
 				if (lowercaseName.endsWith(".jpg") || lowercaseName.endsWith(".png")) {
@@ -112,11 +130,12 @@ public class EventServlet extends HttpServlet {
 		};
 		
 		// Filelist zur Anzeige in der Gallery
-		List<String> fileList = new Vector<String>();
 		if(f.list(textFilter) != null)
 			fileList = Arrays.asList(f.list());
-
+*/
+		List<String> fileList = new Vector<String>();
 		request.setAttribute("fileList", fileList);
+		request.setAttribute("dateList", dateList);
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
@@ -55,16 +56,18 @@ public class UploadImagesServlet extends HttpServlet {
 		for (int i = 0; i < Integer.parseInt(request.getParameter("amount")); i++) {
 			Part filePart = request.getPart("file" + (i + 1));
 			
-			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images/",
+			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/" + request.getParameter("date")).mkdir();
+			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/" + request.getParameter("date") + "/thumbnails").mkdir();
+			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/" + request.getParameter("date"),
 					(i + 1) + ".jpg");
 
 			try (InputStream fileContent = filePart.getInputStream()) {
-				Files.copy(fileContent, file.toPath());
+				Files.copy(fileContent, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
 			}
 
 			// Thumbnail erstellen
 			createThumbnail(file,
-					request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images/thumbnails",
+					request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/" + request.getParameter("date") + "/thumbnails",
 					Integer.toString(i + 1));
 		}
 

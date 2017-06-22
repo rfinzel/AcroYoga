@@ -139,7 +139,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
-                                                                            <form id="register-form" action="Register" method="post" role="form" style="display: none;">
+                                                                            <form id="register-form" action="Register" method="post" role="form" enctype="multipart/form-data" style="display: none;">
                                                                                 <div class="form-group">
                                                                                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Vorname" value="">
                                                                                 </div>
@@ -339,6 +339,7 @@
                                     <div class="tab-pane fade" id="tab3default">
                                         <div id="showAccount" class="form-active">
                                             <div class="row">
+                                               	<img src="img/members/${user.id}/picture.png" />
                                                 <div class="col-xs-2">
                                                     <p>Name</p>
                                                     <p>Email</p>
@@ -346,7 +347,8 @@
                                                     <p>Geburtstag</p>
                                                 </div>
                                                 <div class="col-xs-4">
-                                                    <p id="acName">${user.name}${user.lastname}</p>
+
+                                                    <p id="acName">${user.name} ${user.lastname}</p>
                                                     <p id="acEmail">${user.email}</p>
                                                     <p id="acPassword">${user.password}</p>
                                                     <p id="acBirthday">${user.birthday}</p>
@@ -378,9 +380,10 @@
                                                     <p>Geburtstag</p>
                                                 </div>
 
-                                                <form name="formUpdate" action="UpdateAccount" method="post" role="form">
+                                                <form name="formUpdate" action="UpdateAccount" method="post" role="form"  enctype="multipart/form-data"">
                                                     <div class="col-xs-4">
-
+														<input type="file" name="file" />
+									                   
                                                         <div class="form-group">
                                                             <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Vorname" value="${user.name}">
                                                         </div>
@@ -412,13 +415,13 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                                    <a href="javascript: submitform()" id="changeAccount-link"><button type="button"
+                                                                    <a href="javascript: submitformUpdate()" id="changeAccount-link"><button type="button"
 																		class="btn btn-default" aria-label="Left Align">
 																		<span class="glyphicon glyphicon-ok"
 																			aria-hidden="false"></span> Änderungen übernehmen
 																	</button></a>
                                                                     <script type="text/javascript">
-                                                                        function submitform() {
+                                                                        function submitformUpdate() {
                                                                             document.formUpdate
                                                                                 .submit();
                                                                         }
@@ -438,13 +441,13 @@
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <div class="col-xs-6 col-xs-offset-3">
-                                                                <a href="javascript: submitform()" id="changeAccount-link"><button type="button"
+                                                                <a href="javascript: submitformDelete()" id="changeAccount-link"><button type="button"
 																	class="btn btn-default" aria-label="Left Align">
 																	<span class="glyphicon glyphicon-trash"
 																		aria-hidden="false"></span> Account endgültig löschen
 																</button></a>
                                                                 <script type="text/javascript">
-                                                                    function submitform() {
+                                                                    function submitformDelete() {
                                                                         document.formDelete
                                                                             .submit();
                                                                     }

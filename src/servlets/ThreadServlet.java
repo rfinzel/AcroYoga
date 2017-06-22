@@ -57,7 +57,6 @@ public class ThreadServlet extends HttpServlet {
 		boolean loggedIn = false;
 
 		// DAOs
-		ThreadDAO tDAO = new ThreadDAO();
 		PostDAO pDAO = new PostDAO();
 		MemberDAO mDAO = new MemberDAO();
 
