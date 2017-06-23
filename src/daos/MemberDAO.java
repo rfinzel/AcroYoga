@@ -239,7 +239,7 @@ public class MemberDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select id from members");
+			PreparedStatement pstmt = conn.prepareStatement("select id from members order by id asc");
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
