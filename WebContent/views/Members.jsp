@@ -216,7 +216,7 @@
 				                    <c:choose>
 				                    	<c:when test="${member.admin}">
 				                    		<td>
-                                                 <form name="updateAdmin" action="UpdateAdmin" method="post" role="form">
+                                                 <form name="updateAdmin${member.id}" action="UpdateAdmin" method="post" role="form">
                                                  	<div class="dropdown">
 				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
 				                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
@@ -228,10 +228,10 @@
 															<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 																<li>
 														<div class="form-group">
-																<a href="javascript: submitform()">Nutzer</a>
+																<a href="javascript: submitformAdmin()">Nutzer</a>
 																<script type="text/javascript">
-                                                        		function submitform() {
-                                                                       document.updateAdmin.submit();
+                                                        		function submitformAdmin${member.id}() {
+                                                                       document.updateAdmin${member.id}.submit();
                                                                         }
                                                 		 		</script>
 														</div>
