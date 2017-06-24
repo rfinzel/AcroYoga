@@ -230,8 +230,6 @@
 				                    <c:choose>
 				                    	<c:when test="${member.admin}">
 				                    		<td>
-                                                 <form name="updateAdmin${member.id}" action="UpdateAdmin" method="post" role="form">
-
                                                  	<div class="dropdown">
 				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
 				                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
@@ -284,17 +282,16 @@
 				                    	</c:otherwise>
 				                    </c:choose>  
 				                    <td>
-                                                    
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                    <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
-																	class="btn btn-default" aria-label="Left Align">
-																	<span class="glyphicon glyphicon-trash"
-																		aria-hidden="false"></span> Account endgültig löschen
-																</button></a>
-                                                                   
-                                                            </div>
-                                                        </div>
+				                                         <div class="form-group">
+				                                             <div class="row">
+				                                                     <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
+						class="btn btn-default" aria-label="Left Align">
+						<span class="glyphicon glyphicon-trash"
+							aria-hidden="false"></span> Account endgültig löschen
+					</button></a>
+				                                                    
+				                                             </div>
+				                                         </div>
 				                    </td>                     
 				                </tr>
 			                </c:forEach>

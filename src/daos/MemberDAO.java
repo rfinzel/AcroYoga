@@ -174,8 +174,7 @@ public class MemberDAO {
 			pstmt.setInt(1, event);
 			ResultSet rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				System.out.println("addmember");
+			while (rs.next()) {				
 				m.add(getMemberById(rs.getInt(1)));
 			}
 		} catch (SQLException e1) {

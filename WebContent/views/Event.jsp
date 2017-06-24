@@ -194,11 +194,27 @@
                 <div class="row">
                     <div class="col-xs-4 text-center">
                         <p>${timing} bis ${endDate}</p>
+                        <p>Nächster Termin: ${nextEvent}</p>
                     </div>
                     <div class="col-xs-4 text-center">
                         <p>${name}</p>
                     </div>
-                    <div class="col-xs-4 text-center">${loginbtn}</div>
+                    <c:choose>
+                    	<c:when test="${participate}">
+	                    	<form id="participate" action="DeleteParticipation" method="post" accept-charset="UTF-8">
+		                    <input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
+		                    <input type="hidden" name="eventId" value="${id}" id="eventId"> 
+							<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Nicht mehr teilnehmen">
+		                    </form>
+                    	</c:when>
+                    	<c:when test="${not participate}">
+	                    	<form id="participate" action="AddParticipation" method="post" accept-charset="UTF-8">
+		                    <input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
+		                    <input type="hidden" name="eventId" value="${id}" id="eventId"> 
+							<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Teilnehmen">
+		                    </form>
+                    	</c:when>
+                    </c:choose>
                 </div>
             </div>
         </section>
@@ -210,7 +226,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-6">
-                        <p>${weekday} ${time}Uhr</p>
+                        <p>${weekday} ${time} Uhr</p>
 
                         <p>Jeden ${regularity}</p>
 
@@ -219,8 +235,11 @@
                         <p>${fee}Euro</p>
 
                         <p>Wer kommt noch:</p>
-
-                        <p>${participants}</p>
+					
+						<c:forEach items="${participants}" var="participants">
+                        <img src="img/members/${participants.id}/picture.png" alt="${participants.name }" title="${participants.name }"/>
+                        
+                        </c:forEach>
                     </div>
                     <div class="col-xs-6">
                         <p>${content}</p>
