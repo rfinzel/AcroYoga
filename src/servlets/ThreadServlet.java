@@ -59,6 +59,7 @@ public class ThreadServlet extends HttpServlet {
 		// DAOs
 		PostDAO pDAO = new PostDAO();
 		MemberDAO mDAO = new MemberDAO();
+		ThreadDAO tDAO = new ThreadDAO();
 
 		// Objects
 		Member m = null;
@@ -73,13 +74,14 @@ public class ThreadServlet extends HttpServlet {
 		if (m != null)
 			loggedIn = true;
 
-		// Liste aller Post des Threads
+		// Liste aller Post des Threads, ThreadID und Thread Objekt
 		List<Post> pList = pDAO.getPostsByThreadAsc(Integer.parseInt(request.getParameter("id")));
+		t = tDAO.getThreadById(Integer.parseInt(request.getParameter("id")));
 
-		// Variablen für die JSP setzen
+		// Variablen fï¿½r die JSP setzen
 		request.setAttribute("loggedIn", loggedIn);
 		request.setAttribute("pList", pList);
-		request.setAttribute("threadID", request.getParameter("id"));
+		request.setAttribute("thread", t);
 
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

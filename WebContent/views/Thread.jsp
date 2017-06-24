@@ -182,7 +182,7 @@
         <header>
             <div class="header-content">
                 <div class="header-content-inner">
-                    <h1 id="homeHeading">${name}</h1>
+                    <h1 id="homeHeading">${thread.name}</h1>
                 </div>
             </div>
         </header>
@@ -194,40 +194,50 @@
 				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
 			</button></a>
 	</div>
-	-->
-        <div class="row">
-            <c:forEach items="${pList}" var="postList">
-                <div class="col-lg-3 col-md-6text-center">
-                    <div class="service-box">
-                        <div class="thumbnail">
-                            <img src="img/members/${postList.author.id }/picture.png" />
-                                <div class="caption">
-									<p>${postList.author.name }</p>
-                                    <hr class="divider">
-                                    <p>${postList.content}</p>
-                                </div>                        
-                        </div>
-                    </div>
+	--><div class="container">
+        <c:forEach items="${pList}" var="post">
+        	<div class="row">
+               	<div class="col-xs-10 col-xs-offset-1">
+                	<div class="card" style="padding:10px;">
+                		<div class="card-delete-post">
+		            		<a href="/AcroYoga/DeletePost?id=${postList.id}" alt="Lights" style="width: 100%">
+		           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
+							</button>
+							</a>
+                    	</div>
+                 		<div class="row">
+                   			<div class="col-xs-4" style="border-right: 1px solid grey">
+                            	<img src="img/members/${post.author.id }/picture.png" />
+								<p>${post.author.name }</p>
+                    		</div>
+							<div class="col-xs-8">
+								<p style="color:grey; text-align:right">${post.readable_time} ${post.readable_date}</p>
+                            	<p>${post.content}</p>
+                    		</div>
+						</div>	
+					</div>
                 </div>
-            </c:forEach>
+        	</div>
+        </c:forEach>
         </div>
 
 
 
         <div class="container">
             <div class="row">
-				
-                <div class="col-lg-3 col-md-6text-center">
-                    <textarea placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
+                <div class="col-xs-10">
+                    <textarea cols="85" placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
                 </div>
+                
                 <form id="comment-form" action="AddPost" method="post" accept-charset="UTF-8">
-                    <input type="hidden" value="${threadID}" name="threadID">
-                    <div>
+                    <input type="hidden" value="${thread.id}" name="threadID">
+                    
+                    <div style="margin:5px">
                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
                     </div>
                 </form>
-
-            </div>
+			</div>
         </div>
 
         <!-- Kontakt -->

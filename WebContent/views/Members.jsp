@@ -230,37 +230,20 @@
 				                    <c:choose>
 				                    	<c:when test="${member.admin}">
 				                    		<td>
-                                                 <form name="updateAdmin${member.id}" action="UpdateAdmin" method="post" role="form">
-
-                                                 	<div class="dropdown">
-				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
-				                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
-																			aria-hidden="false">
-															</span>
-														</button>
-														
-														<input type="hidden" name="changingUser" value=" ${member.id}" />
-															<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																<li>
-														<div class="form-group">
-																<a href="javascript: submitformAdmin()">Nutzer</a>
-																<script type="text/javascript">
-                                                        		function submitformAdmin${member.id}() {
-                                                                       document.updateAdmin${member.id}.submit();
-                                                                        }
-                                                		 		</script>
-														</div>
-																</li>
-															</ul>
-
-														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-															<li>
-																<div class="form-group">
-																	<a href="UpdateAdmin?id=${member.id}" id="changeAdmin${member.id}">Nutzer</a>
-																</div>
-															</li>
-														</ul>
-													</div>
+                                                <div class="dropdown">
+			                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
+			                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
+																		aria-hidden="false">
+														</span>
+													</button>
+													<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+														<li>
+															<div class="form-group">
+																<a href="UpdateAdmin?id=${member.id}" id="changeAdmin${member.id}">Nutzer</a>
+															</div>
+														</li>
+													</ul>
+												</div>
 				                    		</td>
 				                    	</c:when>	
 				                    	<c:otherwise>
@@ -288,9 +271,9 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                     <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
-																	class="btn btn-default" aria-label="Left Align">
+																	class="btn btn-default" aria-label="Left Align" style="background:transparent">
 																	<span class="glyphicon glyphicon-trash"
-																		aria-hidden="false"></span> Account endgültig löschen
+																		aria-hidden="false"></span>
 																</button></a>
                                                                    
                                                             </div>

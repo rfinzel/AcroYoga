@@ -313,7 +313,6 @@
                                                 <c:forEach items="${pLin}" var="postList">
                                                     <div class="col-xs-4 col-md-offset-1" style="margin-bottom: 16px">
                                                         <div class="card">
-                                                            <a href="/AcroYoga/views/Forum?id=${postList.id}" alt="Lights" style="width: 100%"> </a>
                                                             <div class="card-delete-post">
                                                                     <a href="/AcroYoga/DeletePost?id=${postList.id}" alt="Lights" style="width: 100%">
                                                                         <button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
@@ -322,12 +321,14 @@
 																	</button>
                                                                     </a>
                                                                 </div>
-                                                            <div class="card-small-title">
-                                                                <p>${postList.readable_time} ${postList.readable_date}</p>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <p>${postList.content}...</p>
-                                                            </div>
+                                                            <a href="/AcroYoga/Thread?id=${postList.thread_id}" alt="Lights" style="width: 100%"> 
+	                                                            <div class="card-small-title">
+	                                                                <p>${postList.readable_time} ${postList.readable_date}</p>
+	                                                            </div>
+	                                                            <div class="card-content" style="overflow: hidden; text-overflow: ellipsis">
+	                                                                <p>${postList.content}</p>
+	                                                            </div>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </c:forEach>
