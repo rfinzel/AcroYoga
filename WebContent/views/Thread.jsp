@@ -226,16 +226,16 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-xs-10">
-                    <textarea cols="85" placeholder="Hier Kommentar schreiben" name="comment" form="comment-form"></textarea>
-                </div>
                 
-                <form id="comment-form" action="AddPost" method="post" accept-charset="UTF-8">
+                <form action="AddPost" method="post">
                     <input type="hidden" value="${thread.id}" name="threadID">
-                    
+                    <div class="col-xs-10">
+	                    <textarea id="textareaComment" name="textareaComment"></textarea>
+	                </div>
                     <div style="margin:5px">
                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
                     </div>
+	                
                 </form>
 			</div>
         </div>

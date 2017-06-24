@@ -49,41 +49,33 @@ public class DeletePostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// DAOs
-		MemberDAO mDAO = new MemberDAO();
 		PostDAO pDAO = new PostDAO();
-		EventDAO eDAO = new EventDAO();
 
 		// Attribute aus der JSP
 		Post p = pDAO.getPostById(Integer.parseInt(request.getParameter("id")));
-		
+
 		//Attribute aus de DB
-		Member m = mDAO.getMemberById((Integer)request.getSession().getAttribute("id"));
-		List<Event> eLin = eDAO.getEventsByMember(m.getId());
-		request.setAttribute("eLin", eLin);
-		
-		// Login Information an JSP weiterleiten um bestimmte Elemente einzublenden
-		request.setAttribute("loggedIn", true);
-		request.setAttribute("user", m);
 
-		List<Post> pLin = pDAO.getPostsByAuthor(m.getId());
-		for (Post po : pLin) {
-			po.setContent(p.getContent().substring(0, Math.min(p.getContent().length(), 25)));
-		}
-		request.setAttribute("pLin", pLin);
-
-		// Post lÃ¶schen
+		// Post löschen
 		boolean deleted = pDAO.deletePost(p);
-		request.setAttribute("deletedPost", deleted);
 
 		
 		String path = request.getHeader("referer");
-		//response.sendRedirect(path.substring(21));
 		
-		// Forward to /WEB-INF/views/login.jsp
-		RequestDispatcher dispatcher //
-		= this.getServletContext().getRequestDispatcher(path.substring(30));
+		RequestDispatcher dispatcher;
+		if(path.substring(30) != "/Index")
+		{
+			dispatcher 
+			= this.getServletContext().getRequestDispatcher("/Thread?id=" + p.getThread_id());
+		}
+		else
+		{
+			request.setAttribute("deletedPost", deleted);
+			dispatcher 
+			= this.getServletContext().getRequestDispatcher("/Index");
+		}
 
-        dispatcher.forward(request, response);
+		dispatcher.forward(request, response);
 	}
 
 	/**

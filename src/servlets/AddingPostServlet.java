@@ -53,8 +53,9 @@ public class AddingPostServlet extends HttpServlet {
 		PostDAO pDAO = new PostDAO();
 
 
+		System.out.println(request.getParameter("textareaComment"));
 		// Post hinzufügen
-		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), Integer.parseInt(request.getParameter("threadID"))));
+		pDAO.addPost(new Post(0, request.getParameter("textareaComment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), Integer.parseInt(request.getParameter("threadID"))));
 		
 		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp

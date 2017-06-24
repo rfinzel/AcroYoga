@@ -216,7 +216,7 @@
                 <c:when test="${user.admin}">
                     <div class="container">
                         <form method="post" action="views/AddForum.jsp" accept-charset="UTF-8">
-                            <input type="hidden" id="id" name="id" value="<%=request.getParameter(" id ")%>">
+                            <input type="hidden" id="id" name="id" value="<%=request.getParameter("id")%>">
 
                             <div>
                                 <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Forum erstellen">

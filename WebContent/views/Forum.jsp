@@ -205,7 +205,7 @@
                         <c:forEach items="${tList}" var="threadList">
                             <div class="col-xs-10 col-xs-offset-2">
                                 <div class="card">
-                                    <a href="/AcroYoga/Thread?id=${threadList.forum_id}" alt="Lights" style="width: 100%">
+                                    <a href="/AcroYoga/Thread?id=${threadList.id}" alt="Lights" style="width: 100%">
                                         <div class="card-content">
                                             <div class="card-image">
                                                 <img class="img-responsive" src="img/header.jpg">
@@ -235,7 +235,7 @@
                 <c:when test="${loggedIn}">
                     <div class="container">
                         <form method="post" action="views/AddThread.jsp" accept-charset="UTF-8">
-                            <input type="hidden" id="id" name="id" value="<%=request.getParameter(" id ")%>">
+                            <input type="hidden" id="id" name="id" value="<%=request.getParameter("id")%>">
 
                             <div>
                                 <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Thread erstellen">

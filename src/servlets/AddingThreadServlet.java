@@ -55,12 +55,11 @@ public class AddingThreadServlet extends HttpServlet {
 		
 		// Forum ID
 		String id = request.getParameter("id");
-
 		// Thread anlegen und ID zwischenspeichern
 		int threadID = tDAO.addThread(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), 0, Integer.parseInt(id)));
 		
 		// Post hinzufügen
-		pDAO.addPost(new Post(0, request.getParameter("comment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), threadID));
+		pDAO.addPost(new Post(0, request.getParameter("textareaComment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), threadID));
 		
 		
 		// TODO Auto-generated method stub

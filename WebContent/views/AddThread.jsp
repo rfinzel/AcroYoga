@@ -210,17 +210,17 @@ F
                                     <div class="caption">
 
                                         <form method="post" action="../AddThread" accept-charset="UTF-8" id="thread-form">
-                                            <input type="hidden" value="<%=request.getParameter(" id ")%>" name="id"> <input style="margin-bottom: 15px;" type="text" placeholder="Threadname" id="threadname" name="threadname">
+                                            <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
+                                            <input style="margin-bottom: 15px;" type="text" placeholder="Threadname" id="threadname" name="threadname">
                                             <hr class="divider">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Threadinhalt" id="threadcontent" name="threadcontent">
                                     </div>
-                                    <div>
-                                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
-                                    </div>
-                                    </form>
-                                    <div class="col-lg-3 col-md-6text-center">
-                                        <textarea placeholder="Hier Kommentar schreiben" name="comment" form="thread-form"></textarea>
-                                    </div>
+		                                    <div class="col-lg-3 col-md-6text-center">
+		                                        <textarea id="textareaComment" name="textareaComment"></textarea>
+		                                    </div>
+		                                    <div>
+		                                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
+		                                    </div>
+	                                    </form>
                                 </a>
                             </div>
                         </div>
