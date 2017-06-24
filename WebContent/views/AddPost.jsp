@@ -38,8 +38,7 @@
     </head>
 
     <body id="page-top">
-
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -53,24 +52,28 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
+                        <li><a class="page-scroll" href="/AcroYoga/Index">Startseite</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
-                        <li><a class="page-scroll" href="#kontakt">Kontakt</a></li>
+                        <c:choose>
+                        	<c:when test="${user.admin}">
+                        		<li><a class="page-scroll" href="/AcroYoga/Members">Teilnehmer</a></li>                        	
+                        	</c:when>
+                        </c:choose>     
                         <li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
                         <li>
-                            <form id="login-form" action="Search" method="post" accept-charset="UTF-8">
+                            <form id="search-box" action="Search" method="post" accept-charset="UTF-8">
                                 <div class="input-group">
                                     <div class="input-group-btn search-panel">
-                                        <!-- FILTER <button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown">
-									<span id="search_concept">Filter</span> <span class="caret"></span>
-								</button>
-								 <ul class="dropdown-menu" role="menu">
-									<li><a href="#contains">Personen</a></li>
-									<li><a href="#greather_than">Veranstaltungen</a></li>
-								</ul> FILTER -->
+                                        FILTER
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span id="search_concept">Filter</span> <span class="caret"></span>
+									</button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#contains">Personen</a></li>
+                                            <li><a href="#greather_than">Veranstaltungen</a></li>
+                                        </ul>
                                     </div>
-                                    <input type="hidden" name="search_param" value="all" id="search_param"> <input type="text" class="form-control" name="x" placeholder="Search term...">
+                                    <input type="hidden" name="search_param" value="all" id="search_param"> <input type="text" class="form-control" name="x" placeholder="Suchbegriff..">
                                     <span class="input-group-btn"> <input
 									class="btn btn-primary btn-block" type="submit" id="sign-in"
 									value="search"></span>
@@ -78,12 +81,12 @@
                             </form>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#">
                                 <c:choose>
                                     <c:when test="${loggedIn}">
                                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> ${user.name} <strong class="caret"></strong>
-									</a>
-                                            <div class="dropdown-menu" style="padding: 0x;">
+											</a>
+                                            <div class="dropdown-menu" style="padding: 10px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+          											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <form method="post" action="Logout" accept-charset="UTF-8">
                                                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Logout">
                                                 </form>
@@ -91,17 +94,18 @@
                                         </li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong>
-									</a>
-                                            <div class="dropdown-menu" style="padding: 15px;">
+                                        <li class="dropdown">
+                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Anmelden <strong class="caret"></strong></a>
+                                            <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+          											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-md-offset-3">
-                                                            <div class="panel panel-login">
+                                                    <div class="row" style="padding:0px; background:transparent">
+                                                        <div class="col-xs-6 col-xs-offset-6" style="padding:0px; background:transparent">
+                                                            <div class="panel panel-login" style="margin:0px">
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-                                                                            <a href="#" class="active" id="login-form-link">Login</a>
+                                                                            <a href="#" class="active" id="login-form-link">Anmelden</a>
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="#" id="register-form-link">Registrieren</a>
@@ -132,26 +136,26 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
-                                                                            <form id="register-form" action="Register" method="post" role="form" style="display: none;">
+                                                                            <form id="register-form" action="Register" method="post" role="form" enctype="multipart/form-data" style="display: none;">
                                                                                 <div class="form-group">
                                                                                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Vorname" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Nachname" value="">
+                                                                                    <input type="text" name="lastname" id="lastname" tabindex="2" class="form-control" placeholder="Nachname" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                                                                    <input type="email" name="email" id="email" tabindex="3" class="form-control" placeholder="Email Address" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Passwort">
+                                                                                    <input type="password" name="password" id="password" tabindex="4" class="form-control" placeholder="Passwort">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                                                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="5" class="form-control" placeholder="Confirm Password">
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-6 col-sm-offset-3">
-                                                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="6" class="form-control btn btn-register" value="Register Now">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -167,7 +171,6 @@
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
-                            </a>
                         </li>
                     </ul>
                 </div>

@@ -55,7 +55,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
+                        <li><a class="page-scroll" href="/AcroYoga/Index">Startseite</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
                         <c:choose>
                         	<c:when test="${user.admin}">
@@ -98,7 +98,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <li class="dropdown">
-                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong></a>
+                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Anmelden <strong class="caret"></strong></a>
                                             <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
           											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <div class="container">
@@ -108,7 +108,7 @@
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-                                                                            <a href="#" class="active" id="login-form-link">Login</a>
+                                                                            <a href="#" class="active" id="login-form-link">Anmelden</a>
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="#" id="register-form-link">Registrieren</a>
@@ -144,21 +144,21 @@
                                                                                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Vorname" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Nachname" value="">
+                                                                                    <input type="text" name="lastname" id="lastname" tabindex="2" class="form-control" placeholder="Nachname" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                                                                    <input type="email" name="email" id="email" tabindex="3" class="form-control" placeholder="Email Address" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Passwort">
+                                                                                    <input type="password" name="password" id="password" tabindex="4" class="form-control" placeholder="Passwort">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                                                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="5" class="form-control" placeholder="Confirm Password">
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-6 col-sm-offset-3">
-                                                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="6" class="form-control btn btn-register" value="Register Now">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -175,8 +175,6 @@
                                     </c:otherwise>
                                 </c:choose>
                         </li>
-
-
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -318,7 +316,7 @@
                                                             <a href="/AcroYoga/views/Forum?id=${postList.id}" alt="Lights" style="width: 100%"> </a>
                                                             <div class="card-delete-post">
                                                                     <a href="/AcroYoga/DeletePost?id=${postList.id}" alt="Lights" style="width: 100%">
-                                                                        <button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
+                                                                        <button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
 																		<span class="glyphicon glyphicon-trash"
 																			aria-hidden="true" style="color: black"></span>
 																	</button>
@@ -378,27 +376,27 @@
                                                     <p>Email</p>
                                                     <p>Passwort</p>
                                                     <p>Geburtstag</p>
+                                                    <p>Profilbild</p>
                                                 </div>
 
                                                 <form name="formUpdate" action="UpdateAccount" method="post" role="form"  enctype="multipart/form-data"">
                                                     <div class="col-xs-4">
-														<input type="file" name="file" />
-									                   
                                                         <div class="form-group">
                                                             <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Vorname" value="${user.name}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Nachname" value="${user.lastname}">
+                                                            <input type="text" name="lastname" id="lastname" tabindex="2" class="form-control" placeholder="Nachname" value="${user.lastname}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Addresse" value="${user.email}">
+                                                            <input type="email" name="email" id="email" tabindex="3" class="form-control" placeholder="Email Addresse" value="${user.email}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Passwort" value="${user.password}">
+                                                            <input type="password" name="password" id="password" tabindex="4" class="form-control" placeholder="Passwort" value="${user.password}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="date" name="birthday" id="birthday" tabindex="2" class="form-control" placeholder="Geburtstag " value="${user.birthday}">
+                                                            <input type="date" name="birthday" id="birthday" tabindex="5" class="form-control" placeholder="Geburtstag " value="${user.birthday}">
                                                         </div>
+														<input type="file" name="file" />
                                                     </div>
                                                     <div class="col-xs-1"></div>
                                                     <div class="col-xs-3">
