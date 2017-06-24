@@ -37,6 +37,17 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    		                	<script type="text/javascript">
+                                 function submitformDelete() {
+                                     document.getElementById("deleteForm").submit();
+                                 }
+
+                            </script>
+			                <script type="text/javascript">
+                       			function submitformAdmin() {
+                                      document.getElementById("updateAdminForm").submit();
+                                }
+               		 		</script>
     </head>
 
     <body id="page-top">
@@ -220,6 +231,7 @@
 				                    	<c:when test="${member.admin}">
 				                    		<td>
                                                  <form name="updateAdmin${member.id}" action="UpdateAdmin" method="post" role="form">
+
                                                  	<div class="dropdown">
 				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
 				                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
@@ -240,43 +252,53 @@
 														</div>
 																</li>
 															</ul>
+
+														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															<li>
+																<div class="form-group">
+																	<a href="UpdateAdmin?id=${member.id}" id="changeAdmin${member.id}">Nutzer</a>
+																</div>
+															</li>
+														</ul>
 													</div>
-												</form>
 				                    		</td>
 				                    	</c:when>	
 				                    	<c:otherwise>
 				                    		<td>
-				                    			<span class="label label-warning">Nutzer</span>
+				                    			<div class="dropdown">
+				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
+				                    						<span class="label label-warning">Nutzer</span> <span class="glyphicon glyphicon-edit"
+																			aria-hidden="false">
+															</span>
+														</button>
+														
+														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															<li>
+																<div class="form-group">
+																	<a href="UpdateAdmin?id=${member.id}" id="changeAdmin${member.id}">Admin</a>
+																</div>
+															</li>
+														</ul>
+													</div>
 				                    		</td>
 				                    	</c:otherwise>
 				                    </c:choose>  
 				                    <td>
-				                    <form name="deleteAccount" action="DeleteAccount" method="post" role="form">
-                                                        <div class="form-group">
-                                                        	<input type="hidden" name="changingUser" id="changingUser" value=" ${member.id}" />
-                                                        </div>
+                                                    
                                                         <div class="form-group">
                                                             <div class="row">
-                                                                    <a href="javascript: submitform()">
-                                                                    <button type="button"
-																		class="btn btn-default" aria-label="Left Align" style="background:transparent">
-																		<span class="glyphicon glyphicon-remove"
-																			aria-hidden="false" style="color:red"></span>
-																	</button>
-																	</a>
-                                                                    <script type="text/javascript">
-                                                                        function submitform() {
-                                                                            document.formUpdate
-                                                                                .submit();
-                                                                        }
-
-                                                                    </script>
+                                                                    <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
+																	class="btn btn-default" aria-label="Left Align">
+																	<span class="glyphicon glyphicon-trash"
+																		aria-hidden="false"></span> Account endgültig löschen
+																</button></a>
+                                                                   
                                                             </div>
                                                         </div>
-                                                </form>	
 				                    </td>                     
 				                </tr>
 			                </c:forEach>
+
 			              </tbody>
 			            </table>
 			            </div>

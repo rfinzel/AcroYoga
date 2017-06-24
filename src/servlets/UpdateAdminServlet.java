@@ -38,9 +38,8 @@ public class UpdateAdminServlet extends HttpServlet {
 		
 		// Objects
 		Member m = null;		
-		
 		// Member updaten Admin umtauschen
-		m = mDAO.getMemberById(Integer.parseInt(request.getAttribute("changingUser").toString()));
+		m = mDAO.getMemberById(Integer.parseInt(request.getParameter("id").toString()));
 		
 		Member tempM = new Member(m.getId(), !m.getAdmin() , m.getEmail(), m.getPassword(), m.getName(), m.getLastname(), m.getBirthday());
 		mDAO.updateMember(tempM);		
