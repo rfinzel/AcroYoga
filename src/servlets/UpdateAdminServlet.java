@@ -38,20 +38,15 @@ public class UpdateAdminServlet extends HttpServlet {
 		
 		// Objects
 		Member m = null;		
-		
 		// Member updaten Admin umtauschen
-		m = mDAO.getMemberById(Integer.parseInt(request.getAttribute("changingUser").toString()));
+		m = mDAO.getMemberById(Integer.parseInt(request.getParameter("id").toString()));
 		
-		boolean admin = true;
-		
-		if(m.getAdmin()) admin = false;
-		
-		Member tempM = new Member(m.getId(), admin , m.getEmail(), m.getPassword(), m.getName(), m.getLastname(), m.getBirthday());
+		Member tempM = new Member(m.getId(), !m.getAdmin() , m.getEmail(), m.getPassword(), m.getName(), m.getLastname(), m.getBirthday());
 		mDAO.updateMember(tempM);		
 						
 				// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/Index");
+				= this.getServletContext().getRequestDispatcher("/Members");
 
 		dispatcher.forward(request, response);
 	}

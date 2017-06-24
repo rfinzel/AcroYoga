@@ -37,6 +37,17 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    		                	<script type="text/javascript">
+                                 function submitformDelete() {
+                                     document.getElementById("deleteForm").submit();
+                                 }
+
+                            </script>
+			                <script type="text/javascript">
+                       			function submitformAdmin() {
+                                      document.getElementById("updateAdminForm").submit();
+                                }
+               		 		</script>
     </head>
 
     <body id="page-top">
@@ -54,8 +65,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
+                        <li><a class="page-scroll" href="/AcroYoga/Index">Startseite</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
+                        <c:choose>
+                        	<c:when test="${user.admin}">
+                        		<li><a class="page-scroll" href="/AcroYoga/Members">Teilnehmer</a></li>                        	
+                        	</c:when>
+                        </c:choose>     
                         <li><a class="page-scroll" href="/AcroYoga/Forums">Forum</a></li>
                         <li>
                             <form id="search-box" action="Search" method="post" accept-charset="UTF-8">
@@ -78,12 +94,12 @@
                             </form>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#">
                                 <c:choose>
                                     <c:when test="${loggedIn}">
                                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> ${user.name} <strong class="caret"></strong>
-									</a>
-                                            <div class="dropdown-menu" style="padding: 0x;">
+											</a>
+                                            <div class="dropdown-menu" style="padding: 10px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+          											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <form method="post" action="Logout" accept-charset="UTF-8">
                                                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Logout">
                                                 </form>
@@ -91,17 +107,18 @@
                                         </li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong>
-									</a>
-                                            <div class="dropdown-menu" style="padding: 15px;">
+                                        <li class="dropdown">
+                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Anmelden <strong class="caret"></strong></a>
+                                            <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
+          											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-md-offset-3">
-                                                            <div class="panel panel-login">
+                                                    <div class="row" style="padding:0px; background:transparent">
+                                                        <div class="col-xs-6 col-xs-offset-6" style="padding:0px; background:transparent">
+                                                            <div class="panel panel-login" style="margin:0px">
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-                                                                            <a href="#" class="active" id="login-form-link">Login</a>
+                                                                            <a href="#" class="active" id="login-form-link">Anmelden</a>
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="#" id="register-form-link">Registrieren</a>
@@ -132,26 +149,26 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
-                                                                            <form id="register-form" action="Register" method="post" role="form" style="display: none;">
+                                                                            <form id="register-form" action="Register" method="post" role="form" enctype="multipart/form-data" style="display: none;">
                                                                                 <div class="form-group">
                                                                                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Vorname" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Nachname" value="">
+                                                                                    <input type="text" name="lastname" id="lastname" tabindex="2" class="form-control" placeholder="Nachname" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                                                                    <input type="email" name="email" id="email" tabindex="3" class="form-control" placeholder="Email Address" value="">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Passwort">
+                                                                                    <input type="password" name="password" id="password" tabindex="4" class="form-control" placeholder="Passwort">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                                                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="5" class="form-control" placeholder="Confirm Password">
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-6 col-sm-offset-3">
-                                                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="6" class="form-control btn btn-register" value="Register Now">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -167,10 +184,7 @@
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
-                            </a>
                         </li>
-
-
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -216,7 +230,6 @@
 				                    <c:choose>
 				                    	<c:when test="${member.admin}">
 				                    		<td>
-                                                 <form name="updateAdmin" action="UpdateAdmin" method="post" role="form">
                                                  	<div class="dropdown">
 				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
 				                    						<span class="label label-success">Admin</span> <span class="glyphicon glyphicon-edit"
@@ -228,52 +241,75 @@
 															<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 																<li>
 														<div class="form-group">
-																<a href="javascript: submitform()">Nutzer</a>
+																<a href="javascript: submitformAdmin()">Nutzer</a>
 																<script type="text/javascript">
-                                                        		function submitform() {
-                                                                       document.updateAdmin.submit();
+                                                        		function submitformAdmin${member.id}() {
+                                                                       document.updateAdmin${member.id}.submit();
                                                                         }
                                                 		 		</script>
 														</div>
 																</li>
 															</ul>
+
+														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															<li>
+																<div class="form-group">
+																	<a href="UpdateAdmin?id=${member.id}" id="changeAdmin${member.id}">Nutzer</a>
+																</div>
+															</li>
+														</ul>
 													</div>
-												</form>
 				                    		</td>
 				                    	</c:when>	
 				                    	<c:otherwise>
 				                    		<td>
-				                    			<span class="label label-warning">Nutzer</span>
+				                    			<div class="dropdown">
+				                    					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background:transparent">
+				                    						<span class="label label-warning">Nutzer</span> <span class="glyphicon glyphicon-edit"
+																			aria-hidden="false">
+															</span>
+														</button>
+														
+														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+															<li>
+																<div class="form-group">
+																	<a href="UpdateAdmin?id=${member.id}" id="changeAdmin${member.id}">Admin</a>
+																</div>
+															</li>
+														</ul>
+													</div>
 				                    		</td>
 				                    	</c:otherwise>
 				                    </c:choose>  
 				                    <td>
-				                    <form name="deleteAccount" action="DeleteAccount" method="post" role="form">
-                                                        <div class="form-group">
-                                                        	<input type="hidden" name="changingUser" id="changingUser" value=" ${member.id}" />
-                                                        </div>
+<<<<<<< HEAD
+                                                    
                                                         <div class="form-group">
                                                             <div class="row">
-                                                                    <a href="javascript: submitform()">
-                                                                    <button type="button"
-																		class="btn btn-default" aria-label="Left Align" style="background:transparent">
-																		<span class="glyphicon glyphicon-remove"
-																			aria-hidden="false" style="color:red"></span>
-																	</button>
-																	</a>
-                                                                    <script type="text/javascript">
-                                                                        function submitform() {
-                                                                            document.formUpdate
-                                                                                .submit();
-                                                                        }
-
-                                                                    </script>
+                                                                    <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
+																	class="btn btn-default" aria-label="Left Align" style="background:transparent">
+																	<span class="glyphicon glyphicon-trash"
+																		aria-hidden="false"></span>
+																</button></a>
+                                                                   
                                                             </div>
                                                         </div>
-                                                </form>	
+=======
+				                                         <div class="form-group">
+				                                             <div class="row">
+				                                                     <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
+						class="btn btn-default" aria-label="Left Align">
+						<span class="glyphicon glyphicon-trash"
+							aria-hidden="false"></span> Account endgültig löschen
+					</button></a>
+				                                                    
+				                                             </div>
+				                                         </div>
+>>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
 				                    </td>                     
 				                </tr>
 			                </c:forEach>
+
 			              </tbody>
 			            </table>
 			            </div>

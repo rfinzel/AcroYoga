@@ -3,6 +3,8 @@ package servlets;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -69,7 +71,7 @@ public class EventServlet extends HttpServlet {
 		
 		// Variablen an JSP weiterleiten
 		request.setAttribute("name", e.getName());
-		request.setAttribute("loginbtn", "<a href=\"#about\" class=\"btn btn-primary btn-xl page-scroll\">Anmelden</a>");
+		request.setAttribute("loginbtn", "");
 		request.setAttribute("place", e.getPlace());
 		request.setAttribute("content", e.getContent());
 		request.setAttribute("regularity", e.getRegularity());
@@ -83,16 +85,37 @@ public class EventServlet extends HttpServlet {
 		// Datum und Uhrzeit formatieren
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
 		request.setAttribute("time", new SimpleDateFormat("hh-mm").format(e.getTiming()));
+				
 		request.setAttribute("timing", formatter.format(e.getTiming()));
 		request.setAttribute("endDate", formatter.format(e.getEndDate()));
+		
+		// Nächsten Termin berechnen
+		Timestamp nextEvent = e.getTiming();
+		
+		Calendar cal = Calendar.getInstance();
+		
+		while(nextEvent.before(new Timestamp(System.currentTimeMillis())))
+		{
+			cal.setTime(nextEvent);
+			cal.add(Calendar.DAY_OF_WEEK, e.getRegularity());
+			nextEvent.setTime(cal.getTime().getTime());
+		}
 
+		request.setAttribute("nextEvent", formatter.format(nextEvent));
 		// Teilnehmer (überarbeiten)
-		Vector<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
-		String htmlMembers = "";
+		List<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 
+		boolean participate = false;
 		for(int i = 0; i < members.size(); i++)
-			htmlMembers = htmlMembers + members.get(i).getName() + " ";
-		request.setAttribute("participants", htmlMembers);
+		{
+			if(members.get(i).getId() == Integer.parseInt(request.getSession().getAttribute("id").toString()))
+			{
+				participate  = true;
+				break;
+			}
+		}
+		request.setAttribute("participate", participate);
+		request.setAttribute("participants", members);
 		// Überarbeiten
 		
 		
@@ -151,6 +174,34 @@ public class EventServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private java.sql.Date formatDate(String date)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+		java.util.Date parsed = null;
+		try {
+			parsed = format.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new java.sql.Date(parsed.getTime());
+	}
+	
+	private java.sql.Timestamp formatTimestamp(String timestamp)
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		java.util.Date parsed = null;
+		
+		try {
+			parsed = format.parse(timestamp);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new java.sql.Timestamp(parsed.getTime());
 	}
 
 }

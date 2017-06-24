@@ -174,8 +174,7 @@ public class MemberDAO {
 			pstmt.setInt(1, event);
 			ResultSet rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				System.out.println("addmember");
+			while (rs.next()) {				
 				m.add(getMemberById(rs.getInt(1)));
 			}
 		} catch (SQLException e1) {
@@ -239,7 +238,7 @@ public class MemberDAO {
 		
 		conn = conProvider.getConnection();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("select id from members");
+			PreparedStatement pstmt = conn.prepareStatement("select id from members order by id asc");
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next())
