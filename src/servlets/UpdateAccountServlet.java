@@ -60,9 +60,14 @@ public class UpdateAccountServlet extends HttpServlet {
 		String birthday = request.getParameter("birthday");
 		
 		// Member updaten
+		java.sql.Date date = null;
 		m = mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString()));
+		if(birthday != null)
+		{	
+			date = formatDate(birthday);
+		}
 		
-		Member tempM = new Member(m.getId(), m.getAdmin(), email, password, name, lastname, formatDate(birthday));
+		Member tempM = new Member(m.getId(), m.getAdmin(), email, password, name, lastname, date);
 		mDAO.updateMember(tempM);		
 				
 		Part filePart = request.getPart("file");
