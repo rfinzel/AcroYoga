@@ -16,7 +16,7 @@ public class Participation {
 		this.timing = timing;
 		this.event = event;
 		this.participant = participant;
-		this.readable_timing = timing.toString().substring(0, 16);
+		this.readable_timing = timing.toString().substring(0, 10);
 	}
 
 	public String getReadable_timing() {
@@ -36,7 +36,7 @@ public class Participation {
 	}
 
 	public Date getTiming() {
-		this.readable_timing = timing.toString().substring(0, 16);
+		this.readable_timing = timing.toString().substring(0, 10);
 		return timing;
 	}
 
