@@ -259,7 +259,6 @@
 															</li>
 														</ul>
 													</div>
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
 				                    		</td>
 				                    	</c:when>	
 				                    	<c:otherwise>
