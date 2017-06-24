@@ -34,7 +34,6 @@ public class DeleteAccountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// DAOs
 		MemberDAO mDAO = new MemberDAO();
-		
 		// Angemeldeten User löschen
 		mDAO.deleteMember(mDAO.getMemberById((Integer)request.getSession().getAttribute("id")));
 						
