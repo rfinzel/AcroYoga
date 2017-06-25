@@ -236,20 +236,6 @@
 																			aria-hidden="false">
 															</span>
 														</button>
-														
-														<input type="hidden" name="changingUser" value=" ${member.id}" />
-															<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-																<li>
-														<div class="form-group">
-																<a href="javascript: submitformAdmin()">Nutzer</a>
-																<script type="text/javascript">
-                                                        		function submitformAdmin${member.id}() {
-                                                                       document.updateAdmin${member.id}.submit();
-                                                                        }
-                                                		 		</script>
-														</div>
-																</li>
-															</ul>
 
 														<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 															<li>
@@ -281,31 +267,18 @@
 				                    		</td>
 				                    	</c:otherwise>
 				                    </c:choose>  
-				                    <td>
-<<<<<<< HEAD
-                                                    
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                    <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
-																	class="btn btn-default" aria-label="Left Align" style="background:transparent">
-																	<span class="glyphicon glyphicon-trash"
-																		aria-hidden="false"></span>
-																</button></a>
-                                                                   
-                                                            </div>
-                                                        </div>
-=======
-				                                         <div class="form-group">
-				                                             <div class="row">
-				                                                     <a href="DeleteAccount?id=${member.id}" id="changeAccount-link"><button type="button"
-						class="btn btn-default" aria-label="Left Align">
-						<span class="glyphicon glyphicon-trash"
-							aria-hidden="false"></span> Account endgültig löschen
-					</button></a>
-				                                                    
-				                                             </div>
-				                                         </div>
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
+				                    <td>                                                    
+                                    	<div class="form-group">
+                                    		<div class="row">
+                                    			<a href="DeleteAccount?id=${member.id}" id="changeAccount-link">
+                                    			<button type="button"
+												class="btn btn-default" aria-label="Left Align" style="background:transparent">
+													<span class="glyphicon glyphicon-trash"
+													aria-hidden="false"></span>
+												</button>
+												</a>
+                                    		</div>
+                                    	</div>
 				                    </td>                     
 				                </tr>
 			                </c:forEach>

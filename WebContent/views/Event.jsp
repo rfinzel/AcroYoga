@@ -193,28 +193,31 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-4 text-center">
-                        <p>${timing} bis ${endDate}</p>
-                        <p>Nächster Termin: ${nextEvent}</p>
+                    	<div class="btn btn-default">
+                        	<p>${timing} bis ${endDate}</p>
+                        </div>
                     </div>
-                    <div class="col-xs-4 text-center">
+                    <div class="col-xs-4 text-center" style= "font-weight: 800">
                         <p>${name}</p>
                     </div>
-                    <c:choose>
-                    	<c:when test="${participate}">
-	                    	<form id="participate" action="DeleteParticipation" method="post" accept-charset="UTF-8">
-		                    <input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
-		                    <input type="hidden" name="eventId" value="${id}" id="eventId"> 
-							<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Nicht mehr teilnehmen">
-		                    </form>
-                    	</c:when>
-                    	<c:when test="${not participate}">
-	                    	<form id="participate" action="AddParticipation" method="post" accept-charset="UTF-8">
-		                    <input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
-		                    <input type="hidden" name="eventId" value="${id}" id="eventId"> 
-							<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Teilnehmen">
-		                    </form>
-                    	</c:when>
-                    </c:choose>
+                    <div class="col-xs-4 text-center">
+                    	<c:choose>
+                    		<c:when test="${participate}">
+	                    		<form id="participate" action="DeleteParticipation" method="post" accept-charset="UTF-8">
+		                    	<input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
+		                    	<input type="hidden" name="eventId" value="${id}" id="eventId"> 
+								<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Nicht mehr teilnehmen">
+		                    	</form>
+                    		</c:when>
+                    		<c:when test="${not participate}">
+	                    		<form id="participate" action="AddParticipation" method="post" accept-charset="UTF-8">
+		                    	<input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
+		                    	<input type="hidden" name="eventId" value="${id}" id="eventId"> 
+								<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Teilnehmen">
+		                    	</form>
+                    		</c:when>
+                    	</c:choose>
+                    </div>
                 </div>
             </div>
         </section>
@@ -225,23 +228,33 @@
         <section id="veranstaltungen">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-6">
-                        <p>${weekday} ${time} Uhr</p>
+                    <div class="col-xs-3" style="color:gray; ">
+                        <p>Wann:</p>
+                        
+                        <p>Nächster Termin:</p>
 
-                        <p>Jeden ${regularity}</p>
+                        <p>Wo:</p>
 
-                        <p>${place}</p>
-
-                        <p>${fee}Euro</p>
+                        <p>Eintritt:</p>
 
                         <p>Wer kommt noch:</p>
 					
-						<c:forEach items="${participants}" var="participants">
-                        <img src="img/members/${participants.id}/picture.png" alt="${participants.name }" title="${participants.name }"/>
+                    </div>
+                    <div class="col-xs-3">
+                        <p>${weekday} ${time} Uhr</p>
+                        
+                        <p>${nextEvent}</p>
+
+                        <p>${place}</p>
+
+                        <p>${fee} Euro</p>
+
+                        <c:forEach items="${participants}" var="participants">
+                        <img src="img/members/${participants.id}/picture.png" alt="${participants.name }" width="50" height="50" title="${participants.name }"/>
                         
                         </c:forEach>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-5 col-xs-offset-1">
                         <p>${content}</p>
                     </div>
                 </div>
@@ -251,21 +264,30 @@
         <!-- About Details -->
 
         <div class="container">
-            <a id="addImage"><button type="button" class="btn btn-default"
-				aria-label="Left Align">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-			</button> </a>
             <c:choose>
                 <c:when test="${loggedIn}">
                     <div class="row">
                         <form method="post" action="UploadImages" enctype="multipart/form-data">
-                            <div id="images">
-                                <input type="text" id="date" name="date" value="" placeholder="Datum" />
+                            <div id="images" class="col-xs-9">
                                 <input type="hidden" id="id" name="id" value="${id}" /> 
                                 <input type="hidden" id="amount" name="amount" value="1" /> 
-                                <input type="file" name="file1" />
+                                <div class="col-xs-8">
+                                	<div class="col-xs-10">
+                                		<input type="file" name="file1" />
+						            </div>
+						            <div class="col-xs-2">
+						            	<a id="addImage"><button type="button" class="btn btn-default"
+											aria-label="Left Align">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+											</button> </a>
+									</div>		
+                            	</div>
+								<div class="col-xs-4">
+									<input type="date" name="date" id="date" class="form-control" placeholder="Datum">
+                                </div>
                             </div>
-                            <div>
+                           	
+                            <div class="col-xs-3">
                                 <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Bilder hochladen">
                             </div>
                         </form>

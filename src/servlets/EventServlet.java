@@ -37,7 +37,6 @@ public class EventServlet extends HttpServlet {
      */
     public EventServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -89,7 +88,7 @@ public class EventServlet extends HttpServlet {
 		request.setAttribute("timing", formatter.format(e.getTiming()));
 		request.setAttribute("endDate", formatter.format(e.getEndDate()));
 		
-		// Nächsten Termin berechnen
+		// Nï¿½chsten Termin berechnen
 		Timestamp nextEvent = e.getTiming();
 		
 		Calendar cal = Calendar.getInstance();
@@ -102,7 +101,8 @@ public class EventServlet extends HttpServlet {
 		}
 
 		request.setAttribute("nextEvent", formatter.format(nextEvent));
-		// Teilnehmer (überarbeiten)
+		
+		// Teilnehmer (ï¿½berarbeiten)
 		List<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 
 		boolean participate = false;
@@ -116,7 +116,7 @@ public class EventServlet extends HttpServlet {
 		}
 		request.setAttribute("participate", participate);
 		request.setAttribute("participants", members);
-		// Überarbeiten
+		// ï¿½berarbeiten
 		
 		
 		// Bilder upload zu den Events
@@ -160,7 +160,6 @@ public class EventServlet extends HttpServlet {
 		request.setAttribute("fileList", fileList);
 		request.setAttribute("dateList", dateList);
 		
-		// TODO Auto-generated method stub
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
         = this.getServletContext().getRequestDispatcher("/views/Event.jsp");
@@ -172,7 +171,6 @@ public class EventServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	
@@ -183,7 +181,6 @@ public class EventServlet extends HttpServlet {
 		try {
 			parsed = format.parse(date);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return new java.sql.Date(parsed.getTime());
@@ -197,7 +194,6 @@ public class EventServlet extends HttpServlet {
 		try {
 			parsed = format.parse(timestamp);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
