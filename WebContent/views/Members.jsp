@@ -270,7 +270,7 @@
 				                    <td>                                                    
                                     	<div class="form-group">
                                     		<div class="row">
-                                    			<a href="DeleteAccount?id=${member.id}" id="changeAccount-link">
+                                    			<a href="DeleteAccount?memberID=${member.id}" id="changeAccount-link">
                                     			<button type="button"
 												class="btn btn-default" aria-label="Left Align" style="background:transparent">
 													<span class="glyphicon glyphicon-trash"
