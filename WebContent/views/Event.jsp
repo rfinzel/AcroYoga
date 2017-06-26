@@ -183,7 +183,7 @@
             <!-- /.container-fluid -->
         </nav>
 
-        <header>
+        <header style="background-image: url('img/events/${id}/image.jpg');">
             <div class="header-content">
                 <div class="header-content-inner">
                     <h1 id="homeHeading">${name}</h1>
@@ -223,6 +223,11 @@
 	                    		</c:when>
 	                    		</c:choose>
 	                   		</c:when>
+	                   		<c:otherwise>
+	                   			<form accept-charset="UTF-8">
+									<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Anmelden zum Teilnehmen" style="background-color: #fdebe7">
+			                    </form>
+	                   		</c:otherwise>
                     	</c:choose>
                     </div>
                 </div>
@@ -255,11 +260,17 @@
                         <p>${place}</p>
 
                         <p>${fee} Euro</p>
-
-                        <c:forEach items="${participants}" var="participants">
-                        <img src="img/members/${participants.id}/picture.png" alt="${participants.name }" width="50" height="50" title="${participants.name }"/>
-                        
-                        </c:forEach>
+	
+						<c:choose>
+							<c:when test="${loggedIn}">
+		                        <c:forEach items="${participants}" var="participants">
+		                        	<img src="img/members/${participants.id}/picture.png" alt="${participants.name }" width="50" height="50" title="${participants.name }"/>
+		                        </c:forEach>						
+							</c:when>
+							<c:otherwise>
+								<p>Das wird dir angezeigt, wenn du eingeloggt bist.</p>
+							</c:otherwise>
+						</c:choose>
                     </div>
                     <div class="col-xs-5 col-xs-offset-1">
                         <p>${content}</p>
@@ -299,32 +310,32 @@
                             </div>
                         </form>
                     </div>
-                </c:when>
+	            <h2>Bilder</h2>
+	            <div class="panel-group">
+	                <div class="panel panel-default">
+	                	<c:forEach items="${fileList}" var="fileList">
+		                    <div class="panel-heading">
+		                        <h4 class="panel-title">
+		                            <a data-toggle="collapse" href="#${fileList.name}">${fileList.name}</a>
+		                        </h4>
+		                    </div>
+		                    <div id="${fileList.name}" class="panel-collapse collapse" style="height: 100%">
+		                        <c:forEach items="${fileList.files}" var="files">
+		                        <div class='list-group gallery'>
+	                                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+	                                    <a class="fancybox thumbnail" rel="ligthbox" href="img/events/${id}/${fileList.name}/${files}"> <img class="img-responsive" alt="" src="img/events/${id}/${fileList.name}/thumbnails/${files}" />
+	                                    </a>
+	                                </div>
+		                        </div>
+		                        </c:forEach>
+		                        <!-- list-group / end -->
+	                        	<div class="panel-footer"></div>
+		                    </div>
+	                    </c:forEach>
+	                </div>
+	            </div>
+            </c:when>
             </c:choose>
-            <h2>Bilder</h2>
-            <div class="panel-group">
-                <div class="panel panel-default">
-                	<c:forEach items="${fileList}" var="fileList">
-	                    <div class="panel-heading">
-	                        <h4 class="panel-title">
-	                            <a data-toggle="collapse" href="#${fileList.name}">${fileList.name}</a>
-	                        </h4>
-	                    </div>
-	                    <div id="${fileList.name}" class="panel-collapse collapse" style="height: 100%">
-	                        <c:forEach items="${fileList.files}" var="files">
-	                        <div class='list-group gallery'>
-                                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                    <a class="fancybox thumbnail" rel="ligthbox" href="img/events/${id}/${fileList.name}/${files}"> <img class="img-responsive" alt="" src="img/events/${id}/${fileList.name}/thumbnails/${files}" />
-                                    </a>
-                                </div>
-	                        </div>
-	                        </c:forEach>
-	                        <!-- list-group / end -->
-                        	<div class="panel-footer"></div>
-	                    </div>
-                    </c:forEach>
-                </div>
-            </div>
         </div>
         <!--infobar-->
 

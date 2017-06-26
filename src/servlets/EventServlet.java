@@ -6,24 +6,21 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.EventDAO;
+import daos.MemberDAO;
 import objects.Directory;
 import objects.Event;
-import daos.MemberDAO;
 import objects.Member;
 
 /**
@@ -107,13 +104,13 @@ public class EventServlet extends HttpServlet {
 		List<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
 
 		boolean participate = false;
-		for(int i = 0; i < members.size(); i++)
-		{
-			if(members.get(i).getId() == Integer.parseInt(request.getSession().getAttribute("id").toString()))
-			{
-				participate  = true;
-				break;
-			}
+		if (loggedIn) {
+			for (int i = 0; i < members.size(); i++) {
+				if (members.get(i).getId() == Integer.parseInt(request.getSession().getAttribute("id").toString())) {
+					participate = true;
+					break;
+				}
+			} 
 		}
 		request.setAttribute("participate", participate);
 		request.setAttribute("participants", members);

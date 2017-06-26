@@ -330,6 +330,6 @@ body .no-padding {
 	#fdebe7;
 }
 
-responsive-logo {
+.responsive-logo {
     background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat;
 }
