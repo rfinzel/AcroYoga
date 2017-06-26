@@ -55,7 +55,6 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="/AcroYoga/Index">Home</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Index">Startseite</a></li>
                         <li><a class="page-scroll" href="/AcroYoga/Events">Veranstaltungen</a></li>
                         <c:choose>
@@ -99,7 +98,6 @@
                                     </c:when>
                                     <c:otherwise>
                                         <li class="dropdown">
-                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong></a>
                                         	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Anmelden <strong class="caret"></strong></a>
                                             <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
           											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
@@ -110,10 +108,7 @@
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-                                                                            <href="" class="active" id="login-form-link">Login</a>
-=======
-                                                                            <a href="#" class="active" id="login-form-link">Anmelden</a>
->>>>>>> e92f1e4df30ca7fc81b049ed952ab8f190aecf3b
+                                                                            <href="" class="active" id="login-form-link">Anmelden</a>
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="" id="register-form-link">Registrieren</a>
@@ -485,19 +480,20 @@
             </c:when>
             <c:otherwise>
                 <!-- About -->
-                <section id="about" >
+               <!--
+                  <section id="about" >
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2 text-center">
-                                <h2 class="section-heading">About</h2>
+                                <h2 class="section-heading">Über uns</h2>
                                 <hr class="light">
                                 <p class="text-faded">blablabla</p>
-                                <a href="#veranstaltungen" class="page-scroll btn btn-default btn-xl sr-button">Get
-								Started!</a>
+                                <a href="#veranstaltungen" class="page-scroll btn btn-default btn-xl sr-button"> Leg los!</a>
                             </div>
                         </div>
                     </div>
                 </section>
+                -->
                 <!-- About ende -->
                 <!-- Veranstaltungen -->
                 <section id="veranstaltungen">
