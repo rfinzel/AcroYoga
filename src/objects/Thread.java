@@ -1,6 +1,5 @@
 package objects;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Thread {
@@ -8,18 +7,35 @@ public class Thread {
 	private int id;
 	private String name;
 	private Timestamp timing;
-	private int author;
+	private Member author;
 	private int forum_id;
-	private String readable_timing;
+	private String readable_time;
+	private String readable_date;
 	
-	public Thread(int id, String name, Timestamp timing, int author, int forum_id) {
+	public Thread(int id, String name, Timestamp timing, Member author, int forum_id) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.timing = timing;
 		this.author = author;
 		this.forum_id = forum_id;
-		this.readable_timing = timing.toString().substring(0, 16);
+		this.readable_time = timing.toString().substring(11, 16);
+		this.readable_date = timing.toString().substring(0, 10);	}
+	
+	public String getReadable_time() {
+		return readable_time;
+	}
+
+	public void setReadable_time(String readable_time) {
+		this.readable_time = readable_time;
+	}
+
+	public String getReadable_date() {
+		return readable_date;
+	}
+
+	public void setReadable_date(String readable_date) {
+		this.readable_date = readable_date;
 	}
 
 	public int getId() {
@@ -43,23 +59,15 @@ public class Thread {
 	}
 
 	public void setTiming(Timestamp timing) {
-		this.readable_timing = timing.toString().substring(0, 16);
-		this.timing = timing;
+		this.readable_time = timing.toString().substring(12, 16);
+		this.readable_date = timing.toString().substring(0, 10);		this.timing = timing;
 	}
 
-	public String getReadable_timing() {
-		return readable_timing;
-	}
-
-	public void setReadable_timing(String readable_timing) {
-		this.readable_timing = readable_timing;
-	}
-
-	public int getAuthor() {
+	public Member getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(int author) {
+	public void setAuthor(Member author) {
 		this.author = author;
 	}
 

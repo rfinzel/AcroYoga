@@ -200,35 +200,42 @@
                 </div>
             </div>
             <div class="row">
-                <div class="container">
-                    <div class="row">
-                        <c:forEach items="${tList}" var="threadList">
-                            <div class="col-xs-10 col-xs-offset-2">
-                                <div class="card">
-                                    <a href="/AcroYoga/Thread?id=${threadList.id}" alt="Lights" style="width: 100%">
-                                        <div class="card-content">
-                                            <div class="card-image">
-                                                <img class="img-responsive" src="img/header.jpg">
-                                            </div>
-                                            <p>${threadList.author}</p>
-                                        </div>
-                                    </a>
-                                    <div>
-                                        <div class="card-content">
-                                            <p>${threadList.name}...</p>
-                                        </div>
-                                        <div class="card-small-title">
-                                            <p>${threadList.readable_timing}</p>
-                                            <div class="glyphicon glyphicon-comment">
-                                                ${postCounter}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
+                <div class="container">                        
+                        <c:forEach items="${tList}" var="thread">
+				        	<div class="row">
+				               	<div class="col-xs-10 col-xs-offset-1">
+				                	<div class="card" style="padding:10px;">
+				                		<c:choose>
+				                			<c:when test="admin">
+						                		<!--<div class="card-delete-post">
+								            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
+								           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
+														<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
+													</button>
+													</a>
+						                    	</div>-->              		
+				                			</c:when>
+				                		</c:choose>
+				                 		<div class="row">
+				                 		<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
+				                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
+				                            	<img src="img/members/${thread.author.id }/picture.png" />
+												<p>${thread.author.name }</p>
+				                    		</div>
+											<div class="col-xs-8">
+												<div class="card-small-title" style=""> 
+													<div class="glyphicon glyphicon-comment">${postCounter} 
+				                                                <p>${thread.readable_time} ${thread.readable_date}</p>
+				                                	</div>
+				                            		<p>${thread.name}</p>
+				                    			</div>
+				                    		</div>
+				                    		</a>
+										</div>	
+									</div>
+				                </div>
+				        	</div>
+				        </c:forEach>
                 </div>
             </div>
             <c:choose>

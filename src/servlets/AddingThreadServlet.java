@@ -58,7 +58,7 @@ public class AddingThreadServlet extends HttpServlet {
 		// Thread anlegen und ID zwischenspeichern
 		int threadID = tDAO.addThread(new Thread(0, request.getParameter("threadname"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), Integer.parseInt(id)));
 		
-		// Post hinzufügen
+		// Post hinzufï¿½gen
 		pDAO.addPost(new Post(0, request.getParameter("textareaComment"), new Timestamp(System.currentTimeMillis()), mDAO.getMemberById(Integer.parseInt(request.getSession().getAttribute("id").toString())), threadID));
 		
 		

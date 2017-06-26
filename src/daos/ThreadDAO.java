@@ -23,6 +23,7 @@ public class ThreadDAO {
 
 	public Thread getThreadById(int id) {
 		Thread t = null;
+		MemberDAO mDAO = new MemberDAO();
 
 		conn = conProvider.getConnection();
 		try {
@@ -31,7 +32,7 @@ public class ThreadDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				t = new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5));
+				t = new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), mDAO.getMemberById(rs.getInt(4)), rs.getInt(5));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());
@@ -40,7 +41,6 @@ public class ThreadDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -56,7 +56,7 @@ public class ThreadDAO {
 			pstmt.setInt(1, id);
 			pstmt.setString(2, t.getName());
 			pstmt.setTimestamp(3, t.getTiming());
-			pstmt.setInt(4, t.getAuthor());
+			pstmt.setInt(4, t.getAuthor().getId());
 			pstmt.setInt(5, t.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException f1) {
@@ -66,7 +66,6 @@ public class ThreadDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -92,6 +91,7 @@ public class ThreadDAO {
 
 	public Vector<Thread> getThreadsByForum(int id) {
 		Vector<Thread> t = new Vector<Thread>();
+		MemberDAO mDAO = new MemberDAO();
 
 		conn = conProvider.getConnection();
 		try {
@@ -100,7 +100,7 @@ public class ThreadDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				t.add(new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
+				t.add(new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), mDAO.getMemberById(rs.getInt(4)), rs.getInt(5)));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());
@@ -109,7 +109,6 @@ public class ThreadDAO {
 		try {
 			conn.close();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
