@@ -232,14 +232,18 @@
                                         <p>${eventList.weekday}</p>
                                         ${eventList.readable_time} Uhr<br> ${eventList.readable_date}
                                     </div>
-                                    <div class="card-delete-event">
-                                		<a href="/AcroYoga/DeleteEvent?id=${eventList.id}" alt="Lights" style="width: 100%">
-                                    		<button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
-												<span class="glyphicon glyphicon-trash"
-													aria-hidden="true" style="color: white"></span>
-											</button>
-                                    	</a>
-                                    </div>
+                                    <c:choose>
+                                    	<c:when test="admin">
+		                                    <div class="card-delete-event">
+		                                		<a href="/AcroYoga/DeleteEvent?id=${eventList.id}" alt="Lights" style="width: 100%">
+		                                    		<button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
+														<span class="glyphicon glyphicon-trash"
+															aria-hidden="true" style="color: white"></span>
+													</button>
+		                                    	</a>
+		                                    </div>                                    	
+                                    	</c:when>
+                                    </c:choose>
                                     <div class="card-image">
                                         <img class="img-responsive" src="img/header.jpg">
                                     </div>
