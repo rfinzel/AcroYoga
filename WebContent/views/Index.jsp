@@ -14,6 +14,7 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
 
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,10 +47,13 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> Menu <i
+					<span class="sr-only">Toggle navigation</span> Menü <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -108,7 +112,11 @@
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
+<<<<<<< HEAD
                                                                             <a href="#" class="active" id="login-form-link">Anmelden</a>
+=======
+                                                                            <href="" class="active" id="login-form-link">Anmelden</a>
+>>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="" id="register-form-link">Registrieren</a>

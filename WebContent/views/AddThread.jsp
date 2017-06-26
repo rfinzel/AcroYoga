@@ -14,6 +14,7 @@ F
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
 
         <!-- Bootstrap Core CSS -->
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +48,9 @@ F
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -213,7 +216,6 @@ F
                                             <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
                                             <input style="margin-bottom: 15px;" type="text" placeholder="Threadname" id="threadname" name="threadname" required>
                                             <hr class="divider">
-                                    </div>
 		                                    <div class="col-lg-3 col-md-6text-center">
 		                                        <textarea id="textareaComment" name="textareaComment" required></textarea>
 		                                    </div>
@@ -221,6 +223,7 @@ F
 		                                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit" required>
 		                                    </div>
 	                                    </form>
+                                    </div>
                                 </a>
                             </div>
                         </div>

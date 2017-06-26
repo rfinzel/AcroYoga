@@ -13,6 +13,7 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
 
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +48,9 @@
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -205,14 +208,21 @@
 				        	<div class="row">
 				               	<div class="col-xs-10 col-xs-offset-1">
 				                	<div class="card" style="padding:10px;">
+<<<<<<< HEAD
 				                		<c:choose>
 				                			<c:when test="admin">
 						                		<!--<div class="card-delete-post">
+=======
+				                		<!--<c:choose>
+				                			<c:when test="admin">
+						                		<div class="card-delete-post">
+>>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
 								            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
 								           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
 														<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
 													</button>
 													</a>
+<<<<<<< HEAD
 						                    	</div>-->              		
 				                			</c:when>
 				                		</c:choose>
@@ -232,6 +242,32 @@
 				                    		</div>
 				                    		</a>
 										</div>	
+=======
+						                    	</div>              		
+				                			</c:when>
+				                		</c:choose>-->
+					                 	<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
+				                 			<div class="row">
+					                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
+					                            	<img src="img/members/${thread.author.id }/picture.png" />
+													<p>${thread.author.name }</p>
+					                    		</div>
+												<div class="col-xs-8">
+													<div class="col-xs-12">
+														<div class="card-small-title" > 
+															<div class="glyphicon glyphicon-comment" style="text-align: right; font-weight: 600; position: absolute; right: 0; top: 0; margin-right: 15px">
+																${postCounter} 
+						                                        <p>${thread.readable_time} Uhr ${thread.readable_date}</p>
+						                                	</div>
+						                    			</div>
+						                    		</div>	
+						                    		<div class="col-xs-12">
+						                    			<p>${thread.name}</p>
+						                    		</div>
+					                    		</div>
+											</div>	
+					                    </a>
+>>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
 									</div>
 				                </div>
 				        	</div>

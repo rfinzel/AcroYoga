@@ -13,6 +13,8 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
+
 
         <!-- Bootstrap Core CSS -->
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,9 +48,11 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
-				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
-                </div>
+					</button>
+					<a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga</a>
+                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -228,10 +232,16 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <input style="margin-bottom: 15px;" type="text" placeholder="Uhrzeit" id="timing" name="timing" required>
+<<<<<<< HEAD
                             <p>Uhr</p>
 
                             <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity" required>
 
+=======
+
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity" required>
+
+>>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
                             <input style="margin-bottom: 15px;" type="text" placeholder="Eintritt" id="fee" name="fee" required>
                         </div>
                         <div class="col-xs-4">

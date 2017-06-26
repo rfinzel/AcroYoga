@@ -13,6 +13,7 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
 
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +48,9 @@
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -202,20 +205,24 @@
                     </div>
                     <div class="col-xs-4 text-center">
                     	<c:choose>
-                    		<c:when test="${participate}">
-	                    		<form id="participate" action="DeleteParticipation" method="post" accept-charset="UTF-8">
-		                    	<input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
-		                    	<input type="hidden" name="eventId" value="${id}" id="eventId"> 
-								<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Nicht mehr teilnehmen">
-		                    	</form>
-                    		</c:when>
-                    		<c:when test="${not participate}">
-	                    		<form id="participate" action="AddParticipation" method="post" accept-charset="UTF-8">
-		                    	<input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
-		                    	<input type="hidden" name="eventId" value="${id}" id="eventId"> 
-								<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Teilnehmen">
-		                    	</form>
-                    		</c:when>
+	                    	<c:when test="${loggedIn}">
+	                    		<c:choose>
+	                    		<c:when test="${participate}">
+		                    		<form id="participate" action="DeleteParticipation" method="post" accept-charset="UTF-8">
+			                    	<input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
+			                    	<input type="hidden" name="eventId" value="${id}" id="eventId"> 
+									<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Nicht mehr teilnehmen">
+			                    	</form>
+	                    		</c:when>
+	                    		<c:when test="${not participate}">
+		                    		<form id="participate" action="AddParticipation" method="post" accept-charset="UTF-8">
+			                    	<input type="hidden" name="nextEvent" value="${nextEvent}" id="nextEvent">
+			                    	<input type="hidden" name="eventId" value="${id}" id="eventId"> 
+									<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Teilnehmen">
+			                    	</form>
+	                    		</c:when>
+	                    		</c:choose>
+	                   		</c:when>
                     	</c:choose>
                     </div>
                 </div>
@@ -283,7 +290,7 @@
 									</div>		
                             	</div>
 								<div class="col-xs-4">
-									<input type="date" name="date" id="date" class="form-control" placeholder="Datum">
+									<input type="date" name="date" id="date" class="form-control" placeholder="Datum" required>
                                 </div>
                             </div>
                            	

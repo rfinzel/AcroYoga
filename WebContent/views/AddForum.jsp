@@ -13,6 +13,8 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
+
 
         <!-- Bootstrap Core CSS -->
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +48,9 @@
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -207,8 +211,11 @@
                                     <div class="caption">
                                         <form method="post" action="../AddForum" accept-charset="UTF-8">
                                             <input style="margin-bottom: 15px;" type="text" placeholder="Forenname" id="forumname" name="forumname" required>
+<<<<<<< HEAD
                                             <hr class="divider">
                                             <input style="margin-bottom: 15px;" type="text" placeholder="Forumkurzinhalt" id="forumscontent" name="forumscontent" required>
+=======
+>>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
                                     </div>
                                     <div>
                                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
