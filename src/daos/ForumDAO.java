@@ -73,6 +73,7 @@ public class ForumDAO {
 
 	public Vector<Thread> getThreadsByForum(int id) {
 		Vector<Thread> t = new Vector<Thread>();
+		MemberDAO mDAO = new MemberDAO();
 
 		conn = conProvider.getConnection();
 		try {
@@ -81,7 +82,7 @@ public class ForumDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				t.add(new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getInt(5)));
+				t.add(new Thread(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), mDAO.getMemberById(rs.getInt(4)), rs.getInt(5)));
 			}
 		} catch (SQLException e1) {
 			System.out.println(e1.toString());
