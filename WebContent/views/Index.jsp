@@ -112,11 +112,7 @@
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-<<<<<<< HEAD
                                                                             <a href="#" class="active" id="login-form-link">Anmelden</a>
-=======
-                                                                            <href="" class="active" id="login-form-link">Anmelden</a>
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="" id="register-form-link">Registrieren</a>
@@ -350,7 +346,7 @@
                                                 <div class="col-xs-2">
                                                     <p>Name</p>
                                                     <p>Email</p>
-                                                    <p>Password</p>
+                                                    <p>Passwort</p>
                                                     <p>Geburtstag</p>
                                                 </div>
                                                 <div class="col-xs-4">

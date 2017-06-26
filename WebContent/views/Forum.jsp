@@ -242,10 +242,7 @@
 				                    		</div>
 				                    		</a>
 										</div>	
-=======
 						                    	</div>              		
-				                			</c:when>
-				                		</c:choose>-->
 					                 	<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
 				                 			<div class="row">
 					                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
@@ -267,7 +264,6 @@
 					                    		</div>
 											</div>	
 					                    </a>
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
 									</div>
 				                </div>
 				        	</div>

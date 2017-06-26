@@ -68,12 +68,8 @@ public class AddingEventServlet extends HttpServlet {
 		double fee = Double.parseDouble(request.getParameter("fee"));
 		String endDate = request.getParameter("endDate");
 		System.out.println(timing);
-		// Event erstellen und ID für die Ordner zwischenspeichern
-<<<<<<< HEAD
-		int id = eDAO.addEvent(new Event(0, name, formatTimestamp(timing), regularity, place, content, content, fee, 3, formatDate(endDate)));
-=======
+		// Event erstellen und ID fï¿½r die Ordner zwischenspeichern
 		int id = eDAO.addEvent(new Event(0, name, formatTimestamp(timing), regularity, place, content, content, fee, Integer.parseInt(request.getSession().getAttribute("id").toString()), formatDate(endDate)));
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
 
 		// Wenn das Anlegen geklappt hat, Orderstruktur erstellen
 		if (id >= 0) {
@@ -169,11 +165,7 @@ public class AddingEventServlet extends HttpServlet {
 	
 	private java.sql.Date formatDate(String date)
 	{
-<<<<<<< HEAD
-		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-=======
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
 		java.util.Date parsed = null;
 		try {
 			parsed = format.parse(date);
@@ -186,11 +178,7 @@ public class AddingEventServlet extends HttpServlet {
 	
 	private java.sql.Timestamp formatTimestamp(String timestamp)
 	{
-<<<<<<< HEAD
-		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-=======
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
 		java.util.Date parsed = null;
 		
 		try {
