@@ -194,7 +194,8 @@
 				<span class="glyphicon glyphicon-plus" aria-hidden="false"></span>
 			</button></a>
 	</div>
-	--><div class="container">
+	-->
+	<div class="container">
         <c:forEach items="${pList}" var="post">
         	<div class="row">
                	<div class="col-xs-10 col-xs-offset-1">

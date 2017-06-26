@@ -201,36 +201,17 @@
                                     <div class='col-sm-6'>
                                         <div class="form-group">
                                             <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" id="date" name="date" placeholder="Startdatum" />
-                                                <span class="input-group-addon"> <span
-												class="glyphicon glyphicon-calendar"></span>
-                                                </span>
+                                                <input type='date' class="form-control" id="date" name="date" placeholder="Startdatum" required />
                                             </div>
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $('#datetimepicker1').datetimepicker();
-                                        });
-
-                                    </script>
-
                                     <div class='col-sm-6'>
                                         <div class="form-group">
                                             <div class='input-group date' id='datetimepicker2'>
-                                                <input type='text' class="form-control" id="endDate" name="endDate" placeholder="Enddatum" />
-                                                <span class="input-group-addon"> <span
-												class="glyphicon glyphicon-calendar"></span>
-                                                </span>
+                                                <input type='date' class="form-control" id="endDate" name="endDate" placeholder="Enddatum"  required/>
                                             </div>
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $('#datetimepicker2').datetimepicker();
-                                        });
-
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -246,28 +227,23 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-4">
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Uhrzeit" id="timing" name="timing">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Uhrzeit" id="timing" name="timing" required>
                             <p>Uhr</p>
 
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity" required>
 
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Eintritt" id="fee" name="fee">
-
-                            <p>Wer kommt noch:</p>
-
-                            <p style="color: gray">Hier werden Bilder der Mitglieder angezeigt, die teilnehmen werden</p>
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Eintritt" id="fee" name="fee" required>
                         </div>
                         <div class="col-xs-4">
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Veranstaltungsname" id="eventname" name="eventname">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Veranstaltungsname" id="eventname" name="eventname" required>
                         </div>
                         <div class="col-xs-4">
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Beschreibung" id="content" name="content">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Beschreibung" id="content" name="content" required>
                         </div>
-
                     </div>
 
                     <!-- FILE UPLOAD -->
-                    <input type="text" name="description" /> <input type="file" name="file" />
+                    <input type="file" name="file" />
 
                     <div>
                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
