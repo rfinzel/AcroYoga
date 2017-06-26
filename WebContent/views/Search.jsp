@@ -187,16 +187,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-10 col-xs-offset-1">
-                                <form id="login-form" action="Search" method="post" accept-charset="UTF-8">
+                                <form id="search-box" action="Search" method="post" accept-charset="UTF-8">
                                     <div class="row">
                                         <div>
                                             <div class="col-xs-3">
                                                 <div class="input-group-btn search-panel">
                                                     FILTER
                                                     <button type="button" class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown">
-													<span id="search_concept">Filter</span> <span class="caret"></span>
-												</button>
-
+														<span id="search_concept">Filter</span> <span class="caret"></span>
+													</button>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li><a href="#contains">Personen</a></li>
                                                         <li><a href="#greather_than">Veranstaltungen</a></li>
@@ -204,10 +203,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 ">
-                                                <input type="hidden" name="search_param" value="all" id="search_param"> <input type="text" class="form-control" name="x" placeholder="Search term...">
+                                                <input type="hidden" name="search_param" value="all" id="search_param"> 
+                                                <input type="text" class="form-control" name="x" placeholder="Search term...">
                                             </div>
                                             <div class="col-xs-3">
-                                                <span class="input-group-btn"> <input
+                                                <span class="input-group-btn"> 
+                                                <input
 												class="btn btn-primary btn-block" type="submit" id="sign-in"
 												value="search"></span>
                                             </div>
@@ -224,42 +225,62 @@
 
         <!-- Results -->
         <section id="results">
-
             <div class="container">
                 <div class="row">
                     <c:forEach items="${eList}" var="eventList">
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="service-box">
-                                <div class="thumbnail">
-                                    <a href="/AcroYoga/Event?id=${eventList.id}" img src="img/event/${id}/titel.jpg" alt="Lights" style="width: 100%">
-                                        <div class="caption">
-                                            <h3>${eventList.name}</h3>
-                                            <hr class="divider">
-                                            <p>${eventList.shortContent}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-
-                    <div>
-                        <c:forEach items="${mList}" var="memberList">
-                            <div class="col-lg-1 col-md-3 text-center">
-                                <div class="service-box">
-                                    <div class="thumbnail">
-
-                                        <div class="caption">
-                                            <h3>${memberList.name}</h3>
-                                            <hr class="divider">
-                                            <p>${memberList.lastname}</p>
-                                        </div>
-
+                        <div class="col-xs-4 col-md-offset-1">
+							<div class="card">
+                            	<a href="/AcroYoga/Event?id=${eventList.id}" alt="Lights" style="width: 100%">
+                                	<div class="card-date">
+                                    	<p>${eventList.weekday}</p>
+                                           ${eventList.readable_time} Uhr<br> ${eventList.readable_date}
                                     </div>
+                                	<div class="card-delete-event">
+                             			<a href="/AcroYoga/Delete?id=${eventList.id}" alt="Lights" style="width: 100%">
+                                    		<button type="button" class="btn btn-default btn-lg" style="background: transparent" aria-label="Left Align">
+												<span class="glyphicon glyphicon-trash"
+													aria-hidden="true" style="color: white"></span>
+											</button>
+                                    	</a>
+                                	</div>
+                               		<div class="card-image">
+                                		<img class="img-responsive" src="img/header.jpg">
+                                	</div>
+                                	<div class="card-title" style="text-align: center">${eventList.name}</div>
+                               	</a>
+                                <div class="card-content">
+                                	<p>${eventList.shortContent}</p>
                                 </div>
-                            </div>
-                        </c:forEach>
-                    </div>
+			                </div>
+			            </div>
+                    </c:forEach>
+					<c:choose>
+						<c:when test="${loggedIn}">
+	                        <c:forEach items="${mList}" var="member">
+	                            <div class="col-xs-4 text-center">
+	                                <div class="card" style="padding:15px">
+	                                	<div class="row">
+		                                	<div class="col-xs-3" sytel="border-right: 1px solid gray">
+	                                            <img src="img/members/${member.id }/picture.png"  width="50" height="50"/>
+												<p>${member.name} ${member.lastname}</p>
+	                                        </div>
+	                                        <div class="col-xs-9">
+	                                        	<p>Email: ${member.email}</p>
+	                                        	<c:choose>
+	                                        		<c:when test="${member.admin}">
+	                                        			<p>Admin: <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+	                                        		</c:when>
+	                                        		<c:otherwise>
+	                                        			<p>Admin: <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>
+	                                        		</c:otherwise>
+	                                        	</c:choose>
+	                                        </div>
+	                                	</div>        
+	                                </div>
+	                            </div>
+	                        </c:forEach>
+						</c:when>
+					</c:choose>
                 </div>
             </div>
         </section>
