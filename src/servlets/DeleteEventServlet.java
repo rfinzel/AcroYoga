@@ -76,36 +76,8 @@ public class DeleteEventServlet extends HttpServlet {
 		boolean deleted = eDAO.deleteEvent(e);
 		request.setAttribute("deleted", deleted);
 
-		//TODO Wie löscht man diese? Habe dafür den gesamten unterbau mal da gelassen :)
-		// Wenn das Anlegen geklappt hat, Orderstruktur löchen
-		/*if (id >= 0) {
-			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id).mkdir();
-			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images").mkdir();
-
-			Part filePart = request.getPart("file");
-			
-			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id, "image.jpg");
-			
-			try (InputStream fileContent = filePart.getInputStream()) {
-				Files.copy(fileContent, file.toPath());
-			}
-			
-			// Thumbnail vom Bild erstellen
-			createThumbnail(file, request.getSession().getServletContext().getRealPath("img") + "/events/" + id);
-			
-			// Auf die Seite des erstellen Events weiterleiten
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/Event?id=" + id);
-
-			dispatcher.forward(request, response);
-		} else {
-			// Auf Event-erstellen weiterleiten
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/AddEvent.jsp");
-
-			dispatcher.forward(request, response);
-		}*/
-		
+		deleteDir(new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + e.getId()));
+	
 		String path = request.getHeader("referer");
 		//response.sendRedirect(path.substring(21));
 		
@@ -215,4 +187,13 @@ public class DeleteEventServlet extends HttpServlet {
 		return new java.sql.Timestamp(parsed.getTime());
 	}
 
+	private void deleteDir(File file) {
+	    File[] contents = file.listFiles();
+	    if (contents != null) {
+	        for (File f : contents) {
+	            deleteDir(f);
+	        }
+	    }
+	    file.delete();
+	}
 }

@@ -1,5 +1,6 @@
 package servlets;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -34,11 +35,15 @@ public class DeleteAccountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// DAOs
 		MemberDAO mDAO = new MemberDAO();
+		
 		// Angemeldeten User löschen
+		/*
+		 * Wenn User aus Memberübersicht gelöscht wird, muss die ID übergeben werden
+		 */
 		mDAO.deleteMember(mDAO.getMemberById((Integer)request.getSession().getAttribute("id")));
 						
-		// TODO Auto-generated method stub
-				// Forward to /WEB-INF/views/login.jsp
+		deleteDir(new File(request.getSession().getServletContext().getRealPath("img") + "/members/" + request.getSession().getAttribute("id")));
+
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/Index");
 
@@ -53,4 +58,13 @@ public class DeleteAccountServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private void deleteDir(File file) {
+	    File[] contents = file.listFiles();
+	    if (contents != null) {
+	        for (File f : contents) {
+	            deleteDir(f);
+	        }
+	    }
+	    file.delete();
+	}
 }

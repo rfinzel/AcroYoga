@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -80,7 +81,7 @@ public class AddingEventServlet extends HttpServlet {
 			File file = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id, "image.jpg");
 			
 			try (InputStream fileContent = filePart.getInputStream()) {
-				Files.copy(fileContent, file.toPath());
+				Files.copy(fileContent, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
 			}
 			
 			// Thumbnail vom Bild erstellen
