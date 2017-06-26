@@ -211,14 +211,14 @@ F
 
                                         <form method="post" action="../AddThread" accept-charset="UTF-8" id="thread-form">
                                             <input type="hidden" value="<%=request.getParameter("id")%>" name="id">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Threadname" id="threadname" name="threadname">
+                                            <input style="margin-bottom: 15px;" type="text" placeholder="Threadname" id="threadname" name="threadname" required>
                                             <hr class="divider">
                                     </div>
 		                                    <div class="col-lg-3 col-md-6text-center">
-		                                        <textarea id="textareaComment" name="textareaComment"></textarea>
+		                                        <textarea id="textareaComment" name="textareaComment" required></textarea>
 		                                    </div>
 		                                    <div>
-		                                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
+		                                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit" required>
 		                                    </div>
 	                                    </form>
                                 </a>

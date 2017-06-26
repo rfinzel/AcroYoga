@@ -208,9 +208,9 @@
                                 <a img src="img/header.jpg" alt="Lights" style="width: 100%">
                                     <div class="caption">
                                         <form method="post" action="../AddPost" accept-charset="UTF-8">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Postname" id="postname" name="postname">
+                                            <input style="margin-bottom: 15px;" type="text" placeholder="Postname" id="postname" name="postname" required>
                                             <hr class="divider">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Postinhalt" id="postcontent" name="postcontent">
+                                            <input style="margin-bottom: 15px;" type="text" placeholder="Postinhalt" id="postcontent" name="postcontent" required>
                                     </div>
                                     <div>
                                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">

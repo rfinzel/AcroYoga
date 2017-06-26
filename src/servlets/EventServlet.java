@@ -152,7 +152,6 @@ public class EventServlet extends HttpServlet {
 			for(int i = 0; i < f.list(directoryFilter).length; i++)
 			{
 				directories.add(new Directory(f.list(directoryFilter)[i]));
-				System.out.println("Ordner:" + f.list(directoryFilter)[i]);
 			}
 		}
 		
@@ -164,11 +163,6 @@ public class EventServlet extends HttpServlet {
 			
 			
 			directories.get(i).setList(files.list(pictureFilter));
-			
-			for(int j = 0; j < files.list(pictureFilter).length; j++)
-			{
-				System.out.println("Files:" + files.list(pictureFilter)[j]);
-			}
 		}
 
 		request.setAttribute("fileList", directories);

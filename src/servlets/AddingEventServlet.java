@@ -74,7 +74,6 @@ public class AddingEventServlet extends HttpServlet {
 		// Wenn das Anlegen geklappt hat, Orderstruktur erstellen
 		if (id >= 0) {
 			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id).mkdir();
-			new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + id + "/images").mkdir();
 
 			Part filePart = request.getPart("file");
 			
