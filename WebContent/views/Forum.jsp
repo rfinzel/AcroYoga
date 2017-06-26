@@ -209,6 +209,7 @@
 				               	<div class="col-xs-10 col-xs-offset-1">
 				                	<div class="card" style="padding:10px;">
 <<<<<<< HEAD
+<<<<<<< HEAD
 					                	<c:choose>
 				                			<c:when test="${user.admin}">
 						                		<div class="card-delete-post">
@@ -222,11 +223,16 @@
 	                					</c:choose>
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> f31d3e62f072263d8fdc77a32f61c5e3c4fc8c65
 				                		<c:choose>
 				                			<c:when test="admin">
 						                		<!--<div class="card-delete-post">
 =======
+<<<<<<< HEAD
 >>>>>>> f58b103add7c5852763ed294d6a91322df0b4c17
+=======
+>>>>>>> f31d3e62f072263d8fdc77a32f61c5e3c4fc8c65
 				                		<!--<c:choose>
 				                			<c:when test="admin">
 						                		<div class="card-delete-post">
