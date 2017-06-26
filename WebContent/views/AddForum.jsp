@@ -207,8 +207,6 @@
                                     <div class="caption">
                                         <form method="post" action="../AddForum" accept-charset="UTF-8">
                                             <input style="margin-bottom: 15px;" type="text" placeholder="Forenname" id="forumname" name="forumname" required>
-                                            <hr class="divider">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Forumkurzinhalt" id="forumscontent" name="forumscontent" required>
                                     </div>
                                     <div>
                                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">

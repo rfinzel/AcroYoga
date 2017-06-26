@@ -228,7 +228,6 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <input style="margin-bottom: 15px;" type="text" placeholder="Uhrzeit" id="timing" name="timing" required>
-                            <p>Uhr</p>
 
                             <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity" required>
 
