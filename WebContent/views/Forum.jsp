@@ -208,8 +208,6 @@
 				        	<div class="row">
 				               	<div class="col-xs-10 col-xs-offset-1">
 				                	<div class="card" style="padding:10px;">
-<<<<<<< HEAD
-<<<<<<< HEAD
 					                	<c:choose>
 				                			<c:when test="${user.admin}">
 						                		<div class="card-delete-post">
@@ -221,48 +219,8 @@
 						                    	</div>                		
 				                			</c:when>
 	                					</c:choose>
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f31d3e62f072263d8fdc77a32f61c5e3c4fc8c65
-				                		<c:choose>
-				                			<c:when test="admin">
-						                		<!--<div class="card-delete-post">
-=======
-<<<<<<< HEAD
->>>>>>> f58b103add7c5852763ed294d6a91322df0b4c17
-=======
->>>>>>> f31d3e62f072263d8fdc77a32f61c5e3c4fc8c65
-				                		<!--<c:choose>
-				                			<c:when test="admin">
-						                		<div class="card-delete-post">
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
-								            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
-								           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
-														<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
-													</button>
-													</a>
-<<<<<<< HEAD
-						                    	</div>-->              		
-				                			</c:when>
-				                		</c:choose>
-				                 		<div class="row">
-				                 		<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
-				                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
-				                            	<img src="img/members/${thread.author.id }/picture.png" />
-												<p>${thread.author.name }</p>
-				                    		</div>
-											<div class="col-xs-8">
-												<div class="card-small-title" style=""> 
-													<div class="glyphicon glyphicon-comment">${postCounter} 
-				                                                <p>${thread.readable_time} ${thread.readable_date}</p>
-				                                	</div>
-				                            		<p>${thread.name}</p>
-				                    			</div>
-				                    		</div>
-				                    		</a>
-										</div>	
-						                    	</div>              		
+				                 		
+						                    			
 					                 	<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
 				                 			<div class="row">
 					                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
@@ -284,6 +242,7 @@
 					                    		</div>
 											</div>	
 					                    </a>
+					                    </div>              
 									</div>
 				                </div>
 				        	</div>
