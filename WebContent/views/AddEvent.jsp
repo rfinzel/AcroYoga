@@ -252,10 +252,6 @@
                             <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity">
 
                             <input style="margin-bottom: 15px;" type="text" placeholder="Eintritt" id="fee" name="fee">
-
-                            <p>Wer kommt noch:</p>
-
-                            <p style="color: gray">Hier werden Bilder der Mitglieder angezeigt, die teilnehmen werden</p>
                         </div>
                         <div class="col-xs-4">
                             <input style="margin-bottom: 15px;" type="text" placeholder="Veranstaltungsname" id="eventname" name="eventname">
@@ -263,7 +259,6 @@
                         <div class="col-xs-4">
                             <input style="margin-bottom: 15px;" type="text" placeholder="Beschreibung" id="content" name="content">
                         </div>
-
                     </div>
 
                     <!-- FILE UPLOAD -->

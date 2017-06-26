@@ -297,21 +297,21 @@
             <h2>Bilder</h2>
             <div class="panel-group">
                 <div class="panel panel-default">
-                	<c:forEach items="${dateList}" var="dateList">
+                	<c:forEach items="${fileList}" var="fileList">
 	                    <div class="panel-heading">
 	                        <h4 class="panel-title">
-	                            <a data-toggle="collapse" href="#${dateList}">${dateList}</a>
+	                            <a data-toggle="collapse" href="#${fileList.name}">${fileList.name}</a>
 	                        </h4>
 	                    </div>
-	                    <div id="${dateList}" class="panel-collapse collapse" style="height: 100%">
+	                    <div id="${fileList.name}" class="panel-collapse collapse" style="height: 100%">
+	                        <c:forEach items="${fileList.files}" var="files">
 	                        <div class='list-group gallery'>
-	                            <!--<c:forEach items="${fileList}" var="fileList">
-	                                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-	                                    <a class="fancybox thumbnail" rel="ligthbox" href="img/${id}/images/${fileList}"> <img class="img-responsive" alt="" src="img/${id}/images/thumbnails/${fileList}" />
-	                                    </a>
-	                                </div>
-	                            </c:forEach>-->
+                                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                    <a class="fancybox thumbnail" rel="ligthbox" href="img/events/${id}/${fileList.name}/${files}"> <img class="img-responsive" alt="" src="img/events/${id}/${fileList.name}/thumbnails/${files}" />
+                                    </a>
+                                </div>
 	                        </div>
+	                        </c:forEach>
 	                        <!-- list-group / end -->
 	                        <div class="panel-footer"></div>
 	                    </div>
