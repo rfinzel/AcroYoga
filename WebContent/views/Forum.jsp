@@ -205,33 +205,38 @@
 				        	<div class="row">
 				               	<div class="col-xs-10 col-xs-offset-1">
 				                	<div class="card" style="padding:10px;">
-				                		<c:choose>
+				                		<!--<c:choose>
 				                			<c:when test="admin">
-						                		<!--<div class="card-delete-post">
+						                		<div class="card-delete-post">
 								            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
 								           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
 														<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
 													</button>
 													</a>
-						                    	</div>-->              		
+						                    	</div>              		
 				                			</c:when>
-				                		</c:choose>
-				                 		<div class="row">
-				                 		<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
-				                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
-				                            	<img src="img/members/${thread.author.id }/picture.png" />
-												<p>${thread.author.name }</p>
-				                    		</div>
-											<div class="col-xs-8">
-												<div class="card-small-title" style=""> 
-													<div class="glyphicon glyphicon-comment">${postCounter} 
-				                                                <p>${thread.readable_time} ${thread.readable_date}</p>
-				                                	</div>
-				                            		<p>${thread.name}</p>
-				                    			</div>
-				                    		</div>
-				                    		</a>
-										</div>	
+				                		</c:choose>-->
+					                 	<a href="/AcroYoga/Thread?id=${thread.id}" alt="Lights" style="width: 100%">
+				                 			<div class="row">
+					                   			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
+					                            	<img src="img/members/${thread.author.id }/picture.png" />
+													<p>${thread.author.name }</p>
+					                    		</div>
+												<div class="col-xs-8">
+													<div class="col-xs-12">
+														<div class="card-small-title" > 
+															<div class="glyphicon glyphicon-comment" style="text-align: right; font-weight: 600; position: absolute; right: 0; top: 0; margin-right: 15px">
+																${postCounter} 
+						                                        <p>${thread.readable_time} Uhr ${thread.readable_date}</p>
+						                                	</div>
+						                    			</div>
+						                    		</div>	
+						                    		<div class="col-xs-12">
+						                    			<p>${thread.name}</p>
+						                    		</div>
+					                    		</div>
+											</div>	
+					                    </a>
 									</div>
 				                </div>
 				        	</div>

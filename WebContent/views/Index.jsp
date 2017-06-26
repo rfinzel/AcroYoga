@@ -14,6 +14,7 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
 
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,10 +47,13 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> Menu <i
+					<span class="sr-only">Toggle navigation</span> Menü <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -98,11 +102,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <li class="dropdown">
-<<<<<<< HEAD
                                         	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Anmelden <strong class="caret"></strong></a>
-=======
-                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong></a>
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
                                             <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
           											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <div class="container">
@@ -112,11 +112,7 @@
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-<<<<<<< HEAD
                                                                             <href="" class="active" id="login-form-link">Anmelden</a>
-=======
-                                                                            <a href="#" class="active" id="login-form-link">Anmelden</a>
->>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="" id="register-form-link">Registrieren</a>
