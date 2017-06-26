@@ -248,7 +248,7 @@
                                     	</c:when>
                                     </c:choose>
                                     <div class="card-image">
-                                        <img class="img-responsive" src="img/header.jpg">
+                                        <img class="img-responsive" src="img/events/${eventList.id}/image.jpg">
                                     </div>
                                     <div class="card-title" style="text-align: center">${eventList.name}</div>
                                 </a>

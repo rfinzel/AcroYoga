@@ -57,6 +57,7 @@ public class ThreadDAO {
 			pstmt.setString(2, t.getName());
 			pstmt.setTimestamp(3, t.getTiming());
 			pstmt.setInt(4, t.getAuthor().getId());
+			pstmt.setInt(5, t.getId());
 			pstmt.setInt(5, t.getForum_id());
 			pstmt.executeUpdate();
 		} catch (SQLException f1) {
@@ -72,7 +73,27 @@ public class ThreadDAO {
 		return id;
 	}
 
+	public boolean deleteThread(Thread t)
+	{ 
+		conn = conProvider.getConnection();
+		boolean deleted = false;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("delete from thread where id = ?");
+			pstmt.setInt(1, t.getId());
+			pstmt.executeUpdate();
+			deleted = true;
+		} catch(SQLException e1) {
+			System.out.println(e1.toString());
+		}
 
+		try {
+			conn.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return deleted;
+	}
+	
 	private int getNextId() {
 		int id = 0;
 		conn = conProvider.getConnection();

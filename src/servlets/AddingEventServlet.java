@@ -68,7 +68,7 @@ public class AddingEventServlet extends HttpServlet {
 		double fee = Double.parseDouble(request.getParameter("fee"));
 		String endDate = request.getParameter("endDate");
 		System.out.println(timing);
-		// Event erstellen und ID für die Ordner zwischenspeichern
+		// Event erstellen und ID fï¿½r die Ordner zwischenspeichern
 		int id = eDAO.addEvent(new Event(0, name, formatTimestamp(timing), regularity, place, content, content, fee, Integer.parseInt(request.getSession().getAttribute("id").toString()), formatDate(endDate)));
 
 		// Wenn das Anlegen geklappt hat, Orderstruktur erstellen
