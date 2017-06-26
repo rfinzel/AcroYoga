@@ -88,7 +88,7 @@ public class UpdateAccountServlet extends HttpServlet {
 		
 		// Forward to /WEB-INF/views/login.jsp
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher(path.substring(30));
+				= this.getServletContext().getRequestDispatcher("/Index");
 
 
 		dispatcher.forward(request, response);

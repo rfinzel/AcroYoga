@@ -57,7 +57,7 @@ public class ThreadDAO {
 			pstmt.setString(2, t.getName());
 			pstmt.setTimestamp(3, t.getTiming());
 			pstmt.setInt(4, t.getAuthor().getId());
-			pstmt.setInt(5, t.getId());
+			pstmt.setInt(5, t.getForum_id());
 			pstmt.executeUpdate();
 		} catch (SQLException f1) {
 			System.out.println(f1.toString());

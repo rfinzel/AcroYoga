@@ -200,16 +200,13 @@
             </div>
             <div class="container">
                 <div class="row">
-
                     <div class="col-lg-3 col-md-6text-center">
                         <div class="service-box">
                             <div class="thumbnail">
                                 <a img src="img/header.jpg" alt="Lights" style="width: 100%">
                                     <div class="caption">
                                         <form method="post" action="../AddForum" accept-charset="UTF-8">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Forenname" id="forumname" name="forumname">
-                                            <hr class="divider">
-                                            <input style="margin-bottom: 15px;" type="text" placeholder="Forumkurzinhalt" id="forumscontent" name="forumscontent">
+                                            <input style="margin-bottom: 15px;" type="text" placeholder="Forenname" id="forumname" name="forumname" required>
                                     </div>
                                     <div>
                                         <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Submit">
