@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.EventDAO;
+import objects.Directory;
 import objects.Event;
 import daos.MemberDAO;
 import objects.Member;
@@ -116,15 +117,12 @@ public class EventServlet extends HttpServlet {
 		}
 		request.setAttribute("participate", participate);
 		request.setAttribute("participants", members);
-		// �berarbeiten
-		
 		
 		// Bilder upload zu den Events
 		File f = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + e.getId());
-		//f.mkdir();
 		
 		// Filtern nach .jpg und .png
-		FilenameFilter textFilter = new FilenameFilter() {
+		FilenameFilter directoryFilter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				String lowercaseName = name.toLowerCase();
 				if (!lowercaseName.endsWith(".jpg") && !lowercaseName.endsWith(".png")) {
@@ -135,30 +133,45 @@ public class EventServlet extends HttpServlet {
 			}
 		};
 		
-		List<String> dateList = new Vector<String>();
-		if(f.list(textFilter) != null)
-			dateList = Arrays.asList(f.list(textFilter));
-
-		
 		// Filtern nach .jpg und .png
-		/*textFilter = new FilenameFilter() {
+		FilenameFilter pictureFilter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				String lowercaseName = name.toLowerCase();
-				if (lowercaseName.endsWith(".jpg") || lowercaseName.endsWith(".png")) {
-					return true;
-				} else {
+				if (!lowercaseName.endsWith(".jpg") && !lowercaseName.endsWith(".png")) {
 					return false;
+				} else {
+					return true;
 				}
 			}
 		};
 		
-		// Filelist zur Anzeige in der Gallery
-		if(f.list(textFilter) != null)
-			fileList = Arrays.asList(f.list());
-*/
-		List<String> fileList = new Vector<String>();
-		request.setAttribute("fileList", fileList);
-		request.setAttribute("dateList", dateList);
+		List<Directory> directories = new Vector<Directory>();
+		
+		if(f.list(directoryFilter) != null)
+		{
+			for(int i = 0; i < f.list(directoryFilter).length; i++)
+			{
+				directories.add(new Directory(f.list(directoryFilter)[i]));
+				System.out.println("Ordner:" + f.list(directoryFilter)[i]);
+			}
+		}
+		
+		for(int i = 0; i < directories.size(); i++)
+		{
+			// Bilder upload zu den Events
+			File files = new File(request.getSession().getServletContext().getRealPath("img") + "/events/" + e.getId() + "/" + directories.get(i).getName());
+			
+			
+			
+			directories.get(i).setList(files.list(pictureFilter));
+			
+			for(int j = 0; j < files.list(pictureFilter).length; j++)
+			{
+				System.out.println("Files:" + files.list(pictureFilter)[j]);
+			}
+		}
+
+		request.setAttribute("fileList", directories);
 		
 		// Forward to /WEB-INF/views/login.jsp
         RequestDispatcher dispatcher //
