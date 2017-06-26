@@ -13,6 +13,7 @@
         <meta name="author" content="">
 
         <title>AcroYoga</title>
+        <link rel="shortcut icon" href="img/logo.png" />
 
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,17 +38,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    		                	<script type="text/javascript">
-                                 function submitformDelete() {
-                                     document.getElementById("deleteForm").submit();
-                                 }
-
-                            </script>
-			                <script type="text/javascript">
-                       			function submitformAdmin() {
-                                      document.getElementById("updateAdminForm").submit();
-                                }
-               		 		</script>
+    		                	
     </head>
 
     <body id="page-top">
@@ -59,7 +50,9 @@
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-                    <a class="navbar-brand page-scroll" href="#page-top">AcroYoga</a>
+                    <a class="navbar-brand page-scroll " href="#page-top" style="background-image: url('img/logo.png'); background-size:contain; background-repeat: no-repeat; margin-top:10px; margin-left:0px"></a>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                    	AcroYoga</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
