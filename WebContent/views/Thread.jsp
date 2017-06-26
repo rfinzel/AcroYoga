@@ -201,7 +201,7 @@
                	<div class="col-xs-10 col-xs-offset-1">
                 	<div class="card" style="padding:10px;">
                 		<c:choose>
-                			<c:when test="admin">
+                			<c:when test="${user.admin}">
 		                		<div class="card-delete-post">
 				            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
 				           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
