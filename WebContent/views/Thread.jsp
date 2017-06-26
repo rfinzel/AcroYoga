@@ -199,13 +199,17 @@
         	<div class="row">
                	<div class="col-xs-10 col-xs-offset-1">
                 	<div class="card" style="padding:10px;">
-                		<div class="card-delete-post">
-		            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
-		           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
-							</button>
-							</a>
-                    	</div>
+                		<c:choose>
+                			<c:when test="admin">
+		                		<div class="card-delete-post">
+				            		<a href="/AcroYoga/DeletePost?id=${post.id}" alt="Lights" style="width: 100%">
+				           			<button type="button" class="btn btn-default" style="background: transparent" aria-label="Left Align">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: black"></span>
+									</button>
+									</a>
+		                    	</div>                		
+                			</c:when>
+                		</c:choose>
                  		<div class="row">
                    			<div class="col-xs-4" style="border-right: 1px solid grey; text-align:center">
                             	<img src="img/members/${post.author.id }/picture.png" />

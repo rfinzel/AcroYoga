@@ -98,7 +98,11 @@
                                     </c:when>
                                     <c:otherwise>
                                         <li class="dropdown">
+<<<<<<< HEAD
                                         	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Anmelden <strong class="caret"></strong></a>
+=======
+                                        	<a class="dropdown-toggle" href="#" data-toggle="dropdown"> Log In <strong class="caret"></strong></a>
+>>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
                                             <div class="dropdown-menu" style="padding: 0px; background:transparent; -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
           											box-shadow: 0 0px 0px rgba(0, 0, 0, .175); border: 0px solid #ccc; border: 0px solid rgba(0, 0, 0, .15);">
                                                 <div class="container">
@@ -108,7 +112,11 @@
                                                                 <div class="panel-heading">
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
+<<<<<<< HEAD
                                                                             <href="" class="active" id="login-form-link">Anmelden</a>
+=======
+                                                                            <a href="#" class="active" id="login-form-link">Anmelden</a>
+>>>>>>> branch 'master' of https://github.com/rfinzel/AcroYoga.git
                                                                         </div>
                                                                         <div class="col-xs-6">
                                                                             <a href="" id="register-form-link">Registrieren</a>
@@ -436,6 +444,7 @@
                                         </div>
                                         <div id="deleteAccount" class="form-notactive">
                                             <form name="formDelete" action="DeleteAccount" method="post" role="form">
+                                            <input type="hidden" name="memberID" value="${user.id}" id="memberID">
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <div class="row">
