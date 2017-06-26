@@ -313,7 +313,7 @@
 	                        </div>
 	                        </c:forEach>
 	                        <!-- list-group / end -->
-	                        <div class="panel-footer"></div>
+                        	<div class="panel-footer"></div>
 	                    </div>
                     </c:forEach>
                 </div>
