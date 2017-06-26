@@ -441,6 +441,7 @@
                                         </div>
                                         <div id="deleteAccount" class="form-notactive">
                                             <form name="formDelete" action="DeleteAccount" method="post" role="form">
+                                            <input type="hidden" name="memberID" value="${user.id}" id="memberID">
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <div class="row">

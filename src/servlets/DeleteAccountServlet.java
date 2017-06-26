@@ -37,10 +37,7 @@ public class DeleteAccountServlet extends HttpServlet {
 		MemberDAO mDAO = new MemberDAO();
 		
 		// Angemeldeten User löschen
-		/*
-		 * Wenn User aus Memberübersicht gelöscht wird, muss die ID übergeben werden
-		 */
-		mDAO.deleteMember(mDAO.getMemberById((Integer)request.getSession().getAttribute("id")));
+		mDAO.deleteMember(mDAO.getMemberById(Integer.parseInt(request.getParameter("memberID"))));
 						
 		deleteDir(new File(request.getSession().getServletContext().getRealPath("img") + "/members/" + request.getSession().getAttribute("id")));
 
