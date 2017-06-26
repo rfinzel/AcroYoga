@@ -3,6 +3,7 @@ package objects;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Event {
 	private int id;
@@ -17,6 +18,7 @@ public class Event {
 	private double fee;
 	private int instructor;
 	private Date endDate;
+	
 	private String weekday;
 	
 	public Event(int id, String name, Timestamp timing, int regularity, String place, String shortContent, String content, double fee,
@@ -45,7 +47,21 @@ public class Event {
 	}
 	
 	
-
+	public Timestamp getNextEvent() {
+		Timestamp nextEvent = timing;
+		
+		Calendar cal = Calendar.getInstance();
+		
+		while(nextEvent.before(new Timestamp(System.currentTimeMillis())))
+		{
+			cal.setTime(nextEvent);
+			cal.add(Calendar.DAY_OF_WEEK, regularity);
+			nextEvent.setTime(cal.getTime().getTime());
+		}
+		
+		return nextEvent;
+	}
+	
 	public Timestamp getTiming() {
 		return timing;
 	}

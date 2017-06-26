@@ -100,7 +100,7 @@ public class EventServlet extends HttpServlet {
 			nextEvent.setTime(cal.getTime().getTime());
 		}
 
-		request.setAttribute("nextEvent", formatter.format(nextEvent));
+		request.setAttribute("nextEvent", formatter.format(e.getNextEvent()));
 		
 		// Teilnehmer (�berarbeiten)
 		List<Member> members = mDAO.getMembersByEvent(Integer.parseInt(request.getParameter("id")));
