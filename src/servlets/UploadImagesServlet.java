@@ -38,7 +38,6 @@ public class UploadImagesServlet extends HttpServlet {
 	 */
 	public UploadImagesServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -52,7 +51,7 @@ public class UploadImagesServlet extends HttpServlet {
 		/**
 		 * Hier muss der Ordner noch nach dem Datum von dne Bildern benannt werden
 		 */
-		// Alle Bilder hochladen
+		// Alle Bilder hochladen //TODO überschreibt jedesmal die alten Bilder
 		for (int i = 0; i < Integer.parseInt(request.getParameter("amount")); i++) {
 			Part filePart = request.getPart("file" + (i + 1));
 			
@@ -82,7 +81,6 @@ public class UploadImagesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

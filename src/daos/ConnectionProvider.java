@@ -25,7 +25,6 @@ public class ConnectionProvider {
 			conn = ds.getConnection();
 
 		}catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.toString());
 		}
 	

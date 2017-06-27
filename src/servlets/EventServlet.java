@@ -177,31 +177,5 @@ public class EventServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-	private java.sql.Date formatDate(String date)
-	{
-		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-		java.util.Date parsed = null;
-		try {
-			parsed = format.parse(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return new java.sql.Date(parsed.getTime());
-	}
-	
-	private java.sql.Timestamp formatTimestamp(String timestamp)
-	{
-		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-		java.util.Date parsed = null;
-		
-		try {
-			parsed = format.parse(timestamp);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return new java.sql.Timestamp(parsed.getTime());
-	}
 
 }

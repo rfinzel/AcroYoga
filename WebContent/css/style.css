@@ -172,11 +172,11 @@
 
 /*******************LoggedIn IndexSeite Einstellungen Box************************/
 .form-active {
-	display: block;
+	visibility: visible;
 }
 
 .form-notactive {
-	display: none;
+	visibility: hidden;
 }
 
 /******************* EndeLoggedIn IndexSeite User Box************************/
