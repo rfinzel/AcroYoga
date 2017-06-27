@@ -208,7 +208,7 @@
                         <div class="col-xs-5 col-md-offset-1">
                             <div class="card">
                                 <div class="card-content">
-                                    <a href="/AcroYoga/Forum?id=${forumList.id}" alt="Lights" style="width: 100%">${forumList.name}...</a>
+                                    <a href="/AcroYoga/Forum?id=${forumList.id}" alt="Lights" style="width: 100%">${forumList.name}</a>
                                 </div>
                             </div>
                         </div>

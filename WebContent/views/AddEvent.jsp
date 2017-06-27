@@ -232,16 +232,10 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <input style="margin-bottom: 15px;" type="text" placeholder="Uhrzeit" id="timing" name="timing" required>
-<<<<<<< HEAD
                             <p>Uhr</p>
 
                             <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity" required>
 
-=======
-
-                            <input style="margin-bottom: 15px;" type="text" placeholder="Ort" id="place" name="place"> <input style="margin-bottom: 15px;" type="text" placeholder="Regelmäßigkeit" id="regularity" name="regularity" required>
-
->>>>>>> 264003c9d0249ef30c280bc8e13a8ca1822a2231
                             <input style="margin-bottom: 15px;" type="text" placeholder="Eintritt" id="fee" name="fee" required>
                         </div>
                         <div class="col-xs-4">
