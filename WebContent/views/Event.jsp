@@ -323,7 +323,7 @@
 		                        <div class='list-group gallery'>
 		                        <c:forEach items="${fileList.files}" var="files">
 	                                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-	                                    <a class="fancybox thumbnail" rel="ligthbox" href="img/events/${id}/${fileList.name}/${files}"> <img alt="" src="img/events/${id}/${fileList.name}/thumbnails/${files}" />
+	                                    <a class="card thumbnail" rel="ligthbox" href="img/events/${id}/${fileList.name}/${files}"> <img alt="" src="img/events/${id}/${fileList.name}/thumbnails/${files}" />
 	                                    </a>
 	                                </div>
 		                        </c:forEach>
